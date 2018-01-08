@@ -558,7 +558,7 @@ func test_settable_of_nonsettable(_ a: Aleph) {
   accept_int_inout(&a.b.c) // expected-error {{cannot pass immutable value as inout argument: 'b' is a get-only property}}
 }
 
-// TODO: Static properties are only implemented for nongeneric structs yet.
+// TODO: Static properties are only implemented for nongeneric structs yet. id:4100 gh:4112
 
 struct MonoStruct {
   static var foo: Int = 0
@@ -1067,7 +1067,7 @@ class OwnershipBase {
   var strongVar: AnyObject? // expected-note{{overridden declaration is here}}
   weak var weakVar: AnyObject?
 
-  // FIXME: These should be optional to properly test overriding.
+  // FIXME: These should be optional to properly test overriding. id:3115 gh:3127
   unowned var unownedVar: AnyObject = defaultObject
   unowned(unsafe) var unownedUnsafeVar: AnyObject = defaultObject // expected-note{{overridden declaration is here}}
 }

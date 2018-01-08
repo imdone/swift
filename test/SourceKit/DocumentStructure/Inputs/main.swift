@@ -42,14 +42,14 @@ class TestParamAndCall {
     }
 }
 
-// FIXME: Whatever.
+// FIXME: Whatever. id:3404 gh:3416
 
 class TestMarkers {
-    // TODO: Something.
+    // TODO: Something. id:3701 gh:3713
     func test(arg1: Bool) -> Int {
-        // FIXME: Blah.
+        // FIXME: Blah. id:3807 gh:3817
         if (arg1) {
-            // FIXME: Blah.
+            // FIXME: Blah. id:4056 gh:4068
             return 0
         }
         return 1
@@ -58,7 +58,7 @@ class TestMarkers {
 
 func test2(arg1: Bool) {
     if (arg1) {
-        // http://whatever FIXME: http://whatever/fixme.
+        // http://whatever FIXME: http://whatever/fixme. id:3003 gh:3015
     }
 }
 

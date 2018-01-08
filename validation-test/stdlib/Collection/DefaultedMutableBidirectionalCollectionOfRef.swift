@@ -29,13 +29,13 @@ do {
       OpaqueValue(element.value, identity: element.identity)
     },
     makeCollectionOfEquatable: { (elements: [MinimalEquatableValue]) in
-      // FIXME: use LifetimeTracked.
+      // FIXME: use LifetimeTracked. id:3297 gh:3309
       return DefaultedMutableBidirectionalCollection(elements: elements)
     },
     wrapValueIntoEquatable: identityEq,
     extractValueFromEquatable: identityEq,
     makeCollectionOfComparable: { (elements: [MinimalComparableValue]) in
-      // FIXME: use LifetimeTracked.
+      // FIXME: use LifetimeTracked. id:3649 gh:3661
       return DefaultedMutableBidirectionalCollection(elements: elements)
     },
     wrapValueIntoComparable: identityComp,

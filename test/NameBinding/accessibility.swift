@@ -162,7 +162,7 @@ public class TestablePublicSub: InternalBase {} // expected-error {{undeclared t
 // TESTABLE-NOT: undeclared type 'InternalBase'
 #endif
 
-// FIXME: Remove -verify-ignore-unknown.
+// FIXME: Remove -verify-ignore-unknown. id:3037 gh:3049
 // <unknown>:0: error: unexpected note produced: 'y' declared here
 // <unknown>:0: error: unexpected note produced: 'z' declared here
 // <unknown>:0: error: unexpected note produced: 'init()' declared here

@@ -57,7 +57,7 @@ public let Exclusivity = [
 
 public var globalCounter: Int = 0
 
-// TODO:
+// TODO: id:2 gh:3
 // - Merge begin/endAccess when no calls intervene (~2x speedup).
 // - Move Swift runtime into the OS  (~2x speedup).
 // - Whole module analysis can remove exclusivity checks (> 10x speedup now, 4x speedup with runtime in OS).
@@ -93,7 +93,7 @@ func updateClass(_ c: C) {
   c.inc()
 }
 
-// TODO: Replacing materializeForSet accessors with yield-once
+// TODO: Replacing materializeForSet accessors with yield-once id:4 gh:5
 // accessors should make the callback overhead go away.
 @inline(never)
 public func run_accessInMatSet(_ N: Int) {

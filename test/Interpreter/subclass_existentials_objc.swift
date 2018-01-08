@@ -21,7 +21,7 @@
 import StdlibUnittest
 import Foundation
 
-// FIXME: Actually write proper tests here.
+// FIXME: Actually write proper tests here. id:3443 gh:3455
 
 func cast<T, U>(_ t: T, to: U.Type) -> U? {
   return t as? U
@@ -41,12 +41,12 @@ SubclassExistentialsTestSuite.test("Metatype self-conformance") {
   expectEqual(OP.self, OP.self as AnyObject.Type)
 
   expectNil(cast(CP.self, to: AnyObject.Type.self))
-  // FIXME
+  // FIXME id:3857 gh:3869
   expectNil(cast(OP.self, to: AnyObject.Type.self))
 
-  // FIXME: Sema says 'always true', runtime says false.
+  // FIXME: Sema says 'always true', runtime says false. id:2761 gh:2773
   //
-  // Runtime code had a FIXME in it already, so I think Sema is right.
+  // Runtime code had a FIXME in it already, so I think Sema is right. id:3030 gh:3042
   expectFalse(OP.self is AnyObject.Type)
   expectFalse((C & OP).self is AnyObject.Type)
   expectFalse((C & OP).self is OP.Type)

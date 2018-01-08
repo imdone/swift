@@ -568,7 +568,7 @@ struct TuxedoPanda : Panda { }
 
 // CHECK-LABEL: sil private [transparent] @$S17materializeForSet11TuxedoPandaVAA0E0A2aDP1xyxxcvmytfU_TW : $@convention(witness_method: Panda) (Builtin.RawPointer, @inout Builtin.UnsafeValueBuffer, @inout TuxedoPanda, @thick TuxedoPanda.Type) -> ()
 
-  // FIXME: Useless re-abstractions
+  // FIXME: Useless re-abstractions id:2915 gh:2927
 
   // CHECK: function_ref @$S17materializeForSet11TuxedoPandaVACIegir_A2CIegyd_TR : $@convention(thin) (TuxedoPanda, @guaranteed @callee_guaranteed (@in TuxedoPanda) -> @out TuxedoPanda) -> TuxedoPanda
 
@@ -590,7 +590,7 @@ struct TuxedoPanda : Panda { }
   // CHECK: function_ref @$S17materializeForSet11TuxedoPandaVACIegir_A2CIegyd_TR : $@convention(thin) (TuxedoPanda, @guaranteed @callee_guaranteed (@in TuxedoPanda) -> @out TuxedoPanda) -> TuxedoPanda
 
 // ... then we re-abstract to the requirement signature:
-// FIXME: Peephole this away with the previous one since there's actually no
+// FIXME: Peephole this away with the previous one since there's actually no id:3224 gh:3236
 // abstraction change in this case.
 
   // CHECK: function_ref @$S17materializeForSet11TuxedoPandaVACIegyd_A2CIegir_TR : $@convention(thin) (@in TuxedoPanda, @guaranteed @callee_guaranteed (TuxedoPanda) -> TuxedoPanda) -> @out TuxedoPanda

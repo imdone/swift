@@ -16,10 +16,10 @@ import SwiftShims
 // CONSTRUCTS, so that assert and fatal may be used liberally in
 // building library abstractions without fear of infinite recursion.
 //
-// FIXME: We could go farther with this simplification, e.g. avoiding
+// FIXME: We could go farther with this simplification, e.g. avoiding id:830 gh:837
 // UnsafeMutablePointer
 
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:520 gh:527
 @_transparent
 public // @testable
 func _isDebugAssertConfiguration() -> Bool {
@@ -30,7 +30,7 @@ func _isDebugAssertConfiguration() -> Bool {
   return Int32(Builtin.assert_configuration()) == 0
 }
 
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1383 gh:1390
 @_versioned
 @_transparent
 internal func _isReleaseAssertConfiguration() -> Bool {
@@ -41,7 +41,7 @@ internal func _isReleaseAssertConfiguration() -> Bool {
   return Int32(Builtin.assert_configuration()) == 1
 }
 
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:544 gh:551
 @_transparent
 public // @testable
 func _isFastAssertConfiguration() -> Bool {
@@ -52,7 +52,7 @@ func _isFastAssertConfiguration() -> Bool {
   return Int32(Builtin.assert_configuration()) == 2
 }
 
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:653 gh:660
 @_transparent
 public // @testable
 func _isStdlibInternalChecksEnabled() -> Bool {
@@ -63,7 +63,7 @@ func _isStdlibInternalChecksEnabled() -> Bool {
 #endif
 }
 
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:834 gh:841
 @_versioned
 @_transparent
 internal
@@ -82,7 +82,7 @@ func _fatalErrorFlags() -> UInt32 {
 ///
 /// This function should not be inlined because it is cold and inlining just
 /// bloats code.
-@_versioned // FIXME(sil-serialize-all)
+@_versioned // FIXME (sil-serialize-all) id:522 gh:529
 @inline(never)
 internal func _assertionFailure(
   _ prefix: StaticString, _ message: StaticString,
@@ -112,7 +112,7 @@ internal func _assertionFailure(
 ///
 /// This function should not be inlined because it is cold and inlining just
 /// bloats code.
-@_versioned // FIXME(sil-serialize-all)
+@_versioned // FIXME (sil-serialize-all) id:1386 gh:1393
 @inline(never)
 internal func _assertionFailure(
   _ prefix: StaticString, _ message: String,
@@ -142,7 +142,7 @@ internal func _assertionFailure(
 ///
 /// This function should not be inlined because it is cold and it inlining just
 /// bloats code.
-@_versioned // FIXME(sil-serialize-all)
+@_versioned // FIXME (sil-serialize-all) id:547 gh:554
 @inline(never)
 @_semantics("arc.programtermination_point")
 internal func _fatalErrorMessage(
@@ -183,7 +183,7 @@ internal func _fatalErrorMessage(
 
 /// Prints a fatal error message when an unimplemented initializer gets
 /// called by the Objective-C runtime.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:655 gh:662
 @_transparent
 public // COMPILER_INTRINSIC
 func _unimplementedInitializer(className: StaticString,
@@ -229,8 +229,8 @@ func _unimplementedInitializer(className: StaticString,
   Builtin.int_trap()
 }
 
-// FIXME(ABI)#21 (Type Checker): rename to something descriptive.
-@_inlineable // FIXME(sil-serialize-all)
+// FIXME (ABI)#21 (Type Checker): rename to something descriptive. id:837 gh:844
+@_inlineable // FIXME (sil-serialize-all) id:524 gh:531
 public // COMPILER_INTRINSIC
 func _undefined<T>(
   _ message: @autoclosure () -> String = String(),

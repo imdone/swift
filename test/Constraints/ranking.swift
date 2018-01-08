@@ -2,7 +2,7 @@
 
 func f0<T>(_ x: T) {}
 
-// FIXME: Lookup breaks if these come after f1!
+// FIXME: Lookup breaks if these come after f1! id:2639 gh:2651
 class A { 
   init() {} 
 };

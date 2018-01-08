@@ -357,7 +357,7 @@ func testFixItCasting(x: Any) {
 }
 
 func testFixItContextualKnowledge() {
-  // FIXME: These could propagate backwards.
+  // FIXME: These could propagate backwards. id:2995 gh:3007
   let _: Int = Pair().first // expected-error {{generic parameter 'T' could not be inferred}} expected-note {{explicitly specify the generic arguments to fix this issue}} {{20-20=<Any, Any>}}
   let _: Int = Pair().second // expected-error {{generic parameter 'T' could not be inferred}} expected-note {{explicitly specify the generic arguments to fix this issue}} {{20-20=<Any, Any>}}
 }
@@ -380,7 +380,7 @@ func testFixItNested() {
   _ = Pair< // expected-error {{generic parameter 'Foo' could not be inferred}}
     FullyGeneric,
     // expected-note@-1 {{explicitly specify the generic arguments to fix this issue}} {{17-17=<Any>}}
-    FullyGeneric // FIXME: We could diagnose both of these, but we don't.
+    FullyGeneric // FIXME: We could diagnose both of these, but we don't. id:3732 gh:3744
   >()
   _ = Pair< // expected-error {{generic parameter 'Foo' could not be inferred}}
     FullyGeneric<Any>,

@@ -31,7 +31,7 @@ class TypeConverter;
 /// that has reference semantics.
 class ReferenceTypeInfo : public LoadableTypeInfo {
 protected:
-  // FIXME: Get spare bits for pointers from a TargetInfo-like structure.
+  // FIXME: Get spare bits for pointers from a TargetInfo-like structure. id:385 gh:392
   ReferenceTypeInfo(llvm::Type *type, Size size, SpareBitVector spareBits,
                     Alignment align, IsPOD_t pod = IsNotPOD)
     : LoadableTypeInfo(type, size, spareBits, align, pod,

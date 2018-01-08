@@ -491,14 +491,14 @@ class Closures : SuperBaseA {
 
 class SuperKWBase {
   func test() {
-    // FIXME: make sure we don't code complete 'super' keyword here.
+    // FIXME: make sure we don't code complete 'super' keyword here. id:2811 gh:2823
     #^BASE_SUPER_KW^#
   }
 }
 
 class SuperKWDerived : SuperKWBase {
   func test() {
-    // FIXME: make sure include 'super' keyword in code completion results here.
+    // FIXME: make sure include 'super' keyword in code completion results here. id:3439 gh:3451
     #^DERIVED_SUPER_KW^#
   }
 }

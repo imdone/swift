@@ -5,7 +5,7 @@
 // REQUIRES: executable_test
 // REQUIRES: objc_interop
 
-// FIXME: Add a feature for "platforms that support XCTest".
+// FIXME: Add a feature for "platforms that support XCTest". id:4226
 // REQUIRES: OS=macosx
 
 import StdlibUnittest
@@ -15,7 +15,7 @@ import XCTest
 
 var XCTestTestSuite = TestSuite("XCTest")
 
-// NOTE: When instantiating test cases for a particular test method using the
+// NOTE: When instantiating test cases for a particular test method using the id:3385 gh:3397
 //       XCTestCase(selector:) initializer, those test methods must be marked
 //       as dynamic. Objective-C XCTest uses runtime introspection to
 //       instantiate an NSInvocation with the given selector.

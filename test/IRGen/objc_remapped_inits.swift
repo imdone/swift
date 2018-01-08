@@ -1,6 +1,6 @@
 // RUN: %target-swift-frontend -assume-parsing-unqualified-ownership-sil %s -emit-ir -disable-objc-attr-requires-foundation-module | %FileCheck %s
 
-// FIXME: This test could use %clang-importer-sdk, but the compiler crashes.
+// FIXME: This test could use %clang-importer-sdk, but the compiler crashes. id:2719 gh:2731
 
 // REQUIRES: OS=ios
 // REQUIRES: objc_interop

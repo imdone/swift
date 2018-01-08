@@ -279,5 +279,5 @@ func test9<T: P6, U: P6>(_ t: T, u: U)
         T.Bar == U.Bar {
 }
 
-// FIXME: Remove -verify-ignore-unknown.
+// FIXME: Remove -verify-ignore-unknown. id:2778 gh:2790
 // <unknown>:0: error: unexpected error produced: generic parameter τ_0_0.Bar.Foo cannot be equal to both 'Y.Foo' (aka 'X') and 'Z'

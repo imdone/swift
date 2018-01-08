@@ -14,14 +14,14 @@ func nonOptContext() -> Foo {
     return .someVar
   case (): // expected-warning {{case is already handled by previous patterns; consider removing it}}
     return .someOptVar // expected-error 2 {{value of optional type 'Foo' not unwrapped; did you mean to use '!' or '?'?}} {{23-23=!}}
-  // TODO
+  // TODO id:3827 gh:3839
   //case ():
   //  return .someOptVar!
   case (): // expected-warning {{case is already handled by previous patterns; consider removing it}}
     return .someFunc()
   case (): // expected-warning {{case is already handled by previous patterns; consider removing it}}
     return .someOptFunc() // expected-error{{}} {{26-26=!}}
-  // TODO
+  // TODO id:3880 gh:3892
   //case ():
   //  return .someOptFunc()!
   }
@@ -79,7 +79,7 @@ func rideAHorse(_ horse: Horse?) {}
 rideAHorse(.palomino)
 // expected-error@-1 {{static member 'palomino' cannot be used on protocol metatype 'Horse.Protocol'}}
 
-// FIXME: This should work if the static member is part of a class though
+// FIXME: This should work if the static member is part of a class though id:4118 gh:4130
 class Donkey {
   static var mule: Donkey & Horse { while true {} }
 }

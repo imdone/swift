@@ -43,7 +43,7 @@ func TopLevelGenericFunc2<T : TopLevelGenericFunc2>(x: T) -> T { return x} // ex
 var TopLevelVar: TopLevelVar? { return nil } // expected-error {{use of undeclared type 'TopLevelVar'}}
 
 
-// FIXME: The first error is redundant, isn't correct in what it states, and
+// FIXME: The first error is redundant, isn't correct in what it states, and id:3363 gh:3375
 // also should be emitted on the inheritance clause.
 protocol AProtocol { // expected-error {{type 'Self.e' constrained to non-protocol, non-class type 'Self.e'}}
   associatedtype e : e // expected-error {{inheritance from non-protocol, non-class type 'Self.e'}}

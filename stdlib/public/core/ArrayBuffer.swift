@@ -33,7 +33,7 @@ internal struct _ArrayBuffer<Element> : _ArrayBufferProtocol {
   }
 
   @_inlineable
-  @_versioned  // FIXME(abi): Used from tests
+  @_versioned  // FIXME (abi): Used from tests id:512 gh:519
   internal init(nsArray: _NSArrayCore) {
     _sanityCheck(_isClassOrObjCExistential(Element.self))
     _storage = _ArrayBridgeStorage(objC: nsArray)
@@ -70,7 +70,7 @@ internal struct _ArrayBuffer<Element> : _ArrayBufferProtocol {
     _sanityCheck(_isClassOrObjCExistential(Element.self))
     _sanityCheck(_isClassOrObjCExistential(U.self))
     
-    // FIXME: can't check that U is derived from Element pending
+    // FIXME: can't check that U is derived from Element pending id:1368 gh:1375
     // <rdar://problem/20028320> generic metatype casting doesn't work
     // _sanityCheck(U.self is Element.Type)
 
@@ -156,7 +156,7 @@ extension _ArrayBuffer {
   ///
   /// O(1) if the element type is bridged verbatim, O(*n*) otherwise.
   @_inlineable
-  @_versioned  // FIXME(abi): Used from tests
+  @_versioned  // FIXME (abi): Used from tests id:532 gh:539
   internal func _asCocoaArray() -> _NSArrayCore {
     return _fastPath(_isNative) ? _native._asCocoaArray() : _nonNative
   }
@@ -378,7 +378,7 @@ extension _ArrayBuffer {
     }
   }
 
-  // TODO: gyb this
+  // TODO: gyb this id:643 gh:650
   
   /// Traps if an inout violation is detected or if the buffer is
   /// native and typechecked and the subscript is out of range.

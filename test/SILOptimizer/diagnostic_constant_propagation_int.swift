@@ -1,16 +1,16 @@
-// FIXME(integer): with new integer protocols implemented the overflows are no
+// FIXME (integer): with new integer protocols implemented the overflows are no id:3660 gh:3672
 // longer caught: <rdar://problem/29937936>
 // XFAIL: *
 
 // RUN: not %target-swift-frontend -emit-sil %s 2>&1 | %FileCheck --check-prefix=CHECK-%target-ptrsize %s
 
-// FIXME: This test should be merged back into
+// FIXME: This test should be merged back into id:3765 gh:3777
 // diagnostic_constant_propagation.swift when we have fixed:
 // <rdar://problem/19434979> -verify does not respect #if
 //
 // For the same reason, this test is using FileCheck instead of -verify.
 
-// FIXME: <rdar://problem/19508336> Extend test/SILOptimizer/diagnostic_constant_propagation.swift to 32-bit platforms
+// FIXME: <rdar://problem/19508336> Extend test/SILOptimizer/diagnostic_constant_propagation.swift to 32-bit platforms id:4006 gh:4018
 
 #if arch(i386) || arch(arm)
 func testArithmeticOverflow_Int_32bit() {
@@ -29,7 +29,7 @@ func testArithmeticOverflow_Int_32bit() {
     // Negation.
     var t1: Int = -(-0x7fff_ffff) // OK
     var t2: Int = -(-0x8000_0000)
-    // FIXME: Missing diagnostic:
+    // FIXME: Missing diagnostic: id:2957 gh:2969
     // <rdar://problem/19623142> Overflow in arithmetic negation is not detected at compile time
   }
 
@@ -100,14 +100,14 @@ func testArithmeticOverflow_Int_32bit() {
     var t2: Int = 0 >> 1
     var t3: Int = 0 >> (-1)
     // CHECK-32-DAG: .swift:[[@LINE-1]]:{{[0-9]+}}: error: negative integer cannot be converted to unsigned type 'Builtin.Int32'{{$}}
-    // FIXME: Bad diagnostic:
+    // FIXME: Bad diagnostic: id:3343 gh:3355
     // <rdar://problem/19622485> 'Builtin.Int64' leaks into diagnostics
 
     var t4: Int = 123 >> 0
     var t5: Int = 123 >> 1
     var t6: Int = 123 >> (-1)
     // CHECK-32-DAG: .swift:[[@LINE-1]]:{{[0-9]+}}: error: negative integer cannot be converted to unsigned type 'Builtin.Int32'{{$}}
-    // FIXME: Bad diagnostic:
+    // FIXME: Bad diagnostic: id:3662 gh:3674
     // <rdar://problem/19622485> 'Builtin.Int64' leaks into diagnostics
 
     var t7: Int = (-1) >> 0
@@ -126,14 +126,14 @@ func testArithmeticOverflow_Int_32bit() {
     var t2: Int = 0 << 1
     var t3: Int = 0 << (-1)
     // CHECK-32-DAG: .swift:[[@LINE-1]]:{{[0-9]+}}: error: negative integer cannot be converted to unsigned type 'Builtin.Int32'{{$}}
-    // FIXME: Bad diagnostic:
+    // FIXME: Bad diagnostic: id:3767 gh:3779
     // <rdar://problem/19622485> 'Builtin.Int64' leaks into diagnostics
 
     var t4: Int = 123 << 0
     var t5: Int = 123 << 1
     var t6: Int = 123 << (-1)
     // CHECK-32-DAG: .swift:[[@LINE-1]]:{{[0-9]+}}: error: negative integer cannot be converted to unsigned type 'Builtin.Int32'{{$}}
-    // FIXME: Bad diagnostic:
+    // FIXME: Bad diagnostic: id:4009 gh:4021
     // <rdar://problem/19622485> 'Builtin.Int64' leaks into diagnostics
 
     var t7: Int = (-1) << 0
@@ -156,12 +156,12 @@ func testArithmeticOverflow_UInt_32bit() {
 
     var t4: UInt = -1
     // CHECK-32-DAG: .swift:[[@LINE-1]]:{{[0-9]+}}: error: negative integer {{.*}}overflows when stored into unsigned type 'UInt'{{$}}
-    // FIXME: Bad diagnostic:
+    // FIXME: Bad diagnostic: id:2959 gh:2971
     // <rdar://problem/19623566> Obscure diagnostic for assigning negative numbers to unsigned
 
     var t5: UInt = -0xffff_ffff
     // CHECK-32-DAG: .swift:[[@LINE-1]]:{{[0-9]+}}: error: negative {{.*}}overflows when stored into unsigned type 'UInt'{{$}}
-    // FIXME: Bad diagnostic:
+    // FIXME: Bad diagnostic: id:3346 gh:3358
     // <rdar://problem/19623566> Obscure diagnostic for assigning negative numbers to unsigned
   }
 
@@ -287,7 +287,7 @@ func testArithmeticOverflow_Int_64bit() {
     // Negation.
     var t1: Int = -(-0x7fff_ffff_ffff_ffff) // OK
     var t2: Int = -(-0x8000_0000_0000_0000)
-    // FIXME: Missing diagnostic:
+    // FIXME: Missing diagnostic: id:3664 gh:3676
     // <rdar://problem/19623142> Overflow in arithmetic negation is not detected at compile time
   }
 
@@ -358,14 +358,14 @@ func testArithmeticOverflow_Int_64bit() {
     var t2: Int = 0 >> 1
     var t3: Int = 0 >> (-1)
     // CHECK-64-DAG: .swift:[[@LINE-1]]:{{[0-9]+}}: error: negative integer cannot be converted to unsigned type 'Builtin.Int64'{{$}}
-    // FIXME: Bad diagnostic:
+    // FIXME: Bad diagnostic: id:3769 gh:3781
     // <rdar://problem/19622485> 'Builtin.Int64' leaks into diagnostics
 
     var t4: Int = 123 >> 0
     var t5: Int = 123 >> 1
     var t6: Int = 123 >> (-1)
     // CHECK-64-DAG: .swift:[[@LINE-1]]:{{[0-9]+}}: error: negative integer cannot be converted to unsigned type 'Builtin.Int64'{{$}}
-    // FIXME: Bad diagnostic:
+    // FIXME: Bad diagnostic: id:4012 gh:4024
     // <rdar://problem/19622485> 'Builtin.Int64' leaks into diagnostics
 
     var t7: Int = (-1) >> 0
@@ -384,14 +384,14 @@ func testArithmeticOverflow_Int_64bit() {
     var t2: Int = 0 << 1
     var t3: Int = 0 << (-1)
     // CHECK-64-DAG: .swift:[[@LINE-1]]:{{[0-9]+}}: error: negative integer cannot be converted to unsigned type 'Builtin.Int64'{{$}}
-    // FIXME: Bad diagnostic:
+    // FIXME: Bad diagnostic: id:2962 gh:2974
     // <rdar://problem/19622485> 'Builtin.Int64' leaks into diagnostics
 
     var t4: Int = 123 << 0
     var t5: Int = 123 << 1
     var t6: Int = 123 << (-1)
     // CHECK-64-DAG: .swift:[[@LINE-1]]:{{[0-9]+}}: error: negative integer cannot be converted to unsigned type 'Builtin.Int64'{{$}}
-    // FIXME: Bad diagnostic:
+    // FIXME: Bad diagnostic: id:3349 gh:3361
     // <rdar://problem/19622485> 'Builtin.Int64' leaks into diagnostics
 
     var t7: Int = (-1) << 0

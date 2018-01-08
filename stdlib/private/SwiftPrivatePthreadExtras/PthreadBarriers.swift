@@ -74,12 +74,12 @@ public func _stdlib_pthread_barrier_init(
   }
   barrier.pointee.mutex = UnsafeMutablePointer.allocate(capacity: 1)
   if pthread_mutex_init(barrier.pointee.mutex!, nil) != 0 {
-    // FIXME: leaking memory.
+    // FIXME: leaking memory. id:183 gh:190
     return -1
   }
   barrier.pointee.cond = UnsafeMutablePointer.allocate(capacity: 1)
   if pthread_cond_init(barrier.pointee.cond!, nil) != 0 {
-    // FIXME: leaking memory, leaking a mutex.
+    // FIXME: leaking memory, leaking a mutex. id:430 gh:437
     return -1
   }
   barrier.pointee.count = count
@@ -90,11 +90,11 @@ public func _stdlib_pthread_barrier_destroy(
   _ barrier: UnsafeMutablePointer<_stdlib_pthread_barrier_t>
 ) -> CInt {
   if pthread_cond_destroy(barrier.pointee.cond!) != 0 {
-    // FIXME: leaking memory, leaking a mutex.
+    // FIXME: leaking memory, leaking a mutex. id:181 gh:188
     return -1
   }
   if pthread_mutex_destroy(barrier.pointee.mutex!) != 0 {
-    // FIXME: leaking memory.
+    // FIXME: leaking memory. id:298 gh:305
     return -1
   }
   barrier.pointee.cond!.deinitialize(count: 1)

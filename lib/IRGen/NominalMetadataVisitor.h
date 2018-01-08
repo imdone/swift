@@ -52,7 +52,7 @@ public:
   void noteAddressPoint() {}
 
   /// Add fields related to the generics of this class declaration.
-  /// TODO: don't add new fields that are implied by the superclass
+  /// TODO: don't add new fields that are implied by the superclass id:290 gh:297
   /// fields.  e.g., if B<T> extends A<T>, the witness for T in A's
   /// section should be enough.
   template <class... T>

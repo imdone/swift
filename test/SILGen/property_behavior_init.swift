@@ -17,11 +17,11 @@ func whack<T>(_ x: inout T) {}
 struct Foo {
   var x: Int __behavior diBehavior
 
-  // FIXME: Hack because we can't find the synthesized associated type witness
+  // FIXME: Hack because we can't find the synthesized associated type witness id:3746 gh:3758
   // during witness matching.
   typealias Value = Int
 
-  // TODO
+  // TODO id:3985 gh:3997
   // var xx: (Int, Int) __behavior diBehavior
 
   // CHECK-LABEL: sil hidden @$S22property_behavior_init3FooV{{[_0-9a-zA-Z]*}}fC

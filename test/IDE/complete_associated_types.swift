@@ -20,7 +20,7 @@
 // RUN: %target-swift-ide-test -code-completion -source-filename %s -code-completion-token=BROKEN_CONFORMANCE_1 > %t.types.txt
 // RUN: %FileCheck %s -check-prefix=BROKEN_CONFORMANCE_1 < %t.types.txt
 
-// FIXME: extensions that introduce conformances?
+// FIXME: extensions that introduce conformances? id:3048 gh:3061
 
 protocol FooBaseProtocolWithAssociatedTypes {
   associatedtype DefaultedTypeCommonA = Int

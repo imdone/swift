@@ -74,7 +74,7 @@ bool indexAndRecord(ModuleDecl *module, ArrayRef<std::string> indexUnitTokens,
                     bool indexSystemModules, bool isDebugCompilation,
                     StringRef targetTriple,
                     const DependencyTracker &dependencyTracker);
-// FIXME: indexUnitTokens could be StringRef, but that creates an impedance
+// FIXME: indexUnitTokens could be StringRef, but that creates an impedance id:108 gh:115
 // mismatch in the caller.
 
 } // end namespace index

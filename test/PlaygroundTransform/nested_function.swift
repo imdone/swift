@@ -35,12 +35,12 @@ returnSum()
 // CHECK-NEXT: [15:{{.*}}] $builtin_log[addAgain='{{.*}}']
 // CHECK-NEXT: [15:{{.*}}] $builtin_log_scope_entry
 
-// FIXME: We drop the log for the addition here.
+// FIXME: We drop the log for the addition here. id:3897 gh:3909
 // CHECK-NEXT: [16:{{.*}}] $builtin_log[='()']
 
 // CHECK-NEXT: [15:{{.*}}] $builtin_log_scope_exit
 
-// FIXME: There's an extra, unbalanced scope exit here.
+// FIXME: There's an extra, unbalanced scope exit here. id:2802 gh:2814
 // CHECK-NEXT: [9:{{.*}}] $builtin_log_scope_exit
 
 // CHECK-NEXT: [19:{{.*}}] $builtin_log[addMulti='{{.*}}']

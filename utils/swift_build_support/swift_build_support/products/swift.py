@@ -73,7 +73,7 @@ updated without updating swift.py?")
             # This has a default of 3.0, so it should be safe to use here.
             "-DSWIFT_VERSION={}".format(self.args.swift_user_visible_version),
 
-            # FIXME: We are matching build-script-impl here. But it seems like
+            # FIXME: We are matching build-script-impl here. But it seems like id:3615 gh:3627
             # bit rot since this flag is specified in another place with the
             # exact same value in build-script-impl.
             "-DSWIFT_COMPILER_VERSION={}".format(swift_compiler_version),

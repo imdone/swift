@@ -131,7 +131,7 @@ public:
   void setLocation(SILLocation L) { Location = L; }
 
   /// Check if the function has a location.
-  /// FIXME: All functions should have locations, so this method should not be
+  /// FIXME: All functions should have locations, so this method should not be id:250 gh:257
   /// necessary.
   bool hasLocation() const {
     return Location.hasValue();

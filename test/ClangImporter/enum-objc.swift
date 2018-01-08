@@ -14,7 +14,7 @@ let _: Int = forwardBarePointer // expected-error {{cannot convert value of type
 let _: Int = forwardWithUnderlyingPointer // expected-error {{cannot convert value of type '(OpaquePointer) -> Void' to specified type 'Int'}}
 let _: Int = forwardObjCPointer // expected-error {{cannot convert value of type '(OpaquePointer) -> Void' to specified type 'Int'}}
 
-// FIXME: It would be nice to import these as unavailable somehow instead.
+// FIXME: It would be nice to import these as unavailable somehow instead. id:3694 gh:3706
 let _: Int = forwardWithUnderlyingValue // expected-error {{use of unresolved identifier 'forwardWithUnderlyingValue'}}
 let _: Int = forwardObjCValue // expected-error {{use of unresolved identifier 'forwardObjCValue'}}
 

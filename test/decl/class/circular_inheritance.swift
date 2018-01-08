@@ -10,7 +10,7 @@ protocol P : P {} // expected-error 2{{circular protocol inheritance P}}
 class Isomorphism : Automorphism { }
 class Automorphism : Automorphism { } // expected-error{{circular class inheritance Automorphism}}
 
-// FIXME: Useless error
+// FIXME: Useless error id:3817 gh:3829
 let _ = A() // expected-error{{'A' cannot be constructed because it has no accessible initializers}}
 
 class Left : Right.Hand {

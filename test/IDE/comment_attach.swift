@@ -1,7 +1,7 @@
-// NOTE: This file is sensitive to line numbers.  Thus RUN and CHECK lines come
+// NOTE: This file is sensitive to line numbers.  Thus RUN and CHECK lines come id:2808 gh:2820
 // below the code.
 //
-// NOTE: Please don't change this file to use FileCheck's feature to match
+// NOTE: Please don't change this file to use FileCheck's feature to match id:3437 gh:3449
 // relative line numbers: those lines are comments and we don't want to see
 // anything extra in a test for documentation comments.
 
@@ -196,7 +196,7 @@ protocol decl_protocol_1 {
   var propertyWithGetSet: Int { get set }
 }
 
-// FIXME: While there is nothing stopping us from attaching comments to
+// FIXME: While there is nothing stopping us from attaching comments to id:3043 gh:3055
 // extensions, how would we use those comments?
 
 /// decl_extension_1 Aaa.

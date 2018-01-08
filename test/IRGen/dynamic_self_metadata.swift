@@ -2,7 +2,7 @@
 
 // REQUIRES: CPU=x86_64
 
-// FIXME: Not a SIL test because we can't parse dynamic Self in SIL.
+// FIXME: Not a SIL test because we can't parse dynamic Self in SIL. id:2898 gh:2910
 // <rdar://problem/16931299>
 
 // CHECK: [[TYPE:%.+]] = type <{ [8 x i8] }>

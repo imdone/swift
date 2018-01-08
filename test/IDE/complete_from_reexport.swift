@@ -12,7 +12,7 @@
 // TOP_LEVEL_1-DAG: Decl[FreeFunction]/OtherModule[FooSwiftModuleOverlay]:     onlyInFooOverlay()[#Void#]{{; name=.+$}}
 // TOP_LEVEL_1: End completions
 
-// FIXME: there should be only one instance of this completion result.
+// FIXME: there should be only one instance of this completion result. id:3772 gh:3784
 // NO_DUPLICATES: overlayedFoo()[#Void#]{{; name=.+$}}
 // NO_DUPLICATES: overlayedFoo()[#Void#]{{; name=.+$}}
 // NO_DUPLICATES-NOT: overlayedFoo()[#Void#]{{; name=.+$}}

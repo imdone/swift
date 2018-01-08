@@ -8,7 +8,7 @@
 // REQUIRES: executable_test
 // XFAIL: *
 
-// FIXME: rdar://problem/30234450 PCMacro tests fail on linux in optimized mode
+// FIXME: rdar://problem/30234450 PCMacro tests fail on linux in optimized mode id:3574 gh:3586
 // UNSUPPORTED: OS=linux-gnu
 
 #sourceLocation(file: "main.swift", line: 31)

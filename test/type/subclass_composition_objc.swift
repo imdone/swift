@@ -38,7 +38,7 @@ func testSelfConformance(c: ObjCClass, p: ObjCProtocol, cp: ObjCClass & ObjCProt
   takesObjCProtocol(p)
   takesObjCProtocol(cp)
 
-  // FIXME: Bad diagnostics
+  // FIXME: Bad diagnostics id:4167 gh:4179
   takesObjCClassAndProtocol(c) // expected-error {{generic parameter 'T' could not be inferred}}
   takesObjCClassAndProtocol(p) // expected-error {{generic parameter 'T' could not be inferred}}
   takesObjCClassAndProtocol(cp)
@@ -52,7 +52,7 @@ func takesStaticObjCProtocol<T : StaticObjCProtocol>(_: T) {}
 
 func testSelfConformance(cp: ObjCClass & StaticObjCProtocol) {
 
-  // FIXME: Terrible diagnostic
+  // FIXME: Terrible diagnostic id:3237 gh:3249
   takesStaticObjCProtocol(cp)
   // expected-error@-1 {{cannot invoke 'takesStaticObjCProtocol' with an argument list of type '(ObjCClass & StaticObjCProtocol)'}}
   // expected-note@-2 {{expected an argument list of type '(T)'}}
@@ -65,5 +65,5 @@ func testMetatypeSelfConformance(m1: (ObjCClass & ObjCProtocol).Protocol,
   _ = m1 as? (ObjCClass & ObjCProtocol).Type // expected-warning {{always succeeds}}
 
   _ = m2 as (ObjCClass & StaticObjCProtocol).Type // expected-error {{'(ObjCClass & StaticObjCProtocol).Protocol' is not convertible to '(ObjCClass & StaticObjCProtocol).Type'; did you mean to use 'as!' to force downcast?}}
-  _ = m2 as? (ObjCClass & StaticObjCProtocol).Type // FIXME should 'always fail'
+  _ = m2 as? (ObjCClass & StaticObjCProtocol).Type // FIXME should 'always fail' id:3586 gh:3598
 }

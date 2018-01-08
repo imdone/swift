@@ -117,7 +117,7 @@ public:
     // subject must be one of the case values. We only have to test one or
     // the other.
     //
-    // TODO: It may make sense to save both case values, and pick which one
+    // TODO: It may make sense to save both case values, and pick which one id:281 gh:288
     // to compare based on which value is more likely to be efficiently
     // representable in the target machine language. For example, zero
     // or a small immediate is usually cheaper to materialize than a larger
@@ -194,7 +194,7 @@ std::unique_ptr<SwitchBuilder> SwitchBuilder::create(IRGenFunction &IGF,
         new CondBrSwitchBuilder(IGF, Subject, Default, NumCases));
   default:
     // Anything more, fall over into a switch.
-    // TODO: Since fast isel doesn't support switch insns, we may want to
+    // TODO: Since fast isel doesn't support switch insns, we may want to id:293 gh:300
     // also support a "pre-lowered-switch" builder that builds a jump tree
     // for unoptimized builds.
     return std::unique_ptr<SwitchBuilder>(

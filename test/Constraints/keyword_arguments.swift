@@ -239,7 +239,7 @@ func outOfOrder(_ a : Int, b: Int) {
 // -------------------------------------------
 // Missing arguments
 // -------------------------------------------
-// FIXME: Diagnostics could be improved with all missing names, or
+// FIXME: Diagnostics could be improved with all missing names, or id:2632 gh:2644
 // simply # of arguments required.
 func missingargs1(x: Int, y: Int, z: Int) {} // expected-note {{'missingargs1(x:y:z:)' declared here}}
 
@@ -251,7 +251,7 @@ missingargs2(x: 1, y: 2) // expected-error{{missing argument for parameter #3 in
 // -------------------------------------------
 // Extra arguments
 // -------------------------------------------
-// FIXME: Diagnostics could be improved with all extra arguments and
+// FIXME: Diagnostics could be improved with all extra arguments and id:2767 gh:2779
 // note pointing to the declaration being called.
 func extraargs1(x: Int) {}
 

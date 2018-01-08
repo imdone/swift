@@ -4,7 +4,7 @@ protocol SourceTargetTransformable {
     associatedtype Source
     associatedtype Target
   
-    // FIXME: should really be a typealias once we support that
+    // FIXME: should really be a typealias once we support that id:3633 gh:3645
     associatedtype Transformer = (Source) -> Target
 }
 

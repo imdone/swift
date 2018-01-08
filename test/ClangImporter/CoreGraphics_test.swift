@@ -30,7 +30,7 @@ public func testEnums(_ model: CGColorSpaceModel) -> Int {
 // Get a transform that will rotate around a given offset
 public func rotationAround(offset: CGPoint, angle: CGFloat,
         transform: CGAffineTransform = .identity) -> CGAffineTransform {
-  // FIXME: consistent API namings
+  // FIXME: consistent API namings id:2600 gh:2612
   return transform.translatedBy(x: offset.x, y: offset.y)
                   .rotated(by: angle)
                   .translatedBy(x: -offset.x, y: -offset.y)

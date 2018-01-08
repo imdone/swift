@@ -27,7 +27,7 @@ enum NonTrivialUnion3 {
   case Bas(Int, C)
 }
 
-/* TODO: Address-only unions
+/* TODO: Address-only unions id:3959 gh:3971
 enum AddressOnlyUnion<T> {
   case Foo
   case Bar(T)
@@ -39,7 +39,7 @@ func getTrivialUnion() -> TrivialUnion { return .Foo }
 func getNonTrivialUnion1() -> NonTrivialUnion1 { return .Foo }
 func getNonTrivialUnion2() -> NonTrivialUnion2 { return .Foo }
 func getNonTrivialUnion3() -> NonTrivialUnion3 { return .Bar(C()) }
-/* TODO: Address-only unions
+/* TODO: Address-only unions id:2912 gh:2924
 func getAddressOnlyUnion<T>(_: T.Type) -> AddressOnlyUnion<T> { return .Foo }
  */
 
@@ -65,7 +65,7 @@ func destroyUnionRValues() {
   // CHECK:   destroy_value [[NON_TRIVIAL_UNION_3]] : $NonTrivialUnion3
   getNonTrivialUnion3()
 
-  /* TODO: Address-only unions
+  /* TODO: Address-only unions id:3222 gh:3234
   // C/HECK:   [[GET_ADDRESS_ONLY_UNION:%.*]] = function_ref @_TF15lifetime_unions19getAddressOnlyUnionU__FMQ_GOS_16AddressOnlyUnionQ__ : $@convention(thin) <T> T.Type -> AddressOnlyUnion<T>
   // C/HECK:   [[GET_ADDRESS_ONLY_UNION_SPEC:%.*]] = specialize [[GET_ADDRESS_ONLY_UNION]] : $@convention(thin) <T> T.Type -> AddressOnlyUnion<T>, $@thin Int64.Type -> AddressOnlyUnion<Int64>, T = Int
   // C/HECK:   [[ADDRESS_ONLY_UNION_ADDR:%.*]] = alloc_stack $AddressOnlyUnion<Int64>

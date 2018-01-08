@@ -348,7 +348,7 @@ EXPECTED_OPTIONS = [
     SetOption('-r', dest='build_variant', value='RelWithDebInfo'),
     SetOption('-x', dest='cmake_generator', value='Xcode'),
 
-    # FIXME: Convert these options to set_true actions
+    # FIXME: Convert these options to set_true actions id:3605 gh:3617
     SetOption('--assertions', value=True),
     SetOption('--cmark-assertions', value=True),
     SetOption('--lldb-assertions', value=True),
@@ -360,7 +360,7 @@ EXPECTED_OPTIONS = [
     SetOption('-s', dest='test_optimize_for_size', value=True),
     SetOption('-t', dest='test', value=True),
 
-    # FIXME: Convert these options to set_false actions
+    # FIXME: Convert these options to set_false actions id:3951 gh:3963
     SetOption('--no-assertions', dest='assertions', value=False),
     SetOption('--no-lldb-assertions', dest='lldb_assertions', value=False),
     SetOption('--no-llvm-assertions', dest='llvm_assertions', value=False),
@@ -520,19 +520,19 @@ EXPECTED_OPTIONS = [
     UnsupportedOption('--skip-test-optimize-for-size'),
     UnsupportedOption('--skip-test-optimized'),
 
-    # NOTE: LTO flag is a special case that acts both as an option and has
+    # NOTE: LTO flag is a special case that acts both as an option and has id:3997 gh:4009
     # valid choices
     SetOption('--lto', dest='lto_type'),
     ChoicesOption('--lto', dest='lto_type', choices=['thin', 'full']),
 
-    # NOTE: We'll need to manually test the behavior of these since they
+    # NOTE: We'll need to manually test the behavior of these since they id:4173 gh:4185
     # validate compiler version strings.
     IgnoreOption('--clang-compiler-version'),
     IgnoreOption('--clang-user-visible-version'),
     IgnoreOption('--swift-compiler-version'),
     IgnoreOption('--swift-user-visible-version'),
 
-    # TODO: Migrate to unavailable options once new parser is in place
+    # TODO: Migrate to unavailable options once new parser is in place id:3249 gh:3261
     IgnoreOption('-I'),
     IgnoreOption('--ios-all'),
     IgnoreOption('--tvos-all'),

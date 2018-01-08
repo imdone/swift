@@ -245,7 +245,7 @@ class ClassWithStoredProperty {
   var f = 7
 }
 
-// FIXME: This should trap with a modify/modify violation at run time.
+// FIXME: This should trap with a modify/modify violation at run time. id:3847 gh:3859
 ExclusiveAccessTestSuite.test("KeyPathClassStoredProp")
   .skip(.custom(
     { _isFastAssertConfiguration() },

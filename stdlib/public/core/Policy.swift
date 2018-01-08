@@ -55,7 +55,7 @@ public typealias Void = ()
 //===----------------------------------------------------------------------===//
 // Aliases for floating point types
 //===----------------------------------------------------------------------===//
-// FIXME: it should be the other way round, Float = Float32, Double = Float64,
+// FIXME: it should be the other way round, Float = Float32, Double = Float64, id:1406 gh:1413
 // but the type checker loses sugar currently, and ends up displaying 'FloatXX'
 // in diagnostics.
 /// A 32-bit floating point type.
@@ -480,7 +480,7 @@ public protocol _BitwiseOperations {
 /// - Parameters:
 ///   - lhs: A value to update with the union of bits set in the two arguments.
 ///   - rhs: Another value.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1666 gh:1674
 public func |= <T : _BitwiseOperations>(lhs: inout T, rhs: T) {
   lhs = lhs | rhs
 }
@@ -492,7 +492,7 @@ public func |= <T : _BitwiseOperations>(lhs: inout T, rhs: T) {
 ///   - lhs: A value to update with the intersections of bits set in the two
 ///     arguments.
 ///   - rhs: Another value.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1633 gh:1640
 public func &= <T : _BitwiseOperations>(lhs: inout T, rhs: T) {
   lhs = lhs & rhs
 }
@@ -504,7 +504,7 @@ public func &= <T : _BitwiseOperations>(lhs: inout T, rhs: T) {
 ///   - lhs: A value to update with the bits that are set in exactly one of the
 ///     two arguments.
 ///   - rhs: Another value.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1339 gh:1346
 public func ^= <T : _BitwiseOperations>(lhs: inout T, rhs: T) {
   lhs = lhs ^ rhs
 }
@@ -540,7 +540,7 @@ public func ^= <T : _BitwiseOperations>(lhs: inout T, rhs: T) {
 /// - Parameters:
 ///   - lhs: A value to compare.
 ///   - rhs: Another value to compare.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:2277 gh:2289
 @_transparent
 public func ~= <T : Equatable>(a: T, b: T) -> Bool {
   return a == b
@@ -649,7 +649,7 @@ infix operator  &- : AdditionPrecedence
 infix operator   | : AdditionPrecedence
 infix operator   ^ : AdditionPrecedence
 
-// FIXME: is this the right precedence level for "..." ?
+// FIXME: is this the right precedence level for "..." ? id:1408 gh:1415
 infix operator  ... : RangeFormationPrecedence
 infix operator  ..< : RangeFormationPrecedence
 
@@ -671,7 +671,7 @@ infix operator  == : ComparisonPrecedence
 infix operator  != : ComparisonPrecedence
 infix operator === : ComparisonPrecedence
 infix operator !== : ComparisonPrecedence
-// FIXME: ~= will be built into the compiler.
+// FIXME: ~= will be built into the compiler. id:1668 gh:1675
 infix operator  ~= : ComparisonPrecedence
 
 // "Conjunctive"

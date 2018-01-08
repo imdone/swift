@@ -118,7 +118,7 @@ public struct _BigInt<Word: FixedWidthInteger & UnsignedInteger> :
       }
     }
 
-    // FIXME: This is broken on 32-bit arch w/ Word = UInt64
+    // FIXME: This is broken on 32-bit arch w/ Word = UInt64 id:2844 gh:2856
     let wordRatio = UInt.bitWidth / Word.bitWidth
     _sanityCheck(wordRatio != 0)
     for var sourceWord in source.words {
@@ -577,7 +577,7 @@ public struct _BigInt<Word: FixedWidthInteger & UnsignedInteger> :
     lhs._internalDivide(by: rhs)
   }
 
-  // FIXME: Remove once default implementations are provided:
+  // FIXME: Remove once default implementations are provided: id:3184 gh:3196
 
   public static func +(_ lhs: _BigInt, _ rhs: _BigInt) -> _BigInt {
     var lhs = lhs
@@ -1365,7 +1365,7 @@ struct Bit : FixedWidthInteger, UnsignedInteger {
       return (dividend.low, 0)
   }
 
-  // FIXME: Remove once default implementations are provided:
+  // FIXME: Remove once default implementations are provided: id:3597 gh:3609
 
   public static func +(_ lhs: Bit, _ rhs: Bit) -> Bit {
     var lhs = lhs

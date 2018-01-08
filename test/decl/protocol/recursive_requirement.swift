@@ -76,7 +76,7 @@ protocol Gamma {
   associatedtype Delta: Alpha
 }
 
-// FIXME: Redundancy diagnostics are an indication that we're getting
+// FIXME: Redundancy diagnostics are an indication that we're getting id:3025 gh:3037
 // the minimization wrong. The errors prove it :D
 struct Epsilon<T: Alpha, // expected-note{{conformance constraint 'U': 'Gamma' implied here}}
 // expected-warning@-1{{redundant conformance constraint 'T': 'Alpha'}}

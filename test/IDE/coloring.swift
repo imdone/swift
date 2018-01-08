@@ -344,20 +344,20 @@ func test_defer() {
   }
 }
 
-// FIXME: blah.
-//    FIXME:   blah blah
-// Something something, FIXME: blah
+// FIXME: blah. id:2655 gh:2667
+//    FIXME: blah blah id:2803 gh:2815
+// Something something, FIXME: blah id:3433 gh:3445
 
 // CHECK: <comment-line>// <comment-marker>FIXME: blah.</comment-marker></comment-line>
 // CHECK: <comment-line>//    <comment-marker>FIXME:   blah blah</comment-marker></comment-line>
 // CHECK: <comment-line>// Something something, <comment-marker>FIXME: blah</comment-marker></comment-line>
 
-/* FIXME: blah*/
+/* FIXME: blah id:3035 gh:3047*/
 
 // CHECK: <comment-block>/* <comment-marker>FIXME: blah*/</comment-marker></comment-block>
 
 /*
- * FIXME: blah
+ * FIXME: blah id:3758 gh:3770
  * Blah, blah.
  */
 
@@ -366,9 +366,9 @@ func test_defer() {
 // CHECK:  * Blah, blah.
 // CHECK:  */</comment-block>
 
-// TODO: blah.
+// TODO: blah. id:2657 gh:2669
 // TTODO: blah.
-// MARK: blah.
+// MARK: blah. id:2806 gh:2818
 
 // CHECK: <comment-line>// <comment-marker>TODO: blah.</comment-marker></comment-line>
 // CHECK: <comment-line>// T<comment-marker>TODO: blah.</comment-marker></comment-line>
@@ -377,7 +377,7 @@ func test_defer() {
 // CHECK: <kw>func</kw> test5() -> <type>Int</type> {
 func test5() -> Int {
   // CHECK: <comment-line>// <comment-marker>TODO: something, something.</comment-marker></comment-line>
-  // TODO: something, something.
+  // TODO: something, something. id:3436 gh:3448
   // CHECK: <kw>return</kw> <int>0</int>
   return 0
 }
@@ -386,7 +386,7 @@ func test6<T : Prot>(x: T) {}
 // CHECK: <kw>func</kw> test6<T : <type>Prot</type>>(x: <type>T</type>) {}{{$}}
 
 // http://whatever.com?ee=2&yy=1 and radar://123456
-/* http://whatever.com FIXME: see in http://whatever.com/fixme
+/* http://whatever.com FIXME: see in http://whatever.com/fixme id:3040 gh:3052
   http://whatever.com */
 
 // CHECK: <comment-line>// <comment-url>http://whatever.com?ee=2&yy=1</comment-url> and <comment-url>radar://123456</comment-url></comment-line>
@@ -455,9 +455,9 @@ func foo(x: Int, y: Int) -> Int { return x + y }
 ///   - x: A number
 ///   - y: Another number
 ///
-///- note: NOTE1
+///- note: NOTE 1 id:3760 gh:3772
 ///
-/// - NOTE: NOTE2
+/// - NOTE: NOTE2 id:2659 gh:2671
 ///   - note: Not a Note field (not at top level)
 /// - returns: `x + y`
 func bar(x: Int, y: Int) -> Int { return x + y }

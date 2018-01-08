@@ -190,7 +190,7 @@ public:
                             LazyResolver *resolver) const;
 
   /// Retrieve the witness corresponding to the given value requirement.
-  /// TODO: maybe this should return a Witness?
+  /// TODO: maybe this should return a Witness? id:76 gh:84
   ConcreteDeclRef getWitnessDeclRef(ValueDecl *requirement,
                                     LazyResolver *resolver) const;
 

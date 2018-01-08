@@ -134,7 +134,7 @@ const Metadata *swift::swift_getObjectType(HeapObject *object) {
 
 #if SWIFT_OBJC_INTEROP
 static SwiftObject *_allocHelper(Class cls) {
-  // XXX FIXME
+  // XXX FIXME id:2710 gh:2722
   // When we have layout information, do precise alignment rounding
   // For now, assume someone is using hardware vector types
 #if defined(__x86_64__) || defined(__i386__)
@@ -1064,7 +1064,7 @@ WeakReference *swift::swift_unknownWeakTakeAssign(WeakReference *dest,
 const void *
 swift::swift_dynamicCastObjCClass(const void *object,
                                   const ClassMetadata *targetType) {
-  // FIXME: We need to decide if this is really how we want to treat 'nil'.
+  // FIXME: We need to decide if this is really how we want to treat 'nil'. id:3344 gh:3356
   if (object == nullptr)
     return nullptr;
 
@@ -1078,7 +1078,7 @@ swift::swift_dynamicCastObjCClass(const void *object,
 const void *
 swift::swift_dynamicCastObjCClassUnconditional(const void *object,
                                              const ClassMetadata *targetType) {
-  // FIXME: We need to decide if this is really how we want to treat 'nil'.
+  // FIXME: We need to decide if this is really how we want to treat 'nil'. id:2932 gh:2945
   if (object == nullptr)
     return nullptr;
 
@@ -1094,7 +1094,7 @@ swift::swift_dynamicCastObjCClassUnconditional(const void *object,
 const void *
 swift::swift_dynamicCastForeignClass(const void *object,
                                      const ForeignClassMetadata *targetType) {
-  // FIXME: Actually compare CFTypeIDs, once they are available in the metadata.
+  // FIXME: Actually compare CFTypeIDs, once they are available in the metadata. id:3189 gh:3201
   return object;
 }
 
@@ -1102,7 +1102,7 @@ const void *
 swift::swift_dynamicCastForeignClassUnconditional(
          const void *object,
          const ForeignClassMetadata *targetType) {
-  // FIXME: Actual compare CFTypeIDs, once they are available in the metadata.
+  // FIXME: Actual compare CFTypeIDs, once they are available in the metadata. id:2596 gh:2608
   return object;
 }
 
@@ -1282,7 +1282,7 @@ swift::swift_dynamicCastObjCClassMetatypeUnconditional(
 const ClassMetadata *
 swift::swift_dynamicCastForeignClassMetatype(const ClassMetadata *sourceType,
                                              const ClassMetadata *targetType) {
-  // FIXME: Actually compare CFTypeIDs, once they are available in
+  // FIXME: Actually compare CFTypeIDs, once they are available in id:2712 gh:2724
   // the metadata.
   return sourceType;
 }
@@ -1292,7 +1292,7 @@ swift::swift_dynamicCastForeignClassMetatypeUnconditional(
   const ClassMetadata *sourceType,
   const ClassMetadata *targetType)
 {
-  // FIXME: Actually compare CFTypeIDs, once they arae available in
+  // FIXME: Actually compare CFTypeIDs, once they arae available in id:3347 gh:3359
   // the metadata.
   return sourceType;
 }

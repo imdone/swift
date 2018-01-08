@@ -12,21 +12,21 @@
 
 /// A sequence that presents the elements of a base sequence of sequences
 /// concatenated using a given separator.
-@_fixed_layout // FIXME(sil-serialize-all)
+@_fixed_layout // FIXME (sil-serialize-all) id:1775 gh:1782
 public struct JoinedSequence<Base : Sequence> where Base.Element : Sequence {
 
   public typealias Element = Base.Element.Element
   
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:967 gh:974
   internal var _base: Base
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:1053 gh:1060
   internal var _separator: ContiguousArray<Element>
 
   /// Creates an iterator that presents the elements of the sequences
   /// traversed by `base`, concatenated using `separator`.
   ///
   /// - Complexity: O(`separator.count`).
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1187 gh:1194
   public init<Separator : Sequence>(base: Base, separator: Separator)
     where Separator.Element == Element {
     self._base = base
@@ -37,32 +37,32 @@ public struct JoinedSequence<Base : Sequence> where Base.Element : Sequence {
 extension JoinedSequence {
   /// An iterator that presents the elements of the sequences traversed
   /// by a base iterator, concatenated using a given separator.
-  @_fixed_layout // FIXME(sil-serialize-all)
+  @_fixed_layout // FIXME (sil-serialize-all) id:839 gh:846
   public struct Iterator {
-    @_versioned // FIXME(sil-serialize-all)
+    @_versioned // FIXME (sil-serialize-all) id:1777 gh:1784
     internal var _base: Base.Iterator
-    @_versioned // FIXME(sil-serialize-all)
+    @_versioned // FIXME (sil-serialize-all) id:969 gh:976
     internal var _inner: Base.Element.Iterator?
-    @_versioned // FIXME(sil-serialize-all)
+    @_versioned // FIXME (sil-serialize-all) id:1055 gh:1063
     internal var _separatorData: ContiguousArray<Element>
-    @_versioned // FIXME(sil-serialize-all)
+    @_versioned // FIXME (sil-serialize-all) id:1190 gh:1197
     internal var _separator: ContiguousArray<Element>.Iterator?
     
-    @_versioned // FIXME(sil-serialize-all)
+    @_versioned // FIXME (sil-serialize-all) id:842 gh:849
     internal enum JoinIteratorState {
       case start
       case generatingElements
       case generatingSeparator
       case end
     }
-    @_versioned // FIXME(sil-serialize-all)
+    @_versioned // FIXME (sil-serialize-all) id:1779 gh:1786
     internal var _state: JoinIteratorState = .start
 
     /// Creates a sequence that presents the elements of `base` sequences
     /// concatenated using `separator`.
     ///
     /// - Complexity: O(`separator.count`).
-    @_inlineable // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:972 gh:979
     public init<Separator: Sequence>(base: Base.Iterator, separator: Separator)
       where Separator.Element == Element {
       self._base = base
@@ -78,7 +78,7 @@ extension JoinedSequence.Iterator: IteratorProtocol {
   /// exists.
   ///
   /// Once `nil` has been returned, all subsequent calls return `nil`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1057 gh:1062
   public mutating func next() -> Element? {
     while true {
       switch _state {
@@ -124,12 +124,12 @@ extension JoinedSequence: Sequence {
   /// Return an iterator over the elements of this sequence.
   ///
   /// - Complexity: O(1).
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1194 gh:1201
   public func makeIterator() -> Iterator {
     return Iterator(base: _base.makeIterator(), separator: _separator)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:845 gh:852
   public func _copyToContiguousArray() -> ContiguousArray<Element> {
     var result = ContiguousArray<Element>()
     let separatorSize: Int = numericCast(_separator.count)
@@ -182,7 +182,7 @@ extension Sequence where Element : Sequence {
   /// - Parameter separator: A sequence to insert between each of this
   ///   sequence's elements.
   /// - Returns: The joined sequence of elements.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1782 gh:1789
   public func joined<Separator : Sequence>(
     separator: Separator
   ) -> JoinedSequence<Self>

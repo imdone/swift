@@ -33,7 +33,7 @@ class AbstractFunctionDecl;
 /// derived from. This may be null if AST information is unavailable or
 /// stripped.
 ///
-/// FIXME: This should eventually include inlining history, generics
+/// FIXME: This should eventually include inlining history, generics id:144 gh:151
 /// instantiation info, etc (when we get to it).
 ///
 class SILLocation {
@@ -69,7 +69,7 @@ private:
 
 public:
   enum LocationKind : unsigned {
-    // FIXME: NoneKind is to be removed.
+    // FIXME: NoneKind is to be removed. id:255 gh:262
     NoneKind = 0,
     RegularKind = 1,
     ReturnKind = 2,
@@ -150,7 +150,7 @@ protected:
     /// Used to notify that this instruction belongs to the top-
     /// level (module) scope.
     ///
-    /// FIXME: If Module becomes a Decl, this could be removed.
+    /// FIXME: If Module becomes a Decl, this could be removed. id:220 gh:227
     IsInTopLevel = 8,
 
     /// Marks this instruction as belonging to the function prologue.

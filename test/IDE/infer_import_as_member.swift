@@ -8,7 +8,7 @@ import InferImportAsMember
 let mine = IAMStruct1()
 let _ = mine.getCollisionNonProperty(1)
 
-// TODO: more cases, eventually exhaustive, as we start inferring the result we
+// TODO: more cases, eventually exhaustive, as we start inferring the result we id:2697 gh:2707
 // want
 
 // PRINT-LABEL: struct IAMStruct1 {

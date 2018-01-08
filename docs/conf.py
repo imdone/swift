@@ -254,13 +254,13 @@ texinfo_documents = [
 # texinfo_show_urls = 'footnote'
 
 
-# FIXME: Define intersphinx configuration.
+# FIXME: Define intersphinx configuration. id:32 gh:36
 intersphinx_mapping = {}
 
 
 # -- Options for extensions ----------------------------------------------
 
-# Enable this if you want TODOs to show up in the generated documentation.
+# Enable this if you want TODO s to show up in the generated documentation. id:31 gh:32
 todo_include_todos = True
 
 #

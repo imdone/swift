@@ -43,7 +43,7 @@ func test001() {
 // GLOBAL_FUNC_0-LABEL: Results for filterText: abc [
 // GLOBAL_FUNC_0-NEXT:     abc(def: Int)
 
-// FIXME: rdar://22062152 Missing sub-groups when there is a common stem to all
+// FIXME: rdar://22062152 Missing sub-groups when there is a common stem to all id:3693 gh:3705
 // results.
 // DISABLED:     abc(ghi:
 // GLOBAL_FUNC_0-NEXT:         abc(ghi: Int)
@@ -57,7 +57,7 @@ func test001() {
 
 // GLOBAL_FUNC_0-LABEL: Results for filterText: hij [
 
-// FIXME: rdar://22062152 Missing sub-groups when there is a common stem to all
+// FIXME: rdar://22062152 Missing sub-groups when there is a common stem to all id:3796 gh:3808
 // results.  Should be -NEXT, and should remove HIJZ() above.
 // GLOBAL_FUNC_0: HIJ()
 // GLOBAL_FUNC_0-NEXT: HIJ_KLM:

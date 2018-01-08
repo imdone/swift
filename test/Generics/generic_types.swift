@@ -50,7 +50,7 @@ var uniontest1 : (Int) -> Optional<Int> = OptionalInt.element
 var uniontest2 : Optional<Int> = OptionalInt.none
 var uniontest3 = OptionalInt(1)
 
-// FIXME: Stuff that should work, but doesn't yet.
+// FIXME: Stuff that should work, but doesn't yet. id:3026 gh:3038
 // var uniontest4 : OptInt = .none
 // var uniontest5 : OptInt = .Some(1)
 

@@ -302,7 +302,7 @@ func testPreservedResultInverted() throws {
 
 // Make sure that we do not crash when emitting the error value here.
 //
-// TODO: Add some additional filecheck tests.
+// TODO: Add some additional filecheck tests. id:3622 gh:3634
 extension NSURL {
   func resourceValue<T>(forKey key: String) -> T? {
     var prop: AnyObject? = nil

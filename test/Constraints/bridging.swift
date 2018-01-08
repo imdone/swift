@@ -141,7 +141,7 @@ func nsArrayToArray(_ nsa: NSArray) {
 }
 
 func dictionaryToNSDictionary() {
-  // FIXME: These diagnostics are awful.
+  // FIXME: These diagnostics are awful. id:3722 gh:3734
 
   var nsd: NSDictionary
 
@@ -180,7 +180,7 @@ func dictionaryToNSDictionary() {
 // In this case, we should not implicitly convert Dictionary to NSDictionary.
 struct NotEquatable {}
 func notEquatableError(_ d: Dictionary<Int, NotEquatable>) -> Bool {
-  // FIXME: Another awful diagnostic.
+  // FIXME: Another awful diagnostic. id:2624 gh:2636
   return d == d // expected-error{{'<Self where Self : Equatable> (Self.Type) -> (Self, Self) -> Bool' requires that 'NotEquatable' conform to 'Equatable'}}
   // expected-note @-1 {{requirement from conditional conformance of 'Dictionary<Int, NotEquatable>' to 'Equatable'}}
   // expected-error @-2 {{type 'NotEquatable' does not conform to protocol 'Equatable'}}
@@ -278,7 +278,7 @@ func rdar19836341(_ ns: NSString?, vns: NSString?) {
   var vns = vns
   let _: String? = ns // expected-error{{cannot convert value of type 'NSString?' to specified type 'String?'}}
   var _: String? = ns // expected-error{{cannot convert value of type 'NSString?' to specified type 'String?'}}
-  // FIXME: there should be a fixit appending "as String?" to the line; for now
+  // FIXME: there should be a fixit appending "as String?" to the line; for now id:2752 gh:2764
   // it's sufficient that it doesn't suggest appending "as String"
 
   // Important part about below diagnostic is that from-type is described as

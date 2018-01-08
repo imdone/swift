@@ -50,7 +50,7 @@ func testClonable(c: Clonable) {
 // CHECK-NEXT:    dealloc_stack [[INNER_RESULT]]
 // CHECK-NEXT:    return [[EMPTY]]
 
-// FIXME: This is horribly inefficient, too much alloc_stack / copy_addr!
+// FIXME: This is horribly inefficient, too much alloc_stack / copy_addr! id:3638 gh:3650
 
 // CHECK-LABEL: sil shared [transparent] [serializable] [reabstraction_thunk] @$SxSgIegr_22partial_apply_protocol8Clonable_pSgIegr_AbCRzlTR : $@convention(thin) <τ_0_0 where τ_0_0 : Clonable> (@guaranteed @callee_guaranteed () -> @out Optional<τ_0_0>) -> @out Optional<Clonable>
 // CHECK:       bb0(%0 : @trivial $*Optional<Clonable>, %1 : @guaranteed $@callee_guaranteed () -> @out Optional<τ_0_0>):

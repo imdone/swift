@@ -3,7 +3,7 @@
 # This script outputs a Swift source with randomly-generated type definitions,
 # which can be used for ABI or layout algorithm fuzzing.
 
-# TODO: generate types with generics, existentials, compositions
+# TODO: generate types with generics, existentials, compositions id:4017 gh:4029
 
 from __future__ import print_function
 
@@ -137,7 +137,7 @@ def defineRandomNominalType(name, depth=0):
         defineRandomClass(name, depth)
 
     def enum():
-        # TODO: indirect cases
+        # TODO: indirect cases id:4179 gh:4191
         print("enum " + name + " {")
 
         numCases = random.randint(0, maxMembers)

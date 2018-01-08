@@ -51,7 +51,7 @@ for a in foobar {
 }
 print("")
 
-// FIXME: separate r from the expression below pending
+// FIXME: separate r from the expression below pending id:3665 gh:3677
 // <rdar://problem/15772601> Type checking failure
 // CHECK: raboof
 let i = foobar.indices
@@ -174,7 +174,7 @@ S.Indices.Iterator.Element == S.Index {
   typealias Index = S.Index
 
   let a = PermutationGenerator(elements: seq, indices: seq.indices)
-  // FIXME: separate ri from the expression below pending
+  // FIXME: separate ri from the expression below pending id:4040 gh:4052
   // <rdar://problem/15772601> Type checking failure
   let i = seq.indices
   let ri = i.lazy.reversed()

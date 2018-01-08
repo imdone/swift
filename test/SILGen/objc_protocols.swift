@@ -132,7 +132,7 @@ func objc_protocol_partial_apply(_ x: NSRuncing) {
   // CHECK:   destroy_value [[ARG]]
   _ = x.runce
 
-  // FIXME: rdar://21289579
+  // FIXME: rdar://21289579 id:2923 gh:2935
   // _ = NSRuncing.runce
 }
 // CHECK : } // end sil function '$S14objc_protocols0A23_protocol_partial_applyyyAA9NSRuncing_pF'

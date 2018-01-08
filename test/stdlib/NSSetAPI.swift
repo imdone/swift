@@ -105,7 +105,7 @@ NSIndexSetAPI.test("Sequence") {
   let _ = expectSequenceType(result)
   let s = NSIndexSet(indexesIn: NSMakeRange(1, 1))
   var iter = s.makeIterator()
-  // FIXME: Compiler doesn't accept these terms.
+  // FIXME: Compiler doesn't accept these terms. id:3866 gh:3878
   // expectEqual(Optional<Int>.some(1), iter.next())
   // expectEqual(Optional<Int>.none, iter.next())
   expectOptionalEqual(1, iter.next())

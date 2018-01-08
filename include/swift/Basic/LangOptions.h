@@ -107,7 +107,7 @@ namespace swift {
     bool EnableThrowWithoutTry = false;
 
     /// \brief Enable features useful for running playgrounds.
-    // FIXME: This should probably be limited to the particular SourceFile.
+    // FIXME: This should probably be limited to the particular SourceFile. id:102 gh:109
     bool Playground = false;
 
     /// \brief Keep comments during lexing and attach them to declarations.
@@ -248,7 +248,7 @@ namespace swift {
 
     /// When a conversion from String to Substring fails, emit a fix-it to append
     /// the void subscript '[]'.
-    /// FIXME: Remove this flag when void subscripts are implemented.
+    /// FIXME: Remove this flag when void subscripts are implemented. id:126 gh:133
     /// This is used to guard preemptive testing for the fix-it.
     bool FixStringToSubstringConversions = false;
 

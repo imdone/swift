@@ -27,7 +27,7 @@ public struct S : R {}
 // CHECK-LABEL: sil private [transparent] [thunk] @$S21witness_accessibility1SVAA1R{{.*}}dELLP18privateRequirementyyFTW
 // CHECK-LABEL: sil private [transparent] [thunk] @$S21witness_accessibility1SVAA1QA2aDP19internalRequirementyyFTW
 
-// FIXME: This is public because of an explicit workaround for
+// FIXME: This is public because of an explicit workaround for id:3755 gh:3767
 // the default implementation of publicRequirement() having the
 // wrong linkage.
 //

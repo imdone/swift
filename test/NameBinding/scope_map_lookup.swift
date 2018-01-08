@@ -2,7 +2,7 @@
 
 // Name binding in default arguments
 
-// FIXME: Semantic analysis should produce an error here, because 'x'
+// FIXME: Semantic analysis should produce an error here, because 'x' id:3874 gh:3886
 // is not actually available.
 func functionParamScopes(x: Int, y: Int = x) -> Int {
   return x + y
@@ -42,7 +42,7 @@ extension P2 {
 // Lazy properties
 class LazyProperties {
   init() {
-    lazy var localvar = 42  // FIXME: should error {{lazy is only valid for members of a struct or class}} {{5-10=}}
+    lazy var localvar = 42  // FIXME: should error {{lazy is only valid for members of a struct or class}} {{5-10=}} id:2780 gh:2792
     localvar += 1
     _ = localvar
   }
@@ -120,4 +120,4 @@ extension S // expected-error{{expected '{' in extension}}
 
 let a = b ; let b = a // expected-error{{could not infer type for 'a'}} 
 // expected-error@-1 {{'a' used within its own type}}
-// FIXME: That second error is bogus.
+// FIXME: That second error is bogus. id:3049 gh:3058

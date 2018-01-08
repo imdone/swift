@@ -65,7 +65,7 @@ func optionalChainingForeignFunctionTypeProperties(b: BlockProperty?) {
   _ = dynamic?.selectorReturning()
   // CHECK: unchecked_ref_cast {{.*}} $BlockProperty to $Optional
   _ = dynamic?.objectReturning()
-  // FIXME: Doesn't opaquely cast the selector result!
+  // FIXME: Doesn't opaquely cast the selector result! id:3630 gh:3642
   // C/HECK: unchecked_trivial_bit_cast {{.*}} $Selector to $Optional
   _ = dynamic?.selector
 

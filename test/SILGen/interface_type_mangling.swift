@@ -47,7 +47,7 @@ func h3<T where T: P, T: Base, T: AnyObject>(_ x: T) {}
 // CHECK:       interface_type_mangling.h4[[H_SIGNATURE]]
 func h4<T where T: P, T: Base, T: Q>(_ x: T) {}
 // CHECK:       interface_type_mangling.h5[[H_SIGNATURE]]
-func h5<T where T: P, T: Base, T: Q /* TODO: same type constraints , T.Assoc0 == Base*/>(_ x: T) {}
+func h5<T where T: P, T: Base, T: Q /* TODO: same type constraints , T.Assoc0 == Base id:2910 gh:2922*/>(_ x: T) {}
 
 // CHECK-LABEL: interface_type_mangling.i1
 // CHECK:                                 [[I_SIGNATURE:<A where A: interface_type_mangling.P, A: interface_type_mangling.Q, A.Assoc0: interface_type_mangling.Q, A.Assoc1: interface_type_mangling.P>\(A\) -> \(\)]]
@@ -208,7 +208,7 @@ struct GenericTypeContext<T>: GenericWitnessTest {
     return foo()
   }
 
-  // FIXME: Demangling for generic params at depth is wrong.
+  // FIXME: Demangling for generic params at depth is wrong. id:3219 gh:3231
   // CHECK-LABEL: twoParamsAtDepth<A, B>(_: A1, y: B1) -> ()
   // CHECK-LABEL: sil hidden @$S23interface_type_mangling18GenericTypeContextV16twoParamsAtDepth_1yyqd___qd_0_tr0_lF
   func twoParamsAtDepth<A, B>(_ x: A, y: B) {}

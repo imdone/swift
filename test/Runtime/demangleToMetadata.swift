@@ -79,8 +79,8 @@ DemangleToMetadataTests.test("existential types") {
   // Any, AnyObject
   expectEqual(type(of: f2_any_anyobject), _typeByMangledName("yyyp_yXltc")!)
 
-  // FIXME: References to protocols.
-  // FIXME: References to superclass.
+  // FIXME: References to protocols. id:3527 gh:3539
+  // FIXME: References to superclass. id:3929 gh:3941
 }
 
 DemangleToMetadataTests.test("existential metatype types") {

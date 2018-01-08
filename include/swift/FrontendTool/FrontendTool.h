@@ -59,7 +59,7 @@ public:
   /// The frontend is about to run the program as an immediate script.
   virtual void aboutToRunImmediately(CompilerInstance &instance);
 
-  // TODO: maybe enhance this interface to hear about IRGen and LLVM
+  // TODO: maybe enhance this interface to hear about IRGen and LLVM id:324 gh:331
   // progress.
 };
 

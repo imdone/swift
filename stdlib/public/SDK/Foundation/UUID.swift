@@ -92,7 +92,7 @@ public struct UUID : ReferenceConvertible, Hashable, Equatable, CustomStringConv
         return description
     }
     
-    // MARK: - Bridging Support
+    // MARK: - Bridging Support id:590 gh:597
     
     fileprivate var reference: NSUUID {
         var bytes = uuid

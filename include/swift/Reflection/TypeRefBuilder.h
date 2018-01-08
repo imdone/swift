@@ -228,7 +228,7 @@ public:
   const TupleTypeRef *
   createTupleType(const std::vector<const TypeRef *> &elements,
                   std::string &&labels, bool isVariadic) {
-    // FIXME: Add uniqueness checks in TupleTypeRef::Profile and
+    // FIXME: Add uniqueness checks in TupleTypeRef::Profile and id:124 gh:131
     // unittests/Reflection/TypeRef.cpp if using labels for identity.
     return TupleTypeRef::create(*this, elements, isVariadic);
   }

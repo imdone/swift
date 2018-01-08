@@ -91,8 +91,8 @@ public struct Calendar : Hashable, Equatable, ReferenceConvertible, _MutableBoxi
         return Calendar(adoptingReference: __NSCalendarAutoupdating() as! NSCalendar, autoupdating: true)
     }
 
-    // MARK: -
-    // MARK: init
+    // MARK: - id:320 gh:327
+    // MARK: init id:188 gh:195
     
     /// Returns a new Calendar.
     ///
@@ -103,8 +103,8 @@ public struct Calendar : Hashable, Equatable, ReferenceConvertible, _MutableBoxi
         _autoupdating = false
     }
     
-    // MARK: -
-    // MARK: Bridging
+    // MARK: - id:437 gh:445
+    // MARK: Bridging id:189 gh:196
     
     fileprivate init(reference : NSCalendar) {
         _handle = _MutableHandle(reference: reference)
@@ -120,7 +120,7 @@ public struct Calendar : Hashable, Equatable, ReferenceConvertible, _MutableBoxi
         _autoupdating = autoupdating
     }
 
-    // MARK: -
+    // MARK: - id:304 gh:311
     // 
     
     /// The identifier of the calendar.
@@ -348,7 +348,7 @@ public struct Calendar : Hashable, Equatable, ReferenceConvertible, _MutableBoxi
         return _handle.map { $0.pmSymbol }
     }
     
-    // MARK: -
+    // MARK: - id:322 gh:329
     //
     
     /// Returns the minimum range limits of the values that a given component can take on in the receiver.
@@ -443,7 +443,7 @@ public struct Calendar : Hashable, Equatable, ReferenceConvertible, _MutableBoxi
         return result
     }
     
-    // MARK: -
+    // MARK: - id:190 gh:197
     //
     
     @available(*, unavailable, message: "use dateComponents(_:from:) instead")
@@ -455,7 +455,7 @@ public struct Calendar : Hashable, Equatable, ReferenceConvertible, _MutableBoxi
     @available(*, unavailable, message: "use dateComponents(_:from:) instead")
     public func getHour(_ hourValuePointer: UnsafeMutablePointer<Int>?, minute minuteValuePointer: UnsafeMutablePointer<Int>?, second secondValuePointer: UnsafeMutablePointer<Int>?, nanosecond nanosecondValuePointer: UnsafeMutablePointer<Int>?, from date: Date) { fatalError() }
     
-    // MARK: -
+    // MARK: - id:440 gh:447
     //
     
     
@@ -752,8 +752,8 @@ public struct Calendar : Hashable, Equatable, ReferenceConvertible, _MutableBoxi
         }
     }
     
-    // MARK: -
-    // MARK: Searching
+    // MARK: - id:191 gh:198
+    // MARK: Searching id:306 gh:313
     
     /// The direction in time to search.
     public enum SearchDirection {
@@ -850,7 +850,7 @@ public struct Calendar : Hashable, Equatable, ReferenceConvertible, _MutableBoxi
     @available(*, unavailable, message: "use nextDate(after:matching:matchingPolicy:repeatedTimePolicy:direction:) instead")
     public func nextDate(after date: Date, matchingHour hourValue: Int, minute minuteValue: Int, second secondValue: Int, options: NSCalendar.Options = []) -> Date? { fatalError() }
 
-    // MARK: -
+    // MARK: - id:326 gh:333
     //
     
     @available(*, unavailable, renamed: "date(bySetting:value:of:)")
@@ -897,7 +897,7 @@ public struct Calendar : Hashable, Equatable, ReferenceConvertible, _MutableBoxi
         return _handle.map { $0.date(date, matchesComponents: components) }
     }
     
-    // MARK: -
+    // MARK: - id:192 gh:199
     
     public var hashValue : Int {
         // We implement hash ourselves, because we need to make sure autoupdating calendars have the same hash
@@ -908,8 +908,8 @@ public struct Calendar : Hashable, Equatable, ReferenceConvertible, _MutableBoxi
         }
     }
     
-    // MARK: -
-    // MARK: Conversion Functions
+    // MARK: - id:444 gh:451
+    // MARK: Conversion Functions id:193 gh:200
     
     /// Turn our more-specific options into the big bucket option set of NSCalendar
     private static func _toCalendarOptions(matchingPolicy: MatchingPolicy, repeatedTimePolicy: RepeatedTimePolicy, direction: SearchDirection) -> NSCalendar.Options {

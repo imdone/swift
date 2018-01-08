@@ -1,6 +1,6 @@
 // RUN: %target-swift-frontend -emit-silgen -Xllvm -sil-print-debuginfo -emit-verbose-sil -enable-sil-ownership %s | %FileCheck %s
 
-// FIXME: Not sure if this an ideal source info for the branch - 
+// FIXME: Not sure if this an ideal source info for the branch -  id:3321 gh:3333
 // it points to if, not the last instruction in the block.
 func ifexpr() -> Int {
   var x : Int = 0
@@ -130,7 +130,7 @@ func testSwitch() {
   // CHECK: store {{.*}}, loc "{{.*}}":[[@LINE+1]]
   case (1,2):
   // CHECK: integer_literal $Builtin.Int2048, 2, loc "{{.*}}":[[@LINE-1]]:11
-  // FIXME: Location info is missing.
+  // FIXME: Location info is missing. id:3646 gh:3658
   // CHECK: cond_br
   //
     var z: Int = 200
@@ -153,7 +153,7 @@ func testIf() {
   }
   // CHECK-LABEL: sil hidden @$S13sil_locations6testIfyyF
   //
-  // FIXME: Missing location info here.
+  // FIXME: Missing location info here. id:3750 gh:3762
   // CHECK: function_ref
   // CHECK: apply
   // 

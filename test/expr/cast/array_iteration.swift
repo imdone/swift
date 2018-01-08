@@ -16,7 +16,7 @@ for view in rootView.subviews as! [View] { // expected-warning{{immutable value 
   doFoo()
 }
 
-// FIXME: Diagnostic below should be "'AnyObject' is not convertible to
+// FIXME: Diagnostic below should be "'AnyObject' is not convertible to id:3745 gh:3757
 // 'View'", but IUO type gets in the way of proper diagnosis.
 for view:View in rootView.subviews { // expected-error{{type 'Array<AnyObject>!' does not conform to protocol 'Sequence'}}
   doFoo()

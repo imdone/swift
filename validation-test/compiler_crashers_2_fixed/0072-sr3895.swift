@@ -69,7 +69,7 @@ class MyController: TiViewController<MyPresenter, MyView>, MyView { // ERROR: 'T
     }
     
     internal func setDataItems(_: [String]) {
-        //TODO
+        //TODO id:3283 gh:3295
     }
 }
 
@@ -78,7 +78,7 @@ let p = vc.presenter
 
 class TestView: MyView {
     internal func setDataItems(_: [String]) {
-        // TODO
+        // TODO id:3635 gh:3647
     }
 }
 let view = TestView()

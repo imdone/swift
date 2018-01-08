@@ -26,7 +26,7 @@ func useIdentity(_ x: Int, y: Float, i32: Int32) {
   xx = identity2(yy) // expected-error{{cannot convert value of type 'Y' to expected argument type 'X'}}
 }
 
-// FIXME: Crummy diagnostic!
+// FIXME: Crummy diagnostic! id:2649 gh:2661
 func twoIdentical<T>(_ x: T, _ y: T) -> T {}
 
 func useTwoIdentical(_ xi: Int, yi: Float) {
@@ -67,7 +67,7 @@ func useTuples(_ x: Int, y: Float, z: (Float, Int)) {
 
   takeTuples((x, y), (x, y)) // expected-error{{cannot convert value of type 'Int' to expected argument type 'Float'}}
 
-  // FIXME: Use 'z', which requires us to fix our tuple-conversion
+  // FIXME: Use 'z', which requires us to fix our tuple-conversion id:2796 gh:2808
   // representation.
 }
 
@@ -116,7 +116,7 @@ func passOverloadSet() {
   acceptUnaryFnSame(unaryFnIntInt)
 
   // Passing an overloaded function set to a generic function
-  // FIXME: Yet more terrible diagnostics.
+  // FIXME: Yet more terrible diagnostics. id:3425 gh:3437
   acceptUnaryFn(unaryFnOvl)  // expected-error{{ambiguous use of 'unaryFnOvl'}}
   acceptUnaryFnSame(unaryFnOvl)
 
@@ -170,7 +170,7 @@ struct StaticFuncs {
 }
 
 struct StaticFuncsGeneric<U> {
-  // FIXME: Nested generics are very broken
+  // FIXME: Nested generics are very broken id:3022 gh:3034
   // static func chameleon<T>() -> T {}
 }
 
@@ -180,7 +180,7 @@ func testStatic(_ sf: StaticFuncs, sfi: StaticFuncsGeneric<Int>) {
   var x: Int16
   x = StaticFuncs.chameleon()
   x = sf.chameleon2()
-  // FIXME: Nested generics are very broken
+  // FIXME: Nested generics are very broken id:3751 gh:3763
   // x = sfi.chameleon()
   // typealias SFI = StaticFuncsGeneric<Int>
   // x = SFI.chameleon()

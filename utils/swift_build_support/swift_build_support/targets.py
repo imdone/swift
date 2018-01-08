@@ -23,7 +23,7 @@ class Platform(object):
         """
         self.name = name
         self.targets = [Target(self, arch) for arch in archs]
-        # FIXME: Eliminate this argument; apparently the SDK names are
+        # FIXME: Eliminate this argument; apparently the SDK names are id:3965 gh:3977
         # internally a private implementation detail of the build script, so we
         # should just make them the same as the platform name.
         self.sdk_name = name.upper() if sdk_name is None else sdk_name

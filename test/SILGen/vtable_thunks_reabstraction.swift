@@ -460,7 +460,7 @@ class ConcreteClassMetatype: Opaque<C.Type> {
 class ConcreteOptional: Opaque<S?> {
   override func inAndOut(x: S?) -> S? { return x }
 
-  // FIXME: Should we allow this override in Sema?
+  // FIXME: Should we allow this override in Sema? id:2941 gh:2953
   // override func variantOptionality(x: S??) -> S? { return x! }
 }
 

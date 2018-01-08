@@ -169,7 +169,7 @@ public:
       // an infinite loop in the CFG (it crashes because no nodes are allocated
       // for the blocks in the infinite loop).
       // So we return a conservative false in this case.
-      // TODO: eventually fix the DominatorTreeBase::compare() function.
+      // TODO: eventually fix the DominatorTreeBase::compare() function. id:336 gh:343
       return false;
     }
 

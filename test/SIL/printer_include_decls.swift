@@ -7,7 +7,7 @@ var x: Int
 // CHECK: var x: Int
 
 class Foo {
-// FIXME: The constructors and destructors without bodies cannot be parsed.
+// FIXME: The constructors and destructors without bodies cannot be parsed. id:2874 gh:2886
   init(i: Int) {
     self.x = i
   }

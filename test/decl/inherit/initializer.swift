@@ -131,7 +131,7 @@ func testGenericInheritance() {
   _ = ConcreteDerived(t: 1000)
 }
 
-// FIXME: <rdar://problem/16331406> Implement inheritance of variadic designated initializers
+// FIXME: <rdar://problem/16331406> Implement inheritance of variadic designated initializers id:4075 gh:4087
 class SuperVariadic {
   init(ints: Int...) { } // expected-note{{variadic superclass initializer defined here}}
   init(_ : Double...) { } // expected-note{{variadic superclass initializer defined here}}

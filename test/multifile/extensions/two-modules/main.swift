@@ -14,7 +14,7 @@ extension Point {
     self.x = x
     self.y = y
 
-    // FIXME: Can't see the default initializer from another module?
+    // FIXME: Can't see the default initializer from another module? id:3834 gh:3846
     self.z = 0
   }
 }

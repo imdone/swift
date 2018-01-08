@@ -5,14 +5,14 @@
 protocol P1 {
     associatedtype X: P3 where X.Q == Self, X.R == UInt8
     associatedtype Y: P3 where Y.Q == Self, Y.R == UInt16
-    // NOTE: Removing either X or Y from P1 (and A) makes the program compile.
+    // NOTE: Removing either X or Y from P1 (and A) makes the program compile. id:4045 gh:4056
 }
 struct A: P1 {
     typealias X = S<UInt8>
     typealias Y = S<UInt16>
 }
 protocol P2 { }
-protocol P3 : P2 { // NOTE: Removing ": P2 " here makes the program compile.
+protocol P3 : P2 { // NOTE: Removing ": P2 " here makes the program compile. id:4188 gh:4200
     associatedtype Q: P1
     associatedtype R
 }

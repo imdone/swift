@@ -20,7 +20,7 @@ if #available(iOS 8.0, OSX 10.10, *) {
   let scn_vec4_ref = SCNVector4Make(1, 2, 3, 4)
   let scn_mat4_ref = SCNMatrix4Scale(SCNMatrix4Translate(SCNMatrix4MakeRotation(SCNFloat(M_PI), 1, 0, 0), 1, 2, 3), 10, 20, 30)
 
-  // MARK: Exposing SCNFloat
+  // MARK: Exposing SCNFloat id:3876 gh:3888
 
   SceneKitTests.test("SCNFloat") {
     let f = Float(1.0)
@@ -47,7 +47,7 @@ if #available(iOS 8.0, OSX 10.10, *) {
     expectEqual(f2, 2.0);
   }
 
-  // MARK: Working with SCNVector3
+  // MARK: Working with SCNVector3 id:3936 gh:3948
 
   SceneKitTests.test("SCNVector3.init()/Literal") {
     let scn_vec3_from_lit = SCNVector3(1, 2, 3)
@@ -119,7 +119,7 @@ if #available(iOS 8.0, OSX 10.10, *) {
     expectEqual(v3.z, 3.0)
   }
 
-  // MARK: Working with SCNVector4
+  // MARK: Working with SCNVector4 id:4152 gh:4164
 
   SceneKitTests.test("SCNVector4.init()/Literal") {
     let scn_vec4_from_lit = SCNVector4(1, 2, 3, 4)
@@ -198,7 +198,7 @@ if #available(iOS 8.0, OSX 10.10, *) {
     expectEqual(v4.w, 4.0)
   }
 
-  // MARK: Working with SCNMatrix4
+  // MARK: Working with SCNMatrix4 id:3194 gh:3206
 
   SceneKitTests.test("SCNMatrix4.init()/float4x4 + float4x4.init()/SCNMatrix4") {
     let mat4_from_scn_mat4 = float4x4(scn_mat4_ref)

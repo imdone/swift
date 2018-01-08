@@ -354,13 +354,13 @@
 // RUN: %FileCheck %s -check-prefix=GLOBAL_NEGATIVE < %t.types.txt
 
 
-// FIXME: %target-swift-ide-test -code-completion -source-filename %s -code-completion-token=TYPE_IDENTIFIER_GENERIC_1 > %t.types.txt
-// FIXME: %FileCheck %s -check-prefix=TYPE_IDENTIFIER_GENERIC_1 < %t.types.txt
+// FIXME: %target-swift-ide-test -code-completion -source-filename %s -code-completion-token=TYPE_IDENTIFIER_GENERIC_1 > %t.types.txt id:3472 gh:3484
+// FIXME: %FileCheck %s -check-prefix=TYPE_IDENTIFIER_GENERIC_1 < %t.types.txt id:3097 gh:3109
 // RUN: %FileCheck %s -check-prefix=WITHOUT_GLOBAL_TYPES < %t.types.txt
 // RUN: %FileCheck %s -check-prefix=GLOBAL_NEGATIVE < %t.types.txt
 
 // RUN: %target-swift-ide-test -code-completion -source-filename %s -code-completion-token=TYPE_IDENTIFIER_GENERIC_2 > %t.types.txt
-// FIXME: %FileCheck %s -check-prefix=TYPE_IDENTIFIER_GENERIC_2 < %t.types.txt
+// FIXME: %FileCheck %s -check-prefix=TYPE_IDENTIFIER_GENERIC_2 < %t.types.txt id:3787 gh:3799
 // RUN: %FileCheck %s -check-prefix=WITHOUT_GLOBAL_TYPES < %t.types.txt
 // RUN: %FileCheck %s -check-prefix=GLOBAL_NEGATIVE < %t.types.txt
 
@@ -448,7 +448,7 @@ protocol TestSelf1 {
 //===---
 //===--- Test that we include types from generic parameter lists.
 //===---
-// FIXME: tests for constructors and destructors.
+// FIXME: tests for constructors and destructors. id:2686 gh:2698
 
 func testTypeInParamGeneric1<
     GenericFoo : FooProtocol,
@@ -1016,7 +1016,7 @@ func testGenericTypealias1() {
   typealias MyPair<T> = (T, T)
   let x: #^GENERIC_TYPEALIAS_1^#
 }
-// FIXME: should we use the alias name in the annotation?
+// FIXME: should we use the alias name in the annotation? id:2852 gh:2864
 // GENERIC_TYPEALIAS_1: Decl[TypeAlias]/Local: MyPair[#(T, T)#];
 func testGenericTypealias2() {
   typealias MyPair<T> = (T, T)

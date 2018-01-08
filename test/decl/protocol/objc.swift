@@ -186,7 +186,7 @@ class C7d : P7 {
 }
 
 class C7e : P7 {
-  // FIXME: This should probably still complain.
+  // FIXME: This should probably still complain. id:3023 gh:3035
   @objc(notProp) var prop: Int {
     get { return 0 }
     set {}

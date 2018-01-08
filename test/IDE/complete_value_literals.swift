@@ -220,7 +220,7 @@ func testTuple1() {
 func testTuple2() {
   let x: (MyInt1, MyString1, MyDouble1) = #^TUPLE_2^#
 }
-// FIXME: should we extend the tuple to have the right number of elements?
+// FIXME: should we extend the tuple to have the right number of elements? id:3485 gh:3497
 // TUPLE_2: Literal[Tuple]/None/TypeRelation[Identical]: ({#(values)#})[#(MyInt1, MyString1, MyDouble1)#];
 
 struct MyColor1: _ExpressibleByColorLiteral {

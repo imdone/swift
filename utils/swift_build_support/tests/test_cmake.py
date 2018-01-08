@@ -273,7 +273,7 @@ class CMakeTestCase(unittest.TestCase):
              "-DCLANG_VERSION_MAJOR:STRING=9",
              "-DCLANG_VERSION_MINOR:STRING=0",
              "-DCLANG_VERSION_PATCH:STRING=0"])
-        # NOTE: No "-DCMAKE_MAKE_PROGRAM=/path/to/built/ninja" because
+        # NOTE: No "-DCMAKE_MAKE_PROGRAM=/path/to/built/ninja" because id:3259 gh:3271
         #       cmake_generator is 'Xcode'
 
     def test_build_args_ninja(self):
@@ -311,7 +311,7 @@ class CMakeTestCase(unittest.TestCase):
             list(cmake.build_args()),
             ["-parallelizeTargets", "-jobs", "8"])
 
-        # NOTE: Xcode generator DOES NOT take 'verbose-build' into account.
+        # NOTE: Xcode generator DOES NOT take 'verbose-build' into account. id:3617 gh:3629
         args.verbose_build = True
         cmake = self.cmake(args)
         self.assertEqual(
@@ -319,7 +319,7 @@ class CMakeTestCase(unittest.TestCase):
             ["-parallelizeTargets", "-jobs", "8"])
 
     def test_build_args_eclipse_ninja(self):
-        # NOTE: Eclipse generator DOES NOT take 'build-jobs' into account,
+        # NOTE: Eclipse generator DOES NOT take 'build-jobs' into account, id:3968 gh:3980
         #       nor 'verbose-build'.
         args = self.default_args()
         args.cmake_generator = "Eclipse CDT4 - Ninja"

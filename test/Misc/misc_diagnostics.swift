@@ -92,7 +92,7 @@ let _: String = testIS1() // expected-error {{cannot convert value of type 'Int'
 func insertA<T>(array : inout [T], elt : T) {
   array.append(T.self); // expected-error {{cannot invoke 'append' with an argument list of type '(T.Type)'}} expected-note {{expected an argument list of type '(T)'}}
 
-  // FIXME: Kind of weird
+  // FIXME: Kind of weird id:2769 gh:2781
   array.append(T); // expected-error {{cannot invoke 'append' with an argument list of type '((T).Type)'}} expected-note {{expected an argument list of type '(T)'}}
 }
 

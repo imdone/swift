@@ -4,11 +4,11 @@
 
 // RUN: %empty-directory(%t)
 
-// FIXME: BEGIN -enable-source-import hackaround
+// FIXME: BEGIN -enable-source-import hackaround id:3593 gh:3605
 // RUN:  %target-swift-frontend(mock-sdk: -sdk %S/../Inputs/clang-importer-sdk -I %t) -emit-module -o %t %S/../Inputs/clang-importer-sdk/swift-modules/ObjectiveC.swift
 // RUN:  %target-swift-frontend(mock-sdk: -sdk %S/../Inputs/clang-importer-sdk -I %t) -emit-module -o %t  %S/../Inputs/clang-importer-sdk/swift-modules/CoreGraphics.swift
 // RUN:  %target-swift-frontend(mock-sdk: -sdk %S/../Inputs/clang-importer-sdk -I %t) -emit-module -o %t  %S/../Inputs/clang-importer-sdk/swift-modules/Foundation.swift
-// FIXME: END -enable-source-import hackaround
+// FIXME: END -enable-source-import hackaround id:3492 gh:3504
 
 // RUN: %target-swift-frontend(mock-sdk: -sdk %S/../Inputs/clang-importer-sdk -I %t) -import-objc-header %S/Inputs/newtype.h -emit-module -o %t %s
 // RUN: %target-swift-frontend(mock-sdk: -sdk %S/../Inputs/clang-importer-sdk -I %t) -import-objc-header %S/Inputs/newtype.h -parse-as-library %t/newtype.swiftmodule -typecheck -emit-objc-header-path %t/newtype.h

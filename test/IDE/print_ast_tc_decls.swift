@@ -3,9 +3,9 @@
 // Build swift modules this test depends on.
 // RUN: %target-swift-frontend -emit-module -o %t %S/Inputs/foo_swift_module.swift
 //
-// FIXME: BEGIN -enable-source-import hackaround
+// FIXME: BEGIN -enable-source-import hackaround id:2869 gh:2881
 // RUN:  %target-swift-frontend(mock-sdk: -sdk %S/../Inputs/clang-importer-sdk -I %t) -emit-module -o %t  %S/../Inputs/clang-importer-sdk/swift-modules/ObjectiveC.swift
-// FIXME: END -enable-source-import hackaround
+// FIXME: END -enable-source-import hackaround id:3488 gh:3500
 //
 // This file should not have any syntax or type checker errors.
 // RUN: %target-swift-frontend(mock-sdk: -sdk %S/../Inputs/clang-importer-sdk -I %t) -swift-version 4 -typecheck -verify %s -F %S/Inputs/mock-sdk -disable-objc-attr-requires-foundation-module
@@ -38,8 +38,8 @@
 // RUN: %FileCheck %s -check-prefix=PASS_PRINT_MODULE_INTERFACE -strict-whitespace < %t.printed.txt
 // RUN: %FileCheck %s -check-prefix=PASS_RW_PROP_NO_GET_SET -strict-whitespace < %t.printed.txt
 // RUN: %FileCheck %s -check-prefix=PASS_2200_DESERIALIZED -strict-whitespace < %t.printed.txt
-// FIXME: rdar://15167697
-// FIXME: %FileCheck %s -check-prefix=PASS_2500 -strict-whitespace < %t.printed.txt
+// FIXME: rdar://15167697 id:3274 gh:3286
+// FIXME: %FileCheck %s -check-prefix=PASS_2500 -strict-whitespace < %t.printed.txt id:3799 gh:3811
 // RUN: %FileCheck %s -check-prefix=PASS_ONE_LINE -strict-whitespace < %t.printed.txt
 // RUN: %FileCheck %s -check-prefix=PREFER_TYPE_REPR_PRINTING -strict-whitespace < %t.printed.txt
 // RUN: %FileCheck %s -check-prefix=PASS_QUAL_UNQUAL -strict-whitespace < %t.printed.txt
@@ -55,9 +55,9 @@
 // RUN: %FileCheck %s -check-prefix=PASS_PRINT_MODULE_INTERFACE -strict-whitespace < %t.printed.txt
 // RUN: %FileCheck %s -check-prefix=PASS_QUAL_IF_AMBIGUOUS -strict-whitespace < %t.printed.txt
 // RUN: %FileCheck %s -check-prefix=SYNTHESIZE_SUGAR_ON_TYPES -strict-whitespace < %t.printed.txt
-// FIXME: %FileCheck %s -check-prefix=PASS_EXPLODE_PATTERN -strict-whitespace < %t.printed.txt
+// FIXME: %FileCheck %s -check-prefix=PASS_EXPLODE_PATTERN -strict-whitespace < %t.printed.txt id:2699 gh:2711
 
-// FIXME: rdar://problem/19648117 Needs splitting objc parts out
+// FIXME: rdar://problem/19648117 Needs splitting objc parts out id:2872 gh:2884
 // XFAIL: linux, freebsd
 
 import Bar
@@ -68,7 +68,7 @@ import func Foo.fooFunc1
 @_exported import FooHelper
 import foo_swift_module
 
-// FIXME: enum tests
+// FIXME: enum tests id:3491 gh:3503
 //import enum FooClangModule.FooEnum1
 
 // PASS_COMMON: {{^}}import Bar{{$}}
@@ -408,7 +408,7 @@ class d0120_TestClassBase {
   required init() {}
 // PASS_COMMON-NEXT: {{^}}  required init(){{$}}
 
-  // FIXME: Add these once we can SILGen them reasonable.
+  // FIXME: Add these once we can SILGen them reasonable. id:3277 gh:3289
   // init?(fail: String) { }
   // init!(iuoFail: String) { }
 
@@ -426,7 +426,7 @@ class d0120_TestClassBase {
   class var baseClassVar1: Int { return 0 }
 // PASS_COMMON-NEXT: {{^}}  class var baseClassVar1: Int { get }{{$}}
 
-  // FIXME: final class var not allowed to have storage, but static is?
+  // FIXME: final class var not allowed to have storage, but static is? id:3801 gh:3813
   // final class var baseClassVar2: Int = 0
 
   final class var baseClassVar3: Int { return 0 }
@@ -567,7 +567,7 @@ struct d0190_LetVarDecls {
 // PASS_PRINT_MODULE_INTERFACE-NEXT: {{^}}  static let staticVar1: Int{{$}}
 
   static let staticVar2 = 42
-  // FIXME: PRINTED_WITHOUT_TYPE
+  // FIXME: PRINTED_WITHOUT_TYPE id:2701 gh:2713
 // PASS_PRINT_AST-NEXT: {{^}}  static let staticVar2: Int{{$}}
 // PASS_PRINT_MODULE_INTERFACE-NEXT: {{^}}  static let staticVar2: Int{{$}}
 }
@@ -669,7 +669,7 @@ struct d0210_Qualifications {
 // PASS_QUAL_IF_AMBIGUOUS-NEXT: {{^}}  func instanceFuncFromClang1(a: FooStruct1) -> FooStruct1{{$}}
 }
 
-// FIXME: this should be printed reasonably in case we use
+// FIXME: this should be printed reasonably in case we use id:2876 gh:2888
 // -prefer-type-repr=true.  Either we should print the types we inferred, or we
 // should print the initializers.
 class d0250_ExplodePattern {
@@ -904,8 +904,8 @@ class d0600_InClassVar1 {
 // PASS_COMMON: {{^}}  var instanceVar2: Int{{$}}
 // PASS_COMMON-NOT: instanceVar2
 
-  // FIXME: this is sometimes printed without a type, see PASS_EXPLODE_PATTERN.
-  // FIXME: PRINTED_WITHOUT_TYPE
+  // FIXME: this is sometimes printed without a type, see PASS_EXPLODE_PATTERN. id:3494 gh:3506
+  // FIXME: PRINTED_WITHOUT_TYPE id:3359 gh:3371
   var instanceVar3 = 42
 // PASS_COMMON: {{^}}  var instanceVar3
 // PASS_COMMON-NOT: instanceVar3
@@ -918,7 +918,7 @@ class d0600_InClassVar1 {
 // PASS_COMMON: {{^}}  var instanceVar4: Int { get }{{$}}
 // PASS_COMMON-NOT: instanceVar4
 
-  // FIXME: uncomment when we have static vars.
+  // FIXME: uncomment when we have static vars. id:3804 gh:3816
   // static var staticVar1: Int
 
   init() {
@@ -1192,7 +1192,7 @@ struct GenericParams1<
                   d: GenericFoo, e: GenericFooX, f: GenericBar, g: GenericBaz)
   {}
 // PASS_ONE_LINE_TYPE-DAG: {{^}}  init<GenericFoo, GenericFooX, GenericBar, GenericBaz>(a: StructGenericFoo, b: StructGenericBar, c: StructGenericBaz, d: GenericFoo, e: GenericFooX, f: GenericBar, g: GenericBaz) where GenericFoo : FooProtocol, GenericFooX : FooClass, GenericBar : BarProtocol, GenericBar : FooProtocol{{$}}
-// FIXME: in protocol compositions protocols are listed in reverse order.
+// FIXME: in protocol compositions protocols are listed in reverse order. id:2703 gh:2715
 //
 // PASS_ONE_LINE_TYPEREPR-DAG: {{^}}  init<GenericFoo, GenericFooX, GenericBar, GenericBaz>(a: StructGenericFoo, b: StructGenericBar, c: StructGenericBaz, d: GenericFoo, e: GenericFooX, f: GenericBar, g: GenericBaz) where GenericFoo : FooProtocol, GenericFooX : FooClass, GenericBar : BarProtocol, GenericBar : FooProtocol{{$}}
 
@@ -1204,7 +1204,7 @@ struct GenericParams1<
                   d: GenericFoo, e: GenericFooX, f: GenericBar, g: GenericBaz)
   {}
 // PASS_ONE_LINE_TYPE-DAG: {{^}}  func genericParams1<GenericFoo, GenericFooX, GenericBar, GenericBaz>(a: StructGenericFoo, b: StructGenericBar, c: StructGenericBaz, d: GenericFoo, e: GenericFooX, f: GenericBar, g: GenericBaz) where GenericFoo : FooProtocol, GenericFooX : FooClass, GenericBar : BarProtocol, GenericBar : FooProtocol{{$}}
-// FIXME: in protocol compositions protocols are listed in reverse order.
+// FIXME: in protocol compositions protocols are listed in reverse order. id:2880 gh:2892
 //
 // PASS_ONE_LINE_TYPEREPR-DAG: {{^}}  func genericParams1<GenericFoo, GenericFooX, GenericBar, GenericBaz>(a: StructGenericFoo, b: StructGenericBar, c: StructGenericBaz, d: GenericFoo, e: GenericFooX, f: GenericBar, g: GenericBaz) where GenericFoo : FooProtocol, GenericFooX : FooClass, GenericBar : BarProtocol, GenericBar : FooProtocol{{$}}
 }
@@ -1346,7 +1346,7 @@ protocol ProtocolWithWhereClauseAndAssoc : QuxProtocol where Qux == Int, Self : 
   associatedtype A1 : QuxProtocol where A1 : FooProtocol, A1.Qux : QuxProtocol, Int == A1.Qux.Qux
 // PREFER_TYPE_REPR_PRINTING-DAG: {{^}}  associatedtype A1 : FooProtocol, QuxProtocol where Self.A1.Qux : QuxProtocol, Self.A1.Qux.Qux == Int{{$}}
 
-  // FIXME: this same type requirement with Self should be printed here
+  // FIXME: this same type requirement with Self should be printed here id:3497 gh:3509
   associatedtype A2 : QuxProtocol where A2.Qux == Self
 // PREFER_TYPE_REPR_PRINTING-DAG: {{^}}  associatedtype A2 : QuxProtocol where Self.A2.Qux == Self{{$}}
 }

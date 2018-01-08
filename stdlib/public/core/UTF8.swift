@@ -20,7 +20,7 @@ extension Unicode.UTF8 : _UnicodeEncoding {
   public typealias CodeUnit = UInt8
   public typealias EncodedScalar = _ValidUTF8Buffer<UInt32>
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2435 gh:2447
   public static var encodedReplacementCharacter : EncodedScalar {
     return EncodedScalar.encodedReplacementCharacter
   }
@@ -88,7 +88,7 @@ extension Unicode.UTF8 : _UnicodeEncoding {
       _biasedBits: (o | c ) &+ 0b0__1000_0001__1000_0001__1000_0001__1111_0001)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2613 gh:2626
   @inline(__always)
   public static func transcode<FromEncoding : _UnicodeEncoding>(
     _ content: FromEncoding.EncodedScalar, from _: FromEncoding.Type
@@ -177,7 +177,7 @@ extension UTF8.ReverseParser : Unicode.Parser, _UTFParser {
   /// Returns the length of the invalid sequence that ends with the LSB of
   /// buffer.
   @inline(never)
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3221 gh:3233
   @_versioned
   internal func _invalidLength() -> UInt8 {
     if _buffer._storage                 & 0b0__1111_0000__1100_0000
@@ -255,7 +255,7 @@ extension Unicode.UTF8.ForwardParser : Unicode.Parser, _UTFParser {
   /// Returns the length of the invalid sequence that starts with the LSB of
   /// buffer.
   @inline(never)
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2275 gh:2287
   @_versioned
   internal func _invalidLength() -> UInt8 {
     if _buffer._storage               & 0b0__1100_0000__1111_0000
@@ -279,7 +279,7 @@ extension Unicode.UTF8.ForwardParser : Unicode.Parser, _UTFParser {
     return 1
   }
   
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3036 gh:3048
   public func _bufferedScalar(bitCount: UInt8) -> Encoding.EncodedScalar {
     let x = UInt32(_buffer._storage) &+ 0x01010101
     return _ValidUTF8Buffer(_biasedBits: x & ._lowBits(bitCount))

@@ -252,7 +252,7 @@ protected:
     FromClang : 1,
 
     /// \brief Whether we've already performed early attribute validation.
-    /// FIXME: This is ugly.
+    /// FIXME: This is ugly. id:37 gh:42
     EarlyAttrValidation : 1,
 
     /// \brief Whether this declaration is currently being validated.
@@ -426,7 +426,7 @@ protected:
   SWIFT_INLINE_BITFIELD(TypeDecl, ValueDecl, 1,
     /// Whether we have already checked the inheritance clause.
     ///
-    /// FIXME: Is this too fine-grained?
+    /// FIXME: Is this too fine-grained? id:56 gh:63
     CheckedInheritanceClause : 1
   );
 
@@ -570,7 +570,7 @@ protected:
 
     /// Whether we have already checked the inheritance clause.
     ///
-    /// FIXME: Is this too fine-grained?
+    /// FIXME: Is this too fine-grained? id:44 gh:51
     CheckedInheritanceClause : 1,
 
     /// Whether there is are lazily-loaded conformances for this extension.
@@ -2095,7 +2095,7 @@ public:
   bool isOperator() const { return Name.isOperator(); }
 
   /// Retrieve the full name of the declaration.
-  /// TODO: Rename to getName?
+  /// TODO: Rename to getName? id:46 gh:53
   DeclName getFullName() const { return Name; }
   void setName(DeclName name) { Name = name; }
 
@@ -2877,7 +2877,7 @@ public:
   /// protocol.
   ///
   /// \param module The module from which we initiate the search.
-  /// FIXME: This is currently unused.
+  /// FIXME: This is currently unused. id:48 gh:55
   ///
   /// \param protocol The protocol whose conformance is requested.
   /// \param conformances Will be populated with the set of protocol
@@ -3827,7 +3827,7 @@ enum class AccessStrategy : unsigned char {
 
 /// Information about a behavior instantiated by a storage declaration.
 ///
-/// TODO: Accessors, composed behaviors
+/// TODO: Accessors, composed behaviors id:67 gh:74
 struct alignas(1 << 3) BehaviorRecord {
   // The behavior name.
   TypeRepr *ProtocolName;
@@ -4262,7 +4262,7 @@ public:
     return OverriddenDecl;
   }
   void setOverriddenDecl(AbstractStorageDecl *over) {
-    // FIXME: Hack due to broken class circularity checking.
+    // FIXME: Hack due to broken class circularity checking. id:57 gh:64
     if (over == this) return;
     OverriddenDecl = over;
     over->setIsOverridden();
@@ -4481,10 +4481,10 @@ public:
   
   /// Is the type of this parameter 'inout'?
   ///
-  /// FIXME(Remove InOut): This is only valid on ParamDecls but multiple parts
+  /// FIXME (Remove InOut): This is only valid on ParamDecls but multiple parts id:47 gh:54
   /// of the compiler check ParamDecls and VarDecls along the same paths.
   bool isInOut() const {
-    // FIXME: Re-enable this assertion and fix callers.
+    // FIXME: Re-enable this assertion and fix callers. id:50 gh:57
 //    assert((getKind() == DeclKind::Param) && "querying 'inout' on var decl?");
     return getSpecifier() == Specifier::InOut;
   }
@@ -4921,7 +4921,7 @@ public:
   /// Returns true if the function body throws.
   bool hasThrows() const { return Bits.AbstractFunctionDecl.Throws; }
 
-  // FIXME: Hack that provides names with keyword arguments for accessors.
+  // FIXME: Hack that provides names with keyword arguments for accessors. id:51 gh:58
   DeclName getEffectiveFullName() const;
 
   /// Returns true if the function has a body written in the source file.
@@ -5395,7 +5395,7 @@ public:
     return OverriddenOrBehaviorParamDecl.dyn_cast<FuncDecl *>();
   }
   void setOverriddenDecl(FuncDecl *over) {
-    // FIXME: Hack due to broken class circularity checking.
+    // FIXME: Hack due to broken class circularity checking. id:72 gh:79
     if (over == this) return;
 
     // A function cannot be an override if it is also a derived global decl
@@ -5643,11 +5643,11 @@ enum class CtorInitializerKind {
   /// cannot be chained to via "super.init" nor is it inherited.
   ///
   /// A factory initializer is written with a return type of the class name
-  /// itself. FIXME: However, this is only a presentation form, and at present
+  /// itself. FIXME: However, this is only a presentation form, and at present id:58 gh:65
   /// the only factory initializers are produced by importing an Objective-C
   /// factory method that does not return instancetype.
   ///
-  /// FIXME: Arguably, structs and enums only have factory initializers, and
+  /// FIXME: Arguably, structs and enums only have factory initializers, and id:53 gh:60
   /// using designated initializers for them is a misnomer.
   Factory
 };
@@ -5835,7 +5835,7 @@ public:
 
   ConstructorDecl *getOverriddenDecl() const { return OverriddenDecl; }
   void setOverriddenDecl(ConstructorDecl *over) {
-    // FIXME: Hack due to broken class circularity checking.
+    // FIXME: Hack due to broken class circularity checking. id:54 gh:61
     if (over == this) return;
 
     OverriddenDecl = over;

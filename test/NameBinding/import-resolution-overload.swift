@@ -42,7 +42,7 @@ var _ : Bool = scopedFunction(true)
 var _ : Int  = scopedFunction(42)
 scopedFunction = 42 // expected-error {{ambiguous reference to member 'scopedFunction'}}
 
-// FIXME: Should be an error -- a type name and a function cannot overload.
+// FIXME: Should be an error -- a type name and a function cannot overload. id:3564 gh:3576
 var _ : Int = TypeNameWins(42)
 
 TypeNameWins = 42 // expected-error {{ambiguous reference to member 'TypeNameWins'}}

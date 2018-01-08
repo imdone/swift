@@ -161,7 +161,7 @@ func testInfix1(x: S2) {
   x#^INFIX_1^#
 }
 // S2_INFIX: Begin completions
-// FIXME: rdar://problem/22997089 - should be CurrModule
+// FIXME: rdar://problem/22997089 - should be CurrModule id:3466 gh:3478
 // S2_INFIX-DAG: Decl[InfixOperatorFunction]/OtherModule[Swift]:   + {#S2#}[#S2#]
 // S2_INFIX-DAG: Decl[InfixOperatorFunction]/CurrModule:   ** {#Int#}[#S2#]; name=**
 // S2_INFIX: End completions
@@ -177,7 +177,7 @@ func testInfix2(x: inout S2) {
   x#^INFIX_2^#
 }
 // S2_INFIX_LVALUE: Begin completions
-// FIXME: rdar://problem/22997089 - should be CurrModule
+// FIXME: rdar://problem/22997089 - should be CurrModule id:3085 gh:3097
 // S2_INFIX_LVALUE-DAG: Decl[InfixOperatorFunction]/OtherModule[Swift]:   + {#S2#}[#S2#]
 // S2_INFIX_LVALUE-DAG: Decl[InfixOperatorFunction]/CurrModule:   ** {#Int#}[#S2#]
 // S2_INFIX_LVALUE-DAG: Decl[InfixOperatorFunction]/CurrModule:   **= {#Int#}[#Void#]
@@ -209,7 +209,7 @@ func testInfix7(x: S2?) {
   x#^INFIX_7^#
 }
 // S2_INFIX_OPTIONAL: Begin completions
-// FIXME: rdar://problem/22996887 - shouldn't complete with optional LHS
+// FIXME: rdar://problem/22996887 - shouldn't complete with optional LHS id:3784 gh:3796
 // S2_INFIX_OPTIONAL-DAG: Decl[InfixOperatorFunction]/CurrModule:   ** {#Int#}[#S2#]
 // S2_INFIX_OPTIONAL-DAG: Decl[InfixOperatorFunction]/OtherModule[Swift]:  != {#{{.*}}#}[#Bool#]
 // S2_INFIX_OPTIONAL-DAG: Decl[InfixOperatorFunction]/OtherModule[Swift]:  == {#{{.*}}#}[#Bool#]
@@ -391,7 +391,7 @@ func testAssignTuple3() {
   func void() {}
   void()#^ASSIGN_TUPLE_3^#
 }
-// FIXME: technically this is sometimes legal, but we would need to
+// FIXME: technically this is sometimes legal, but we would need to id:2682 gh:2694
 // differentiate between cases like () = and print() =. Since it's not very
 // useful anyway, just omit the completion.
 // ASSIGN_TUPLE_1-NOT: BuiltinOperator/None:  = {

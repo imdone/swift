@@ -621,7 +621,7 @@ do {
 }
 
 do {
-  // TODO: Restore regressed diagnostics rdar://problem/31724211
+  // TODO: Restore regressed diagnostics rdar://problem/31724211 id:2746 gh:2758
   var a = 3 // e/xpected-warning {{variable 'a' was never mutated; consider changing to 'let' constant}}
   var b = 4 // e/xpected-warning {{variable 'b' was never mutated; consider changing to 'let' constant}}
   var d = (a, b) // e/xpected-warning {{variable 'd' was never mutated; consider changing to 'let' constant}}
@@ -1047,7 +1047,7 @@ do {
 }
 
 struct GenericSubscript<T> {
-  // TODO: Restore regressed diagnostics rdar://problem/31724211
+  // TODO: Restore regressed diagnostics rdar://problem/31724211 id:3393 gh:3405
   subscript(_ x: T) -> Int { get { return 0 } set { } } // expected-note* {{}}
 }
 
@@ -1070,7 +1070,7 @@ struct GenericSubscriptLabeledTuple<T> {
 do {
   let s1 = GenericSubscript<(Double, Double)>()
   _ = s1[3.0, 4.0]
-  // TODO: Restore regressed diagnostics rdar://problem/31724211
+  // TODO: Restore regressed diagnostics rdar://problem/31724211 id:2978 gh:2990
   _ = s1[(3.0, 4.0)] // expected-error {{}}
 
   let s1a  = GenericSubscriptLabeled<(Double, Double)>()
@@ -1112,14 +1112,14 @@ do {
 }
 
 do {
-  // TODO: Restore regressed diagnostics rdar://problem/31724211
+  // TODO: Restore regressed diagnostics rdar://problem/31724211 id:3719 gh:3731
   var a = 3.0 // e/xpected-warning {{variable 'a' was never mutated; consider changing to 'let' constant}}
   var b = 4.0 // e/xpected-warning {{variable 'b' was never mutated; consider changing to 'let' constant}}
   var d = (a, b) // e/xpected-warning {{variable 'd' was never mutated; consider changing to 'let' constant}}
 
   var s1 = GenericSubscript<(Double, Double)>()
   _ = s1[a, b]
-  // TODO: Restore regressed diagnostics rdar://problem/31724211
+  // TODO: Restore regressed diagnostics rdar://problem/31724211 id:2622 gh:2634
   // These two lines give different regressed behavior in S3 and S4 mode
   // _ = s1[(a, b)] // e/xpected-error {{expression type '@lvalue Int' is ambiguous without more context}}
   // _ = s1[d] // e/xpected-error {{expression type '@lvalue Int' is ambiguous without more context}}
@@ -1443,7 +1443,7 @@ func processArrayOfFunctions(f1: [((Bool, Bool)) -> ()],
 
 // expected-error@+1 {{cannot create a single-element tuple with an element label}}
 func singleElementTupleArgument(completion: ((didAdjust: Bool)) -> Void) {
-    // TODO: Error could be improved.
+    // TODO: Error could be improved. id:2749 gh:2761
     // expected-error@+1 {{cannot convert value of type '(didAdjust: Bool)' to expected argument type 'Bool'}}
     completion((didAdjust: true))
 }

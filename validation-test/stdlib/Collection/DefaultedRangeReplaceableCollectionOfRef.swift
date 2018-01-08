@@ -29,7 +29,7 @@ do {
       OpaqueValue(element.value, identity: element.identity)
     },
     makeCollectionOfEquatable: { (elements: [MinimalEquatableValue]) in
-      // FIXME: use LifetimeTracked.
+      // FIXME: use LifetimeTracked. id:4025 gh:4037
       return DefaultedRangeReplaceableCollection(elements: elements)
     },
     wrapValueIntoEquatable: identityEq,

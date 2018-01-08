@@ -30,7 +30,7 @@ tests.test("user info") {
 
   expectEqual("reason", error.userInfo[ErrorUserInfoKey.localizedFailureReasonErrorKey.rawValue]! as! String)
 
-  // TODO: Without the 'as NSObject' conversion, this produces nil.
+  // TODO: Without the 'as NSObject' conversion, this produces nil. id:3920 gh:3932
   // We may need to forward _CustomAnyHashable through swift_newtypes.
   expectEqual("reason", error.userInfo[ErrorUserInfoKey.localizedFailureReasonErrorKey as NSObject]! as! String)
 }

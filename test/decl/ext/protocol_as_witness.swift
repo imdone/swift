@@ -8,7 +8,7 @@ protocol P1 {
 protocol Q1 {}
 
 extension P1 where Self : Q1 {
-  // FIXME: Poor QoI
+  // FIXME: Poor QoI id:3424 gh:3436
   func f() {} // expected-note{{candidate has non-matching type '<Self> () -> ()'}}
 }
 

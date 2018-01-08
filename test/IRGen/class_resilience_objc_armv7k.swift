@@ -56,7 +56,7 @@ public class GenericObjCSubclass<T> : NSCoder {
 
 // CHECK-LABEL: define hidden swiftcc void @"$S28class_resilience_objc_armv7k31testConstantIndirectFieldAccessyyAA19GenericObjCSubclassCyxGlF"(%T28class_resilience_objc_armv7k19GenericObjCSubclassC*)
 
-// FIXME: we could eliminate the unnecessary isa load by lazily emitting
+// FIXME: we could eliminate the unnecessary isa load by lazily emitting id:2713 gh:2725
 // metadata sources in EmitPolymorphicParameters
 
 // CHECK:      call %objc_class* @object_getClass

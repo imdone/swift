@@ -6,7 +6,7 @@
 // RUN: %target-run %t/main | %FileCheck %s
 // REQUIRES: executable_test
 
-// FIXME: We need to instrument mutations of objects that are accessed in
+// FIXME: We need to instrument mutations of objects that are accessed in id:3481 gh:3493
 //        arbitrary ways, not just successive member references.
 // XFAIL: *
 

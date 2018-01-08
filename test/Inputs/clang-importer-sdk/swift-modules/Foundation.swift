@@ -328,7 +328,7 @@ public extension _BridgedStoredNSError {
 /// Various helper implementations for _BridgedStoredNSError
 public extension _BridgedStoredNSError
     where Code: RawRepresentable, Code.RawValue: SignedInteger {
-  // FIXME: Generalize to Integer.
+  // FIXME: Generalize to Integer. id:3406 gh:3418
   public var code: Code {
     return Code(rawValue: numericCast(_nsError.code))!
   }
@@ -347,7 +347,7 @@ public extension _BridgedStoredNSError
 /// Various helper implementations for _BridgedStoredNSError
 public extension _BridgedStoredNSError
     where Code: RawRepresentable, Code.RawValue: UnsignedInteger {
-  // FIXME: Generalize to Integer.
+  // FIXME: Generalize to Integer. id:3828 gh:3840
   public var code: Code {
     return Code(rawValue: numericCast(_nsError.code))!
   }

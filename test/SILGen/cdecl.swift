@@ -37,7 +37,7 @@ private func kale(_ x: Int) -> Int {
   return x
 }
 
-/* TODO: Handle error conventions
+/* TODO: Handle error conventions id:3935 gh:3947
 @_cdecl("vomits")
 func barfs() throws {}
  */

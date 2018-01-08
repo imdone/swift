@@ -21,7 +21,7 @@ import StdlibUnittest
 class TestCodableSuper { }
 #endif
 
-// MARK: - Helper Functions
+// MARK: - Helper Functions id:3893 gh:3905
 @available(OSX 10.11, iOS 9.0, *)
 func makePersonNameComponents(namePrefix: String? = nil,
                               givenName: String? = nil,
@@ -100,7 +100,7 @@ func expectRoundTripEqualityThroughPlist<T : Codable>(for value: T, lineNumber: 
     expectRoundTripEquality(of: value, encode: encode, decode: decode, lineNumber: lineNumber)
 }
 
-// MARK: - Helper Types
+// MARK: - Helper Types id:4129 gh:4141
 // A wrapper around a UUID that will allow it to be encoded at the top level of an encoder.
 struct UUIDCodingWrapper : Codable, Equatable {
     let value: UUID
@@ -114,9 +114,9 @@ struct UUIDCodingWrapper : Codable, Equatable {
     }
 }
 
-// MARK: - Tests
+// MARK: - Tests id:3156 gh:3168
 class TestCodable : TestCodableSuper {
-    // MARK: - AffineTransform
+    // MARK: - AffineTransform id:3504 gh:3516
 #if os(OSX)
     lazy var affineTransformValues: [Int : AffineTransform] = [
         #line : AffineTransform.identity,
@@ -145,7 +145,7 @@ class TestCodable : TestCodableSuper {
     }
 #endif
 
-    // MARK: - Calendar
+    // MARK: - Calendar id:3842 gh:3854
     lazy var calendarValues: [Int : Calendar] = [
         #line : Calendar(identifier: .gregorian),
         #line : Calendar(identifier: .buddhist),
@@ -175,7 +175,7 @@ class TestCodable : TestCodableSuper {
         }
     }
 
-    // MARK: - CharacterSet
+    // MARK: - CharacterSet id:3896 gh:3908
     lazy var characterSetValues: [Int : CharacterSet] = [
         #line : CharacterSet.controlCharacters,
         #line : CharacterSet.whitespaces,
@@ -206,7 +206,7 @@ class TestCodable : TestCodableSuper {
         }
     }
 
-    // MARK: - CGAffineTransform
+    // MARK: - CGAffineTransform id:4131 gh:4143
     lazy var cg_affineTransformValues: [Int : CGAffineTransform] = {
         var values = [
             #line : CGAffineTransform.identity,
@@ -239,7 +239,7 @@ class TestCodable : TestCodableSuper {
         }
     }
 
-    // MARK: - CGPoint
+    // MARK: - CGPoint id:3158 gh:3170
     lazy var cg_pointValues: [Int : CGPoint] = {
         var values = [
             #line : CGPoint.zero,
@@ -267,7 +267,7 @@ class TestCodable : TestCodableSuper {
         }
     }
 
-    // MARK: - CGSize
+    // MARK: - CGSize id:3509 gh:3521
     lazy var cg_sizeValues: [Int : CGSize] = {
         var values = [
             #line : CGSize.zero,
@@ -295,7 +295,7 @@ class TestCodable : TestCodableSuper {
         }
     }
 
-    // MARK: - CGRect
+    // MARK: - CGRect id:3845 gh:3857
     lazy var cg_rectValues: [Int : CGRect] = {
         var values = [
             #line : CGRect.zero,
@@ -323,7 +323,7 @@ class TestCodable : TestCodableSuper {
         }
     }
 
-    // MARK: - CGVector
+    // MARK: - CGVector id:3899 gh:3911
     lazy var cg_vectorValues: [Int : CGVector] = {
         var values = [
             #line : CGVector.zero,
@@ -351,7 +351,7 @@ class TestCodable : TestCodableSuper {
         }
     }
 
-    // MARK: - DateComponents
+    // MARK: - DateComponents id:4133 gh:4145
     lazy var dateComponents: Set<Calendar.Component> = [
         .era, .year, .month, .day, .hour, .minute, .second, .nanosecond,
         .weekday, .weekdayOrdinal, .quarter, .weekOfMonth, .weekOfYear,
@@ -370,7 +370,7 @@ class TestCodable : TestCodableSuper {
         expectRoundTripEqualityThroughPlist(for: components, lineNumber: #line - 1)
     }
 
-    // MARK: - DateInterval
+    // MARK: - DateInterval id:3162 gh:3174
     @available(OSX 10.12, iOS 10.10, watchOS 3.0, tvOS 10.0, *)
     lazy var dateIntervalValues: [Int : DateInterval] = [
         #line : DateInterval(),
@@ -393,7 +393,7 @@ class TestCodable : TestCodableSuper {
         }
     }
 
-    // MARK: - Decimal
+    // MARK: - Decimal id:3513 gh:3525
     lazy var decimalValues: [Int : Decimal] = [
         #line : Decimal.leastFiniteMagnitude,
         #line : Decimal.greatestFiniteMagnitude,
@@ -418,7 +418,7 @@ class TestCodable : TestCodableSuper {
         }
     }
 
-    // MARK: - IndexPath
+    // MARK: - IndexPath id:3848 gh:3860
     lazy var indexPathValues: [Int : IndexPath] = [
         #line : IndexPath(), // empty
         #line : IndexPath(index: 0), // single
@@ -438,7 +438,7 @@ class TestCodable : TestCodableSuper {
         }
     }
 
-    // MARK: - IndexSet
+    // MARK: - IndexSet id:3902 gh:3914
     lazy var indexSetValues: [Int : IndexSet] = [
         #line : IndexSet(),
         #line : IndexSet(integer: 42),
@@ -457,7 +457,7 @@ class TestCodable : TestCodableSuper {
         }
     }
 
-    // MARK: - Locale
+    // MARK: - Locale id:4135 gh:4147
     lazy var localeValues: [Int : Locale] = [
         #line : Locale(identifier: ""),
         #line : Locale(identifier: "en"),
@@ -481,7 +481,7 @@ class TestCodable : TestCodableSuper {
         }
     }
 
-    // MARK: - Measurement
+    // MARK: - Measurement id:3166 gh:3178
     @available(OSX 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *)
     lazy var unitValues: [Int : Dimension] = [
         #line : UnitAcceleration.metersPerSecondSquared,
@@ -503,7 +503,7 @@ class TestCodable : TestCodableSuper {
         }
     }
 
-    // MARK: - NSRange
+    // MARK: - NSRange id:3517 gh:3529
     lazy var nsrangeValues: [Int : NSRange] = [
         #line : NSRange(),
         #line : NSRange(location: 0, length: Int.max),
@@ -522,7 +522,7 @@ class TestCodable : TestCodableSuper {
         }
     }
 
-    // MARK: - PersonNameComponents
+    // MARK: - PersonNameComponents id:3851 gh:3863
     @available(OSX 10.11, iOS 9.0, *)
     lazy var personNameComponentsValues: [Int : PersonNameComponents] = [
         #line : makePersonNameComponents(givenName: "John", familyName: "Appleseed"),
@@ -544,7 +544,7 @@ class TestCodable : TestCodableSuper {
         }
     }
 
-    // MARK: - TimeZone
+    // MARK: - TimeZone id:3905 gh:3917
     lazy var timeZoneValues: [Int : TimeZone] = [
         #line : TimeZone(identifier: "America/Los_Angeles")!,
         #line : TimeZone(identifier: "UTC")!,
@@ -563,7 +563,7 @@ class TestCodable : TestCodableSuper {
         }
     }
 
-    // MARK: - URL
+    // MARK: - URL id:4137 gh:4149
     lazy var urlValues: [Int : URL] = {
         var values: [Int : URL] = [
             #line : URL(fileURLWithPath: NSTemporaryDirectory()),
@@ -600,7 +600,7 @@ class TestCodable : TestCodableSuper {
         }
     }
 
-    // MARK: - URLComponents
+    // MARK: - URLComponents id:3169 gh:3181
     lazy var urlComponentsValues: [Int : URLComponents] = [
         #line : URLComponents(),
 
@@ -699,7 +699,7 @@ class TestCodable : TestCodableSuper {
         }
     }
 
-    // MARK: - UUID
+    // MARK: - UUID id:3522 gh:3534
     lazy var uuidValues: [Int : UUID] = [
         #line : UUID(),
         #line : UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!,
@@ -722,7 +722,7 @@ class TestCodable : TestCodableSuper {
     }
 }
 
-// MARK: - Helper Types
+// MARK: - Helper Types id:3855 gh:3867
 
 struct TopLevelWrapper<T> : Codable, Equatable where T : Codable, T : Equatable {
     let value: T
@@ -736,7 +736,7 @@ struct TopLevelWrapper<T> : Codable, Equatable where T : Codable, T : Equatable 
     }
 }
 
-// MARK: - Tests
+// MARK: - Tests id:3909 gh:3921
 
 #if !FOUNDATION_XCTEST
 var tests = [

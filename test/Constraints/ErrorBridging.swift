@@ -33,7 +33,7 @@ let ns3 = subError as NSError
 var ns4 = compo as NSError
 
 // NSError conversion must be explicit.
-// TODO: fixit to insert 'as NSError'
+// TODO: fixit to insert 'as NSError' id:3395 gh:3407
 ns4 = compo // expected-error{{cannot assign value of type 'HairyError & Runcible' to type 'NSError'}}
 
 let e1 = ns1 as? FooError

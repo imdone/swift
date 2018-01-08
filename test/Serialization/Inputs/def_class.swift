@@ -174,7 +174,7 @@ open class Resource {
 
 // Ownership
 open class ResourceSharer {
-  // FIXME: Cannot perform in-class initialization here
+  // FIXME: Cannot perform in-class initialization here id:4032 gh:4044
   open unowned var alwaysPresent : Resource
   open weak var maybePresent : Resource?
 

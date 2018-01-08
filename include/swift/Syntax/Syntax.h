@@ -172,7 +172,7 @@ public:
     // Trivially true.
     return true;
   }
-  // TODO: hasSameStructureAs ?
+  // TODO: hasSameStructureAs ? id:156 gh:164
 };
 
 } // end namespace syntax

@@ -612,7 +612,7 @@ public:
   /// True if a type is passed indirectly at +0 when used as the "self"
   /// parameter of its own methods.
   ///
-  /// TODO: We want this always to hold.
+  /// TODO: We want this always to hold. id:222 gh:229
   static bool isIndirectPlusZeroSelfParameter(Type T) {
     // Calls through opaque protocols can be done with +0 rvalues.  This allows
     // us to avoid materializing copies of existentials.

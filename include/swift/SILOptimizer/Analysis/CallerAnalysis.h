@@ -43,7 +43,7 @@ class CallerAnalysis : public SILAnalysis {
 
 public:
 
-  /// NOTE: this can be extended to contain the callsites of the function.
+  /// NOTE: this can be extended to contain the callsites of the function. id:354 gh:361
   class FunctionInfo {
     friend class CallerAnalysis;
 

@@ -148,7 +148,7 @@ struct V<T> : Fooable {
   func foo(_ x: T) {}
 }
 
-// FIXME: <rdar://problem/16123805> associated Inferred types can't be used in expression contexts
+// FIXME: <rdar://problem/16123805> associated Inferred types can't be used in expression contexts id:2647 gh:2659
 var w = W.AssocType()
 var v = V<String>.AssocType()
 

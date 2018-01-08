@@ -1,6 +1,6 @@
 // RUN: %target-typecheck-verify-swift
 
-// TODO: Implement tuple equality in the library.
+// TODO: Implement tuple equality in the library. id:3585 gh:3597
 // BLOCKED: <rdar://problem/13822406>
 func ~= (x: (Int,Int), y: (Int,Int)) -> Bool {
   return true

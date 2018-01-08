@@ -15,7 +15,7 @@ func localFunc2(_ x: Int) -> (_ y: Int) -> Int {
   return addToX
 }
 
-// FIXME global vars
+// FIXME global vars id:3844 gh:3856
 func test() {
   // CHECK: 3
   print(localFunc(2))

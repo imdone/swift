@@ -95,7 +95,7 @@ Swift.print(3, terminator: "")
 // Members of literals
 ////
 
-// FIXME: Crappy diagnostic
+// FIXME: Crappy diagnostic id:3405 gh:3417
 "foo".lower() // expected-error{{value of type 'String' has no member 'lower'}}
 var tmp = "foo".debugDescription
 
@@ -172,7 +172,7 @@ func testNumeric<T : Numeric>(_ x: T) {
   acceptBinaryFunc(x, +)
 }
 
-/* FIXME: We can't check this directly, but it can happen with
+/* FIXME: We can't check this directly, but it can happen with id:2999 gh:3011
 multiple modules.
 
 class PropertyOrMethod {
@@ -230,7 +230,7 @@ func testClassExtendedWithMutatingMethods(_ c: ClassExtendedWithMutatingMethods,
   _ = c.mutableProperty.foo
   _ = c.nonmutatingProperty
   _ = c.nonmutatingProperty.foo
-  // FIXME: diagnostic nondeterministically says "member" or "getter"
+  // FIXME: diagnostic nondeterministically says "member" or "getter" id:3734 gh:3746
   _ = c.mutatingGetProperty // expected-error{{cannot use mutating}}
   _ = c.mutatingGetProperty.foo // expected-error{{cannot use mutating}}
 

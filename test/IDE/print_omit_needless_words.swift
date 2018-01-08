@@ -1,7 +1,7 @@
 // RUN: %empty-directory(%t)
 
 // REQUIRES: objc_interop
-// FIXME: this is failing on simulators
+// FIXME: this is failing on simulators id:3808 gh:3820
 // REQUIRES: OS=macosx
 
 // RUN: %target-swift-frontend(mock-sdk: %clang-importer-sdk-nosource -I %t) -emit-module -o %t %S/../Inputs/clang-importer-sdk/swift-modules-without-ns/ObjectiveC.swift

@@ -5,7 +5,7 @@
 import ctypes
 
 func testImportMacTypes() {
-  // FIXME: this should work.  We cannot map Float80 to 'long double' because
+  // FIXME: this should work.  We cannot map Float80 to 'long double' because id:2605 gh:2617
   // 'long double' has size of 128 bits on SysV ABI, and 80 != 128.  'long
   // double' is currently not handled by the importer, so it cannot be
   // imported in normal way either.

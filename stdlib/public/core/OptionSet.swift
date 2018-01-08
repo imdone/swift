@@ -93,7 +93,7 @@ public protocol OptionSet : SetAlgebra, RawRepresentable {
   /// the `Element` type must be `Self`, the default.
   associatedtype Element = Self
 
-  // FIXME: This initializer should just be the failable init from
+  // FIXME: This initializer should just be the failable init from id:1288 gh:1295
   // RawRepresentable. Unfortunately, current language limitations
   // that prevent non-failable initializers from forwarding to
   // failable ones would prevent us from generating the non-failing
@@ -141,7 +141,7 @@ extension OptionSet {
   /// - Parameter other: An option set.
   /// - Returns: A new option set made up of the elements contained in this
   ///   set, in `other`, or in both.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2241 gh:2253
   public func union(_ other: Self) -> Self {
     var r: Self = Self(rawValue: self.rawValue)
     r.formUnion(other)
@@ -168,7 +168,7 @@ extension OptionSet {
   /// - Parameter other: An option set.
   /// - Returns: A new option set with only the elements contained in both this
   ///   set and `other`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1245 gh:1252
   public func intersection(_ other: Self) -> Self {
     var r = Self(rawValue: self.rawValue)
     r.formIntersection(other)
@@ -181,7 +181,7 @@ extension OptionSet {
   /// - Parameter other: An option set.
   /// - Returns: A new option set with only the elements contained in either
   ///   this set or `other`, but not in both.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1594 gh:1601
   public func symmetricDifference(_ other: Self) -> Self {
     var r = Self(rawValue: self.rawValue)
     r.formSymmetricDifference(other)
@@ -211,7 +211,7 @@ extension OptionSet where Element == Self {
   /// - Parameter member: The element to look for in the option set.
   /// - Returns: `true` if the option set contains `member`; otherwise,
   ///   `false`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1591 gh:1598
   public func contains(_ member: Self) -> Bool {
     return self.isSuperset(of: member)
   }
@@ -236,7 +236,7 @@ extension OptionSet where Element == Self {
   /// - Returns: `(true, newMember)` if `newMember` was not contained in
   ///   `self`. Otherwise, returns `(false, oldMember)`, where `oldMember` is
   ///   the member of the set equal to `newMember`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1290 gh:1297
   @discardableResult
   public mutating func insert(
     _ newMember: Element
@@ -282,7 +282,7 @@ extension OptionSet where Element == Self {
   /// - Parameter member: The element of the set to remove.
   /// - Returns: The intersection of `[member]` and the set, if the
   ///   intersection was nonempty; otherwise, `nil`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2243 gh:2255
   @discardableResult
   public mutating func remove(_ member: Element) -> Element? {
     let r = isSuperset(of: member) ? Optional(member) : nil
@@ -302,7 +302,7 @@ extension OptionSet where Element == Self {
   ///
   /// - Returns: The intersection of `[newMember]` and the set if the
   ///   intersection was nonempty; otherwise, `nil`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1247 gh:1254
   @discardableResult
   public mutating func update(with newMember: Element) -> Element? {
     let r = self.intersection(newMember)
@@ -329,7 +329,7 @@ extension OptionSet where RawValue : FixedWidthInteger {
   /// Creates an empty option set.
   ///
   /// This initializer creates an option set with a raw value of zero.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1598 gh:1605
   public init() {
     self.init(rawValue: 0)
   }
@@ -340,7 +340,7 @@ extension OptionSet where RawValue : FixedWidthInteger {
   /// two sets' raw values.
   ///
   /// - Parameter other: An option set.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1595 gh:1602
   public mutating func formUnion(_ other: Self) {
     self = Self(rawValue: self.rawValue | other.rawValue)
   }
@@ -352,7 +352,7 @@ extension OptionSet where RawValue : FixedWidthInteger {
   /// two sets' raw values.
   ///
   /// - Parameter other: An option set.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1294 gh:1301
   public mutating func formIntersection(_ other: Self) {
     self = Self(rawValue: self.rawValue & other.rawValue)
   }
@@ -364,7 +364,7 @@ extension OptionSet where RawValue : FixedWidthInteger {
   /// sets' raw values.
   ///
   /// - Parameter other: An option set.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2245 gh:2258
   public mutating func formSymmetricDifference(_ other: Self) {
     self = Self(rawValue: self.rawValue ^ other.rawValue)
   }

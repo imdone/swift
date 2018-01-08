@@ -35,15 +35,15 @@ protocol Base {
   associatedtype Assoc
 }
 
-// FIXME: The first error is redundant, isn't correct in what it states, and
+// FIXME: The first error is redundant, isn't correct in what it states, and id:3840 gh:3852
 // also should be emitted on the inheritance clause.
-// FIXME: This used to /not/ error in Swift 3. It didn't impose any statically-
+// FIXME: This used to /not/ error in Swift 3. It didn't impose any statically- id:4085 gh:4097
 // enforced requirements, but the compiler crashed if you used anything but the
 // same type.
 protocol Sub1: Base { // expected-error {{type 'Self.SubAssoc' constrained to non-protocol, non-class type 'Self.Assoc'}}
   associatedtype SubAssoc: Assoc // expected-error {{inheritance from non-protocol, non-class type 'Self.Assoc'}}
 }
-// FIXME: This error is incorrect in what it states and should be emitted on
+// FIXME: This error is incorrect in what it states and should be emitted on id:3034 gh:3046
 // the where-clause.
 protocol Sub2: Base { // expected-error {{type 'Self.SubAssoc' constrained to non-protocol, non-class type 'Self.Assoc'}}
   associatedtype SubAssoc where SubAssoc: Assoc

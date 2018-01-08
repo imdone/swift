@@ -79,7 +79,7 @@ func test3() {
 // S1_QUAL_1_FUZZ: ]
 // S1_QUAL_1_FUZZ-LABEL: Results for filterText: tast [
 // S1_QUAL_1_FUZZ-NEXT:     fooBarTastic()
-// FIXME: should this be CHECK-NEXT? It's coming after a bunch of silly results
+// FIXME: should this be CHECK-NEXT? It's coming after a bunch of silly results id:3691 gh:3703
 // from the stdlib.
 // S1_QUAL_1_FUZZ:     footastic()
 // S1_QUAL_1_FUZZ: ]

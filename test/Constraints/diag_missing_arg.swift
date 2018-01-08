@@ -34,7 +34,7 @@ trailingClosureSingle1 { 1 } // expected-error {{missing argument for parameter 
 trailingClosureSingle1() { 1 } // expected-error {{missing argument for parameter 'x' in call}} {{24-24=x: <#Int#>}}
 
 func trailingClosureSingle2(x: () -> Int, y: Int) {} // expected-note * {{here}}
-// FIXME: Bad diagnostics.
+// FIXME: Bad diagnostics. id:2626 gh:2638
 trailingClosureSingle2 { 1 } // expected-error {{missing argument for parameter 'x' in call}} {{23-23=(x: <#() -> Int#>)}}
 trailingClosureSingle2() { 1 } // expected-error {{missing argument for parameter 'x' in call}} {{24-24=x: <#() -> Int#>}}
 
@@ -45,7 +45,7 @@ trailingClosureMulti1(x: 1, y: 1) // expected-error {{missing argument for param
 
 func trailingClosureMulti2(x: Int, y: () -> Int, z: Int) {} // expected-note * {{here}}
 trailingClosureMulti2 { 1 } // expected-error {{missing argument for parameter 'x' in call}} {{22-22=(x: <#Int#>)}}
-// FIXME: Bad diagnostics.
+// FIXME: Bad diagnostics. id:2755 gh:2767
 trailingClosureMulti2() { 1 } // expected-error {{missing argument for parameter 'x' in call}} {{23-23=x: <#Int#>}}
 trailingClosureMulti2(x: 1) { 1 } // expected-error {{missing argument for parameter 'y' in call}} {{27-27=, y: <#() -> Int#>}}
 
@@ -64,7 +64,7 @@ param2FuncNonNamed2("foo") // expected-error {{missing argument for parameter 'x
 func param2FuncNonNamed3(_ x: Int, _ y: String) {} // expected-note * {{here}}
 param2FuncNonNamed3(1) // expected-error {{missing argument for parameter #2 in call}} {{22-22=, <#String#>}}
 param2FuncNonNamed3("foo") // expected-error {{missing argument for parameter #2 in call}} {{26-26=, <#String#>}}
-                           // FIXME: Bad diagnostic. Could this be #1?
+                           // FIXME: Bad diagnostic. Could this be #1? id:3399 gh:3411
 
 func unlabeledParamFollowingVariadic(_: Any..., _: Any, _: Any) {} // expected-warning {{a parameter following a variadic parameter requires a label}}; // expected-note {{here}}
 unlabeledParamFollowingVariadic(1, 1, 1) // expected-error {{missing argument for parameter #2 in call}} {{40-40=, <#Any#>}}

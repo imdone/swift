@@ -16,7 +16,7 @@ class SwiftClass {
       }
 }
 
-// FIXME: This is currently elided, but should reappear eventually as
+// FIXME: This is currently elided, but should reappear eventually as id:2784 gh:2796
 // an artificial variable.
 // DISABLED: [ DW_TAG_variable ] [OBJC_METACLASS_$__TtC10attributes9ObjCClass]
 

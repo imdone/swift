@@ -273,7 +273,7 @@ public:
 enum class OperationCost : unsigned {
   Free = 0,
   Arithmetic = 1,
-  Load = 3, // TODO: split into static- and dynamic-offset cases?
+  Load = 3, // TODO: split into static- and dynamic-offset cases? id:380 gh:387
   Call = 10
 };
 inline OperationCost operator+(OperationCost l, OperationCost r) {

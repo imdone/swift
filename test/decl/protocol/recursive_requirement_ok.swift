@@ -57,14 +57,14 @@ extension P6 where X == Y.X { }
 protocol P7 {
     associatedtype X: P9 where X.Q == Self, X.R == UInt8
     associatedtype Y: P9 where Y.Q == Self, Y.R == UInt16
-    // NOTE: Removing either X or Y from P7 (and A7) makes the program compile.
+    // NOTE: Removing either X or Y from P7 (and A7) makes the program compile. id:3438 gh:3450
 }
 struct A7: P7 {
     typealias X = S9<UInt8>
     typealias Y = S9<UInt16>
 }
 protocol P8 { }
-protocol P9 : P8 { // NOTE: Removing ": P8 " here makes the program compile.
+protocol P9 : P8 { // NOTE: Removing ": P8 " here makes the program compile. id:3725 gh:3737
     associatedtype Q: P7
     associatedtype R
 }

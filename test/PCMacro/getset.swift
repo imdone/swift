@@ -8,7 +8,7 @@
 // REQUIRES: executable_test
 // XFAIL: *
 
-// FIXME: rdar://problem/30234450 PCMacro tests fail on linux in optimized mode
+// FIXME: rdar://problem/30234450 PCMacro tests fail on linux in optimized mode id:3465 gh:3477
 // UNSUPPORTED: OS=linux-gnu
 
 class X {

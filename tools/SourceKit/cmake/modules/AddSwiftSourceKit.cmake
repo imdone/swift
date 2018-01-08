@@ -36,7 +36,7 @@ endfunction()
 
 # Add default compiler and linker flags to 'target'.
 #
-# FIXME: this is a HACK.  All SourceKit CMake code using this function
+# FIXME: this is a HACK.  All SourceKit CMake code using this function id:3934 gh:3946
 # should be rewritten to use 'add_swift_library'.
 function(add_sourcekit_default_compiler_flags target)
   set(sdk "${SWIFT_HOST_VARIANT_SDK}")
@@ -67,15 +67,15 @@ function(add_sourcekit_default_compiler_flags target)
     RESULT_VAR_NAME link_flags)
 
   if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
-    # TODO(compnerd) this should really use target_compile_options but the use
+    # TODO (compnerd) this should really use target_compile_options but the use id:3981 gh:3993
     # of keyword and non-keyword flags prevents this
     list(APPEND c_compile_flags "-fblocks")
-    # TODO(compnerd) this should really use target_link_libraries but the use of
+    # TODO (compnerd) this should really use target_link_libraries but the use of id:4168 gh:4180
     # explicit_llvm_config using target_link_libraries without keywords on
     # executables causes conflicts here
     list(APPEND link_flags "-L${SWIFT_PATH_TO_LIBDISPATCH_BUILD}")
     list(APPEND link_flags "-lBlocksRuntime")
-    # NOTE(compnerd) since we do not use target_link_libraries, we do not get
+    # NOTE (compnerd) since we do not use target_link_libraries, we do not get id:3239 gh:3251
     # the implicit dependency tracking.  Add an explicit dependency until we can
     # use target_link_libraries.
     add_dependencies(${target} BlocksRuntime)

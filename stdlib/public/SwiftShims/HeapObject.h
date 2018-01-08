@@ -85,7 +85,7 @@ static_assert(alignof(HeapObject) == alignof(void*),
 
 /// Global bit masks
 
-// TODO(<rdar://problem/34837179>): Convert each macro below to static consts
+// TODO (<rdar://problem/34837179>): Convert each macro below to static consts id:477 gh:484
 // when static consts are visible to SIL.
 
 // The extra inhabitants and spare bits of heap object pointers.

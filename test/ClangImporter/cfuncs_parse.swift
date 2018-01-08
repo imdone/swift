@@ -99,10 +99,10 @@ func test_pointer() {
   param_const_void_pointer(nil as UnsafePointer<CFloat>?)
   param_const_void_pointer(&i)
   param_const_void_pointer(ia)
-  // FIXME: param_const_void_pointer([1, 2, 3])
+  // FIXME: param_const_void_pointer([1, 2, 3]) id:2603 gh:2615
   param_const_void_pointer(&f)
   param_const_void_pointer(fa)
-  // FIXME: param_const_void_pointer([1.0, 2.0, 3.0])
+  // FIXME: param_const_void_pointer([1.0, 2.0, 3.0]) id:2720 gh:2732
 
   let op: OpaquePointer?
   opaque_pointer_param(op)
@@ -128,10 +128,10 @@ func test_pointer_nonnull() {
 
   nonnull_param_const_void_pointer(&i)
   nonnull_param_const_void_pointer(ia)
-  // FIXME: nonnull_param_const_void_pointer([1, 2, 3])
+  // FIXME: nonnull_param_const_void_pointer([1, 2, 3]) id:3357 gh:3369
   nonnull_param_const_void_pointer(&f)
   nonnull_param_const_void_pointer(fa)
-  // FIXME: nonnull_param_const_void_pointer([1.0, 2.0, 3.0])
+  // FIXME: nonnull_param_const_void_pointer([1.0, 2.0, 3.0]) id:2948 gh:2961
 }
 
 func test_decay() {

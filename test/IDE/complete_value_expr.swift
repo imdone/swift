@@ -81,7 +81,7 @@
 // RUN: %target-swift-ide-test -code-completion -source-filename %s -code-completion-token=CHAINED_CALLS_2 | %FileCheck %s -check-prefix=CHAINED_CALLS_2
 
 // Disabled because we aren't handling failures well.
-// FIXME: %target-swift-ide-test -code-completion -source-filename %s -code-completion-token=CHAINED_CALLS_3 | %FileCheck %s -check-prefix=CHAINED_CALLS_3
+// FIXME: %target-swift-ide-test -code-completion -source-filename %s -code-completion-token=CHAINED_CALLS_3 | %FileCheck %s -check-prefix=CHAINED_CALLS_3 id:3267 gh:3279
 
 // RUN: %target-swift-ide-test -code-completion -source-filename %s -code-completion-token=RESOLVE_GENERIC_PARAMS_1 | %FileCheck %s -check-prefix=RESOLVE_GENERIC_PARAMS_1
 // RUN: %target-swift-ide-test -code-completion -source-filename %s -code-completion-token=RESOLVE_GENERIC_PARAMS_2 | %FileCheck %s -check-prefix=RESOLVE_GENERIC_PARAMS_2
@@ -671,7 +671,7 @@ func testInsideFunctionCall2() {
   var a = FooStruct()
   a.instanceFunc1(#^INSIDE_FUNCTION_CALL_2^#
 // INSIDE_FUNCTION_CALL_2: Begin completions
-// FIXME: we should print the non-API param name rdar://20962472
+// FIXME: we should print the non-API param name rdar://20962472 id:3791 gh:3803
 // INSIDE_FUNCTION_CALL_2-DAG: Pattern/CurrModule:       ['(']{#Int#}[')'][#Void#]{{; name=.+$}}
 // INSIDE_FUNCTION_CALL_2-DAG: Decl[GlobalVar]/CurrModule: fooObject[#FooStruct#]{{; name=.+$}}
 // INSIDE_FUNCTION_CALL_2: End completions
@@ -680,7 +680,7 @@ func testInsideFunctionCall2() {
 func testInsideFunctionCall3() {
   FooStruct().instanceFunc1(42, #^INSIDE_FUNCTION_CALL_3^#
 // INSIDE_FUNCTION_CALL_3: Begin completions
-// FIXME: There should be no results here because the function call
+// FIXME: There should be no results here because the function call id:2690 gh:2702
 // unambiguously resolves to overload that takes 1 argument.
 // INSIDE_FUNCTION_CALL_3-DAG: Decl[GlobalVar]/CurrModule: fooObject[#FooStruct#]{{; name=.+$}}
 // INSIDE_FUNCTION_CALL_3: End completions
@@ -690,7 +690,7 @@ func testInsideFunctionCall4() {
   var a = FooStruct()
   a.instanceFunc2(#^INSIDE_FUNCTION_CALL_4^#
 // INSIDE_FUNCTION_CALL_4: Begin completions
-// FIXME: we should print the non-API param name rdar://20962472
+// FIXME: we should print the non-API param name rdar://20962472 id:2859 gh:2871
 // INSIDE_FUNCTION_CALL_4-DAG: Pattern/CurrModule:       ['(']{#Int#}, {#b: &Double#}[')'][#Void#]{{; name=.+$}}
 // INSIDE_FUNCTION_CALL_4-DAG: Decl[GlobalVar]/CurrModule: fooObject[#FooStruct#]{{; name=.+$}}
 // INSIDE_FUNCTION_CALL_4: End completions
@@ -715,7 +715,7 @@ func testInsideFunctionCall7() {
   var a = FooStruct()
   a.instanceFunc8(#^INSIDE_FUNCTION_CALL_7^#
 // INSIDE_FUNCTION_CALL_7: Begin completions
-// FIXME: we should print the non-API param name rdar://20962472
+// FIXME: we should print the non-API param name rdar://20962472 id:3480 gh:3492
 // INSIDE_FUNCTION_CALL_7: Pattern/CurrModule: ['(']{#(Int, Int)#}[')'][#Void#]{{; name=.+$}}
 // INSIDE_FUNCTION_CALL_7: End completions
 }
@@ -755,7 +755,7 @@ func testInsideVarargFunctionCall1() {
   var a = FooStruct()
   a.varargInstanceFunc0(#^INSIDE_VARARG_FUNCTION_CALL_1^#
 // INSIDE_VARARG_FUNCTION_CALL_1: Begin completions
-// FIXME: we should print the non-API param name rdar://20962472
+// FIXME: we should print the non-API param name rdar://20962472 id:3268 gh:3280
 // INSIDE_VARARG_FUNCTION_CALL_1-DAG: Pattern/CurrModule:       ['(']{#Int...#}[')'][#Void#]{{; name=.+$}}
 // INSIDE_VARARG_FUNCTION_CALL_1-DAG: Decl[GlobalVar]/CurrModule: fooObject[#FooStruct#]{{; name=.+$}}
 // INSIDE_VARARG_FUNCTION_CALL_1: End completions
@@ -779,7 +779,7 @@ func testInsideOverloadedFunctionCall1() {
   var a = FooStruct()
   a.overloadedInstanceFunc2(#^INSIDE_OVERLOADED_FUNCTION_CALL_1^#
 // INSIDE_OVERLOADED_FUNCTION_CALL_1: Begin completions
-// FIXME: produce call patterns here.
+// FIXME: produce call patterns here. id:3793 gh:3805
 // INSIDE_OVERLOADED_FUNCTION_CALL_1-DAG: Decl[GlobalVar]/CurrModule: fooObject[#FooStruct#]{{; name=.+$}}
 // INSIDE_OVERLOADED_FUNCTION_CALL_1: End completions
 }
@@ -787,7 +787,7 @@ func testInsideOverloadedFunctionCall1() {
 func testInsideFunctionCallOnClassInstance1(_ a: FooClass) {
   a.fooClassInstanceFunc1(#^INSIDE_FUNCTION_CALL_ON_CLASS_INSTANCE_1^#
 // INSIDE_FUNCTION_CALL_ON_CLASS_INSTANCE_1: Begin completions
-// FIXME: we should print the non-API param name rdar://20962472
+// FIXME: we should print the non-API param name rdar://20962472 id:2692 gh:2704
 // INSIDE_FUNCTION_CALL_ON_CLASS_INSTANCE_1-DAG: Pattern/CurrModule:       ['(']{#Int#}[')'][#Void#]{{; name=.+$}}
 // INSIDE_FUNCTION_CALL_ON_CLASS_INSTANCE_1-DAG: Decl[GlobalVar]/CurrModule: fooObject[#FooStruct#]{{; name=.+$}}
 // INSIDE_FUNCTION_CALL_ON_CLASS_INSTANCE_1: End completions
@@ -1237,7 +1237,7 @@ struct TestResolveGenericParams3_4<T> {
 
 func testResolveGenericParamsError1() {
   // There is no type 'Foo'.  Check that we don't crash.
-  // FIXME: we could also display correct completion results here, because
+  // FIXME: we could also display correct completion results here, because id:2863 gh:2875
   // swift does not have specialization, and the set of completion results does
   // not depend on the generic type argument.
   FooGenericStruct<NotDefinedType>()#^RESOLVE_GENERIC_PARAMS_ERROR_1^#
@@ -1394,7 +1394,7 @@ func testProtocol3(_ x: P3) {
 }
 // PROTOCOL_EXT_P3: Begin completions
 
-// FIXME: the next two should both be "CurrentNominal"
+// FIXME: the next two should both be "CurrentNominal" id:3482 gh:3494
 // PROTOCOL_EXT_P3-DAG: Decl[InstanceMethod]/Super:   reqP1()[#Void#]{{; name=.+$}}
 // PROTOCOL_EXT_P3-DAG: Decl[InstanceMethod]/Super:   reqP2()[#Void#]{{; name=.+$}}
 
@@ -1425,7 +1425,7 @@ func testConformingConcrete3(_ x: DidConformP3) {
   x.#^PROTOCOL_EXT_DIDCONFORMP3^#
 }
 // PROTOCOL_EXT_DIDCONFORMP3: Begin completions
-// FIXME: the next two should both be "CurrentNominal"
+// FIXME: the next two should both be "CurrentNominal" id:3271 gh:3283
 // PROTOCOL_EXT_DIDCONFORMP3-DAG: Decl[InstanceMethod]/Super:   reqP1()[#Void#]{{; name=.+$}}
 // PROTOCOL_EXT_DIDCONFORMP3-DAG: Decl[InstanceMethod]/Super:   reqP2()[#Void#]{{; name=.+$}}
 // PROTOCOL_EXT_DIDCONFORMP3-DAG: Decl[InstanceMethod]/Super:   extP1()[#Void#]{{; name=.+$}}
@@ -1650,7 +1650,7 @@ struct dedupS : dedupP {
 
 func testDeDuped(_ x: dedupS) {
   x#^PROTOCOL_EXT_DEDUP_1^#
-// FIXME: Should produce 3 items (?)
+// FIXME: Should produce 3 items (?) id:3795 gh:3807
 // PROTOCOL_EXT_DEDUP_1: Begin completions, 6 items
 // PROTOCOL_EXT_DEDUP_1: Decl[InstanceMethod]/CurrNominal:   .foo()[#Int#]; name=foo()
 // PROTOCOL_EXT_DEDUP_1: Decl[InstanceVar]/CurrNominal:      .bar[#Int#]; name=bar
@@ -1659,7 +1659,7 @@ func testDeDuped(_ x: dedupS) {
 }
 func testDeDuped2(_ x: dedupP) {
   x#^PROTOCOL_EXT_DEDUP_2^#
-// FIXME: Should produce 3 items (?)
+// FIXME: Should produce 3 items (?) id:2694 gh:2706
 // PROTOCOL_EXT_DEDUP_2: Begin completions, 4 items
 // PROTOCOL_EXT_DEDUP_2: Decl[InstanceMethod]/CurrNominal:   .foo()[#dedupP.T#]; name=foo()
 // PROTOCOL_EXT_DEDUP_2: Decl[InstanceVar]/CurrNominal:      .bar[#dedupP.T#]; name=bar
@@ -1667,7 +1667,7 @@ func testDeDuped2(_ x: dedupP) {
 // PROTOCOL_EXT_DEDUP_2: End completions
 }
 func testDeDuped3<T : dedupP where T.T == Int>(_ x: T) {
-// FIXME: Should produce 3 items (?)
+// FIXME: Should produce 3 items (?) id:2866 gh:2878
   x#^PROTOCOL_EXT_DEDUP_3^#
 // PROTOCOL_EXT_DEDUP_3: Begin completions, 4 items
 // PROTOCOL_EXT_DEDUP_3: Decl[InstanceMethod]/Super:   .foo()[#Int#]; name=foo()

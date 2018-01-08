@@ -24,7 +24,7 @@ protocol CustomFormatted : CustomStringConvertible, CustomDebugStringConvertible
   /// (e.g. if your representation is huge), you can return a custom
   /// DebugRepresentation type.
   ///
-  /// NOTE: producing a representation that can be consumed by the
+  /// NOTE: producing a representation that can be consumed by the id:2868 gh:2880
   /// REPL to produce an equivalent object is strongly encouraged
   /// where possible!  For example, String.debugFormat() produces a
   /// representation containing quotes, where special characters are

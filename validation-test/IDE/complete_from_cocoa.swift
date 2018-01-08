@@ -3,7 +3,7 @@
 // REQUIRES: objc_interop
 // REQUIRES: no_asan
 
-// FIXME: iOS has no Cocoa.framework
+// FIXME: iOS has no Cocoa.framework id:3261 gh:3273
 // REQUIRES: OS=macosx
 
 // A smoketest for code completion in Cocoa.

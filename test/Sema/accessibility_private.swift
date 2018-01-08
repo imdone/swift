@@ -80,12 +80,12 @@ extension Container.Inner {
     obj.bar = 5
     obj.privateExtensionMethod()
 
-    // FIXME: Unqualified lookup won't look into Container from here.
+    // FIXME: Unqualified lookup won't look into Container from here. id:4021 gh:4033
     _ = PrivateInner() // expected-error {{use of unresolved identifier 'PrivateInner'}}
     _ = Container.PrivateInner()
   }
 
-  // FIXME: Unqualified lookup won't look into Container from here.
+  // FIXME: Unqualified lookup won't look into Container from here. id:2970 gh:2982
   var inner: PrivateInner? { return nil } // expected-error {{use of undeclared type 'PrivateInner'}}
   var innerQualified: Container.PrivateInner? { return nil } // expected-error {{invalid redeclaration of 'innerQualified'}} expected-error {{property must be declared private because its type uses a private type}}
 }
@@ -204,7 +204,7 @@ fileprivate struct SR2579 {
     private struct InnerPrivateType {}
     var innerProperty = InnerPrivateType() // expected-error {{property must be declared private because its type 'SR2579.Inner.InnerPrivateType' uses a private type}}
   }
-  // FIXME: We need better errors when one access violation results in more
+  // FIXME: We need better errors when one access violation results in more id:3360 gh:3372
   // downstream.
   private var outerProperty = Inner().innerProperty // expected-error {{property cannot be declared in this context because its type 'SR2579.Inner.InnerPrivateType' uses a private type}}
   var outerProperty2 = Inner().innerProperty // expected-error {{property must be declared private because its type 'SR2579.Inner.InnerPrivateType' uses a private type}}

@@ -1120,7 +1120,7 @@ private:
     ConstraintSystem &CS;
 
     /// Old value of DebugConstraintSolver.
-    /// FIXME: Move the "debug constraint solver" bit into the constraint 
+    /// FIXME: Move the "debug constraint solver" bit into the constraint  id:299 gh:306
     /// system itself.
     bool OldDebugConstraintSolver;
 
@@ -1548,7 +1548,7 @@ public:
   /// This routine caches the results of member lookups in the top constraint
   /// system, to avoid.
   ///
-  /// FIXME: This caching should almost certainly be performed at the
+  /// FIXME: This caching should almost certainly be performed at the id:164 gh:171
   /// module level, since type checking occurs after name binding,
   /// and no new names are introduced after name binding.
   ///
@@ -1585,7 +1585,7 @@ public:
     assert(E != nullptr && "Expected non-null expression!");
     assert(T && "Expected non-null type!");
 
-    // FIXME: We sometimes set the type and then later set it to a
+    // FIXME: We sometimes set the type and then later set it to a id:406 gh:413
     //        value that is slightly different, e.g. not an lvalue.
     // assert((ExprTypes.find(E) == ExprTypes.end() ||
     //         ExprTypes.find(E)->second->isEqual(T) ||
@@ -1594,7 +1594,7 @@ public:
 
     ExprTypes[E] = T.getPointer();
 
-    // FIXME: Temporary until all references to expression types are
+    // FIXME: Temporary until all references to expression types are id:172 gh:179
     //        updated.
     E->setType(T);
   }
@@ -1608,7 +1608,7 @@ public:
   /// Get the type for an expression.
   Type getType(const Expr *E) const {
     assert(hasType(E) && "Expected type to have been set!");
-    // FIXME: lvalue differences
+    // FIXME: lvalue differences id:288 gh:295
     //    assert((!E->getType() ||
     //            E->getType()->isEqual(ExprTypes.find(E)->second)) &&
     //           "Mismatched types!");
@@ -2308,7 +2308,7 @@ public:
                         ConstraintLocatorBuilder locator,
                         std::function<SolutionKind()> formUnsolvedResult);
 
-public: // FIXME: public due to statics in CSSimplify.cpp
+public: // FIXME: public due to statics in CSSimplify.cpp id:301 gh:308
   /// \brief Attempt to match up types \c type1 and \c type2, which in effect
   /// is solving the given type constraint between these two types.
   ///
@@ -2565,7 +2565,7 @@ private:
                  TypeMatchOptions flags,
                  ConstraintLocatorBuilder locator);
 
-public: // FIXME: Public for use by static functions.
+public: // FIXME: Public for use by static functions. id:167 gh:174
   /// \brief Simplify a conversion constraint with a fix applied to it.
   SolutionKind simplifyFixConstraint(Fix fix,
                                      Type type1, Type type2,
@@ -3065,7 +3065,7 @@ static inline bool computeTupleShuffle(TupleType *fromTuple,
 }
 
 /// Describes the arguments to which a parameter binds.
-/// FIXME: This is an awful data structure. We want the equivalent of a
+/// FIXME: This is an awful data structure. We want the equivalent of a id:410 gh:417
 /// TinyPtrVector for unsigned values.
 typedef SmallVector<unsigned, 1> ParamBinding;
 
@@ -3185,7 +3185,7 @@ public:
 
   bool isDisabled() const { return Choice->isDisabled(); }
 
-  // FIXME: Both of the accessors below are required to support
+  // FIXME: Both of the accessors below are required to support id:174 gh:181
   //        performance optimization hacks in constraint solver.
 
   bool isGenericOperatorOrUnavailable() const;

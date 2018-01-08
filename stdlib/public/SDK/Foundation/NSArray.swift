@@ -33,7 +33,7 @@ extension Array : _ObjectiveCBridgeable {
   internal init(_cocoaArray: NSArray) {
     _sanityCheck(_isBridgedVerbatimToObjectiveC(Element.self),
       "Array can be backed by NSArray only when the element type can be bridged verbatim to Objective-C")
-    // FIXME: We would like to call CFArrayCreateCopy() to avoid doing an
+    // FIXME: We would like to call CFArrayCreateCopy() to avoid doing an id:259 gh:266
     // objc_msgSend() for instances of CoreFoundation types.  We can't do that
     // today because CFArrayCreateCopy() copies array contents unconditionally,
     // resulting in O(n) copies even for immutable arrays.
@@ -115,7 +115,7 @@ extension NSArray : Sequence {
   }
 }
 
-/* TODO: API review
+/* TODO: API review id:536 gh:543
 extension NSArray : Swift.Collection {
   final public var startIndex: Int {
     return 0

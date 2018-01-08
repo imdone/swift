@@ -7,7 +7,7 @@
 // RUN: %target-run %t/main | %FileCheck %s
 // REQUIRES: executable_test
 
-// FIXME: rdar://problem/30234450 PCMacro tests fail on linux in optimized mode
+// FIXME: rdar://problem/30234450 PCMacro tests fail on linux in optimized mode id:3052 gh:3064
 // UNSUPPORTED: OS=linux-gnu
 
 // Lets check that the source ranges are correct on all different kinds of func

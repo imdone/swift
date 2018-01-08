@@ -38,7 +38,7 @@ if true {
   let _: () -> Int = a
 
   // Can't convert a C function pointer from a method.
-  // TODO: Could handle static methods.
+  // TODO: Could handle static methods. id:3059 gh:3071
   let _: @convention(c) () -> Int = S.staticMethod // expected-error{{}}
   let _: @convention(c) () -> Int = C.staticMethod // expected-error{{}}
   let _: @convention(c) () -> Int = C.classMethod // expected-error{{}}

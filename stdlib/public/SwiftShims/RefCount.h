@@ -38,7 +38,7 @@ typedef InlineRefCountsPlaceholder InlineRefCounts;
 #include "swift/Runtime/Config.h"
 #include "swift/Runtime/Debug.h"
 
-// FIXME: Workaround for rdar://problem/18889711. 'Consume' does not require
+// FIXME: Workaround for rdar://problem/18889711. 'Consume' does not require id:491 gh:498
 // a barrier on ARM64, but LLVM doesn't know that. Although 'relaxed'
 // is formally UB by C++11 language rules, we should be OK because neither
 // the processor model nor the optimizer can realistically reorder our uses
@@ -190,7 +190,7 @@ namespace swift {
   class HeapObjectSideTableEntry;
 }
 
-// FIXME: HACK: copied from HeapObject.cpp
+// FIXME: HACK: copied from HeapObject.cpp id:611 gh:618
 extern "C" LLVM_LIBRARY_VISIBILITY LLVM_ATTRIBUTE_NOINLINE LLVM_ATTRIBUTE_USED
 void _swift_release_dealloc(swift::HeapObject *object)
 SWIFT_CC(RegisterPreservingCC_IMPL);
@@ -237,7 +237,7 @@ struct RefCountBitsInt<RefCountIsInline, 4> {
 
 // Layout of refcount bits.
 // field value = (bits & mask) >> shift
-// FIXME: redo this abstraction more cleanly
+// FIXME: redo this abstraction more cleanly id:764 gh:771
   
 # define maskForField(name) (((uint64_t(1)<<name##BitCount)-1) << name##Shift)
 # define shiftAfterField(name) (name##Shift + name##BitCount)
@@ -314,7 +314,7 @@ struct RefCountBitOffsets<4> {
 };
 
 
-// FIXME: reinstate these assertions
+// FIXME: reinstate these assertions id:479 gh:486
 #if 0
   static_assert(StrongExtraRefCountShift == IsDeinitingShift + 1, 
                 "IsDeiniting must be LSB-wards of StrongExtraRefCount");
@@ -424,7 +424,7 @@ class RefCountBitsT {
   
   LLVM_ATTRIBUTE_ALWAYS_INLINE
   bool hasSideTable() const {
-    // FIXME: change this when introducing immutable RC objects
+    // FIXME: change this when introducing immutable RC objects id:1326 gh:1333
     bool hasSide = getUseSlowRC();
 
     // Side table refcount must not point to another side table.
@@ -763,7 +763,7 @@ class RefCounts {
 
   // Initialize for a stack promoted object. This prevents that the final
   // release frees the memory of the object.
-  // FIXME: need to mark these and assert they never get a side table,
+  // FIXME: need to mark these and assert they never get a side table, id:495 gh:502
   // because the extra unowned ref will keep the side table alive forever
   void initForNotFreeing() {
     refCounts.store(RefCountBits(0, 2), std::memory_order_relaxed);
@@ -931,7 +931,7 @@ class RefCounts {
     if (bits.hasSideTable())
       return bits.getSideTable()->getCount();
     
-    assert(!bits.getIsDeiniting());  // FIXME: can we assert this?
+    assert(!bits.getIsDeiniting());  // FIXME: can we assert this? id:614 gh:621
     return bits.getStrongExtraRefCount() + 1;
   }
 
@@ -950,7 +950,7 @@ class RefCounts {
   // is set. Once deinit begins the reference count is undefined.
   bool isUniquelyReferencedOrPinned() const {
     auto bits = refCounts.load(SWIFT_MEMORY_ORDER_CONSUME);
-    // FIXME: implement side table path if useful
+    // FIXME: implement side table path if useful id:783 gh:790
     // In the meantime we don't check it here.
     // bits.isUniquelyReferencedOrPinned() checks it too,
     // and the compiler optimizer does better if this check is not here.
@@ -1028,7 +1028,7 @@ class RefCounts {
         // Decrement underflowed. Begin deinit.
         // LIVE -> DEINITING
         deinitNow = true;
-        assert(!oldbits.getIsDeiniting());  // FIXME: make this an error?
+        assert(!oldbits.getIsDeiniting());  // FIXME: make this an error? id:482 gh:489
         newbits = oldbits;  // Undo failed decrement of newbits.
         newbits.setStrongExtraRefCount(0);
         newbits.setIsDeiniting(true);
@@ -1068,7 +1068,7 @@ class RefCounts {
       // Decrement underflowed. Begin deinit.
       // LIVE -> DEINITING
       deinitNow = true;
-      assert(!oldbits.getIsDeiniting());  // FIXME: make this an error?
+      assert(!oldbits.getIsDeiniting());  // FIXME: make this an error? id:1329 gh:1336
       newbits = oldbits;  // Undo failed decrement of newbits.
       newbits.setStrongExtraRefCount(0);
       newbits.setIsDeiniting(true);
@@ -1083,7 +1083,7 @@ class RefCounts {
     return deinitNow;
   }
   
-  public:  // FIXME: access control hack
+  public:  // FIXME: access control hack id:497 gh:504
 
   // Fast path of atomic strong decrement.
   // 
@@ -1174,7 +1174,7 @@ class RefCounts {
       } else {
         performFree = false;
       }
-      // FIXME: underflow check?
+      // FIXME: underflow check? id:617 gh:624
     } while (!refCounts.compare_exchange_weak(oldbits, newbits,
                                               std::memory_order_relaxed));
     return performFree;
@@ -1198,7 +1198,7 @@ class RefCounts {
     } else {
       performFree = false;
     }
-    // FIXME: underflow check?
+    // FIXME: underflow check? id:786 gh:793
     refCounts.store(newbits, std::memory_order_relaxed);
     return performFree;
   }
@@ -1231,7 +1231,7 @@ class RefCounts {
       newbits = oldbits;
       assert(newbits.getWeakRefCount() != 0);
       newbits.incrementWeakRefCount();
-      // FIXME: overflow check
+      // FIXME: overflow check id:485 gh:492
     } while (!refCounts.compare_exchange_weak(oldbits, newbits,
                                               std::memory_order_relaxed));
   }
@@ -1289,7 +1289,7 @@ static_assert(std::is_trivially_destructible<InlineRefCounts>::value,
               "InlineRefCounts must be trivially destructible");
 
 class HeapObjectSideTableEntry {
-  // FIXME: does object need to be atomic?
+  // FIXME: does object need to be atomic? id:1331 gh:1338
   std::atomic<HeapObject*> object;
   SideTableRefCounts refCounts;
 
@@ -1427,8 +1427,8 @@ class HeapObjectSideTableEntry {
   }
 
   void decrementWeak() {
-    // FIXME: assertions
-    // FIXME: optimize barriers
+    // FIXME: assertions id:500 gh:507
+    // FIXME: optimize barriers id:620 gh:627
     bool cleanup = refCounts.decrementWeakShouldCleanUp();
     if (!cleanup)
       return;
@@ -1440,8 +1440,8 @@ class HeapObjectSideTableEntry {
   }
 
   void decrementWeakNonAtomic() {
-    // FIXME: assertions
-    // FIXME: optimize barriers
+    // FIXME: assertions id:790 gh:797
+    // FIXME: optimize barriers id:489 gh:496
     bool cleanup = refCounts.decrementWeakShouldCleanUpNonAtomic();
     if (!cleanup)
       return;

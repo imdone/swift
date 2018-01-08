@@ -12,7 +12,7 @@
 // RUN: %target-run-stdlib-swift
 // REQUIRES: executable_test
 
-// FIXME: This test runs very slowly on watchOS.
+// FIXME: This test runs very slowly on watchOS. id:3505 gh:3517
 // UNSUPPORTED: OS=watchos
 
 public enum ApproximateCount {
@@ -32,7 +32,7 @@ public protocol SplittableCollection : Collection {
   // We need this protocol so that collections with only forward or bidirectional
   // traversals could customize their splitting behavior.
   //
-  // FIXME: all collections with random access should conform to this protocol
+  // FIXME: all collections with random access should conform to this protocol id:3915 gh:3927
   // automatically.
 
   /// Splits a given range of indices into a set of disjoint ranges covering
@@ -40,14 +40,14 @@ public protocol SplittableCollection : Collection {
   ///
   /// Complexity: amortized O(1).
   ///
-  /// FIXME: should that be O(log n) to cover some strange collections?
+  /// FIXME: should that be O(log n) to cover some strange collections? id:2847 gh:2859
   ///
-  /// FIXME: index invalidation rules?
+  /// FIXME: index invalidation rules? id:3187 gh:3199
   ///
-  /// FIXME: a better name.  Users will never want to call this method
+  /// FIXME: a better name.  Users will never want to call this method id:3598 gh:3610
   /// directly.
   ///
-  /// FIXME: return an optional for the common case when split() cannot
+  /// FIXME: return an optional for the common case when split() cannot id:3508 gh:3520
   /// subdivide the range further.
   func split(_ range: Range<Index>) -> [Range<Index>]
 }
@@ -135,7 +135,7 @@ extension Array : SplittableCollection {
 }
 
 public struct ArrayBuilder<T> : CollectionBuilder {
-  // FIXME: the compiler didn't complain when I remove public on 'Collection'.
+  // FIXME: the compiler didn't complain when I remove public on 'Collection'. id:3917 gh:3929
   // File a bug.
   public typealias Destination = Array<T>
   public typealias Element = T
@@ -161,11 +161,11 @@ public struct ArrayBuilder<T> : CollectionBuilder {
   }
 
   public mutating func moveContentsOf(_ otherBuilder: inout ArrayBuilder<T>) {
-    // FIXME: do something smart with the capacity set in this builder and the
+    // FIXME: do something smart with the capacity set in this builder and the id:2850 gh:2862
     // other builder.
     _resultParts.append(_resultTail)
     _resultTail = []
-    // FIXME: not O(1)!
+    // FIXME: not O(1)! id:3190 gh:3202
     _resultParts.append(contentsOf: otherBuilder._resultParts)
     otherBuilder._resultParts = []
     swap(&_resultTail, &otherBuilder._resultTail)
@@ -174,7 +174,7 @@ public struct ArrayBuilder<T> : CollectionBuilder {
   public mutating func takeResult() -> Destination {
     _resultParts.append(_resultTail)
     _resultTail = []
-    // FIXME: optimize.  parallelize.
+    // FIXME: optimize.  parallelize. id:3600 gh:3612
     return Array(_resultParts.joined())
   }
 }
@@ -197,7 +197,7 @@ import SwiftPrivate
 import Darwin
 import Dispatch
 
-// FIXME: port to Linux.
+// FIXME: port to Linux. id:3511 gh:3523
 // XFAIL: linux
 
 // A wrapper for pthread_t with platform-independent interface.
@@ -314,11 +314,11 @@ final class _ForkJoinOneShotEvent {
 }
 
 final class _ForkJoinWorkDeque<T> {
-  // FIXME: this is just a proof-of-concept; very inefficient.
+  // FIXME: this is just a proof-of-concept; very inefficient. id:3919 gh:3931
 
   // Implementation note: adding elements to the head of the deque is common in
   // fork-join, so _deque is stored reversed (appending to an array is cheap).
-  // FIXME: ^ that is false for submission queues though.
+  // FIXME: ^ that is false for submission queues though. id:2853 gh:2865
   var _deque: ContiguousArray<T> = []
   var _dequeMutex: _ForkJoinMutex = _ForkJoinMutex()
 
@@ -468,7 +468,7 @@ final class _ForkJoinWorkerThread {
           continue
         }
 
-        // FIXME: steal from submission queues?
+        // FIXME: steal from submission queues? id:3192 gh:3204
 
         break
       }
@@ -504,11 +504,11 @@ final class _ForkJoinWorkerThread {
         return
       }
 
-      // FIXME: also check the submission queue, maybe the task is there?
+      // FIXME: also check the submission queue, maybe the task is there? id:3602 gh:3614
 
-      // FIXME: try to find the task in other threads' queues.
+      // FIXME: try to find the task in other threads' queues. id:3516 gh:3528
 
-      // FIXME: try to find tasks that were forked from this task in other
+      // FIXME: try to find tasks that were forked from this task in other id:3921 gh:3933
       // threads' queues.  Help thieves by stealing those tasks back.
 
       // At this point, we can't do any work to help with running this task.
@@ -517,7 +517,7 @@ final class _ForkJoinWorkerThread {
       // errors).
       _pool._compensateForBlockedWorkerThread() {
         task._blockingWait()
-        // FIXME: do a timed wait, and retry stealing.
+        // FIXME: do a timed wait, and retry stealing. id:2857 gh:2869
       }
     }
   }
@@ -540,7 +540,7 @@ internal protocol _Future {
 public class ForkJoinTaskBase {
   final internal var _pool: ForkJoinPool?
 
-  // FIXME(performance): there is no need to create heavy-weight
+  // FIXME (performance): there is no need to create heavy-weight id:3193 gh:3205
   // synchronization primitives every time.  We could start with a lightweight
   // atomic int for the flag and inflate to a full event when needed.  Unless
   // we really need to block in wait(), we would avoid creating an event.
@@ -564,7 +564,7 @@ public class ForkJoinTaskBase {
     if let thread = ForkJoinPool._getCurrentThread() {
       thread._forkTask(self)
     } else {
-      // FIXME: decide if we want to allow this.
+      // FIXME: decide if we want to allow this. id:3604 gh:3616
       precondition(false)
       ForkJoinPool.commonPool.forkTask(self)
     }
@@ -692,7 +692,7 @@ final public class ForkJoinPool {
   }
 
   internal func _compensateForBlockedWorkerThread(_ blockingBody: @escaping () -> ()) {
-    // FIXME: limit the number of compensating threads.
+    // FIXME: limit the number of compensating threads. id:3519 gh:3531
     let submissionQueue = _ForkJoinWorkDeque<ForkJoinTaskBase>()
     let workDeque = _ForkJoinWorkDeque<ForkJoinTaskBase>()
     let thread = _ForkJoinWorkerThread(
@@ -747,7 +747,7 @@ final public class ForkJoinPool {
     var success = false
     var oldNumThreads = _totalThreads.load()
     repeat {
-      // FIXME: magic number 2.
+      // FIXME: magic number 2. id:3923 gh:3935
       if oldNumThreads <= _maxThreads + 2 {
         return false
       }
@@ -795,7 +795,7 @@ final public class ForkJoinPool {
     }
   }
 
-  // FIXME: return a Future instead?
+  // FIXME: return a Future instead? id:2861 gh:2873
   public func forkTask<Result>(task: @escaping () -> Result) -> ForkJoinTask<Result> {
     let forkJoinTask = ForkJoinTask(_task: task)
     forkTask(forkJoinTask)
@@ -816,12 +816,12 @@ final public class ForkJoinPool {
       // Run the first task in this thread, fork the rest.
       let first = tasks.first
       for t in tasks.dropFirst() {
-        // FIXME: optimize forking in bulk.
+        // FIXME: optimize forking in bulk. id:3195 gh:3207
         t.fork()
       }
       first!._run()
     } else {
-      // FIXME: decide if we want to allow this.
+      // FIXME: decide if we want to allow this. id:3606 gh:3618
       precondition(false)
     }
   }
@@ -1424,7 +1424,7 @@ t.test("ForkJoinPool.forkTask/MapArray") {
 }
 
 /*
- * FIXME: reduce compiler crasher
+ * FIXME: reduce compiler crasher id:3524 gh:3536
 t.test("ForkJoinPool.forkTask") {
   func fib(_ n: Int) -> Int {
     if n == 0 || n == 1 {

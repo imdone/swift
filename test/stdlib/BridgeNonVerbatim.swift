@@ -84,7 +84,7 @@ BridgeNonVerbatimTests.test("testing") {
       var objects: [Int] = [0, 0]
 
       objects.withUnsafeMutableBufferPointer {
-        // FIXME: Can't elide signature and use $0 here <rdar://problem/17770732> 
+        // FIXME: Can't elide signature and use $0 here <rdar://problem/17770732>  id:3836 gh:3848
         (buf: inout UnsafeMutableBufferPointer<Int>) -> () in
         nsx.available_getObjects(
           AutoreleasingUnsafeMutablePointer(buf.baseAddress!),

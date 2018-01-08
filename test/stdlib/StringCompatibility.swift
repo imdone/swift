@@ -310,15 +310,15 @@ Tests.test("RangeReplaceable.init/generic/\(swift)") {
 
   check(String.self, from: "a" as String)
   check(Substring.self, from: "b" as String)
-  // FIXME: Why isn't this working?
+  // FIXME: Why isn't this working? id:3879 gh:3891
   // check(MyString.self, from: "c" as String)
   
   check(String.self, from: "d" as Substring)
   check(Substring.self, from: "e" as Substring)
-  // FIXME: Why isn't this working?
+  // FIXME: Why isn't this working? id:3939 gh:3951
   // check(MyString.self, from: "f" as Substring)
 
-  // FIXME: Why isn't this working?
+  // FIXME: Why isn't this working? id:4153 gh:4165
   // check(String.self, from: "g" as MyString)
   // check(Substring.self, from: "h" as MyString)
   check(MyString.self, from: "i" as MyString)

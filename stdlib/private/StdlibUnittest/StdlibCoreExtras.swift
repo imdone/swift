@@ -38,7 +38,7 @@ func findSubstring(_ string: String, _ substring: String) -> String.Index? {
 #if _runtime(_ObjC)
   return string.range(of: substring)?.lowerBound
 #else
-  // FIXME(performance): This is a very non-optimal algorithm, with a worst
+  // FIXME (performance): This is a very non-optimal algorithm, with a worst id:307 gh:314
   // case of O((n-m)*m). When non-objc String has a match function that's better,
   // this should be removed in favor of using that.
 

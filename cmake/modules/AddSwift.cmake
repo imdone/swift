@@ -219,7 +219,7 @@ function(_add_variant_c_compile_flags)
     # -D_MD or D_MDd either, as CMake does this automatically.
     if(NOT "${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
       list(APPEND result -Xclang;--dependent-lib=oldnames)
-      # TODO(compnerd) handle /MT, /MTd, /MD, /MDd
+      # TODO (compnerd) handle /MT, /MTd, /MD, /MDd id:13 gh:14
       if("${CMAKE_BUILD_TYPE}" STREQUAL "RELEASE")
         list(APPEND result "-D_MD")
         list(APPEND result -Xclang;--dependent-lib=msvcrt)
@@ -239,14 +239,14 @@ function(_add_variant_c_compile_flags)
     list(APPEND result "-D_CRT_SECURE_NO_WARNINGS")
     list(APPEND result "-D_CRT_NONSTDC_NO_WARNINGS")
     list(APPEND result "-D_CRT_USE_BUILTIN_OFFSETOF")
-    # TODO(compnerd) permit building for different families
+    # TODO (compnerd) permit building for different families id:41 gh:48
     list(APPEND result "-D_CRT_USE_WINAPI_FAMILY_DESKTOP_APP")
     if("${CFLAGS_ARCH}" MATCHES arm)
       list(APPEND result "-D_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE")
     endif()
-    # TODO(compnerd) handle /MT
+    # TODO (compnerd) handle /MT id:14 gh:15
     list(APPEND result "-D_DLL")
-    # NOTE: We assume that we are using VS 2015 U2+
+    # NOTE: We assume that we are using VS 2015 U2+ id:15 gh:16
     list(APPEND result "-D_ENABLE_ATOMIC_ALIGNMENT_FIX")
   endif()
 
@@ -262,7 +262,7 @@ function(_add_variant_c_compile_flags)
   endif()
 
   if("${CFLAGS_SDK}" STREQUAL "ANDROID")
-    # FIXME: Instead of hardcoding paths in the Android NDK, these paths should
+    # FIXME: Instead of hardcoding paths in the Android NDK, these paths should id:16 gh:17
     #        be passed in via ENV, as with the Windows build.
     list(APPEND result
         "-I${SWIFT_ANDROID_NDK_PATH}/sources/cxx-stl/llvm-libc++/include"
@@ -354,7 +354,7 @@ function(_add_variant_link_flags)
   elseif("${LFLAGS_SDK}" STREQUAL "WINDOWS")
     # We don't need to add -nostdlib using MSVC or clang-cl, as MSVC and clang-cl rely on auto-linking entirely.
     if(NOT SWIFT_COMPILER_IS_MSVC_LIKE)
-      # NOTE: we do not use "/MD" or "/MDd" and select the runtime via linker
+      # NOTE: we do not use "/MD" or "/MDd" and select the runtime via linker id:17 gh:18
       # options. This causes conflicts.
       list(APPEND result "-nostdlib")
     endif()
@@ -697,7 +697,7 @@ function(_add_swift_library_single target name)
     foreach(framework_name ${SWIFT_API_NOTES_INPUTS})
       if (${framework_name} STREQUAL "WatchKit" AND
           ${SWIFTLIB_SINGLE_SDK} STREQUAL "OSX")
-        # HACK: don't build WatchKit API notes for OS X.
+        # HACK: don't build WatchKit API notes for OS X. id:42 gh:49
       else()
         if (NOT IS_DIRECTORY "${SWIFT_SOURCE_DIR}/stdlib/public/SDK/${framework_name}")
           list(APPEND SWIFTLIB_SINGLE_API_NOTES "${framework_name}")
@@ -729,7 +729,7 @@ function(_add_swift_library_single target name)
       list(APPEND SWIFTLIB_SINGLE_SWIFT_COMPILE_FLAGS -Xcc;-D_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE)
     endif()
     list(APPEND SWIFTLIB_SINGLE_SWIFT_COMPILE_FLAGS -Xfrontend;-autolink-library;-Xfrontend;oldnames)
-    # TODO(compnerd) handle /MT and /MTd
+    # TODO (compnerd) handle /MT and /MTd id:18 gh:19
     if("${CMAKE_BUILD_TYPE}" STREQUAL "RELEASE")
       list(APPEND SWIFTLIB_SINGLE_SWIFT_COMPILE_FLAGS -Xfrontend;-autolink-library;-Xfrontend;msvcrt)
     else()
@@ -737,7 +737,7 @@ function(_add_swift_library_single target name)
     endif()
   endif()
 
-  # FIXME: don't actually depend on the libraries in SWIFTLIB_SINGLE_LINK_LIBRARIES,
+  # FIXME: don't actually depend on the libraries in SWIFTLIB_SINGLE_LINK_LIBRARIES, id:19 gh:20
   # just any swiftmodule files that are associated with them.
   handle_swift_sources(
       swift_object_dependency_target
@@ -823,7 +823,7 @@ function(_add_swift_library_single target name)
       "${SWIFT_SDK_${SWIFTLIB_SINGLE_SDK}_OBJECT_FORMAT}" STREQUAL "COFF") AND
      SWIFTLIB_TARGET_LIBRARY)
     if("${libkind}" STREQUAL "SHARED" AND NOT SWIFTLIB_SINGLE_NOSWIFTRT)
-      # TODO(compnerd) switch to the generator expression when cmake is upgraded
+      # TODO (compnerd) switch to the generator expression when cmake is upgraded id:20 gh:21
       # to a version which supports it.
       # target_sources(${target}
       #                PRIVATE
@@ -990,7 +990,7 @@ function(_add_swift_library_single target name)
         "${swift_module_dependency_target}"
         ${LLVM_COMMON_DEPENDS})
 
-  # HACK: On some systems or build directory setups, CMake will not find static
+  # HACK: On some systems or build directory setups, CMake will not find static id:21 gh:22
   # archives of Clang libraries in the Clang build directory, and it will pass
   # them as '-lclangFoo'.  Some other logic in CMake would reorder libraries
   # specified with this syntax, which breaks linking.
@@ -1030,7 +1030,7 @@ function(_add_swift_library_single target name)
         "${SWIFTLIB_SINGLE_LINK_LIBRARIES_WITHOUT_ICU}"
         "-static"
         target_static_depends)
-    # FIXME: should this be target_link_libraries?
+    # FIXME: should this be target_link_libraries? id:43 gh:50
     add_dependencies_multiple_targets(
         TARGETS "${target_static}"
         DEPENDS ${target_static_depends})
@@ -1570,7 +1570,7 @@ function(add_swift_library name)
           list(APPEND swiftlib_swift_compile_flags_all
               ${SWIFTLIB_SWIFT_COMPILE_FLAGS_WATCHOS})
         elseif("${sdk}" STREQUAL "WINDOWS")
-          # FIXME(SR2005) static and shared are not mutually exclusive; however
+          # FIXME (SR2005) static and shared are not mutually exclusive; however id:22 gh:23
           # since we do a single build of the sources, this doesn't work for
           # building both simultaneously.  Effectively, only shared builds are
           # supported on windows currently.

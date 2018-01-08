@@ -1,4 +1,4 @@
-// FIXME(integers): %t.response content is non-deterministic with the new
+// FIXME (integers): %t.response content is non-deterministic with the new id:3703 gh:3715
 // integer protocols
 // XFAIL: *
 

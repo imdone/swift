@@ -105,7 +105,7 @@ func foo(_ y : A?) {
 // CHECK-NEXT: checked_cast_br [[VAL]] : $A to $B, [[IS_B:bb.*]], [[NOT_B:bb[0-9]+]]
 //
 //   If so, inject it back into an optional.
-//   TODO: We're going to switch back out of this; we really should peephole it.
+//   TODO: We're going to switch back out of this; we really should peephole it. id:3230 gh:3242
 // CHECK:    [[IS_B]]([[T0:%.*]] : @owned $B):
 // CHECK-NEXT: enum $Optional<B>, #Optional.some!enumelt.1, [[T0]]
 // CHECK-NEXT: br [[SWITCH_OB2:bb[0-9]+]](

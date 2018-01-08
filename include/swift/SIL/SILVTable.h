@@ -42,7 +42,7 @@ class SILModule;
 class SILVTable : public llvm::ilist_node<SILVTable>,
                   public SILAllocated<SILVTable> {
 public:
-  // TODO: Entry should include substitutions needed to invoke an overridden
+  // TODO: Entry should include substitutions needed to invoke an overridden id:349 gh:356
   // generic base class method.
   struct Entry {
     enum Kind : uint8_t {

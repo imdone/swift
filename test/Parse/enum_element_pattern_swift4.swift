@@ -2,7 +2,7 @@
 
 // https://bugs.swift.org/browse/SR-3452
 // See test/Compatibility/enum_element_pattern.swift for Swift3 behavior.
-// As for FIXME cases: see https://bugs.swift.org/browse/SR-3466
+// As for FIXME cases: see https://bugs.swift.org/browse/SR-3466 id:3474 gh:3486
 
 enum E {
   case A, B, C, D

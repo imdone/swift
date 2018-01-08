@@ -72,7 +72,7 @@ public typealias RangeReplaceableIndexable = RangeReplaceableCollection
 /// provide your own custom implementation.
 public protocol RangeReplaceableCollection : Collection
   where SubSequence : RangeReplaceableCollection {
-  // FIXME(ABI): Associated type inference requires this.
+  // FIXME (ABI): Associated type inference requires this. id:1453 gh:1460
   associatedtype SubSequence
 
   //===--- Fundamental Requirements ---------------------------------------===//
@@ -195,7 +195,7 @@ public protocol RangeReplaceableCollection : Collection
   ///
   /// - Complexity: O(*n*), where *n* is the length of the resulting
   ///   collection.
-  // FIXME(ABI)#166 (Evolution): Consider replacing .append(contentsOf) with +=
+  // FIXME (ABI)#166 (Evolution): Consider replacing .append(contentsOf) with += id:1677 gh:1684
   // suggestion in SE-91
   mutating func append<S : Sequence>(contentsOf newElements: S)
     where S.Element == Element
@@ -353,10 +353,10 @@ public protocol RangeReplaceableCollection : Collection
   /// - Complexity: O(*n*), where *n* is the length of the collection.
   mutating func removeAll(keepingCapacity keepCapacity: Bool /*= false*/)
 
-  // FIXME(ABI): Associated type inference requires this.
+  // FIXME (ABI): Associated type inference requires this. id:1646 gh:1653
   subscript(bounds: Index) -> Element { get }
 
-  // FIXME(ABI): Associated type inference requires this.
+  // FIXME (ABI): Associated type inference requires this. id:1359 gh:1366
   subscript(bounds: Range<Index>) -> SubSequence { get }
 }
 
@@ -848,7 +848,7 @@ extension RangeReplaceableCollection where Self : BidirectionalCollection {
   }
 }
 
-// FIXME: swift-3-indexing-model: file a bug for the compiler?
+// FIXME: swift-3-indexing-model: file a bug for the compiler? id:2323 gh:2335
 /// Ambiguity breakers.
 extension RangeReplaceableCollection
   where Self : BidirectionalCollection, SubSequence == Self {
@@ -927,7 +927,7 @@ extension RangeReplaceableCollection {
   >(lhs: Self, rhs: Other) -> Self
   where Element == Other.Element {
     var lhs = lhs
-    // FIXME: what if lhs is a reference type?  This will mutate it.
+    // FIXME: what if lhs is a reference type?  This will mutate it. id:1458 gh:1465
     lhs.append(contentsOf: rhs)
     return lhs
   }
@@ -1010,7 +1010,7 @@ extension RangeReplaceableCollection {
   >(lhs: Self, rhs: Other) -> Self
   where Element == Other.Element {
     var lhs = lhs
-    // FIXME: what if lhs is a reference type?  This will mutate it.
+    // FIXME: what if lhs is a reference type?  This will mutate it. id:1680 gh:1687
     lhs.append(contentsOf: rhs)
     return lhs
   }

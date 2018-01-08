@@ -197,7 +197,7 @@ OptionSetTaker5(.Option1, .Option4, .#^UNRESOLVED_13^#, .West)
 OptionSetTaker5(.#^UNRESOLVED_14^#, .Option4, .South, .West)
 OptionSetTaker5([.#^UNRESOLVED_15^#], .Option4, .South, .West)
 
-// FIXME: Overload needs to be handled.
+// FIXME: Overload needs to be handled. id:3478 gh:3490
 OptionSetTaker6(.#^UNRESOLVED_16^#, .Option4)
 OptionSetTaker6(.Option4, .#^UNRESOLVED_17^#,)
 

@@ -246,11 +246,11 @@ class TypeMatcher {
     TRIVIAL_CASE(GenericTypeParamType)
     TRIVIAL_CASE(DependentMemberType)
 
-    /// FIXME: Split this out into cases?
+    /// FIXME: Split this out into cases? id:80 gh:87
     bool visitAnyFunctionType(CanAnyFunctionType firstFunc, Type secondType,
                               Type sugaredFirstType) {
       if (auto secondFunc = secondType->getAs<AnyFunctionType>()) {
-        // FIXME: Compare throws()? Both existing subclasses would prefer
+        // FIXME: Compare throws()? Both existing subclasses would prefer id:92 gh:99
         // to mismatch on (!firstFunc->throws() && secondFunc->throws()), but
         // embedding that non-commutativity in this general matcher is icky.
         if (firstFunc->isNoEscape() != secondFunc->isNoEscape())

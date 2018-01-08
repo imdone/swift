@@ -96,7 +96,7 @@ public:
   /// LValues, inout args, and Archetypes are implicitly indirect by
   /// virtue of their DWARF type.
   //
-  // FIXME: Should this check if the lowered SILType is address only
+  // FIXME: Should this check if the lowered SILType is address only id:161 gh:168
   // instead? Otherwise optionals of archetypes etc will still have
   // 'isImplicitlyIndirect()' return false.
   bool isImplicitlyIndirect() const {

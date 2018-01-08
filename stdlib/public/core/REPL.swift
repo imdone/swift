@@ -11,7 +11,7 @@
 //===----------------------------------------------------------------------===//
 
 /// Print a string as is to stdout.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:2284 gh:2296
 public // COMPILER_INTRINSIC
 func _replPrintLiteralString(_ text: String) {
   print(text, terminator: "")

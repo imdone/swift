@@ -179,7 +179,7 @@ struct ObedientNonMutatingMutableAddressor: HasNonMutatingMutableSubscript {
   }
 }
 
-// FIXME: Actually plumb the work to fix the grammar in these
+// FIXME: Actually plumb the work to fix the grammar in these id:3455 gh:3467
 // diagnostics if/when we productize them.  ("a addressor")
 struct RedundantAddressors1 {
   var owner : Builtin.NativeObject

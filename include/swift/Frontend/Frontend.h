@@ -252,7 +252,7 @@ public:
     CodeCompletionBuffer = Buf;
     CodeCompletionOffset = Offset;
     // We don't need typo-correction for code-completion.
-    // FIXME: This isn't really true, but is a performance issue.
+    // FIXME: This isn't really true, but is a performance issue. id:106 gh:113
     LangOpts.TypoCorrectionLimit = 0;
   }
 

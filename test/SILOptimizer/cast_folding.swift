@@ -893,7 +893,7 @@ public func test39d() -> Bool {
 
 // CHECK-LABEL: sil [noinline] @$S12cast_folding7test40a{{[_0-9a-zA-Z]*}}F
 // CHECK: bb0
-// FIXME: Would love to fold this to just "true"
+// FIXME: Would love to fold this to just "true" id:3757 gh:3769
 // CHECK-NOT: return:
 // CHECK: unconditional_checked_cast_addr
 @inline(never)
@@ -903,7 +903,7 @@ public func test40a() -> Bool {
 
 // CHECK-LABEL: sil [noinline] @$S12cast_folding7test40b{{[_0-9a-zA-Z]*}}F
 // CHECK: bb0
-// FIXME: Would love to fold this to just "true"
+// FIXME: Would love to fold this to just "true" id:3996 gh:4008
 // CHECK-NOT: return:
 // CHECK: unconditional_checked_cast_addr
 @inline(never)
@@ -932,7 +932,7 @@ public func test40d(_ a: Any) -> Bool {
 
 // CHECK-LABEL: sil [noinline] @$S12cast_folding6test41SbyF
 // CHECK: bb0
-// FIXME: Would love to fold this to just "true"
+// FIXME: Would love to fold this to just "true" id:2947 gh:2960
 // CHECK-NOT: return:
 // CHECK: checked_cast_br
 // CHECK: //{{.*}}$S12cast_folding6test41{{.*}}F

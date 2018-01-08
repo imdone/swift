@@ -152,7 +152,7 @@ class TestDriverArgumentParserMeta(type):
     def _generate_set_true_option_test(cls, option):
         def test(self):
             with self.assertNotRaises(ParserError):
-                # TODO: Move to unit-tests for the action class
+                # TODO: Move to unit-tests for the action class id:3607 gh:3619
                 namespace = self.parse_args([])
                 self.assertFalse(getattr(namespace, option.dest))
 
@@ -165,7 +165,7 @@ class TestDriverArgumentParserMeta(type):
     def _generate_set_false_option_test(cls, option):
         def test(self):
             with self.assertNotRaises(ParserError):
-                # TODO: Move to unit-tests for the action class
+                # TODO: Move to unit-tests for the action class id:3954 gh:3966
                 namespace = self.parse_args([])
                 self.assertTrue(getattr(namespace, option.dest))
 
@@ -178,21 +178,21 @@ class TestDriverArgumentParserMeta(type):
     def _generate_enable_option_test(cls, option):
         def test(self):
             with self.assertNotRaises(ParserError):
-                # TODO: Move to unit-tests for the action class
+                # TODO: Move to unit-tests for the action class id:4002 gh:4014
                 # Test parsing True values
                 self.parse_args([option.option_string, '1'])
                 self.parse_args([option.option_string, 'true'])
                 self.parse_args([option.option_string, 'True'])
                 self.parse_args([option.option_string, 'TRUE'])
 
-                # TODO: Move to unit-tests for the action class
+                # TODO: Move to unit-tests for the action class id:4174 gh:4187
                 # Test parsing False values
                 self.parse_args([option.option_string, '0'])
                 self.parse_args([option.option_string, 'false'])
                 self.parse_args([option.option_string, 'False'])
                 self.parse_args([option.option_string, 'FALSE'])
 
-                # TODO: Move to unit-tests for the action class
+                # TODO: Move to unit-tests for the action class id:3251 gh:3263
                 # Test default value
                 namespace = self.parse_args([option.option_string])
                 self.assertTrue(getattr(namespace, option.dest))
@@ -211,21 +211,21 @@ class TestDriverArgumentParserMeta(type):
     def _generate_disable_option_test(cls, option):
         def test(self):
             with self.assertNotRaises(ParserError):
-                # TODO: Move to unit-tests for the action class
+                # TODO: Move to unit-tests for the action class id:3609 gh:3621
                 # Test parsing True values
                 self.parse_args([option.option_string, '1'])
                 self.parse_args([option.option_string, 'true'])
                 self.parse_args([option.option_string, 'True'])
                 self.parse_args([option.option_string, 'TRUE'])
 
-                # TODO: Move to unit-tests for the action class
+                # TODO: Move to unit-tests for the action class id:3957 gh:3969
                 # Test parsing False values
                 self.parse_args([option.option_string, '0'])
                 self.parse_args([option.option_string, 'false'])
                 self.parse_args([option.option_string, 'False'])
                 self.parse_args([option.option_string, 'FALSE'])
 
-                # TODO: Move to unit-tests for the action class
+                # TODO: Move to unit-tests for the action class id:4005 gh:4017
                 # Test default value
                 namespace = self.parse_args([option.option_string])
                 self.assertFalse(getattr(namespace, option.dest))
@@ -262,7 +262,7 @@ class TestDriverArgumentParserMeta(type):
                     namespace = self.parse_args([option.option_string, str(i)])
                     self.assertEqual(int(getattr(namespace, option.dest)), i)
 
-            # FIXME: int-type options should not accept non-int strings
+            # FIXME: int-type options should not accept non-int strings id:4175 gh:4188
             # with self.assertRaises(ParserError):
             #     self.parse_args([option.option_string, str(0.0)])
             #     self.parse_args([option.option_string, str(1.0)])
@@ -285,7 +285,7 @@ class TestDriverArgumentParserMeta(type):
             with self.assertNotRaises(ParserError):
                 self.parse_args([option.option_string, sys.executable])
 
-            # FIXME: path-type options should not accept non-path inputs
+            # FIXME: path-type options should not accept non-path inputs id:3253 gh:3265
             # with self.assertRaises(ParserError):
             #     self.parse_args([option.option_string, 'foo'])
 

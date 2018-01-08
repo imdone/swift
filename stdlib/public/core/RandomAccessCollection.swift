@@ -41,16 +41,16 @@ public typealias RandomAccessIndexable = RandomAccessCollection
 public protocol RandomAccessCollection: BidirectionalCollection
 where SubSequence: RandomAccessCollection, Indices: RandomAccessCollection
 {
-  // FIXME(ABI): Associated type inference requires this.
+  // FIXME (ABI): Associated type inference requires this. id:1413 gh:1420
   associatedtype Element
 
-  // FIXME(ABI): Associated type inference requires this.
+  // FIXME (ABI): Associated type inference requires this. id:1670 gh:1677
   associatedtype Index
 
-  // FIXME(ABI): Associated type inference requires this.
+  // FIXME (ABI): Associated type inference requires this. id:1638 gh:1645
   associatedtype SubSequence
 
-  // FIXME(ABI): Associated type inference requires this.
+  // FIXME (ABI): Associated type inference requires this. id:1349 gh:1356
   associatedtype Indices
 
   /// The indices that are valid for subscripting the collection, in ascending
@@ -95,20 +95,20 @@ where SubSequence: RandomAccessCollection, Indices: RandomAccessCollection
   ///   the range must be valid indices of the collection.
   subscript(bounds: Range<Index>) -> SubSequence { get }
 
-  // FIXME(ABI): Associated type inference requires this.
+  // FIXME (ABI): Associated type inference requires this. id:2289 gh:2301
   subscript(position: Index) -> Element { get }
 
-  // FIXME(ABI): Associated type inference requires this.
+  // FIXME (ABI): Associated type inference requires this. id:1415 gh:1422
   var startIndex: Index { get }
 
-  // FIXME(ABI): Associated type inference requires this.
+  // FIXME (ABI): Associated type inference requires this. id:1672 gh:1679
   var endIndex: Index { get }
 }
 
-// TODO: swift-3-indexing-model - Make sure RandomAccessCollection has
+// TODO: swift-3-indexing-model - Make sure RandomAccessCollection has id:1641 gh:1648
 // documented complexity guarantees, e.g. for index(_:offsetBy:).
 
-// TODO: swift-3-indexing-model - (By creating an ambiguity?), try to
+// TODO: swift-3-indexing-model - (By creating an ambiguity?), try to id:1352 gh:1359
 // make sure RandomAccessCollection models implement
 // index(_:offsetBy:) and distance(from:to:), or they will get the
 // wrong complexity.
@@ -157,7 +157,7 @@ extension RandomAccessCollection {
   public func index(
     _ i: Index, offsetBy n: Int, limitedBy limit: Index
   ) -> Index? {
-    // FIXME: swift-3-indexing-model: tests.
+    // FIXME: swift-3-indexing-model: tests. id:2316 gh:2328
     let l = distance(from: i, to: limit)
     if n > 0 ? l >= 0 && l < n : l <= 0 && n < l {
       return nil
@@ -192,7 +192,7 @@ where Index : Strideable,
   /// - Returns: The index value immediately after `i`.
   @_inlineable
   public func index(after i: Index) -> Index {
-    // FIXME: swift-3-indexing-model: tests for the trap.
+    // FIXME: swift-3-indexing-model: tests for the trap. id:1420 gh:1427
     _failEarlyRangeCheck(
       i, bounds: Range(uncheckedBounds: (startIndex, endIndex)))
     return i.advanced(by: 1)
@@ -203,10 +203,10 @@ where Index : Strideable,
   /// - Parameter i: A valid index of the collection. `i` must be greater than
   ///   `startIndex`.
   /// - Returns: The index value immediately before `i`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1674 gh:1681
   public func index(before i: Index) -> Index {
     let result = i.advanced(by: -1)
-    // FIXME: swift-3-indexing-model: tests for the trap.
+    // FIXME: swift-3-indexing-model: tests for the trap. id:1643 gh:1650
     _failEarlyRangeCheck(
       result, bounds: Range(uncheckedBounds: (startIndex, endIndex)))
     return result
@@ -241,7 +241,7 @@ where Index : Strideable,
     // Unfortunately, we would need to perform index manipulation to
     // compute those bounds, which is probably too slow in the general
     // case.
-    // FIXME: swift-3-indexing-model: tests for the trap.
+    // FIXME: swift-3-indexing-model: tests for the trap. id:1355 gh:1362
     _failEarlyRangeCheck(
       result, bounds: ClosedRange(uncheckedBounds: (startIndex, endIndex)))
     return result
@@ -258,7 +258,7 @@ where Index : Strideable,
   /// - Complexity: O(1)
   @_inlineable
   public func distance(from start: Index, to end: Index) -> Index.Stride {
-    // FIXME: swift-3-indexing-model: tests for traps.
+    // FIXME: swift-3-indexing-model: tests for traps. id:2320 gh:2332
     _failEarlyRangeCheck(
       start, bounds: ClosedRange(uncheckedBounds: (startIndex, endIndex)))
     _failEarlyRangeCheck(

@@ -23,7 +23,7 @@
 /// assumption is that no trasformation will add new references to existing
 /// non-escaping closures, with some exceptions like SILCloner.
 ///
-/// TODO: When this analysis is used across passes, fix SILCloner to update or
+/// TODO: When this analysis is used across passes, fix SILCloner to update or id:150 gh:157
 /// invalidate. In SILVerifier, if this analysis is marked valid, check that no
 /// new unseen closure references have been added.
 ///
@@ -34,7 +34,7 @@
 /// SILOptimizer must view as non-escaping, which must in turn be a subset of
 /// Sema's non-escaping closures.
 ///
-/// NOTE: a non-escaping function can be passed as an escaping function via
+/// NOTE: a non-escaping function can be passed as an escaping function via id:264 gh:271
 /// withoutActuallyEscaping. However, using that API to introduce recursion is
 /// disallowed according to exclusivity semantics. That is, non-escaping
 /// function types cannot be reentrant (SE-0176). In this analysis, we assert

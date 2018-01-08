@@ -81,7 +81,7 @@ public:
   /// module for the given access path. This API is intended to be
   /// used by LLDB to add swiftmodules discovered in the __apple_ast
   /// section of a Mach-O file to the search path.
-  /// FIXME: make this an actual access *path* once submodules are designed.
+  /// FIXME: make this an actual access *path* once submodules are designed. id:229 gh:236
   void registerMemoryBuffer(StringRef AccessPath,
                             std::unique_ptr<llvm::MemoryBuffer> input) {
     MemoryBuffers[AccessPath] = std::move(input);

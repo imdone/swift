@@ -1,5 +1,5 @@
 // RUN: %empty-directory(%t)
-// NOTE: We need to re-use the output filename ("-o run.bc") between the two
+// NOTE: We need to re-use the output filename ("-o run.bc") between the two id:4125 gh:4138
 //       runs since the LLVM BC file contains the filename specified:
 //       <UnknownCode16 ... /> record string = 'run.bc'
 // RUN: %target-build-swift -O -g -module-name foo -emit-bc %s -o %t/run.bc

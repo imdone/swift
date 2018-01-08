@@ -292,7 +292,7 @@ extension AnimalContainer {
 
 extension PettableContainer {
   @objc func doesntUseGenericParam(_ x: T, _ y: T.Type) {
-    // TODO: rdar://problem/27796375--allocating entry points are emitted as
+    // TODO: rdar://problem/27796375--allocating entry points are emitted as id:2728 gh:2740
     // true generics.
     // _ = type(of: x).init(fur: x).other()
     _ = type(of: x).adopt().other()
@@ -302,7 +302,7 @@ extension PettableContainer {
     x.pet(with: x)
   }
 
-  // TODO: rdar://problem/27796375--allocating entry points are emitted as
+  // TODO: rdar://problem/27796375--allocating entry points are emitted as id:3373 gh:3385
   // true generics.
   // expected-error@+1{{extension of a generic Objective-C class cannot access the class's generic parameters}}
   @objc func usesGenericParamZ1(_ x: T, _ y: T.Type) {
@@ -367,7 +367,7 @@ class SwiftConcreteSubclassC<T>: GenericClass<NSString> {
   override func arrayOfThings() -> [NSString] {}
 }
 
-// FIXME: Some generic ObjC APIs rely on covariance. We don't handle this well
+// FIXME: Some generic ObjC APIs rely on covariance. We don't handle this well id:2958 gh:2970
 // in Swift yet, but ensure we don't emit spurious warnings when
 // `as!` is used to force types to line up.
 func foo(x: GenericClass<NSMutableString>) {

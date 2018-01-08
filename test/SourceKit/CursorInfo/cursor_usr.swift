@@ -30,11 +30,11 @@ func foo(x: FooStruct1) -> S1 {}
 // RUN: %sourcekitd-test -req=cursor -usr "s:blahblahblah" %s -- -I %t -F %S/../Inputs/libIDE-mock-sdk %mcp_opt %s | %FileCheck %s -check-prefix=EMPTY
 // Missing s: prefix.
 // RUN: %sourcekitd-test -req=cursor -usr "10cursor_usr6globalSivp" %s -- -I %t -F %S/../Inputs/libIDE-mock-sdk %mcp_opt %s | %FileCheck %s -check-prefix=EMPTY
-// FIXME: no support for clang USRs.
+// FIXME: no support for clang USRs. id:4054 gh:4066
 // RUN: %sourcekitd-test -req=cursor -usr "c:@S@FooStruct1" %s -- -I %t -F %S/../Inputs/libIDE-mock-sdk %mcp_opt %s | %FileCheck %s -check-prefix=EMPTY
 // EMPTY: <empty cursor info>
 
-// FIXME: missing symbol shows up as some other part of the USR (the type here).
+// FIXME: missing symbol shows up as some other part of the USR (the type here). id:3001 gh:3013
 // RUN: %sourcekitd-test -req=cursor -usr "s:10cursor_usr11global_noneSivp" %s -- -I %t -F %S/../Inputs/libIDE-mock-sdk %mcp_opt %s | %FileCheck %s -check-prefix=SHOULD_BE_EMPTY
 // SHOULD_BE_EMPTY: source.lang.swift.decl.struct ()
 // SHOULD_BE_EMPTY: Int

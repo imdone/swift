@@ -98,7 +98,7 @@ struct X3a : P3 {
 
 prefix func ~~(_: X3a) -> X1a {} // expected-note{{candidate has non-matching type '(X3a) -> X1a'}} expected-note{{candidate is prefix, not postfix as required}}
 
-// FIXME: Add example with overloaded prefix/postfix
+// FIXME: Add example with overloaded prefix/postfix id:3442 gh:3454
 
 // Prefix/postfix mismatch.
 struct X3z : P3 { // expected-error{{type 'X3z' does not conform to protocol 'P3'}}

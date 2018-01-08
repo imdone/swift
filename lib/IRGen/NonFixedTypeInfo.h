@@ -114,7 +114,7 @@ public:
     return emitLoadOfIsInline(IGF, T);
   }
 
-  /// FIXME: Dynamic extra inhabitant lookup.
+  /// FIXME: Dynamic extra inhabitant lookup. id:155 gh:162
   bool mayHaveExtraInhabitants(IRGenModule &) const override { return false; }
   llvm::Value *getExtraInhabitantIndex(IRGenFunction &IGF,
                                        Address src, SILType T) const override {

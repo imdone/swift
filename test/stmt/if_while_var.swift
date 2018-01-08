@@ -35,13 +35,13 @@ if case let x? = nonOptionalEnum() { } // expected-error{{'?' pattern cannot mat
 class B {} // expected-note * {{did you mean 'B'?}}
 class D : B {}// expected-note * {{did you mean 'D'?}}
 
-// TODO poor recovery in these cases
+// TODO poor recovery in these cases id:3972 gh:3984
 if let {} // expected-error {{expected '{' after 'if' condition}} expected-error {{pattern matching in a condition requires the 'case' keyword}}
 if let x = {} // expected-error{{'{' after 'if'}} expected-error {{variable binding in a condition requires an initializer}} expected-error{{initializer for conditional binding must have Optional type, not '() -> ()'}}
 
 if let x = foo() {
 } else {
-  // TODO: more contextual error? "x is only available on the true branch"?
+  // TODO: more contextual error? "x is only available on the true branch"? id:4165 gh:4177
   use(x) // expected-error{{unresolved identifier 'x'}}
 }
 

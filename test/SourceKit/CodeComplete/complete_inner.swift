@@ -154,7 +154,7 @@ func test005(x: FooBar) {
 }
 // RUN: %complete-test %s -group=none -no-inner-results -inner-operators -tok=FOOBAR_INSTANCE_POSTFIX | %FileCheck %s -check-prefix=FOOBAR_INSTANCE_POSTFIX_OP
 // FOOBAR_INSTANCE_POSTFIX_OP: .
-// FIXME: We should probably just have '[' here - rdar://22702955
+// FIXME: We should probably just have '[' here - rdar://22702955 id:3794 gh:3806
 // FOOBAR_INSTANCE_POSTFIX_OP: [Foo]
 
 func test005(x: Base?) {
@@ -194,5 +194,5 @@ func test009() {
   var e: WithLeading
   e = #^LEADING_DOT_1^#
 }
-// FIXME: should have leading dot.
+// FIXME: should have leading dot. id:4046 gh:4058
 // LEADING_DOT_S-NOT: .

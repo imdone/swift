@@ -21,7 +21,7 @@ import Foundation
   // CHECK-DAG: - "bar"
   func bar(_ x: Int, y: Int) {}
   
-  // FIXME: We don't really need this twice, but de-duplicating is effort.
+  // FIXME: We don't really need this twice, but de-duplicating is effort. id:3870 gh:3882
   // CHECK-DAG: - "bar"
   func bar(_ str: String) {}
     
@@ -56,7 +56,7 @@ func testDynamicLookup(_ obj: AnyObject) {
   // CHECK-DAG: - !private "method"
   _ = obj.method(5, with: 5.0 as Double)
   
-  // TODO: unable to resolve ambiguity
+  // TODO: unable to resolve ambiguity id:2775 gh:2787
   // C/HECK-DAG: - !private "subscript"
   // _ = obj[2] as Any
   // _ = obj[2] as Any!

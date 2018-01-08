@@ -43,7 +43,7 @@ void nested_pointer_audited2(const int * _Nullable const * _Nonnull p);
 void decay_param_array(int p[]);
 void decay_param_const_array(const int p[]);
 
-// FIXME: These two should work some day, too.  Right now we don't import
+// FIXME: These two should work some day, too.  Right now we don't import id:2991 gh:3003
 // function types.
 void decay_param_func(void g(int));
 void decay_param_nested(void g(int p[]));

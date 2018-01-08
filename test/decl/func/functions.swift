@@ -64,7 +64,7 @@ func recover_missing_body_2() // expected-error {{expected '{' in body of functi
 // function g, while recovering from parse error in f() parameter tuple.  We
 // should produce the error about missing right paren.
 //
-// FIXME: The errors are awful.  We should produce just the error about paren.
+// FIXME: The errors are awful.  We should produce just the error about paren. id:3718 gh:3730
 func f_recover_missing_tuple_paren(_ a: Int // expected-note {{to match this opening '('}} expected-error{{expected '{' in body of function declaration}} expected-error {{expected ')' in parameter}} 
 func g_recover_missing_tuple_paren(_ b: Int) {
 }
@@ -147,7 +147,7 @@ func unnamed(Int) { } // expected-error{{unnamed parameters must be written with
 
 func typeAttrBeforeParamDecl(@convention(c) _: () -> Void) {} // expected-error{{attribute can only be applied to types, not declarations}}
 
-// FIXME: Bad diagnostics
+// FIXME: Bad diagnostics id:3821 gh:3833
 func bareTypeWithAttr(@convention(c) () -> Void) {} // expected-error{{attribute can only be applied to types, not declarations}}
 // expected-error @-1 {{unnamed parameters must be written with the empty name '_'}} {{38-38=_: }}
 

@@ -382,9 +382,9 @@ struct _RaceTestAggregatedEvaluations : CustomStringConvertible {
   }
 }
 
-// FIXME: protect this class against false sharing.
+// FIXME: protect this class against false sharing. id:418 gh:425
 class _RaceTestWorkerState<RT : RaceTestWithPerTrialData> {
-  // FIXME: protect every element of 'raceData' against false sharing.
+  // FIXME: protect every element of 'raceData' against false sharing. id:177 gh:184
   var raceData: [RT.RaceData] = []
   var raceDataShuffle: [Int] = []
   var observations: [RT.Observation] = []
@@ -464,7 +464,7 @@ func _masterThreadOneTrial<RT>(_ sharedState: _RaceTestSharedState<RT>) {
       gather(sharedState.workerStates[i].observations, shuffle)
   }
   if true {
-    // FIXME: why doesn't the bracket syntax work?
+    // FIXME: why doesn't the bracket syntax work? id:292 gh:299
     // <rdar://problem/18305718> Array sugar syntax does not work when used
     // with associated types
     var observations: [RT.Observation] = []

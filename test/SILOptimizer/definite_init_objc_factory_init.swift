@@ -17,7 +17,7 @@ func testInstanceTypeFactoryMethod(queen: Bee) {
 }
 
 extension Hive {
-  // FIXME: This whole approach is wrong. This should be a factory
+  // FIXME: This whole approach is wrong. This should be a factory id:4000 gh:4012
   // initializer, not a convenience initializer, which means it does
   // not have an initializing entry point at all.
 

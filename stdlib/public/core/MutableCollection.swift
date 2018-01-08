@@ -68,13 +68,13 @@ public typealias MutableIndexable = MutableCollection
 public protocol MutableCollection: Collection
 where SubSequence: MutableCollection
 {
-  // FIXME(ABI): Associated type inference requires this.
+  // FIXME (ABI): Associated type inference requires this. id:2224 gh:2236
   associatedtype Element
 
-  // FIXME(ABI): Associated type inference requires this.
+  // FIXME (ABI): Associated type inference requires this. id:1220 gh:1227
   associatedtype Index
 
-  // FIXME(ABI): Associated type inference requires this.
+  // FIXME (ABI): Associated type inference requires this. id:1568 gh:1576
   associatedtype SubSequence
 
   /// Accesses the element at the specified position.
@@ -187,7 +187,7 @@ where SubSequence: MutableCollection
   ) rethrows -> R?
 }
 
-// TODO: swift-3-indexing-model - review the following
+// TODO: swift-3-indexing-model - review the following id:1572 gh:1579
 extension MutableCollection {
   @_inlineable
   public mutating func _withUnsafeMutableBufferPointerIfSupported<R>(

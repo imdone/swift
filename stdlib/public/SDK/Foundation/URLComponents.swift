@@ -295,7 +295,7 @@ public struct URLComponents : ReferenceConvertible, Hashable, Equatable, _Mutabl
         return _handle.map { $0.hash }
     }
     
-    // MARK: - Bridging
+    // MARK: - Bridging id:428 gh:435
     
     fileprivate init(reference: NSURLComponents) {
         _handle = _MutableHandle(reference: reference)

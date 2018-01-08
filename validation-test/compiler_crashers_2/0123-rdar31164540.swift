@@ -38,7 +38,7 @@ internal func _abstract(
 #endif
 }
 
-// MARK: Type-erased abstract base classes
+// MARK: Type-erased abstract base classes id:3982 gh:3994
 
 public class AnyKeyPath: Hashable {
   public func appending<Value, AppendedValue>(
@@ -106,7 +106,7 @@ public class AnyKeyPath: Hashable {
     }
   }
   
-  // MARK: Implementation details
+  // MARK: Implementation details id:4033 gh:4045
   
   // Prevent normal initialization. We use tail allocation via
   // allocWithTailElems().
@@ -149,16 +149,16 @@ public class PartialKeyPath<Root>: AnyKeyPath {
     _abstract()
   }
 
-  // MARK: Override abstract interfaces
+  // MARK: Override abstract interfaces id:4184 gh:4196
   @_inlineable
   public final override class var rootType: Any.Type {
     return Root.self
   }
 }
 
-// MARK: Concrete implementations
+// MARK: Concrete implementations id:3276 gh:3288
 
-// FIXME(ABI): This protocol is a hack to work around the inability to have
+// FIXME (ABI): This protocol is a hack to work around the inability to have id:3629 gh:3641
 // "new" non-overriding overloads in subclasses
 public protocol _KeyPath {
   associatedtype _Root
@@ -284,7 +284,7 @@ public class KeyPath<Root, Value>: PartialKeyPath<Root>, _KeyPath {
     )
   }
 
-  // MARK: Override optional-returning abstract interfaces
+  // MARK: Override optional-returning abstract interfaces id:3986 gh:3998
   @_inlineable
   public final override func appending<Value2, AppendedValue>(
     path: KeyPath<Value2, AppendedValue>
@@ -313,7 +313,7 @@ public class KeyPath<Root, Value>: PartialKeyPath<Root>, _KeyPath {
     return Value.self
   }
   
-  // MARK: Implementation
+  // MARK: Implementation id:4036 gh:4048
   
   enum Kind { case readOnly, value, reference }
   class var kind: Kind { return .readOnly }
@@ -342,7 +342,7 @@ public class KeyPath<Root, Value>: PartialKeyPath<Root>, _KeyPath {
   }
   
   final func projectReadOnly(from root: Root) -> Value {
-    // TODO: For perf, we could use a local growable buffer instead of Any
+    // TODO: For perf, we could use a local growable buffer instead of Any id:4185 gh:4197
     var curBase: Any = root
     return withBuffer {
       var buffer = $0
@@ -389,7 +389,7 @@ public class WritableKeyPath<Root, Value>: KeyPath<Root, Value> {
     )
   }
 
-  // MARK: Implementation detail
+  // MARK: Implementation detail id:3279 gh:3291
   
   override class var kind: Kind { return .value }
 
@@ -426,7 +426,7 @@ public class WritableKeyPath<Root, Value>: KeyPath<Root, Value> {
         if optNextType == nil { break }
         type = nextType
       }
-      // TODO: With coroutines, it would be better to yield here, so that
+      // TODO: With coroutines, it would be better to yield here, so that id:3631 gh:3643
       // we don't need the hack of the keepAlive array to manage closing
       // accesses.
       let typedPointer = p.assumingMemoryBound(to: Value.self)
@@ -438,7 +438,7 @@ public class WritableKeyPath<Root, Value>: KeyPath<Root, Value> {
 }
 
 public class ReferenceWritableKeyPath<Root, Value>: WritableKeyPath<Root, Value> {
-  /* TODO: need a "new" attribute
+  /* TODO: need a "new" attribute id:3989 gh:4001
   public final func appending<AppendedValue>(
     path: WritableKeyPath<Value, AppendedValue>
   ) -> ReferenceWritableKeyPath<Root, AppendedValue> {
@@ -448,7 +448,7 @@ public class ReferenceWritableKeyPath<Root, Value>: WritableKeyPath<Root, Value>
     )
   }*/
 
-  // MARK: Implementation detail
+  // MARK: Implementation detail id:4039 gh:4051
 
   final override class var kind: Kind { return .reference }
   
@@ -530,7 +530,7 @@ extension _KeyPath where Self: ReferenceWritableKeyPath<_Root, _Value> {
   }
 }
 
-// MARK: Implementation details
+// MARK: Implementation details id:4186 gh:4198
 
 enum KeyPathComponentKind {
   /// The keypath projects within the storage of the outer value, like a
@@ -900,7 +900,7 @@ public struct _KeyPathBase<T> {
   public var base: T
   public init(base: T) { self.base = base }
   
-  // TODO: These subscripts ought to sit on `Any`
+  // TODO: These subscripts ought to sit on `Any` id:3281 gh:3293
   public subscript<U>(keyPath: KeyPath<T, U>) -> U {
     return keyPath.projectReadOnly(from: base)
   }

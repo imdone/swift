@@ -1,4 +1,4 @@
-// TODO: Relies on AnyObject lvalues <rdar://problem/17755906>
+// TODO: Relies on AnyObject lvalues <rdar://problem/17755906> id:3871 gh:3883
 // R/UN: %target-run-simple-swift | %FileCheck %s
 // RUN: not %target-build-swift -typecheck
 // REQUIRES: executable_test

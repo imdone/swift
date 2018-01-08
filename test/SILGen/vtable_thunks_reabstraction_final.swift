@@ -40,7 +40,7 @@ func test() {
   // CHECK: class_method {{%.*}} : $NongenericSub, #NongenericSub.foo!1 {{.*}}, $@convention(method) (@in Int, @guaranteed NongenericSub) -> @out Optional<Int>
   NongenericSub().foo(0)
 
-  // FIXME: rdar://problem/21167978
+  // FIXME: rdar://problem/21167978 id:3327 gh:3339
   // let f = NongenericSub().curried(0)
 
   // CHECK:         class_method {{%.*}} : $GenericSub<C>, #GenericSub.foo!1 {{.*}}, $@convention(method) <τ_0_0 where τ_0_0 : AnyObject> (@in τ_0_0, @guaranteed GenericSub<τ_0_0>) -> @out Optional<τ_0_0>

@@ -8,7 +8,7 @@ import CoreGraphics
 //===----------------------------------------------------------------------===//
 
 // CGColorSpace.colorTable
-// TODO: has memory issues as a runtime test, so make it verify-only for now
+// TODO: has memory issues as a runtime test, so make it verify-only for now id:3315 gh:3327
 let table: [UInt8] = [0,0,0, 255,0,0, 0,0,255, 0,255,0,
  255,255,0, 255,0,255, 0,255,255, 255,255,255]
 let space = CGColorSpace(indexedBaseSpace: CGColorSpaceCreateDeviceRGB(),

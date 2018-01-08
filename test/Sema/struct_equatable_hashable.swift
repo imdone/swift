@@ -148,7 +148,7 @@ extension OtherFileNonconforming: Hashable {
 // ...but synthesis in a type defined in another file doesn't work yet.
 extension YetOtherFileNonconforming: Equatable {} // expected-error {{cannot be automatically synthesized in an extension}}
 
-// FIXME: Remove -verify-ignore-unknown.
+// FIXME: Remove -verify-ignore-unknown. id:3680 gh:3692
 // <unknown>:0: error: unexpected error produced: invalid redeclaration of 'hashValue'
 // <unknown>:0: error: unexpected note produced: candidate has non-matching type '(Foo, Foo) -> Bool'
 // <unknown>:0: error: unexpected note produced: candidate has non-matching type '<T> (Generic<T>, Generic<T>) -> Bool'

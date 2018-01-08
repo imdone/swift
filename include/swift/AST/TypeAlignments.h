@@ -62,7 +62,7 @@ namespace swift {
 
 namespace llvm {
   /// Helper class for declaring the expected alignment of a pointer.
-  /// TODO: LLVM should provide this.
+  /// TODO: LLVM should provide this. id:78 gh:82
   template <class T, size_t AlignInBits> struct MoreAlignedPointerTraits {
     enum { NumLowBitsAvailable = AlignInBits };
     static inline void *getAsVoidPointer(T *ptr) { return ptr; }

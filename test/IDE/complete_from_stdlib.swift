@@ -9,19 +9,19 @@
 // RUN: %target-swift-ide-test -code-completion -source-filename %s -code-completion-token=PRIVATE_NOMINAL_MEMBERS_2A > %t.members2a.txt
 // RUN: %FileCheck %s -check-prefix=PRIVATE_NOMINAL_MEMBERS_2A < %t.members2a.txt
 // RUN: %FileCheck %s -check-prefix=NEGATIVE_PRIVATE_NOMINAL_MEMBERS_2A < %t.members2a.txt
-// FIXME: filter?
+// FIXME: filter? id:2670 gh:2682
 // RUN-disabled: %FileCheck %s -check-prefix=NO_STDLIB_PRIVATE < %t.members2a.txt
 
 // RUN: %target-swift-ide-test -code-completion -source-filename %s -code-completion-token=PRIVATE_NOMINAL_MEMBERS_2B > %t.members2b.txt
 // RUN: %FileCheck %s -check-prefix=PRIVATE_NOMINAL_MEMBERS_2B < %t.members2b.txt
 // RUN: %FileCheck %s -check-prefix=NEGATIVE_PRIVATE_NOMINAL_MEMBERS_2B < %t.members2b.txt
-// FIXME: filter?
+// FIXME: filter? id:2829 gh:2841
 // RUN-disabled: %FileCheck %s -check-prefix=NO_STDLIB_PRIVATE < %t.members2b.txt
 
 // RUN: %target-swift-ide-test -code-completion -source-filename %s -code-completion-token=PRIVATE_NOMINAL_MEMBERS_3 > %t.members3.txt
 // RUN: %FileCheck %s -check-prefix=PRIVATE_NOMINAL_MEMBERS_3 < %t.members3.txt
 // RUN: %FileCheck %s -check-prefix=NEGATIVE_PRIVATE_NOMINAL_MEMBERS_3 < %t.members3.txt
-// FIXME: filter?
+// FIXME: filter? id:3451 gh:3464
 // RUN-disabled: %FileCheck %s -check-prefix=NO_STDLIB_PRIVATE < %t.members3.txt
 
 // RUN: %target-swift-ide-test -code-completion -source-filename %s -code-completion-token=PRIVATE_NOMINAL_MEMBERS_4 > %t.members4.txt
@@ -81,7 +81,7 @@ func privateNominalMembers(_ a: String) {
 
 // PRIVATE_NOMINAL_MEMBERS_1: Begin completions
 
-// FIXME: we should show the qualified String.Index type.
+// FIXME: we should show the qualified String.Index type. id:3068 gh:3080
 // rdar://problem/20788802
 // PRIVATE_NOMINAL_MEMBERS_1-DAG: Decl[InstanceVar]/CurrNominal: startIndex[#String.Index#]{{; name=.+$}}
 // PRIVATE_NOMINAL_MEMBERS_1: End completions
@@ -154,10 +154,10 @@ func testArchetypeReplacement2<BAR : Equatable>(_ a: [BAR]) {
 // PRIVATE_NOMINAL_MEMBERS_6-DAG: Decl[InstanceMethod]/Super:         enumerated()[#EnumeratedSequence<[Equatable]>#]{{; name=.+}}
 // PRIVATE_NOMINAL_MEMBERS_6-DAG: Decl[InstanceMethod]/Super:         min({#by: (Equatable, Equatable) throws -> Bool##(Equatable, Equatable) throws -> Bool#})[' rethrows'][#Equatable?#]{{; name=.+}}
 // PRIVATE_NOMINAL_MEMBERS_6-DAG: Decl[InstanceMethod]/Super:         max({#by: (Equatable, Equatable) throws -> Bool##(Equatable, Equatable) throws -> Bool#})[' rethrows'][#Equatable?#]{{; name=.+}}
-// FIXME: The following should include 'partialResult' as local parameter name: "(nextPartialResult): (_ partialResult: Result, Equatable)"
+// FIXME: The following should include 'partialResult' as local parameter name: "(nextPartialResult): (_ partialResult: Result, Equatable)" id:3774 gh:3786
 // PRIVATE_NOMINAL_MEMBERS_6-DAG: Decl[InstanceMethod]/Super:         reduce({#(initialResult): Result#}, {#(nextPartialResult): (Result, Equatable) throws -> Result##(Result, Equatable) throws -> Result#})[' rethrows'][#Result#]{{; name=.+}}
 // PRIVATE_NOMINAL_MEMBERS_6-DAG: Decl[InstanceMethod]/Super:         dropFirst({#(n): Int#})[#ArraySlice<Equatable>#]{{; name=.+}}
-// FIXME: restore Decl[InstanceMethod]/Super:         flatMap({#(transform): (Equatable) throws -> Sequence##(Equatable) throws -> Sequence#})[' rethrows'][#[IteratorProtocol.Element]#]{{; name=.+}}
+// FIXME: restore Decl[InstanceMethod]/Super:         flatMap({#(transform): (Equatable) throws -> Sequence##(Equatable) throws -> Sequence#})[' rethrows'][#[IteratorProtocol.Element]#]{{; name=.+}} id:2672 gh:2684
 
 func testArchetypeReplacement3 (_ a : [Int]) {
   a.#^PRIVATE_NOMINAL_MEMBERS_7^#

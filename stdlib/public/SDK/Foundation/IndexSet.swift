@@ -370,7 +370,7 @@ public struct IndexSet : ReferenceConvertible, Equatable, BidirectionalCollectio
     /// Returns `true` if `self` intersects any of the integers in `range`.
     public func intersects(integersIn range: CountableClosedRange<Element>) -> Bool { return self.intersects(integersIn: Range(range)) }
 
-    // MARK: -
+    // MARK: - id:214 gh:221
     // Collection
     
     public func index(after i: Index) -> Index {
@@ -458,8 +458,8 @@ public struct IndexSet : ReferenceConvertible, Equatable, BidirectionalCollectio
         }
     }
     
-    // MARK: -
-    // MARK: SetAlgebra
+    // MARK: - id:483 gh:490
+    // MARK: SetAlgebra id:249 gh:256
     
     /// Union the `IndexSet` with `other`.
     public mutating func formUnion(_ other: IndexSet) {
@@ -548,7 +548,7 @@ public struct IndexSet : ReferenceConvertible, Equatable, BidirectionalCollectio
     @discardableResult
     public mutating func insert(_ integer: Element) -> (inserted: Bool, memberAfterInsert: Element) {
         _applyMutation { $0.add(integer) }
-        // TODO: figure out how to return the truth here
+        // TODO: figure out how to return the truth here id:337 gh:344
         return (true, integer)
     }
 
@@ -556,7 +556,7 @@ public struct IndexSet : ReferenceConvertible, Equatable, BidirectionalCollectio
     @discardableResult
     public mutating func update(with integer: Element) -> Element? {
         _applyMutation { $0.add(integer) }
-        // TODO: figure out how to return the truth here
+        // TODO: figure out how to return the truth here id:355 gh:362
         return integer
     }
 
@@ -564,13 +564,13 @@ public struct IndexSet : ReferenceConvertible, Equatable, BidirectionalCollectio
     /// Remove an integer from the `IndexSet`.
     @discardableResult
     public mutating func remove(_ integer: Element) -> Element? {
-        // TODO: Add method to NSIndexSet to do this in one call
+        // TODO: Add method to NSIndexSet to do this in one call id:217 gh:224
         let result : Element? = contains(integer) ? integer : nil
         _applyMutation { $0.remove(integer) }
         return result
     }
 
-    // MARK: -
+    // MARK: - id:486 gh:493
     
     /// Remove all values from the `IndexSet`.
     public mutating func removeAll() {
@@ -693,7 +693,7 @@ public struct IndexSet : ReferenceConvertible, Equatable, BidirectionalCollectio
         }
     }
     
-    // MARK: - Bridging Support
+    // MARK: - Bridging Support id:251 gh:258
     
     fileprivate var reference: NSIndexSet {
         return _handle.reference
@@ -828,9 +828,9 @@ extension NSIndexSet : _HasCustomAnyHashableRepresentation {
     }
 }
 
-// MARK: Protocol
+// MARK: Protocol id:340 gh:347
 
-// TODO: This protocol should be replaced with a native Swift object like the other Foundation bridged types. However, NSIndexSet does not have an abstract zero-storage base class like NSCharacterSet, NSData, and NSAttributedString. Therefore the same trick of laying it out with Swift ref counting does not work.and
+// TODO: This protocol should be replaced with a native Swift object like the other Foundation bridged types. However, NSIndexSet does not have an abstract zero-storage base class like NSCharacterSet, NSData, and NSAttributedString. Therefore the same trick of laying it out with Swift ref counting does not work.and id:358 gh:365
 /// Holds either the immutable or mutable version of a Foundation type.
 ///
 /// In many cases, the immutable type has optimizations which make it preferred when we know we do not need mutation.
@@ -877,7 +877,7 @@ private final class _MutablePairHandle<ImmutableType : NSObject, MutableType : N
         case .Default(let i):
             return try whatToDo(i)
         case .Mutable(let m):
-            // TODO: It should be possible to reflect the constraint that MutableType is a subtype of ImmutableType in the generics for the class, but I haven't figured out how yet. For now, cheat and unsafe bit cast.
+            // TODO: It should be possible to reflect the constraint that MutableType is a subtype of ImmutableType in the generics for the class, but I haven't figured out how yet. For now, cheat and unsafe bit cast. id:219 gh:226
             return try whatToDo(unsafeDowncast(m, to: ImmutableType.self))
         }
     }
@@ -887,7 +887,7 @@ private final class _MutablePairHandle<ImmutableType : NSObject, MutableType : N
         case .Default(let i):
             return i
         case .Mutable(let m):
-            // TODO: It should be possible to reflect the constraint that MutableType is a subtype of ImmutableType in the generics for the class, but I haven't figured out how yet. For now, cheat and unsafe bit cast.
+            // TODO: It should be possible to reflect the constraint that MutableType is a subtype of ImmutableType in the generics for the class, but I haven't figured out how yet. For now, cheat and unsafe bit cast. id:488 gh:495
             return unsafeDowncast(m, to: ImmutableType.self)
         }
     }

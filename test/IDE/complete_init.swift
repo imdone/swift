@@ -123,7 +123,7 @@ extension L {
 // INSIDE_L_0: Begin completions
 // INSIDE_L_0-DAG: Decl[Constructor]/CurrNominal:    Y({#x: A#})[#G#]{{; name=.+}}
 
-// FIXME: <rdar://problem/20530021> Code complete generic parameters in extensions
+// FIXME: <rdar://problem/20530021> Code complete generic parameters in extensions id:3457 gh:3469
 // disabled_INSIDE_L_0-DAG: Decl[Constructor]/CurrNominal:    X({#x: A#})[#X#]{{; name=.+}}
 
 // INSIDE_L_0: End completions

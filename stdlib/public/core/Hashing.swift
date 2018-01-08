@@ -25,8 +25,8 @@ import SwiftShims
 
 public // @testable
 struct _Hashing {
-  // FIXME(ABI)#41 : make this an actual public API.
-  @_inlineable // FIXME(sil-serialize-all)
+  // FIXME (ABI)#41 : make this an actual public API. id:803 gh:810
+  @_inlineable // FIXME (sil-serialize-all) id:1704 gh:1711
   public // SPI
   static var secretKey: (UInt64, UInt64) {
     get {
@@ -48,11 +48,11 @@ struct _Hashing {
 public // @testable
 struct _HashingDetail {
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:934 gh:941
   public // @testable
   static var fixedSeedOverride: UInt64 {
     get {
-      // HACK: the variable itself is defined in C++ code so that it is
+      // HACK: the variable itself is defined in C++ code so that it is id:1035 gh:1042
       // guaranteed to be statically initialized.  This is a temporary
       // workaround until the compiler can do the same for Swift.
       return _swift_stdlib_HashingDetail_fixedSeedOverride
@@ -62,17 +62,17 @@ struct _HashingDetail {
     }
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1161 gh:1168
   @_versioned
   @_transparent
   internal static func getExecutionSeed() -> UInt64 {
-    // FIXME: This needs to be a per-execution seed. This is just a placeholder
+    // FIXME: This needs to be a per-execution seed. This is just a placeholder id:805 gh:812
     // implementation.
     let seed: UInt64 = 0xff51afd7ed558ccd
     return _HashingDetail.fixedSeedOverride == 0 ? seed : fixedSeedOverride
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1708 gh:1715
   @_versioned
   @_transparent
   internal static func hash16Bytes(_ low: UInt64, _ high: UInt64) -> UInt64 {
@@ -96,13 +96,13 @@ struct _HashingDetail {
 // their inputs and just exhibit avalanche effect.
 //
 
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:937 gh:945
 @_transparent
 public // @testable
 func _mixUInt32(_ value: UInt32) -> UInt32 {
   // Zero-extend to 64 bits, hash, select 32 bits from the hash.
   //
-  // NOTE: this differs from LLVM's implementation, which selects the lower
+  // NOTE: this differs from LLVM's implementation, which selects the lower id:1037 gh:1044
   // 32 bits.  According to the statistical tests, the 3 lowest bits have
   // weaker avalanche properties.
   let extendedValue = UInt64(value)
@@ -110,14 +110,14 @@ func _mixUInt32(_ value: UInt32) -> UInt32 {
   return UInt32((extendedResult >> 3) & 0xffff_ffff)
 }
 
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1164 gh:1171
 @_transparent
 public // @testable
 func _mixInt32(_ value: Int32) -> Int32 {
   return Int32(bitPattern: _mixUInt32(UInt32(bitPattern: value)))
 }
 
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:807 gh:814
 @_transparent
 public // @testable
 func _mixUInt64(_ value: UInt64) -> UInt64 {
@@ -128,14 +128,14 @@ func _mixUInt64(_ value: UInt64) -> UInt64 {
   return _HashingDetail.hash16Bytes(seed &+ (low << 3), high)
 }
 
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1710 gh:1717
 @_transparent
 public // @testable
 func _mixInt64(_ value: Int64) -> Int64 {
   return Int64(bitPattern: _mixUInt64(UInt64(bitPattern: value)))
 }
 
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:940 gh:947
 @_transparent
 public // @testable
 func _mixUInt(_ value: UInt) -> UInt {
@@ -146,7 +146,7 @@ func _mixUInt(_ value: UInt) -> UInt {
 #endif
 }
 
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1039 gh:1046
 @_transparent
 public // @testable
 func _mixInt(_ value: Int) -> Int {
@@ -175,7 +175,7 @@ func _mixInt(_ value: Int) -> Int {
 /// hash value does not change anything fundamentally: collisions are still
 /// possible, and it does not prevent malicious users from constructing data
 /// sets that will exhibit pathological collisions.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1167 gh:1174
 public // @testable
 func _squeezeHashValue(_ hashValue: Int, _ upperBound: Int) -> Int {
   _sanityCheck(_isPowerOf2(upperBound))

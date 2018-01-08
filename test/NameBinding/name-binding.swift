@@ -72,10 +72,10 @@ typealias x_ty = Int
 func fy() -> y_ty { return 1 }
 typealias y_ty = Int
 
-// FIXME: Should reject this!
+// FIXME: Should reject this! id:2772 gh:2784
 //typealias x = x
 
-// FIXME: Should reject this (has infinite size or is tautological depend on
+// FIXME: Should reject this (has infinite size or is tautological depend on id:3042 gh:3054
 // how you look at it).
 enum y {
   case y
@@ -143,7 +143,7 @@ func localtest() {
     var Foo = 10
     func g() {
       struct S {
-        // FIXME: Swap these two lines to crash our broken lookup.
+        // FIXME: Swap these two lines to crash our broken lookup. id:3566 gh:3578
         typealias Foo = Int
         var x : Foo
       }
@@ -210,7 +210,7 @@ class ForwardReference {
 
 func questionablyValidForwardReference() { print(qvfrVar, terminator: ""); }; var qvfrVar: Int = 0
 
-// FIXME: This should warn too.
+// FIXME: This should warn too. id:3456 gh:3468
 print(forwardReferenceVar, terminator: ""); var forwardReferenceVar: Int = 0
 
 

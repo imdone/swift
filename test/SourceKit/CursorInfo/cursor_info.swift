@@ -223,7 +223,7 @@ func hasLocalizationKey2() {}
 // CHECK1-NEXT: s:11cursor_info4globSivp{{$}}
 // CHECK1-NEXT: Int
 
-// FIXME(integers): Disabling the checks. See <rdar://problem/31207310>
+// FIXME (integers): Disabling the checks. See <rdar://problem/31207310> id:3798 gh:3810
 // XUN: %sourcekitd-test -req=cursor -pos=9:13 %s -- -F %S/../Inputs/libIDE-mock-sdk -I %t.tmp %mcp_opt %s | %FileCheck -check-prefix=CHECK2 %s
 // XCHECK2:      source.lang.swift.ref.function.operator.infix ()
 // XCHECK2-NEXT: +
@@ -491,7 +491,7 @@ func hasLocalizationKey2() {}
 // CHECK41-NEXT: (E2.Type) -> (Int) -> E2
 // CHECK41: <Declaration>case C3(<Type usr="s:Si">Int</Type>)</Declaration>
 // CHECK41-NEXT: <decl.enumelement><syntaxtype.keyword>case</syntaxtype.keyword> <decl.name>C3</decl.name>(<ref.struct usr="s:Si">Int</ref.struct>)</decl.enumelement>
-// FIXME: Wrap parameters in <decl.var.parameter>
+// FIXME: Wrap parameters in <decl.var.parameter> id:4052 gh:4064
 
 // RUN: %sourcekitd-test -req=cursor -pos=96:8 %s -- -F %S/../Inputs/libIDE-mock-sdk -I %t.tmp %mcp_opt %s | %FileCheck %s -check-prefix=CHECK42
 // CHECK42: source.lang.swift.decl.enumelement (96:8-96:9)
@@ -596,7 +596,7 @@ func hasLocalizationKey2() {}
 
 // RUN: %sourcekitd-test -req=cursor -pos=146:7 %s -- -F %S/../Inputs/libIDE-mock-sdk -I %t.tmp %mcp_opt %s | %FileCheck %s -check-prefix=CHECK65
 // CHECK65: <decl.class><syntaxtype.keyword>class</syntaxtype.keyword> <decl.name>C6</decl.name> : C4, <ref.protocol usr="s:11cursor_info2P1P">P1</ref.protocol></decl.class>
-// FIXME: ref.class - rdar://problem/25014968
+// FIXME: ref.class - rdar://problem/25014968 id:2998 gh:3010
 
 // RUN: %sourcekitd-test -req=cursor -pos=150:10 %s -- -F %S/../Inputs/libIDE-mock-sdk -I %t.tmp %mcp_opt %s | %FileCheck %s -check-prefix=CHECK66
 // CHECK66: <decl.protocol><syntaxtype.keyword>protocol</syntaxtype.keyword> <decl.name>P2</decl.name> : AnyObject, <ref.protocol usr="s:11cursor_info2P1P">P1</ref.protocol></decl.protocol>
@@ -640,11 +640,11 @@ func hasLocalizationKey2() {}
 // CHECK73-SAME: = <syntaxtype.keyword>#file</syntaxtype.keyword>
 // CHECK73-SAME: = <syntaxtype.keyword>#line</syntaxtype.keyword>
 // CHECK73-SAME: = <syntaxtype.keyword>#column</syntaxtype.keyword>
-// FIXME: []
+// FIXME: [] id:3400 gh:3412
 // CHECK73-SAME: = <syntaxtype.keyword>default</syntaxtype.keyword>
-// FIXME: [:]
+// FIXME: [:] id:3698 gh:3710
 // CHECK73-SAME: = <syntaxtype.keyword>default</syntaxtype.keyword>
-// FIXME: keyword nil
+// FIXME: keyword nil id:3802 gh:3814
 // CHECK73-SAME: = <syntaxtype.keyword>default</syntaxtype.keyword>
 // CHECK73-SAME: = <syntaxtype.keyword>default</syntaxtype.keyword>
 

@@ -305,7 +305,7 @@ public:
   /// \brief Retrieve the innermost generic parameters of this context or any
   /// of its parents.
   ///
-  /// FIXME: Remove this
+  /// FIXME: Remove this id:55 gh:62
   GenericParamList *getGenericParamsOfContext() const;
 
   /// \brief Retrieve the innermost generic signature of this context or any
@@ -471,7 +471,7 @@ public:
   ///
   /// \param sorted Whether to sort the results in a canonical order.
   ///
-  /// FIXME: This likely makes more sense on IterableDeclContext or
+  /// FIXME: This likely makes more sense on IterableDeclContext or id:75 gh:83
   /// something similar.
   SmallVector<ProtocolDecl *, 2>
   getLocalProtocols(ConformanceLookupKind lookupKind
@@ -490,7 +490,7 @@ public:
   ///
   /// \param sorted Whether to sort the results in a canonical order.
   ///
-  /// FIXME: This likely makes more sense on IterableDeclContext or
+  /// FIXME: This likely makes more sense on IterableDeclContext or id:62 gh:69
   /// something similar.
   SmallVector<ProtocolConformance *, 2>
   getLocalConformances(ConformanceLookupKind lookupKind

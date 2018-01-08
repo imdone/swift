@@ -86,7 +86,7 @@ bool canNeverUseValues(SILInstruction *User);
 /// \returns true if the user \p User may use \p Ptr in a manner that requires
 /// Ptr's life to be guaranteed to exist at this point.
 ///
-/// TODO: Better name.
+/// TODO: Better name. id:137 gh:144
 bool mayGuaranteedUseValue(SILInstruction *User, SILValue Ptr,
                            AliasAnalysis *AA);
 
@@ -208,7 +208,7 @@ private:
   /// Return true if we have seen releases to part or all of \p Derived in
   /// \p Insts.
   /// 
-  /// NOTE: This function relies on projections to analyze the relation
+  /// NOTE: This function relies on projections to analyze the relation id:352 gh:359
   /// between the releases values in \p Insts and \p Derived, it also bails
   /// out and return true if projection path can not be formed between Base
   /// and any one the released values.

@@ -295,7 +295,7 @@ class EnumMetadataLayout : public NominalMetadataLayout {
   /// The offset of the payload size field, if there is one.
   StoredOffset PayloadSizeOffset;
 
-  // TODO: presumably it would be useful to store *something* here
+  // TODO: presumably it would be useful to store *something* here id:279 gh:286
   // for resilience.
 
   friend class IRGenModule;

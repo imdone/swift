@@ -81,7 +81,7 @@ public:
 
   SuccessorMap(const SuccessorMap &other) : Root(copyTree(other.Root)) {}
   SuccessorMap &operator=(const SuccessorMap &other) {
-    // TODO: this is clearly optimizable to re-use nodes.
+    // TODO: this is clearly optimizable to re-use nodes. id:104 gh:111
     deleteTree(Root);
     Root = copyTree(other.Root);
   }

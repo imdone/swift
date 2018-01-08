@@ -10,7 +10,7 @@ function(add_swift_unittest test_dirname)
   # function defined by AddLLVM.cmake.
   add_unittest(SwiftUnitTests ${test_dirname} ${ARGN})
 
-  # TODO: _add_variant_c_compile_link_flags and these tests should share some
+  # TODO: _add_variant_c_compile_link_flags and these tests should share some id:24 gh:25
   # sort of logic.
   #
   # *NOTE* The unittests are never built for the target, so we always enable LTO

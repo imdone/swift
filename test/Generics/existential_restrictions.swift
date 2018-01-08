@@ -78,7 +78,7 @@ extension Collection where Iterator.Element : Mine {
 
 func foo() {
   let allMine: [Mine] = [M1(), M2(), M1()]
-  // FIXME: we used to have a better diagnostic here -- the type checker
+  // FIXME: we used to have a better diagnostic here -- the type checker id:2651 gh:2663
   // would admit the conformance Mine : Mine, and later when computing
   // substitutions, a specific diagnostic was generated. Now the
   // conformance is rejected because Mine is not @objc, and we hit the

@@ -4,7 +4,7 @@
 // REQUIRES: objc_interop
 // REQUIRES: executable_test
 
-// FIXME: https://bugs.swift.org/browse/SR-2808
+// FIXME: https://bugs.swift.org/browse/SR-2808 id:3621 gh:3633
 // XFAIL: resilient_stdlib
 
 import SwiftReflectionTest

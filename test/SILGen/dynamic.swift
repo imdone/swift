@@ -73,7 +73,7 @@ protocol Proto {
 // CHECK-LABEL: sil hidden [thunk] @$S7dynamic3FooC4objcSiyXl_tcigTo
 // CHECK-LABEL: sil hidden [thunk] @$S7dynamic3FooC4objcSiyXl_tcisTo
 
-// TODO: dynamic initializing ctor must be objc dispatched
+// TODO: dynamic initializing ctor must be objc dispatched id:3209 gh:3221
 // CHECK-LABEL: sil hidden @$S7dynamic3{{[_0-9a-zA-Z]*}}fC
 // CHECK:         function_ref @$S7dynamic3{{[_0-9a-zA-Z]*}}fcTD
 // CHECK-LABEL: sil shared [transparent] [serializable] [thunk] @$S7dynamic3{{[_0-9a-zA-Z]*}}fcTD

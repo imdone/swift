@@ -128,7 +128,7 @@ func eleven_one() {
   eleven_helper {
     do {
       try thrower()
-    // FIXME: suppress the double-emission of the 'always true' warning
+    // FIXME: suppress the double-emission of the 'always true' warning id:3925 gh:3937
     } catch let e as Error { // expected-warning {{immutable value 'e' was never used}} {{17-18=_}} expected-warning 2 {{'as' test is always true}}
     }
   }

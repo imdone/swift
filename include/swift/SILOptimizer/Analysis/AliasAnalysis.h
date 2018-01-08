@@ -122,7 +122,7 @@ private:
   /// Same as AliasValueBaseToIndex, map a pointer to the indices for
   /// MemoryBehaviorCache.
   ///
-  /// NOTE: we do not use the same ValueEnumerator for the alias cache, 
+  /// NOTE: we do not use the same ValueEnumerator for the alias cache,  id:148 gh:155
   /// as when either cache is cleared, we can not clear the ValueEnumerator
   /// because doing so could give rise to collisions in the other cache.
   ValueEnumerator<SILNode*> MemoryBehaviorNodeToIndex;
@@ -200,7 +200,7 @@ public:
   /// Use the alias analysis to determine the memory behavior of Inst with
   /// respect to V.
   ///
-  /// TODO: When ref count behavior is separated from generic memory behavior,
+  /// TODO: When ref count behavior is separated from generic memory behavior, id:261 gh:268
   /// the InspectionMode flag will be unnecessary.
   MemoryBehavior computeMemoryBehavior(SILInstruction *Inst, SILValue V,
                                        RetainObserveKind);
@@ -208,7 +208,7 @@ public:
   /// Use the alias analysis to determine the memory behavior of Inst with
   /// respect to V.
   ///
-  /// TODO: When ref count behavior is separated from generic memory behavior,
+  /// TODO: When ref count behavior is separated from generic memory behavior, id:223 gh:230
   /// the InspectionMode flag will be unnecessary.
   MemoryBehavior computeMemoryBehaviorInner(SILInstruction *Inst, SILValue V,
                                             RetainObserveKind);

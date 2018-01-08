@@ -4,11 +4,11 @@
 
 // RUN: %empty-directory(%t)
 
-// FIXME: BEGIN -enable-source-import hackaround
+// FIXME: BEGIN -enable-source-import hackaround id:3900 gh:3912
 // RUN:  %target-swift-frontend(mock-sdk: -sdk %S/../Inputs/clang-importer-sdk -I %t) -emit-module -o %t %S/../Inputs/clang-importer-sdk/swift-modules/ObjectiveC.swift
 // RUN:  %target-swift-frontend(mock-sdk: -sdk %S/../Inputs/clang-importer-sdk -I %t) -emit-module -o %t  %S/../Inputs/clang-importer-sdk/swift-modules/CoreGraphics.swift
 // RUN:  %target-swift-frontend(mock-sdk: -sdk %S/../Inputs/clang-importer-sdk -I %t) -emit-module -o %t  %S/../Inputs/clang-importer-sdk/swift-modules/Foundation.swift
-// FIXME: END -enable-source-import hackaround
+// FIXME: END -enable-source-import hackaround id:2804 gh:2816
 
 // RUN: %target-swift-frontend(mock-sdk: -sdk %S/../Inputs/clang-importer-sdk -I %t) -import-objc-header %S/Inputs/circularity.h -emit-module -o %t %s
 // RUN: %target-swift-frontend(mock-sdk: -sdk %S/../Inputs/clang-importer-sdk -I %t) -import-objc-header %S/Inputs/circularity.h -parse-as-library %t/circularity-errors.swiftmodule -typecheck -emit-objc-header-path %t/circularity-errors.h

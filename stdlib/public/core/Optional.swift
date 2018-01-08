@@ -133,7 +133,7 @@ public enum Optional<Wrapped> : ExpressibleByNilLiteral {
   case some(Wrapped)
 
   /// Creates an instance that stores the given value.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1250 gh:1257
   @_transparent
   public init(_ some: Wrapped) { self = .some(some) }
 
@@ -210,7 +210,7 @@ public enum Optional<Wrapped> : ExpressibleByNilLiteral {
   ///
   /// In this example, the assignment to the `i` variable calls this
   /// initializer behind the scenes.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1601 gh:1608
   @_transparent
   public init(nilLiteral: ()) {
     self = .none
@@ -269,7 +269,7 @@ public enum Optional<Wrapped> : ExpressibleByNilLiteral {
 
 extension Optional : CustomDebugStringConvertible {
   /// A textual representation of this instance, suitable for debugging.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1597 gh:1604
   public var debugDescription: String {
     switch self {
     case .some(let value):
@@ -284,7 +284,7 @@ extension Optional : CustomDebugStringConvertible {
 }
 
 extension Optional : CustomReflectable {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1297 gh:1304
   public var customMirror: Mirror {
     switch self {
     case .some(let value):
@@ -298,7 +298,7 @@ extension Optional : CustomReflectable {
   }
 }
 
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:2248 gh:2260
 @_transparent
 public // COMPILER_INTRINSIC
 func _diagnoseUnexpectedNilOptional(_filenameStart: Builtin.RawPointer,
@@ -414,7 +414,7 @@ extension Optional : Equatable where Wrapped : Equatable {
 @_fixed_layout
 public struct _OptionalNilComparisonType : ExpressibleByNilLiteral {
   /// Create an instance initialized with `nil`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1253 gh:1260
   @_transparent
   public init(nilLiteral: ()) {
   }
@@ -451,7 +451,7 @@ extension Optional {
   /// - Parameters:
   ///   - lhs: A `nil` literal.
   ///   - rhs: A value to match against `nil`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1604 gh:1611
   @_transparent
   static public func ~=(lhs: _OptionalNilComparisonType, rhs: Wrapped?) -> Bool {
     switch rhs {
@@ -486,7 +486,7 @@ extension Optional {
   /// - Parameters:
   ///   - lhs: A value to compare to `nil`.
   ///   - rhs: A `nil` literal.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1599 gh:1606
   @_transparent
   static public func ==(lhs: Wrapped?, rhs: _OptionalNilComparisonType) -> Bool {
     switch lhs {
@@ -518,7 +518,7 @@ extension Optional {
   /// - Parameters:
   ///   - lhs: A value to compare to `nil`.
   ///   - rhs: A `nil` literal.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1299 gh:1306
   @_transparent
   static public func !=(lhs: Wrapped?, rhs: _OptionalNilComparisonType) -> Bool {
     switch lhs {
@@ -550,7 +550,7 @@ extension Optional {
   /// - Parameters:
   ///   - lhs: A `nil` literal.
   ///   - rhs: A value to compare to `nil`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2250 gh:2262
   @_transparent
   static public func ==(lhs: _OptionalNilComparisonType, rhs: Wrapped?) -> Bool {
     switch rhs {
@@ -582,7 +582,7 @@ extension Optional {
   /// - Parameters:
   ///   - lhs: A `nil` literal.
   ///   - rhs: A value to compare to `nil`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1255 gh:1262
   @_transparent
   static public func !=(lhs: _OptionalNilComparisonType, rhs: Wrapped?) -> Bool {
     switch rhs {
@@ -626,7 +626,7 @@ extension Optional {
 ///   - optional: An optional value.
 ///   - defaultValue: A value to use as a default. `defaultValue` is the same
 ///     type as the `Wrapped` type of `optional`.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1609 gh:1616
 @_transparent
 public func ?? <T>(optional: T?, defaultValue: @autoclosure () throws -> T)
     rethrows -> T {
@@ -680,7 +680,7 @@ public func ?? <T>(optional: T?, defaultValue: @autoclosure () throws -> T)
 ///   - optional: An optional value.
 ///   - defaultValue: A value to use as a default. `defaultValue` and
 ///     `optional` have the same type.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1602 gh:1609
 @_transparent
 public func ?? <T>(optional: T?, defaultValue: @autoclosure () throws -> T?)
     rethrows -> T? {
@@ -699,14 +699,14 @@ public func ?? <T>(optional: T?, defaultValue: @autoclosure () throws -> T?)
 #if _runtime(_ObjC)
 extension Optional : _ObjectiveCBridgeable {
   // The object that represents `none` for an Optional of this type.
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1301 gh:1308
+  @_versioned // FIXME (sil-serialize-all) id:2252 gh:2264
   internal static var _nilSentinel : AnyObject {
     @_silgen_name("_swift_Foundation_getOptionalNilSentinelObject")
     get
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1258 gh:1265
   public func _bridgeToObjectiveC() -> AnyObject {
     // Bridge a wrapped value by unwrapping.
     if let value = self {
@@ -716,7 +716,7 @@ extension Optional : _ObjectiveCBridgeable {
     return type(of: self)._nilSentinel
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1612 gh:1619
   public static func _forceBridgeFromObjectiveC(
     _ source: AnyObject,
     result: inout Optional<Wrapped>?
@@ -734,7 +734,7 @@ extension Optional : _ObjectiveCBridgeable {
     result = .some(.some(unwrappedResult))
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1607 gh:1614
   public static func _conditionallyBridgeFromObjectiveC(
     _ source: AnyObject,
     result: inout Optional<Wrapped>?
@@ -758,7 +758,7 @@ extension Optional : _ObjectiveCBridgeable {
     }
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1304 gh:1311
   public static func _unconditionallyBridgeFromObjectiveC(_ source: AnyObject?)
       -> Optional<Wrapped> {
     if let nonnullSource = source {

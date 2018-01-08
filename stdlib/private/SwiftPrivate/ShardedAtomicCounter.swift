@@ -26,7 +26,7 @@ public func _stdlib_getHardwareConcurrency() -> Int {
 public struct _stdlib_ShardedAtomicCounter {
   // Using an array causes retains/releases, which create contention on the
   // reference count.
-  // FIXME: guard every element against false sharing.
+  // FIXME: guard every element against false sharing. id:178 gh:185
   var _shardsPtr: UnsafeMutablePointer<Int>
   var _shardsCount: Int
 
@@ -52,7 +52,7 @@ public struct _stdlib_ShardedAtomicCounter {
       object: self._shardsPtr + shardIndex, operand: operand)
   }
 
-  // FIXME: non-atomic as a whole!
+  // FIXME: non-atomic as a whole! id:294 gh:301
   public func getSum() -> Int {
     var result = 0
     let shards = self._shardsPtr

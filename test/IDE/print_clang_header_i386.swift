@@ -1,5 +1,5 @@
 // REQUIRES: OS=macosx
-// FIXME: rdar://problem/19648117 Needs splitting objc parts out
+// FIXME: rdar://problem/19648117 Needs splitting objc parts out id:3500 gh:3512
 // XFAIL: linux, freebsd
 
 // RUN: echo '#include "header-to-print.h"' > %t.i386.m

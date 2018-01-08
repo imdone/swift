@@ -204,7 +204,7 @@ SWIFT_RUNTIME_STDLIB_INTERNAL
 int _stdlib_thread_setspecific(__swift_thread_key_t key,
                                const void * _Nullable value);
 
-// TODO: Remove horrible workaround when importer does Float80 <-> long double.
+// TODO: Remove horrible workaround when importer does Float80 <-> long double. id:473 gh:480
 #if (defined __i386__ || defined __x86_64__) && !defined _MSC_VER
 static inline SWIFT_ALWAYS_INLINE
 void _stdlib_remainderl(void *_self, const void *_other) {

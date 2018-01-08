@@ -242,7 +242,7 @@ protocol Bar { func bar() }
 // TLOC_MEMBERS_DOT-NEXT: Decl[InstanceVar]/CurrNominal:    topLevelObjcClass_Property1[#Int#]{{; name=.+$}}
 // TLOC_MEMBERS_DOT-NEXT: End completions
 
-// FIXME: Properties in Clang modules.
+// FIXME: Properties in Clang modules. id:3766 gh:3778
 // There's a test already: baz_Protocol_Property1.
 // Blocked by: rdar://15136550 Properties in protocols not implemented
 
@@ -441,19 +441,19 @@ func testAnyObject8(_ dl: AnyObject) {
 }
 
 func testAnyObject9() {
-  // FIXME: this syntax is not implemented yet.
+  // FIXME: this syntax is not implemented yet. id:2665 gh:2677
   // dl.returnsObjcClass?(42)#^DL_CALL_RETURN_OPTIONAL_NO_DOT_1^#
 }
 
 func testAnyObject10() {
-  // FIXME: this syntax is not implemented yet.
+  // FIXME: this syntax is not implemented yet. id:2820 gh:2832
   // dl.returnsObjcClass?(42).#^DL_CALL_RETURN_OPTIONAL_DOT_1^#
 }
 
 func testAnyObject11(_ dl: AnyObject) {
   dl.returnsObjcClass#^DL_FUNC_NAME_1^#
 }
-// FIXME: it would be nice if we produced a call pattern here.
+// FIXME: it would be nice if we produced a call pattern here. id:3444 gh:3456
 // DL_FUNC_NAME_1:     Begin completions
 // DL_FUNC_NAME_1:     End completions
 
@@ -467,7 +467,7 @@ func testAnyObject11_(_ dl: AnyObject) {
 func testAnyObject12(_ dl: AnyObject) {
   dl.returnsObjcClass.#^DL_FUNC_NAME_DOT_1^#
 }
-// FIXME: it would be nice if we produced a call pattern here.
+// FIXME: it would be nice if we produced a call pattern here. id:3057 gh:3069
 
 func testAnyObject13(_ dl: AnyObject) {
   dl.returnsObjcClass!#^DL_FUNC_NAME_BANG_1^#
@@ -477,7 +477,7 @@ func testAnyObject13(_ dl: AnyObject) {
 // DL_FUNC_NAME_BANG_1-NEXT: End completions
 
 func testAnyObject14() {
-  // FIXME: this syntax is not implemented yet.
+  // FIXME: this syntax is not implemented yet. id:3768 gh:3780
   // dl.returnsObjcClass?#^DL_FUNC_QUESTION_1^#
 }
 

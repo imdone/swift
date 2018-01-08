@@ -78,14 +78,14 @@ internal var _emptyArrayStorage : _EmptyArrayStorage {
 }
 
 // The class that implements the storage for a ContiguousArray<Element>
-@_fixed_layout // FIXME(sil-serialize-all)
+@_fixed_layout // FIXME (sil-serialize-all) id:700 gh:707
 @_versioned
 internal final class _ContiguousArrayStorage<
   Element
 > : _ContiguousArrayStorageBase {
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1587 gh:1594
+  @_versioned // FIXME (sil-serialize-all) id:713 gh:720
   deinit {
     _elementPointer.deinitialize(count: countAndCapacity.count)
     _fixLifetime(self)
@@ -171,7 +171,7 @@ internal final class _ContiguousArrayStorage<
 #if _runtime(_ObjC)
     return proposedElementType is Element.Type
 #else
-    // FIXME: Dynamic casts don't currently work without objc. 
+    // FIXME: Dynamic casts don't currently work without objc.  id:915 gh:922
     // rdar://problem/18801510
     return false
 #endif
@@ -377,7 +377,7 @@ internal struct _ContiguousArrayBuffer<Element> : _ArrayBufferProtocol {
     nonmutating set {
       _sanityCheck(i >= 0 && i < count, "Array index out of range")
 
-      // FIXME: Manually swap because it makes the ARC optimizer happy.  See
+      // FIXME: Manually swap because it makes the ARC optimizer happy.  See id:1015 gh:1022
       // <rdar://problem/16831852> check retain/release order
       // firstElementAddress[i] = newValue
       var nv = newValue
@@ -474,7 +474,7 @@ internal struct _ContiguousArrayBuffer<Element> : _ArrayBufferProtocol {
   }
 
   /// Returns `true` iff this buffer's storage is either
-  /// uniquely-referenced or pinned.  NOTE: this does not mean
+  /// uniquely-referenced or pinned.  NOTE: this does not mean id:706 gh:713
   /// the buffer is mutable; see the comment on isUniquelyReferenced.
   @_inlineable
   @_versioned
@@ -640,7 +640,7 @@ internal func _copySequenceToContiguousArray<
 
   var iterator = source.makeIterator()
 
-  // FIXME(performance): use _copyContents(initializing:).
+  // FIXME (performance): use _copyContents(initializing:). id:1590 gh:1597
 
   // Add elements up to the initial capacity without checking for regrowth.
   for _ in 0..<initialCapacity {
@@ -696,7 +696,7 @@ internal func _copyCollectionToContiguousArray<
   var p = result.firstElementAddress
   var i = source.startIndex
   for _ in 0..<count {
-    // FIXME(performance): use _copyContents(initializing:).
+    // FIXME (performance): use _copyContents(initializing:). id:716 gh:723
     p.initialize(to: source[i])
     source.formIndex(after: &i)
     p += 1
@@ -722,7 +722,7 @@ internal struct _UnsafePartiallyInitializedContiguousArrayBuffer<Element> {
 
   /// Initialize the buffer with an initial size of `initialCapacity`
   /// elements.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:918 gh:925
   @_versioned
   @inline(__always) // For performance reasons.
   internal init(initialCapacity: Int) {
@@ -739,7 +739,7 @@ internal struct _UnsafePartiallyInitializedContiguousArrayBuffer<Element> {
   }
 
   /// Add an element to the buffer, reallocating if necessary.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1020 gh:1027
   @_versioned
   @inline(__always) // For performance reasons.
   internal mutating func add(_ element: Element) {
@@ -759,7 +759,7 @@ internal struct _UnsafePartiallyInitializedContiguousArrayBuffer<Element> {
   }
 
   /// Add an element to the buffer, which must have remaining capacity.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:709 gh:716
   @_versioned
   @inline(__always) // For performance reasons.
   internal mutating func addWithExistingCapacity(_ element: Element) {
@@ -776,7 +776,7 @@ internal struct _UnsafePartiallyInitializedContiguousArrayBuffer<Element> {
   ///
   /// Returns the fully-initialized buffer. `self` is reset to contain an
   /// empty buffer and cannot be used afterward.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1593 gh:1600
   @_versioned
   @inline(__always) // For performance reasons.
   internal mutating func finish() -> ContiguousArray<Element> {
@@ -792,7 +792,7 @@ internal struct _UnsafePartiallyInitializedContiguousArrayBuffer<Element> {
   ///
   /// Returns the fully-initialized buffer. `self` is reset to contain an
   /// empty buffer and cannot be used afterward.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:720 gh:727
   @_versioned
   @inline(__always) // For performance reasons.
   internal mutating func finishWithOriginalCount() -> ContiguousArray<Element> {

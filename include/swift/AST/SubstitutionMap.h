@@ -58,7 +58,7 @@ class SubstitutionMap {
   /// The replacement types for the generic type parameters.
   std::unique_ptr<Type[]> replacementTypes;
 
-  // FIXME: Switch to a more efficient representation that corresponds to
+  // FIXME: Switch to a more efficient representation that corresponds to id:118 gh:125
   // the conformance requirements in the GenericSignature.
   llvm::DenseMap<TypeBase *, SmallVector<ProtocolConformanceRef, 1>>
     conformanceMap;

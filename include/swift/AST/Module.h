@@ -156,7 +156,7 @@ public:
 private:
   /// If non-NULL, an plug-in that should be used when performing external
   /// lookups.
-  // FIXME: Do we really need to bloat all modules with this?
+  // FIXME: Do we really need to bloat all modules with this? id:86 gh:93
   DebuggerClient *DebugClient = nullptr;
 
   SmallVector<FileUnit *, 2> Files;
@@ -523,7 +523,7 @@ static inline unsigned alignOfFileUnit();
 class FileUnit : public DeclContext {
   virtual void anchor();
 
-  // FIXME: Stick this in a PointerIntPair.
+  // FIXME: Stick this in a PointerIntPair. id:115 gh:122
   const FileUnitKind Kind;
 
 protected:
@@ -1201,7 +1201,7 @@ inline FileUnit &ModuleDecl::getMainFile(FileUnitKind expectedKind) const {
 }
 
 /// Wraps either a swift module or a clang one.
-/// FIXME: Should go away once swift modules can support submodules natively.
+/// FIXME: Should go away once swift modules can support submodules natively. id:74 gh:81
 class ModuleEntity {
   llvm::PointerUnion<const ModuleDecl *, const /* clang::Module */ void *> Mod;
 

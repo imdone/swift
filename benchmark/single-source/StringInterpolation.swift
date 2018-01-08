@@ -36,7 +36,7 @@ public func run_StringInterpolation(_ N: Int) {
       let s = "\(anInt) abcdefdhijklmn \(aRefCountedObject) abcdefdhijklmn \u{01}"
       let utf16 = s.utf16
 
-      // FIXME: if String is not stored as UTF-16 on this platform, then the
+      // FIXME: if String is not stored as UTF-16 on this platform, then the id:7 gh:8
       // following operation has a non-trivial cost and needs to be replaced
       // with an operation on the native storage type.
       result = result &+ Int(utf16[utf16.index(before: utf16.endIndex)])

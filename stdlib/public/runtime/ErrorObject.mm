@@ -171,7 +171,7 @@ swift::swift_allocError(const Metadata *type,
          && "NSError layout changed!");
 
   // Determine the extra allocated space necessary to carry the value.
-  // TODO: If the error type is a simple enum with no associated values, we
+  // TODO: If the error type is a simple enum with no associated values, we id:3178 gh:3190
   // could emplace it in the "code" slot of the NSError and save ourselves
   // some work.
 
@@ -322,7 +322,7 @@ void
 swift::swift_getErrorValue(const SwiftError *errorObject,
                            void **scratch,
                            ErrorValueResult *out) {
-  // TODO: Would be great if Clang had a return-three convention so we didn't
+  // TODO: Would be great if Clang had a return-three convention so we didn't id:2590 gh:2602
   // need the out parameter here.
 
   out->type = errorObject->getType();

@@ -222,12 +222,12 @@ func test_unary1() {
 }
 func test_unary2() {
   var x: Int
-  // FIXME: second diagnostic is redundant.
+  // FIXME: second diagnostic is redundant. id:3752 gh:3764
   x = &; // expected-error {{expected expression after unary operator}} expected-error {{expected expression in assignment}}
 }
 func test_unary3() {
   var x: Int
-  // FIXME: second diagnostic is redundant.
+  // FIXME: second diagnostic is redundant. id:3872 gh:3884
   x = &, // expected-error {{expected expression after unary operator}} expected-error {{expected expression in assignment}}
 }
 
@@ -244,7 +244,7 @@ func test_lambda() {
   var a = { (value: Int) -> () in markUsed(value+1) }
 
   // A recursive lambda.
-  // FIXME: This should definitely be accepted.
+  // FIXME: This should definitely be accepted. id:4111 gh:4123
   var fib = { (n: Int) -> Int in
     if (n < 2) {
       return n
@@ -271,7 +271,7 @@ func test_floating_point() {
 }
 
 func test_nonassoc(_ x: Int, y: Int) -> Bool {
-  // FIXME: the second error and note here should arguably disappear
+  // FIXME: the second error and note here should arguably disappear id:3125 gh:3137
   return x == y == x // expected-error {{adjacent operators are in non-associative precedence group 'ComparisonPrecedence'}}  expected-error {{binary operator '==' cannot be applied to operands of type 'Bool' and 'Int'}} expected-note {{overloads for '==' exist with these partially matching parameter lists:}}
 }
 
@@ -289,7 +289,7 @@ func fib(_ n: Int) -> Int {
 // Integer Literals
 //===----------------------------------------------------------------------===//
 
-// FIXME: Should warn about integer constants being too large <rdar://problem/14070127>
+// FIXME: Should warn about integer constants being too large <rdar://problem/14070127> id:3477 gh:3489
 var
    il_a: Bool = 4  // expected-error {{cannot convert value of type 'Int' to specified type 'Bool'}}
 var il_b: Int8
@@ -309,7 +309,7 @@ var il_g: int_test4 = 4
 var il_i: Int64  = 18446744073709551615
 
 // This constant is too large to fit in an Int64, but it is fine for Int128.
-// FIXME: Should warn about the first. <rdar://problem/14070127>
+// FIXME: Should warn about the first. <rdar://problem/14070127> id:3822 gh:3834
 var il_j: Int64  = 18446744073709551616
 // var il_k: Int128 = 18446744073709551616
 
@@ -350,7 +350,7 @@ func int_literals() {
   // Fits exactly in 64-bits - rdar://11297273
   _ = 1239123123123123
   // Overly large integer.
-  // FIXME: Should warn about it. <rdar://problem/14070127>
+  // FIXME: Should warn about it. <rdar://problem/14070127> id:3875 gh:3887
   _ = 123912312312312312312
   
 }
@@ -404,7 +404,7 @@ var separator9: Int = 0x12FF_FFFF_
 var fl_a = 0.0
 var fl_b: Double = 1.0
 var fl_c: Float = 2.0
-// FIXME: crummy diagnostic
+// FIXME: crummy diagnostic id:4113 gh:4125
 var fl_d: Float = 2.0.0 // expected-error {{expected named member of numeric literal}}
 var fl_e: Float = 1.0e42
 var fl_f: Float = 1.0e+  // expected-error {{expected a digit in floating point exponent}} 
@@ -688,7 +688,7 @@ func test() {
   var x = Foo()
   let y = Foo()
 
-  // FIXME: Bad diagnostics
+  // FIXME: Bad diagnostics id:3130 gh:3142
 
   // rdar://15708430
   (&x).method()  // expected-error {{type of expression is ambiguous without more context}}
@@ -728,7 +728,7 @@ func dictionaryLiterals() {
 }
 
 func invalidDictionaryLiteral() {
-  // FIXME: lots of unnecessary diagnostics.
+  // FIXME: lots of unnecessary diagnostics. id:3484 gh:3496
 
   var a = [1: ; // expected-error {{expected value in dictionary literal}}
   var b = [1: ;] // expected-error {{expected value in dictionary literal}}
@@ -740,7 +740,7 @@ func invalidDictionaryLiteral() {
 }
 
     
-// FIXME: The issue here is a type compatibility problem, there is no ambiguity.
+// FIXME: The issue here is a type compatibility problem, there is no ambiguity. id:3825 gh:3836
 [4].joined(separator: [1]) // expected-error {{type of expression is ambiguous without more context}}
 [4].joined(separator: [[[1]]]) // expected-error {{type of expression is ambiguous without more context}}
 

@@ -13,14 +13,14 @@
 import SwiftShims
 
 /// Convert the given numeric value to a hexadecimal string.
-  // FIXME(integers): support a more general BinaryInteger protocol
+  // FIXME (integers): support a more general BinaryInteger protocol id:309 gh:316
 public func asHex<T : FixedWidthInteger>(_ x: T) -> String {
   return "0x" + String(x, radix: 16)
 }
 
 /// Convert the given sequence of numeric values to a string representing
 /// their hexadecimal values.
-  // FIXME(integers): support a more general BinaryInteger protocol
+  // FIXME (integers): support a more general BinaryInteger protocol id:182 gh:189
 public func asHex<S : Sequence>(_ x: S) -> String
   where
   S.Iterator.Element : FixedWidthInteger {
@@ -44,7 +44,7 @@ public func scan<
 public func randomShuffle<T>(_ a: [T]) -> [T] {
   var result = a
   for i in (1..<a.count).reversed() {
-    // FIXME: 32 bits are not enough in general case!
+    // FIXME: 32 bits are not enough in general case! id:426 gh:434
     let j = Int(rand32(exclusiveUpperBound: UInt32(i + 1)))
     if i != j {
       result.swapAt(i, j)

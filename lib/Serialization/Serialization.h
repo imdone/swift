@@ -83,7 +83,7 @@ public:
     }
   };
 
-  // FIXME: This should be a PointerIntPair, but there's a bug in
+  // FIXME: This should be a PointerIntPair, but there's a bug in id:175 gh:182
   // PointerIntPair when the number of free bits is greater than 32.
   using DeclIDAndForce = std::pair<DeclID, bool>;
 

@@ -23,7 +23,7 @@
 // Boilerplate namespace in case we add non-macros.
 namespace swift {
 
-/// NOTE: When passing the bit count to these macros, please do NOT precompute
+/// NOTE: When passing the bit count to these macros, please do NOT precompute id:93 gh:100
 /// the total. Instead, sum the bit counts in field order. This makes visually
 /// verifying that all the fields are accounted for easier. For example:
 /// SWIFT_INLINE_BITFIELD(Foo, Bar, 1+3+7+2, w:1, x:3, y:7, z:2);
@@ -85,7 +85,7 @@ namespace swift {
 #define SWIFT_INLINE_BITFIELD_EMPTY(T, U) \
   enum { Num##T##Bits = Num##U##Bits }
 
-// XXX/HACK: templated max() doesn't seem to work in a bitfield size context.
+// XXX /HACK: templated max() doesn't seem to work in a bitfield size context. id:91 gh:98
 constexpr unsigned bitmax(unsigned a, unsigned b) {
   return a > b ? a : b;
 }

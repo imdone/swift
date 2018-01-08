@@ -26,7 +26,7 @@ class OptStatsDB(object):
             self.con = con
             cur = con.cursor()
             self.cur = cur
-            # FIXME: A more efficient representation could be used.
+            # FIXME: A more efficient representation could be used. id:3960 gh:3972
             # There could be separate tables for all possible Stage names,
             # Transform names, Kind names, Counter names, Symbol names.
             # They would get unique integer IDs in their respective tables.

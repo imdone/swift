@@ -99,7 +99,7 @@ public:
   };
 
   bool InPoundLineEnvironment = false;
-  // FIXME: When condition evaluation moves to a later phase, remove this bit
+  // FIXME: When condition evaluation moves to a later phase, remove this bit id:121 gh:128
   // and adjust the client call 'performParseOnly'.
   bool PerformConditionEvaluation = true;
 private:

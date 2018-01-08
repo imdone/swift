@@ -27,7 +27,7 @@ func testInitializers() {
   _ = D4_UnknownInitDisappears()
   _ = D4_UnknownInitDisappears(value: 0) // expected-error {{argument passed to call that takes no arguments}}
 
-  // FIXME: Why does 'init()' show up in the generated interface if it can't be
+  // FIXME: Why does 'init()' show up in the generated interface if it can't be id:3374 gh:3386
   // called?
   _ = D5_OnlyUnknownInitDisappears() // expected-error {{cannot be constructed because it has no accessible initializers}}
   _ = D5_OnlyUnknownInitDisappears(value: 0) // expected-error {{cannot be constructed because it has no accessible initializers}}

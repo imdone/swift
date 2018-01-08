@@ -23,7 +23,7 @@ typealias PanRecognizer2 = AppKit.NSPanGestureRecognizer
 _ = glVertexPointer // expected-error{{use of unresolved identifier 'glVertexPointer'}}
 #endif
 
-// FIXME: Remove -verify-ignore-unknown.
+// FIXME: Remove -verify-ignore-unknown. id:2741 gh:2753
 // <unknown>:0: error: unexpected warning produced: 'cacheParamsComputed' is deprecated
 // <unknown>:0: error: unexpected warning produced: 'cacheAlphaComputed' is deprecated
 // <unknown>:0: error: unexpected warning produced: 'keepCacheWindow' is deprecated

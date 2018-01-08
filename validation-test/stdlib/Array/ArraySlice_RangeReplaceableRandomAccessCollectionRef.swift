@@ -29,7 +29,7 @@ do {
     wrapValue: { (element: OpaqueValue<Int>) in LifetimeTracked(element.value) },
     extractValue: { (element: LifetimeTracked) in OpaqueValue(element.value) },
     makeCollectionOfEquatable: { (elements: [MinimalEquatableValue]) in
-      // FIXME: use LifetimeTracked.
+      // FIXME: use LifetimeTracked. id:4053 gh:4065
       return ArraySlice(elements)
     },
     wrapValueIntoEquatable: identityEq,

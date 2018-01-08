@@ -75,7 +75,7 @@ struct IntWrapper: Comparable {
   subscript(_: TypeReferencedOnlyBySubscript) -> Void { return () }
 
   // CHECK-DAG: - "TypeReferencedOnlyByPrivateSubscript"
-  // FIXME: This should be marked "!private".
+  // FIXME: This should be marked "!private". id:3045 gh:3057
   private subscript(_: TypeReferencedOnlyByPrivateSubscript) -> Void { return () }
 }
 
@@ -303,7 +303,7 @@ struct Use4 : TopLevelProto1 {
 // CHECK-DAG: - "*"
 _ = 42 * 30
 
-// FIXME: Incorrectly marked non-private dependencies
+// FIXME: Incorrectly marked non-private dependencies id:3568 gh:3580
 // CHECK-DAG: - "topLevel6"
 _ = topLevel6()
 // CHECK-DAG: - "topLevel7"
@@ -358,7 +358,7 @@ private extension Use4 {
 // CHECK-DAG: - "PrivateTopLevelTy2"
 // CHECK-DAG: "PrivateProto2"
 extension Private2 : PrivateProto2 {
-  // FIXME: This test is supposed to check that we get this behavior /without/
+  // FIXME: This test is supposed to check that we get this behavior /without/ id:3459 gh:3471
   // marking the property private, just from the base type.
   private var privateTy2: PrivateTopLevelTy2? { return nil }
 }

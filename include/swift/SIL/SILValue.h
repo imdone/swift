@@ -342,7 +342,7 @@ class Operand {
   Operand **Back = nullptr;
 
   /// The owner of this operand.
-  /// FIXME: this could be space-compressed.
+  /// FIXME: this could be space-compressed. id:146 gh:153
   SILInstruction *Owner;
 
 public:

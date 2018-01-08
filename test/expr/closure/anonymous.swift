@@ -22,7 +22,7 @@ func variadic() {
   takesVariadicInt({let _: [Int] = $0})
   let _: (Int...) -> () = {let _: [Int] = $0}
 
-  // FIXME: Make the rest work
+  // FIXME: Make the rest work id:3123 gh:3135
   takesVariadicInt({takesIntArray($0)})
   // expected-error@-1 {{cannot convert value of type '([Int]) -> ()' to expected argument type '(Int...) -> ()'}}
 

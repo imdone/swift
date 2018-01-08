@@ -113,7 +113,7 @@ class Hash {
   /// \brief Left-rotate \p x by \p c.
   final
   func rol(_ x: UInt32, _ c: UInt32) -> UInt32 {
-    // TODO: use the &>> operator.
+    // TODO: use the &>> operator. id:5 gh:6
     let a = UInt32(truncatingBitPattern: Int64(x) << Int64(c))
     let b = UInt32(truncatingBitPattern: Int64(x) >> (32 - Int64(c)))
     return a|b
@@ -122,7 +122,7 @@ class Hash {
   /// \brief Right-rotate \p x by \p c.
   final
   func ror(_ x: UInt32, _ c: UInt32) -> UInt32 {
-    // TODO: use the &>> operator.
+    // TODO: use the &>> operator. id:39 gh:45
     let a = UInt32(truncatingBitPattern: Int64(x) >> Int64(c))
     let b = UInt32(truncatingBitPattern: Int64(x) << (32 - Int64(c)))
     return a|b

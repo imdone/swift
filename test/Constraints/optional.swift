@@ -64,7 +64,7 @@ func test5() -> Int? {
 }
 
 func test6<T>(_ x : T) {
-  // FIXME: this code should work; T could be Int? or Int??
+  // FIXME: this code should work; T could be Int? or Int?? id:2635 gh:2648
   // or something like that at runtime.  rdar://16374053
   _ = x as? Int? // expected-error {{cannot downcast from 'T' to a more optional type 'Int?'}}
 }

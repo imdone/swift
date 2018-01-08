@@ -1056,8 +1056,8 @@ public struct Data : ReferenceConvertible, Equatable, Hashable, RandomAccessColl
         }
     }
     
-    // MARK: -
-    // MARK: Init methods
+    // MARK: - id:319 gh:326
+    // MARK: Init methods id:343 gh:350
     
     /// Initialize a `Data` with copied memory content.
     ///
@@ -1271,7 +1271,7 @@ public struct Data : ReferenceConvertible, Equatable, Hashable, RandomAccessColl
     }
     
     // -----------------------------------
-    // MARK: - Properties and Functions
+    // MARK: - Properties and Functions id:203 gh:210
     
     /// The number of bytes in the data.
     
@@ -1316,8 +1316,8 @@ public struct Data : ReferenceConvertible, Equatable, Hashable, RandomAccessColl
         }
     }
     
-    // MARK: -
-    // MARK: Copy Bytes
+    // MARK: - id:467 gh:474
+    // MARK: Copy Bytes id:236 gh:243
     
     /// Copy the contents of the data to a pointer.
     ///
@@ -1377,7 +1377,7 @@ public struct Data : ReferenceConvertible, Equatable, Hashable, RandomAccessColl
         return copyRange.count
     }
     
-    // MARK: -
+    // MARK: - id:323 gh:330
 #if !DEPLOYMENT_RUNTIME_SWIFT
     @inline(__always)
     private func _shouldUseNonAtomicWriteReimplementation(options: Data.WritingOptions = []) -> Bool {
@@ -1415,7 +1415,7 @@ public struct Data : ReferenceConvertible, Equatable, Hashable, RandomAccessColl
         }
     }
     
-    // MARK: -
+    // MARK: - id:346 gh:353
     
     /// Find the given `Data` in the content of this `Data`.
     ///
@@ -1501,7 +1501,7 @@ public struct Data : ReferenceConvertible, Equatable, Hashable, RandomAccessColl
         }
     }
     
-    // MARK: -
+    // MARK: - id:208 gh:215
     
     /// Set a region of the data to `0`.
     ///
@@ -1603,7 +1603,7 @@ public struct Data : ReferenceConvertible, Equatable, Hashable, RandomAccessColl
         return _backing.subdata(in: range)
     }
     
-    // MARK: -
+    // MARK: - id:471 gh:478
     //
     
     /// Returns a Base-64 encoded string.
@@ -1626,7 +1626,7 @@ public struct Data : ReferenceConvertible, Equatable, Hashable, RandomAccessColl
         }
     }
     
-    // MARK: -
+    // MARK: - id:239 gh:246
     //
     
     /// The hash value for the data.
@@ -1654,10 +1654,10 @@ public struct Data : ReferenceConvertible, Equatable, Hashable, RandomAccessColl
         }
     }
     
-    // MARK: -
+    // MARK: - id:325 gh:332
     
-    // MARK: -
-    // MARK: Index and Subscript
+    // MARK: - id:348 gh:355
+    // MARK: Index and Subscript id:210 gh:217
     
     /// Sets or returns the byte at the specified index.
     public subscript(index: Index) -> UInt8 {
@@ -1810,7 +1810,7 @@ public struct Data : ReferenceConvertible, Equatable, Hashable, RandomAccessColl
         }
     }
     
-    // MARK: -
+    // MARK: - id:476 gh:483
     //
     
     @available(*, unavailable, renamed: "count")

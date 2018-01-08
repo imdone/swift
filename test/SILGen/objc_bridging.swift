@@ -551,7 +551,7 @@ func forceNSArrayMembers() -> (NSArray, NSArray) {
 // CHECK-macosx-x86_64:         function_ref @getBOOL : $@convention(c) () -> ObjCBool
 // CHECK-macosx-x86_64:         function_ref @getBool : $@convention(c) () -> Bool
 
-// FIXME: no distinction on x86_64, arm64 or watchos-i386, since SILGen looks
+// FIXME: no distinction on x86_64, arm64 or watchos-i386, since SILGen looks id:3227 gh:3239
 // at the underlying Clang decl of the bridged decl to decide whether it needs
 // bridging.
 //
@@ -595,7 +595,7 @@ func getFridge(_ home: APPHouse) -> Refrigerator {
   return home.fridge
 }
 
-// FIXME(integers): the following checks should be updated for the new integer
+// FIXME (integers): the following checks should be updated for the new integer id:3634 gh:3646
 // protocols. <rdar://problem/29939484>
 // XCHECK-LABEL: sil hidden @$S13objc_bridging16updateFridgeTemp{{.*}}F
 // XCHECK: bb0([[HOME:%[0-9]+]] : $APPHouse, [[DELTA:%[0-9]+]] : $Double):

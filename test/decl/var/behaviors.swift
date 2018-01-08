@@ -127,7 +127,7 @@ struct Foo<T> {
   static var staticStorage1: T __behavior hasStorage // expected-error{{static stored properties not supported in generic types}}
   var storage2: T __behavior hasStorage
 
-  // FIXME: Hack because we can't find the synthesized associated type witness
+  // FIXME: Hack because we can't find the synthesized associated type witness id:3112 gh:3124
   // during witness matching.
   typealias Value = T
 
@@ -147,7 +147,7 @@ struct Foo2<T> {
   var (storage4, storage5) = tuple // expected-error* {{initializer expression provided, but property behavior 'hasStorage' does not use it}}
     __behavior hasStorage
 
-  // FIXME: Hack because we can't find the synthesized associated type witness
+  // FIXME: Hack because we can't find the synthesized associated type witness id:3461 gh:3473
   // during witness matching.
   typealias Value = Int
 }
@@ -221,7 +221,7 @@ struct TestParameters {
   var invalidParameter: Int __behavior parameterized { 5.5 } // expected-error{{cannot convert return expression of type 'Double' to return type 'Int'}}
 }
 
-// TODO
+// TODO id:3741 gh:3753
 var globalParameter: Int __behavior parameterized { 0 } // expected-error{{not supported}}
 
 protocol noParameter {
@@ -255,7 +255,7 @@ struct TestStorageWithInitialValue {
   var z: Int = 5.5 __behavior storageWithInitialValue // expected-error {{cannot convert value of type 'Double' to type 'Int' in coercion}}
   var (a, b) = tuple __behavior storageWithInitialValue // expected-error* {{do not support destructuring}}
 
-  // FIXME: Hack because we can't find the synthesized associated type witness
+  // FIXME: Hack because we can't find the synthesized associated type witness id:3859 gh:3871
   // during witness matching.
   typealias Value = Int
 }

@@ -682,7 +682,7 @@ public struct IndexPath : ReferenceConvertible, Equatable, Hashable, MutableColl
         }
     }
     
-    // MARK: - Bridging Helpers
+    // MARK: - Bridging Helpers id:353 gh:360
     
     fileprivate init(nsIndexPath: ReferenceType) {
         let count = nsIndexPath.length

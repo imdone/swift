@@ -148,7 +148,7 @@
 
 // If defined, it indicates that this calling convention is
 // supported by the current target.
-// TODO: Define it once the runtime calling convention support has
+// TODO: Define it once the runtime calling convention support has id:234 gh:241
 // been integrated into clang and llvm.
 #define SWIFT_RT_USE_RegisterPreservingCC 0
 
@@ -228,7 +228,7 @@
 // can be directly referenced only inside the runtime library.
 // User code can access these runtime entries only indirectly
 // via a global function pointer.
-// NOTE: In principle, entries may have LLVM_LIBRARY_VISIBILITY,
+// NOTE: In principle, entries may have LLVM_LIBRARY_VISIBILITY, id:209 gh:216
 // because they are never called directly from the code
 // produced by IRGen.
 // But some of the runtime entries are invoked directly from

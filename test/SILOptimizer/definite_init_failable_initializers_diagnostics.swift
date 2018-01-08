@@ -28,7 +28,7 @@ func something(_ x: Any.Type) {}
 
 // <rdar://problem/22946400> DI needs to diagnose self usages in error block
 //
-// FIXME: crappy QoI
+// FIXME: crappy QoI id:2949 gh:2959
 class ErrantBaseClass {
   init() throws {}
 }
@@ -139,7 +139,7 @@ class ErrantClass : ErrantBaseClass {
 
       something(self) // expected-error {{'self' used inside 'catch' block reachable from self.init call}}
 
-      // FIXME: not diagnosed
+      // FIXME: not diagnosed id:3334 gh:3346
       something(type(of: self))
 
       throw e

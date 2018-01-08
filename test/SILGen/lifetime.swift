@@ -464,7 +464,7 @@ class Foo<T> {
 
     // -- cleanup this lvalue and return this
     // CHECK: [[THIS_RESULT:%.*]] = copy_value [[THIS]]
-    // -- TODO: This copy should be unnecessary.
+    // -- TODO: This copy should be unnecessary. id:3562 gh:3574
     // CHECK: destroy_value [[THIS]]
     // CHECK: return [[THIS_RESULT]]
 

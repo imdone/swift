@@ -90,7 +90,7 @@ default:
 var b = var a // expected-error{{expected initial value after '='}} expected-error {{type annotation missing in pattern}} expected-error {{consecutive statements on a line must be separated by ';'}} {{8-8=;}}
 var c = is Int // expected-error{{expected initial value after '='}} expected-error {{expected expression}}  expected-error {{consecutive statements on a line must be separated by ';'}} {{8-8=;}}
 
-// TODO: Bad recovery in these cases. Although patterns are never valid
+// TODO: Bad recovery in these cases. Although patterns are never valid id:3002 gh:3014
 // expr-unary productions, it would be good to parse them anyway for recovery.
 //var e = 2 + var y
 //var e = var y + 2
@@ -120,9 +120,9 @@ case iPadHair<E>.HairForceOne:
   ()
 case iPadHair.HairForceOne: // expected-error{{generic enum type 'iPadHair' is ambiguous without explicit generic parameters when matching value of type 'HairType'}}
   ()
-case Watch.Edition: // TODO: should warn that cast can't succeed with currently known conformances
+case Watch.Edition: // TODO: should warn that cast can't succeed with currently known conformances id:3736 gh:3748
   ()
-// TODO: Bad error message
+// TODO: Bad error message id:2637 gh:2649
 case .HairForceOne: // expected-error{{cannot convert}}
   ()
 default:
@@ -199,7 +199,7 @@ let (var z) = 42  // expected-error {{'var' cannot appear nested inside another 
 
 
 // Crash when re-typechecking EnumElementPattern.
-// FIXME: This should actually type-check -- the diagnostics are bogus. But
+// FIXME: This should actually type-check -- the diagnostics are bogus. But id:2773 gh:2785
 // at least we don't crash anymore.
 
 protocol PP {
@@ -295,7 +295,7 @@ switch staticMembers {
   case .init(opt: 0): break // expected-error{{not unwrapped}}
 
   case .prop: break
-  // TODO: repeated error message
+  // TODO: repeated error message id:3410 gh:3422
   case .optProp: break // expected-error* {{not unwrapped}}
 
   case .method: break // expected-error{{cannot match}}

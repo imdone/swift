@@ -3472,7 +3472,7 @@ func getRoundtripBridgedNSDictionary() -> NSDictionary {
 
   let bridgedBack = convertDictionaryToNSDictionary(d)
   assert(isCocoaNSDictionary(bridgedBack))
-  // FIXME: this should be true.
+  // FIXME: this should be true. id:3667 gh:3679
   //assert(unsafeBitCast(nsd, Int.self) == unsafeBitCast(bridgedBack, Int.self))
 
   return bridgedBack

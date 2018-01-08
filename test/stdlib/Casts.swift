@@ -77,7 +77,7 @@ CastsTests.test("Dynamic casts of CF types to protocol existentials")
   .code {
   expectTrue(isP(10 as Int))
 
-  // FIXME: SR-2289: dynamic casting of CF types to protocol existentials
+  // FIXME: SR-2289: dynamic casting of CF types to protocol existentials id:4127 gh:4137
   // should work, but there is a bug in the runtime that prevents them from
   // working.
   expectFailure {

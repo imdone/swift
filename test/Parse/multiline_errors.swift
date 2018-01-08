@@ -181,6 +181,6 @@ _ = """
 
 _ = """\
   """
-  // FIXME: Bad diagnostics
+  // FIXME: Bad diagnostics id:3069 gh:3081
   // expected-error@-3 {{multi-line string literal content must begin on a new line}}
   // expected-error@-4 {{escaped newline at the last line is not allowed}} {{8-9=}}

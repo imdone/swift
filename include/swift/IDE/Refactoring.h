@@ -65,7 +65,7 @@ struct RefactoringOptions {
   RefactoringOptions(RefactoringKind Kind) : Kind(Kind) {}
 };
 
-// TODO: Merge with NoteRegion – range needs to change to start/end line/column
+// TODO: Merge with NoteRegion – range needs to change to start/end line/column id:204 gh:211
 struct RenameRangeDetail {
   CharSourceRange Range;
   RefactoringRangeKind RangeKind;

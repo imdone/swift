@@ -7,7 +7,7 @@ func takesTwoInouts<T>(_ p1: inout T, _ p2: inout T) { }
 func simpleInoutDiagnostic() {
   var i = 7
 
-  // FIXME: This diagnostic should be removed if static enforcement is
+  // FIXME: This diagnostic should be removed if static enforcement is id:3666 gh:3678
   // turned on by default.
   // expected-error@+4{{inout arguments are not allowed to alias each other}}
   // expected-note@+3{{previous aliasing argument}}

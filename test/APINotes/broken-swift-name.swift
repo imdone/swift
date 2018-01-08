@@ -19,7 +19,7 @@ func testBrokenSwiftName(x: inout ZXSpectrum) {
   ZXSpectrumGetRegister(&x, 0)
   ZXSpectrumSetRegister(&x, 0, 1)
   ZXSpectrumGetMisnamedRegister(&x, 0)
-  // TODO: Conservative validation in Clang doesn't reject the API name here
+  // TODO: Conservative validation in Clang doesn't reject the API name here id:3678 gh:3690
   // ZXSpectrumSetMisnamedRegister(&x, 0, 1)
 
   ZXSpectrumHelperReset()

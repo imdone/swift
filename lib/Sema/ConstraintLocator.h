@@ -78,10 +78,10 @@ public:
     /// \brief An optional payload.
     OptionalPayload,
     /// \brief A generic argument.
-    /// FIXME: Add support for named generic arguments?
+    /// FIXME: Add support for named generic arguments? id:297 gh:304
     GenericArgument,
     /// \brief A member.
-    /// FIXME: Do we need the actual member name here?
+    /// FIXME: Do we need the actual member name here? id:162 gh:169
     Member,
     /// \brief An unresolved member.
     UnresolvedMember,
@@ -460,7 +460,7 @@ public:
   /// \brief Retrieve the path that extends from the anchor to a specific
   /// subcomponent.
   ArrayRef<PathElement> getPath() const {
-    // FIXME: Alignment.
+    // FIXME: Alignment. id:399 gh:406
     return llvm::makeArrayRef(reinterpret_cast<const PathElement *>(this + 1),
                               numPathElements);
   }
@@ -498,7 +498,7 @@ private:
                     unsigned flags)
     : anchor(anchor), numPathElements(path.size()), summaryFlags(flags)
   {
-    // FIXME: Alignment.
+    // FIXME: Alignment. id:171 gh:178
     std::copy(path.begin(), path.end(),
               reinterpret_cast<PathElement *>(this + 1));
   }
@@ -513,7 +513,7 @@ private:
                                    Expr *anchor,
                                    ArrayRef<PathElement> path,
                                    unsigned flags) {
-    // FIXME: Alignment.
+    // FIXME: Alignment. id:287 gh:294
     unsigned size = sizeof(ConstraintLocator)
                   + path.size() * sizeof(PathElement);
     void *mem = allocator.Allocate(size, alignof(ConstraintLocator));

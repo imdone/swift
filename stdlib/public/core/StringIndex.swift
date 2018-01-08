@@ -11,9 +11,9 @@
 //===----------------------------------------------------------------------===//
 extension String {
   /// A position of a character or code unit in a string.
-  @_fixed_layout // FIXME(sil-serialize-all)
+  @_fixed_layout // FIXME (sil-serialize-all) id:2265 gh:2277
   public struct Index {
-    @_versioned // FIXME(sil-serialize-all)
+    @_versioned // FIXME (sil-serialize-all) id:2378 gh:2390
     internal var _compoundOffset : UInt64
     @_versioned
     internal var _cache: _Cache
@@ -31,22 +31,22 @@ extension String {
 
 /// Convenience accessors
 extension String.Index._Cache {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2909 gh:2921
   @_versioned
   internal var utf16: Void? {
     if case .utf16 = self { return () } else { return nil }
   }
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1964 gh:1972
   @_versioned
   internal var utf8: String.Index._UTF8Buffer? {
     if case .utf8(let r) = self { return r } else { return nil }
   }
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2095 gh:2102
   @_versioned
   internal var character: UInt16? {
     if case .character(let r) = self { return r } else { return nil }
   }
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2267 gh:2279
   @_versioned
   internal var unicodeScalar: UnicodeScalar? {
     if case .unicodeScalar(let r) = self { return r } else { return nil }
@@ -54,21 +54,21 @@ extension String.Index._Cache {
 }
 
 extension String.Index : Equatable {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2381 gh:2393
   public static func == (lhs: String.Index, rhs: String.Index) -> Bool {
     return lhs._compoundOffset == rhs._compoundOffset
   }
 }
 
 extension String.Index : Comparable {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2913 gh:2925
   public static func < (lhs: String.Index, rhs: String.Index) -> Bool {
     return lhs._compoundOffset < rhs._compoundOffset
   }
 }
 
 extension String.Index : Hashable {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1966 gh:1973
   public var hashValue: Int {
     return _compoundOffset.hashValue
   }
@@ -80,40 +80,40 @@ extension String.Index {
   /// Creates a new index at the specified UTF-16 offset.
   ///
   /// - Parameter offset: An offset in UTF-16 code units.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2098 gh:2105
   public init(encodedOffset offset: Int) {
     _compoundOffset = UInt64(offset << _Self._strideBits)
     _cache = .utf16
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2270 gh:2282
   @_versioned
   internal init(encodedOffset o: Int, transcodedOffset: Int = 0, _ c: _Cache) {
     _compoundOffset = UInt64(o << _Self._strideBits | transcodedOffset)
     _cache = c
   }
   
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2384 gh:2396
+  @_versioned // FIXME (sil-serialize-all) id:2916 gh:2928
   internal static var _strideBits : Int { return 2 }
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1968 gh:1975
+  @_versioned // FIXME (sil-serialize-all) id:2100 gh:2107
   internal static var _mask : UInt64 { return (1 &<< _Self._strideBits) &- 1 }
   
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2272 gh:2284
+  @_versioned // FIXME (sil-serialize-all) id:2387 gh:2399
   internal mutating func _setEncodedOffset(_ x: Int) {
     _compoundOffset = UInt64(x << _Self._strideBits)
   }
   
   /// The offset into a string's UTF-16 encoding for this index.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2920 gh:2932
   public var encodedOffset : Int {
     return Int(_compoundOffset >> _Self._strideBits)
   }
 
   /// The offset of this index within whatever encoding this is being viewed as
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1970 gh:1977
   @_versioned
   internal var _transcodedOffset : Int {
     get {
@@ -130,7 +130,7 @@ extension String.Index {
 
 // SPI for Foundation
 extension String.Index {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2103 gh:2110
   @available(swift, deprecated: 3.2)
   @available(swift, obsoleted: 4.0)
   public // SPI(Foundation)    
@@ -138,7 +138,7 @@ extension String.Index {
     self.init(encodedOffset: _position)
   }
   
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2274 gh:2286
   @available(swift, deprecated: 3.2)
   @available(swift, obsoleted: 4.0)
   public // SPI(Foundation)    
@@ -146,7 +146,7 @@ extension String.Index {
     self.init(encodedOffset: _offset)
   }
   
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2437 gh:2449
   @available(swift, deprecated: 3.2)
   @available(swift, obsoleted: 4.0)
   public // SPI(Foundation)    
@@ -155,7 +155,7 @@ extension String.Index {
   }
   
   /// The integer offset of this index in UTF-16 code units.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2924 gh:2936
   @available(swift, deprecated: 3.2)
   @available(swift, obsoleted: 4.0)
   public // SPI(Foundation)
@@ -164,7 +164,7 @@ extension String.Index {
   }
 
   /// The integer offset of this index in UTF-16 code units.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1972 gh:1979
   @available(swift, deprecated: 3.2)
   @available(swift, obsoleted: 4.0)
   public // SPI(Foundation)
@@ -176,7 +176,7 @@ extension String.Index {
 
 // backward compatibility for index interchange.  
 extension Optional where Wrapped == String.Index {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2106 gh:2113
   @available(
     swift, obsoleted: 4.0,
     message: "Any String view index conversion can fail in Swift 4; please unwrap the optional indices")
@@ -186,7 +186,7 @@ extension Optional where Wrapped == String.Index {
     return lhs! ..< rhs!
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2279 gh:2291
   @available(
     swift, obsoleted: 4.0,
     message: "Any String view index conversion can fail in Swift 4; please unwrap the optional indices")

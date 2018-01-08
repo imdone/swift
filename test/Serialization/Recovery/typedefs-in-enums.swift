@@ -13,7 +13,7 @@ import Typedefs
 import Lib
 
 func use(_: OkayEnum) {}
-// FIXME: Better to import the enum and make it unavailable.
+// FIXME: Better to import the enum and make it unavailable. id:3682 gh:3694
 func use(_: BadEnum) {} // expected-error {{use of undeclared type 'BadEnum'}}
 
 func test() {

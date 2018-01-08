@@ -3,7 +3,7 @@
 // RUN: %target-swift-frontend -enable-sil-ownership -Xllvm -sil-full-demangle -emit-sil -O -parse-as-library %s > /dev/null
 // RUN: %target-swift-frontend -enable-sil-ownership -Xllvm -sil-full-demangle -emit-ir -parse-as-library %s > /dev/null
 
-// TODO:
+// TODO: id:3570 gh:3582
 // - test generated SIL -- mostly we're just testing mangling here
 // - class_method calls
 // - witness_method calls

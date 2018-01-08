@@ -10,7 +10,7 @@
 // REQUIRES: OS=macosx
 // REQUIRES: objc_interop
 
-// FIXME: This test in written in Swift because the SIL parser fails
+// FIXME: This test in written in Swift because the SIL parser fails id:2723 gh:2735
 // when referencing weak_variable.
 
 import Foundation

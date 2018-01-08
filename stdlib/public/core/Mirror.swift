@@ -9,7 +9,7 @@
 // See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
 //
 //===----------------------------------------------------------------------===//
-// FIXME: ExistentialCollection needs to be supported before this will work
+// FIXME: ExistentialCollection needs to be supported before this will work id:1495 gh:1502
 // without the ObjC Runtime.
 
 /// A representation of the substructure and display style of an instance of
@@ -37,7 +37,7 @@
 ///
 /// To customize the mirror representation of a custom type, add conformance to
 /// the `CustomReflectable` protocol.
-@_fixed_layout // FIXME(sil-serialize-all)
+@_fixed_layout // FIXME (sil-serialize-all) id:1454 gh:1461
 public struct Mirror {
   /// Representation of descendant classes that don't override
   /// `customMirror`.
@@ -45,7 +45,7 @@ public struct Mirror {
   /// Note that the effect of this setting goes no deeper than the
   /// nearest descendant class that overrides `customMirror`, which
   /// in turn can determine representation of *its* descendants.
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:1217 gh:1224
   internal enum _DefaultDescendantRepresentation {
     /// Generate a default mirror for descendant classes that don't
     /// override `customMirror`.
@@ -114,7 +114,7 @@ public struct Mirror {
   /// though, the observability of mutations is unspecified.
   ///
   /// - Parameter subject: The instance for which to create a mirror.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2029 gh:2036
   public init(reflecting subject: Any) {
     if case let customized as CustomReflectable = subject {
       self = customized.customMirror
@@ -152,20 +152,20 @@ public struct Mirror {
   /// Playgrounds and the debugger will show a representation similar
   /// to the one used for instances of the kind indicated by the
   /// `DisplayStyle` case name when the mirror is used for display.
-  @_fixed_layout // FIXME(sil-serialize-all)
+  @_fixed_layout // FIXME (sil-serialize-all) id:1165 gh:1172
   public enum DisplayStyle {
     case `struct`, `class`, `enum`, tuple, optional, collection
     case dictionary, `set`
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1498 gh:1505
+  @_versioned // FIXME (sil-serialize-all) id:1457 gh:1464
   internal static func _noSuperclassMirror() -> Mirror? { return nil }
 
   /// Returns the legacy mirror representing the part of `subject`
   /// corresponding to the superclass of `staticSubclass`.
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1221 gh:1228
+  @_versioned // FIXME (sil-serialize-all) id:2034 gh:2041
   internal static func _legacyMirror(
     _ subject: AnyObject, asClass targetSuperclass: AnyClass) -> _Mirror? {
     
@@ -187,7 +187,7 @@ public struct Mirror {
 
   @_semantics("optimize.sil.specialize.generic.never")
   @inline(never)
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1168 gh:1175
   @_versioned
   internal static func _superclassIterator<Subject>(
     _ subject: Subject, _ ancestorRepresentation: AncestorRepresentation
@@ -240,7 +240,7 @@ public struct Mirror {
   ///   - ancestorRepresentation: The means of generating the subject's
   ///     ancestor representation. `ancestorRepresentation` is ignored if
   ///     `subject` is not a class instance. The default is `.generated`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1502 gh:1509
   public init<Subject, C : Collection>(
     _ subject: Subject,
     children: C,
@@ -286,7 +286,7 @@ public struct Mirror {
   ///   - ancestorRepresentation: The means of generating the subject's
   ///     ancestor representation. `ancestorRepresentation` is ignored if
   ///     `subject` is not a class instance. The default is `.generated`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1461 gh:1468
   public init<Subject, C : Collection>(
     _ subject: Subject,
     unlabeledChildren: C,
@@ -337,7 +337,7 @@ public struct Mirror {
   ///   - ancestorRepresentation: The means of generating the subject's
   ///     ancestor representation. `ancestorRepresentation` is ignored if
   ///     `subject` is not a class instance. The default is `.generated`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1224 gh:1231
   public init<Subject>(
     _ subject: Subject,
     children: DictionaryLiteral<String, Any>,
@@ -370,14 +370,14 @@ public struct Mirror {
   public let displayStyle: DisplayStyle?
 
   /// A mirror of the subject's superclass, if one exists.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2037 gh:2044
   public var superclassMirror: Mirror? {
     return _makeSuperclassMirror()
   }
 
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:1171 gh:1178
   internal let _makeSuperclassMirror: () -> Mirror?
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:1505 gh:1512
   internal let _defaultDescendantRepresentation: _DefaultDescendantRepresentation
 }
 
@@ -408,25 +408,25 @@ public protocol CustomLeafReflectable : CustomReflectable {}
 /// Do not declare new conformances to this protocol; they will not
 /// work as expected.
 public protocol MirrorPath {
-  // FIXME(ABI)#49 (Sealed Protocols): this protocol should be "non-open" and
+  // FIXME (ABI)#49 (Sealed Protocols): this protocol should be "non-open" and id:1468 gh:1475
   // you shouldn't be able to create conformances.
 }
 extension Int : MirrorPath {}
 extension String : MirrorPath {}
 
 extension Mirror {
-  @_fixed_layout // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_fixed_layout // FIXME (sil-serialize-all) id:1226 gh:1233
+  @_versioned // FIXME (sil-serialize-all) id:2041 gh:2048
   internal struct _Dummy : CustomReflectable {
-    @_inlineable // FIXME(sil-serialize-all)
-    @_versioned // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:1175 gh:1182
+    @_versioned // FIXME (sil-serialize-all) id:1507 gh:1514
     internal init(mirror: Mirror) {
       self.mirror = mirror
     }
-    @_versioned // FIXME(sil-serialize-all)
+    @_versioned // FIXME (sil-serialize-all) id:1533 gh:1541
     internal var mirror: Mirror
-    @_inlineable // FIXME(sil-serialize-all)
-    @_versioned // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:1229 gh:1236
+    @_versioned // FIXME (sil-serialize-all) id:2044 gh:2051
     internal var customMirror: Mirror { return mirror }
   }
 
@@ -474,7 +474,7 @@ extension Mirror {
   ///   - rest: Any remaining mirror path components.
   /// - Returns: The descendant of this mirror specified by the given mirror
   ///   path components if such a descendant exists; otherwise, `nil`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1178 gh:1185
   public func descendant(
     _ first: MirrorPath, _ rest: MirrorPath...
   ) -> Any? {
@@ -504,8 +504,8 @@ extension Mirror {
 //===--- Legacy _Mirror Support -------------------------------------------===//
 extension Mirror.DisplayStyle {
   /// Construct from a legacy `_MirrorDisposition`
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1510 gh:1517
+  @_versioned // FIXME (sil-serialize-all) id:1536 gh:1543
   internal init?(legacy: _MirrorDisposition) {
     switch legacy {
     case .`struct`: self = .`struct`
@@ -523,8 +523,8 @@ extension Mirror.DisplayStyle {
   }
 }
 
-@_inlineable // FIXME(sil-serialize-all)
-@_versioned // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1231 gh:1238
+@_versioned // FIXME (sil-serialize-all) id:2047 gh:2054
 internal func _isClassSuperMirror(_ t: Any.Type) -> Bool {
 #if  _runtime(_ObjC)
   return t == _ClassSuperMirror.self || t == _ObjCSuperMirror.self
@@ -534,8 +534,8 @@ internal func _isClassSuperMirror(_ t: Any.Type) -> Bool {
 }
 
 extension _Mirror {
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1182 gh:1189
+  @_versioned // FIXME (sil-serialize-all) id:1513 gh:1520
   internal func _superMirror() -> _Mirror? {
     if self.count > 0 {
       let childMirror = self[0].1
@@ -560,35 +560,35 @@ internal extension Mirror {
   /// appropriate for random access!  To avoid this pitfall, convert
   /// mirrors to use the new style, which only present forward
   /// traversal in general.
-  @_fixed_layout // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_fixed_layout // FIXME (sil-serialize-all) id:1538 gh:1545
+  @_versioned // FIXME (sil-serialize-all) id:1233 gh:1240
   internal struct LegacyChildren : RandomAccessCollection {
     internal typealias Indices = CountableRange<Int>
     
-    @_inlineable // FIXME(sil-serialize-all)
-    @_versioned // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:2050 gh:2057
+    @_versioned // FIXME (sil-serialize-all) id:1186 gh:1193
     internal init(_ oldMirror: _Mirror) {
       self._oldMirror = oldMirror
     }
 
-    @_inlineable // FIXME(sil-serialize-all)
-    @_versioned // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:1515 gh:1522
+    @_versioned // FIXME (sil-serialize-all) id:1540 gh:1547
     internal var startIndex: Int {
       return _oldMirror._superMirror() == nil ? 0 : 1
     }
 
-    @_inlineable // FIXME(sil-serialize-all)
-    @_versioned // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:1235 gh:1242
+    @_versioned // FIXME (sil-serialize-all) id:2053 gh:2060
     internal var endIndex: Int { return _oldMirror.count }
 
-    @_inlineable // FIXME(sil-serialize-all)
-    @_versioned // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:1189 gh:1196
+    @_versioned // FIXME (sil-serialize-all) id:1517 gh:1524
     internal subscript(position: Int) -> Child {
       let (label, childMirror) = _oldMirror[position]
       return (label: label, value: childMirror.value)
     }
 
-    @_versioned // FIXME(sil-serialize-all)
+    @_versioned // FIXME (sil-serialize-all) id:1543 gh:1549
     internal let _oldMirror: _Mirror
   }
 
@@ -599,8 +599,8 @@ internal extension Mirror {
   ///
   /// - parameter legacy: Either `nil`, or a legacy mirror for `subject`
   ///    as `subjectClass`.
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1237 gh:1245
+  @_versioned // FIXME (sil-serialize-all) id:2056 gh:2063
   internal init(
     _ subject: AnyObject,
     subjectClass: AnyClass,
@@ -630,8 +630,8 @@ internal extension Mirror {
     }
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1193 gh:1200
+  @_versioned // FIXME (sil-serialize-all) id:1519 gh:1526
   internal init(
     legacy legacyMirror: _Mirror,
     subjectType: Any.Type,
@@ -659,7 +659,7 @@ internal extension Mirror {
 //===--- QuickLooks -------------------------------------------------------===//
 
 /// The sum of types that can be used as a Quick Look representation.
-@_fixed_layout // FIXME(sil-serialize-all)
+@_fixed_layout // FIXME (sil-serialize-all) id:1547 gh:1554
 public enum PlaygroundQuickLook {
   /// Plain text.
   case text(String)
@@ -676,50 +676,50 @@ public enum PlaygroundQuickLook {
   /// A double precision floating-point numeric value.
   case double(Float64)
 
-  // FIXME: Uses an Any to avoid coupling a particular Cocoa type.
+  // FIXME: Uses an Any to avoid coupling a particular Cocoa type. id:1241 gh:1248
   /// An image.
   case image(Any)
 
-  // FIXME: Uses an Any to avoid coupling a particular Cocoa type.
+  // FIXME: Uses an Any to avoid coupling a particular Cocoa type. id:2059 gh:2066
   /// A sound.
   case sound(Any)
 
-  // FIXME: Uses an Any to avoid coupling a particular Cocoa type.
+  // FIXME: Uses an Any to avoid coupling a particular Cocoa type. id:1198 gh:1205
   /// A color.
   case color(Any)
 
-  // FIXME: Uses an Any to avoid coupling a particular Cocoa type.
+  // FIXME: Uses an Any to avoid coupling a particular Cocoa type. id:1523 gh:1530
   /// A bezier path.
   case bezierPath(Any)
 
-  // FIXME: Uses an Any to avoid coupling a particular Cocoa type.
+  // FIXME: Uses an Any to avoid coupling a particular Cocoa type. id:1549 gh:1556
   /// An attributed string.
   case attributedString(Any)
 
-  // FIXME: Uses explicit coordinates to avoid coupling a particular Cocoa type.
+  // FIXME: Uses explicit coordinates to avoid coupling a particular Cocoa type. id:1244 gh:1251
   /// A rectangle.
   case rectangle(Float64, Float64, Float64, Float64)
 
-  // FIXME: Uses explicit coordinates to avoid coupling a particular Cocoa type.
+  // FIXME: Uses explicit coordinates to avoid coupling a particular Cocoa type. id:2061 gh:2068
   /// A point.
   case point(Float64, Float64)
 
-  // FIXME: Uses explicit coordinates to avoid coupling a particular Cocoa type.
+  // FIXME: Uses explicit coordinates to avoid coupling a particular Cocoa type. id:1202 gh:1209
   /// A size.
   case size(Float64, Float64)
 
   /// A boolean value.
   case bool(Bool)
 
-  // FIXME: Uses explicit values to avoid coupling a particular Cocoa type.
+  // FIXME: Uses explicit values to avoid coupling a particular Cocoa type. id:1526 gh:1533
   /// A range.
   case range(Int64, Int64)
 
-  // FIXME: Uses an Any to avoid coupling a particular Cocoa type.
+  // FIXME: Uses an Any to avoid coupling a particular Cocoa type. id:1551 gh:1558
   /// A GUI view.
   case view(Any)
 
-  // FIXME: Uses an Any to avoid coupling a particular Cocoa type.
+  // FIXME: Uses an Any to avoid coupling a particular Cocoa type. id:1248 gh:1255
   /// A graphical sprite.
   case sprite(Any)
 
@@ -745,7 +745,7 @@ extension PlaygroundQuickLook {
   ///
   /// - Parameter subject: The instance to represent with the resulting Quick
   ///   Look.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2114 gh:2120
   public init(reflecting subject: Any) {
     if let customized = subject as? CustomPlaygroundQuickLookable {
       self = customized.customPlaygroundQuickLook
@@ -781,7 +781,7 @@ public protocol CustomPlaygroundQuickLookable {
 
 
 // A workaround for <rdar://problem/26182650>
-// FIXME(ABI)#50 (Dynamic Dispatch for Class Extensions) though not if it moves out of stdlib.
+// FIXME (ABI)#50 (Dynamic Dispatch for Class Extensions) though not if it moves out of stdlib. id:1205 gh:1212
 public protocol _DefaultCustomPlaygroundQuickLookable {
   var _defaultCustomPlaygroundQuickLook: PlaygroundQuickLook { get }
 }
@@ -851,18 +851,18 @@ public protocol _DefaultCustomPlaygroundQuickLookable {
 ///     let pairs = IntPairs([1: 2, 1: 1, 3: 4, 2: 1])
 ///     print(pairs.elements)
 ///     // Prints "[(1, 2), (1, 1), (3, 4), (2, 1)]"
-@_fixed_layout // FIXME(sil-serialize-all)
+@_fixed_layout // FIXME (sil-serialize-all) id:1529 gh:1536
 public struct DictionaryLiteral<Key, Value> : ExpressibleByDictionaryLiteral {
   /// Creates a new `DictionaryLiteral` instance from the given dictionary
   /// literal.
   ///
   /// The order of the key-value pairs is kept intact in the resulting
   /// `DictionaryLiteral` instance.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1555 gh:1562
   public init(dictionaryLiteral elements: (Key, Value)...) {
     self._elements = elements
   }
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:1251 gh:1258
   internal let _elements: [(Key, Value)]
 }
 
@@ -875,7 +875,7 @@ extension DictionaryLiteral : RandomAccessCollection {
   ///
   /// If the `DictionaryLiteral` instance is empty, `startIndex` is equal to
   /// `endIndex`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2118 gh:2125
   public var startIndex: Int { return 0 }
 
   /// The collection's "past the end" position---that is, the position one
@@ -883,10 +883,10 @@ extension DictionaryLiteral : RandomAccessCollection {
   ///
   /// If the `DictionaryLiteral` instance is empty, `endIndex` is equal to
   /// `startIndex`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1209 gh:1216
   public var endIndex: Int { return _elements.endIndex }
 
-  // FIXME(ABI)#174 (Type checker): a typealias is needed to prevent <rdar://20248032>
+  // FIXME (ABI)#174 (Type checker): a typealias is needed to prevent <rdar://20248032> id:1554 gh:1561
   /// The element type of a `DictionaryLiteral`: a tuple containing an
   /// individual key-value pair.
   public typealias Element = (key: Key, value: Value)
@@ -897,7 +897,7 @@ extension DictionaryLiteral : RandomAccessCollection {
   ///   must be a valid index of the collection that is not equal to the
   ///   `endIndex` property.
   /// - Returns: The key-value pair at position `position`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1559 gh:1566
   public subscript(position: Int) -> Element {
     return _elements[position]
   }
@@ -943,7 +943,7 @@ extension String {
   ///
   ///     print(String(describing: p))
   ///     // Prints "(21, 30)"
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1254 gh:1261
   public init<Subject>(describing instance: Subject) {
     self.init()
     _print_unlocked(instance, &self)
@@ -993,7 +993,7 @@ extension String {
   ///
   ///     print(String(reflecting: p))
   ///     // Prints "Point(x: 21, y: 30)"
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2125 gh:2132
   public init<Subject>(reflecting subject: Subject) {
     self.init()
     _debugPrint_unlocked(subject, &self)
@@ -1002,14 +1002,14 @@ extension String {
 
 /// Reflection for `Mirror` itself.
 extension Mirror : CustomStringConvertible {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1212 gh:1219
   public var description: String {
     return "Mirror for \(self.subjectType)"
   }
 }
 
 extension Mirror : CustomReflectable {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1558 gh:1565
   public var customMirror: Mirror {
     return Mirror(self, children: [:])
   }

@@ -19,7 +19,7 @@
 namespace swift {
 namespace markup {
 
-// FIXME: copied from Clang's
+// FIXME: copied from Clang's id:119 gh:126
 // CommentASTToXMLConverter::appendToResultWithXMLEscaping
 static inline void appendWithXMLEscaping(raw_ostream &OS, StringRef S) {
   for (const char C : S) {
@@ -46,7 +46,7 @@ static inline void appendWithXMLEscaping(raw_ostream &OS, StringRef S) {
   }
 }
 
-// FIXME: copied from Clang's
+// FIXME: copied from Clang's id:226 gh:233
 // CommentASTToXMLConverter::appendToResultWithCDATAEscaping
 static inline void appendWithCDATAEscaping(raw_ostream &OS, StringRef S) {
   if (S.empty())

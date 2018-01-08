@@ -4,7 +4,7 @@
 
 // REQUIRES: objc_interop
 
-// FIXME: iOS has no Cocoa.framework
+// FIXME: iOS has no Cocoa.framework id:3971 gh:3983
 // REQUIRES: OS=macosx
 
 // CHECK: {{^}}CFArrayCreateCopy(allocator: CFAllocator!, theArray: CFArray!) -> CFArray!{{$}}

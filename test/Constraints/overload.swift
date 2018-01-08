@@ -10,7 +10,7 @@ func f1(_: Int) {}
 func identity<T>(_: T) -> T {}
 
 func f2<T>(_: T) -> T {}
-// FIXME: Fun things happen when we make this T, U!
+// FIXME: Fun things happen when we make this T, U! id:2770 gh:2782
 func f2<T>(_: T, _: T) -> (T, T) { }
 
 struct X {}
@@ -79,7 +79,7 @@ struct X2d {
 }
 
 // Invalid declarations
-// FIXME: Suppress the diagnostic for the call below, because the invalid
+// FIXME: Suppress the diagnostic for the call below, because the invalid id:3407 gh:3419
 // declaration would have matched.
 func f3(_ x: Intthingy) -> Int { } // expected-error{{use of undeclared type 'Intthingy'}}
 

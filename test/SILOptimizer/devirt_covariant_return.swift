@@ -4,7 +4,7 @@
 // protocol conformances with covariant return types correctly. The verifier
 // should trip if we do not handle things correctly.
 //
-// TODO: this is not working right now: rdar://problem/33461095
+// TODO: this is not working right now: rdar://problem/33461095 id:3337 gh:3349
 // As a side-test it also checks if all allocs can be promoted to the stack.
 
 // CHECK-LABEL: sil hidden @$S23devirt_covariant_return6driveryyF : $@convention(thin) () -> () {

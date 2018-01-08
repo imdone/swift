@@ -51,7 +51,7 @@ enum MultiPayloadEnum {
   case Y(Float)
 }
 
-/* TODO
+/* TODO id:3392 gh:3404
 @_alignment(1) // expected-todo-error{{not supported on types with dynamic layout}}
 enum DynamicMultiPayloadEnum<T> {
   case X(T)

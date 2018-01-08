@@ -1,5 +1,5 @@
 // RUN: %target-swift-frontend -g -emit-ir %s | %FileCheck %s
-// FIXME: This test should be testing a non-shadow-copied value instead.
+// FIXME: This test should be testing a non-shadow-copied value instead. id:3416 gh:3428
 for i in 0 ..< 3 {
   // CHECK: %[[ALLOCA:[0-9]+]] = alloca %TSiSg
   // CHECK: %i.addr = alloca i{{32|64}}

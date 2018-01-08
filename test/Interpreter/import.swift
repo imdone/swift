@@ -1,6 +1,6 @@
 // RUN: %swift -interpret -I %S/Inputs -enable-source-import %s | %FileCheck %s
 // REQUIRES: swift_interpreter
-// FIXME: This test uses IRGen with -enable-source-import; it may fail with -g.
+// FIXME: This test uses IRGen with -enable-source-import; it may fail with -g. id:3435 gh:3447
 
 // Make sure we actually IRGen this.
 import implementation

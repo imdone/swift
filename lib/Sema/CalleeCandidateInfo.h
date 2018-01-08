@@ -68,7 +68,7 @@ namespace swift {
     //
     // If false, entityType is written in terms of callee archetypes.
     //
-    // FIXME: Clean this up.
+    // FIXME: Clean this up. id:285 gh:292
     bool substituted;
     
     UncurriedCandidate(ValueDecl *decl, unsigned level);

@@ -18,7 +18,7 @@ import StdlibUnicodeUnittest
 import StdlibCollectionUnittest
 
 #if _runtime(_ObjC)
-// FIXME: Foundation leaks through StdlibUnittest.  It adds some conformances
+// FIXME: Foundation leaks through StdlibUnittest.  It adds some conformances id:4225
 // that overload resolution picks up in this code.
 import Foundation
 #endif
@@ -625,7 +625,7 @@ tests.test("UTF8 indexes") {
       //===--- while loop -------------------------------------------------===//
       // Advance an index from u8i0 over ds Unicode scalars (thus
       // reaching u8i1) by counting leading bytes traversed
-      var u8i0a = u8i0! // <========== NOTE SOURCE COMPATIBILITY BREAKAGE
+      var u8i0a = u8i0! // <========== NOTE SOURCE COMPATIBILITY BREAKAGE id:3382 gh:3394
       var dsa = 0      // number of Unicode scalars it has advanced over
       
       while true {

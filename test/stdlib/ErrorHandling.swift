@@ -29,7 +29,7 @@ ErrorHandlingTests.test("ErrorHandling/withUnsafeMutableBufferPointer restores a
       p[1] = 5
       p[2] = 6
 
-      // FIXME: Seems to have recently regressed
+      // FIXME: Seems to have recently regressed id:4139 gh:4151
       // Buffer should be swapped out of the original array.
       // expectEqual(x, [])
 
@@ -92,7 +92,7 @@ ErrorHandlingTests.test("ErrorHandling/withCString extends lifetime") {
       expectUnreachable()
     } catch {}
   }
-  // TODO: Some way to check string was deallocated?
+  // TODO: Some way to check string was deallocated? id:3172 gh:3184
 }
 
 ErrorHandlingTests.test("ErrorHandling/index(where:)") {

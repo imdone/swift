@@ -31,7 +31,7 @@ public enum UnicodeDecodingResult : Equatable {
   /// An indication of a decoding error.
   case error
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2507 gh:2519
   public static func == (
     lhs: UnicodeDecodingResult,
     rhs: UnicodeDecodingResult
@@ -141,7 +141,7 @@ public protocol UnicodeCodec : Unicode.Encoding {
 /// units.
 extension Unicode.UTF8 : UnicodeCodec {
   /// Creates an instance of the UTF-8 codec.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2619 gh:2631
   public init() { self = ._swift3Buffer(ForwardParser()) }
 
   /// Starts or continues decoding a UTF-8 sequence.
@@ -185,7 +185,7 @@ extension Unicode.UTF8 : UnicodeCodec {
   /// - Returns: A `UnicodeDecodingResult` instance, representing the next
   ///   Unicode scalar, an indication of an error, or an indication that the
   ///   UTF sequence has been fully decoded.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3232 gh:3244
   @inline(__always)
   public mutating func decode<I : IteratorProtocol>(
     _ input: inout I
@@ -218,7 +218,7 @@ extension Unicode.UTF8 : UnicodeCodec {
   /// - Requires: There is at least one used byte in `buffer`, and the unused
   ///   space in `buffer` is filled with some value not matching the UTF-8
   ///   continuation byte form (`0b10xxxxxx`).
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2285 gh:2297
   public // @testable
   static func _decodeOne(_ buffer: UInt32) -> (result: UInt32?, length: UInt8) {
     // Note the buffer is read least significant byte first: [ #3 #2 #1 #0 ].
@@ -258,7 +258,7 @@ extension Unicode.UTF8 : UnicodeCodec {
   ///   - input: The Unicode scalar value to encode.
   ///   - processCodeUnit: A closure that processes one code unit argument at a
   ///     time.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3047 gh:3060
   @inline(__always)
   public static func encode(
     _ input: Unicode.Scalar,
@@ -294,19 +294,19 @@ extension Unicode.UTF8 : UnicodeCodec {
   ///
   /// - Parameter byte: A UTF-8 code unit.
   /// - Returns: `true` if `byte` is a continuation byte; otherwise, `false`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2509 gh:2521
   public static func isContinuation(_ byte: CodeUnit) -> Bool {
     return byte & 0b11_00__0000 == 0b10_00__0000
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2621 gh:2633
   public static func _nullCodeUnitOffset(
     in input: UnsafePointer<CodeUnit>
   ) -> Int {
     return Int(_stdlib_strlen_unsigned(input))
   }
   // Support parsing C strings as-if they are UTF8 strings.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3236 gh:3248
   public static func _nullCodeUnitOffset(
     in input: UnsafePointer<CChar>
   ) -> Int {
@@ -321,7 +321,7 @@ public typealias UTF8 = Unicode.UTF8
 /// units.
 extension Unicode.UTF16 : UnicodeCodec {
   /// Creates an instance of the UTF-16 codec.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2291 gh:2303
   public init() { self = ._swift3Buffer(ForwardParser()) }
 
   /// Starts or continues decoding a UTF-16 sequence.
@@ -365,7 +365,7 @@ extension Unicode.UTF16 : UnicodeCodec {
   /// - Returns: A `UnicodeDecodingResult` instance, representing the next
   ///   Unicode scalar, an indication of an error, or an indication that the
   ///   UTF sequence has been fully decoded.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3050 gh:3062
   public mutating func decode<I : IteratorProtocol>(
     _ input: inout I
   ) -> UnicodeDecodingResult where I.Element == CodeUnit {
@@ -383,7 +383,7 @@ extension Unicode.UTF16 : UnicodeCodec {
   /// Try to decode one Unicode scalar, and return the actual number of code
   /// units it spanned in the input.  This function may consume more code
   /// units than required for this scalar.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2511 gh:2523
   @_versioned
   internal mutating func _decodeOne<I : IteratorProtocol>(
     _ input: inout I
@@ -417,7 +417,7 @@ extension Unicode.UTF16 : UnicodeCodec {
   ///   - input: The Unicode scalar value to encode.
   ///   - processCodeUnit: A closure that processes one code unit argument at a
   ///     time.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2623 gh:2635
   public static func encode(
     _ input: Unicode.Scalar,
     into processCodeUnit: (CodeUnit) -> Void
@@ -436,7 +436,7 @@ public typealias UTF16 = Unicode.UTF16
 /// units.
 extension Unicode.UTF32 : UnicodeCodec {
   /// Creates an instance of the UTF-32 codec.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3238 gh:3250
   public init() { self = ._swift3Codec }
 
   /// Starts or continues decoding a UTF-32 sequence.
@@ -480,15 +480,15 @@ extension Unicode.UTF32 : UnicodeCodec {
   /// - Returns: A `UnicodeDecodingResult` instance, representing the next
   ///   Unicode scalar, an indication of an error, or an indication that the
   ///   UTF sequence has been fully decoded.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2293 gh:2305
   public mutating func decode<I : IteratorProtocol>(
     _ input: inout I
   ) -> UnicodeDecodingResult where I.Element == CodeUnit {
     return UTF32._decode(&input)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3054 gh:3066
+  @_versioned // FIXME (sil-serialize-all) id:2513 gh:2525
   internal static func _decode<I : IteratorProtocol>(
     _ input: inout I
   ) -> UnicodeDecodingResult where I.Element == CodeUnit {
@@ -517,7 +517,7 @@ extension Unicode.UTF32 : UnicodeCodec {
   ///   - input: The Unicode scalar value to encode.
   ///   - processCodeUnit: A closure that processes one code unit argument at a
   ///     time.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2625 gh:2637
   public static func encode(
     _ input: Unicode.Scalar,
     into processCodeUnit: (CodeUnit) -> Void
@@ -563,7 +563,7 @@ public typealias UTF32 = Unicode.UTF32
 ///     unit at a time.
 /// - Returns: `true` if the translation detected encoding errors in `input`;
 ///   otherwise, `false`.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:3240 gh:3252
 @inline(__always)
 public func transcode<
   Input : IteratorProtocol,
@@ -613,12 +613,12 @@ protocol _StringElement {
 }
 
 extension UTF16.CodeUnit : _StringElement {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2295 gh:2307
   public // @testable
   static func _toUTF16CodeUnit(_ x: UTF16.CodeUnit) -> UTF16.CodeUnit {
     return x
   }
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3058 gh:3070
   public // @testable
   static func _fromUTF16CodeUnit(
     _ utf16: UTF16.CodeUnit
@@ -628,13 +628,13 @@ extension UTF16.CodeUnit : _StringElement {
 }
 
 extension UTF8.CodeUnit : _StringElement {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2515 gh:2527
   public // @testable
   static func _toUTF16CodeUnit(_ x: UTF8.CodeUnit) -> UTF16.CodeUnit {
     _sanityCheck(x <= 0x7f, "should only be doing this with ASCII")
     return UTF16.CodeUnit(truncatingIfNeeded: x)
   }
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2627 gh:2639
   public // @testable
   static func _fromUTF16CodeUnit(
     _ utf16: UTF16.CodeUnit
@@ -668,7 +668,7 @@ extension UTF16 {
   ///
   /// - Parameter x: A Unicode scalar value.
   /// - Returns: The width of `x` when encoded in UTF-16, either `1` or `2`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3242 gh:3254
   public static func width(_ x: Unicode.Scalar) -> Int {
     return x.value <= 0xFFFF ? 1 : 2
   }
@@ -690,7 +690,7 @@ extension UTF16 {
   ///   surrogate pair when encoded in UTF-16. To check whether `x` is
   ///   represented by a surrogate pair, use `UTF16.width(x) == 2`.
   /// - Returns: The leading surrogate code unit of `x` when encoded in UTF-16.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2299 gh:2310
   public static func leadSurrogate(_ x: Unicode.Scalar) -> UTF16.CodeUnit {
     _precondition(width(x) == 2)
     return 0xD800 + UTF16.CodeUnit(truncatingIfNeeded:
@@ -714,7 +714,7 @@ extension UTF16 {
   ///   surrogate pair when encoded in UTF-16. To check whether `x` is
   ///   represented by a surrogate pair, use `UTF16.width(x) == 2`.
   /// - Returns: The trailing surrogate code unit of `x` when encoded in UTF-16.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3062 gh:3074
   public static func trailSurrogate(_ x: Unicode.Scalar) -> UTF16.CodeUnit {
     _precondition(width(x) == 2)
     return 0xDC00 + UTF16.CodeUnit(truncatingIfNeeded:
@@ -742,7 +742,7 @@ extension UTF16 {
   /// - Parameter x: A UTF-16 code unit.
   /// - Returns: `true` if `x` is a high-surrogate code unit; otherwise,
   ///   `false`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2517 gh:2529
   public static func isLeadSurrogate(_ x: CodeUnit) -> Bool {
     return 0xD800...0xDBFF ~= x
   }
@@ -769,12 +769,12 @@ extension UTF16 {
   /// - Parameter x: A UTF-16 code unit.
   /// - Returns: `true` if `x` is a low-surrogate code unit; otherwise,
   ///   `false`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2629 gh:2641
   public static func isTrailSurrogate(_ x: CodeUnit) -> Bool {
     return 0xDC00...0xDFFF ~= x
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3244 gh:3256
   public // @testable
   static func _copy<T : _StringElement, U : _StringElement>(
     source: UnsafeMutablePointer<T>,
@@ -829,7 +829,7 @@ extension UTF16 {
   ///   contained only ASCII characters. If `repairingIllFormedSequences` is
   ///   `false` and an ill-formed sequence is detected, this method returns
   ///   `nil`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2301 gh:2313
   public static func transcodedLength<
     Input : IteratorProtocol,
     Encoding : Unicode.Encoding
@@ -885,7 +885,7 @@ extension UTF16 {
 extension Unicode.Scalar {
   /// Create an instance with numeric value `value`, bypassing the regular
   /// precondition checks for code point validity.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3065 gh:3077
   @_versioned
   internal init(_unchecked value: UInt32) {
     _sanityCheck(value < 0xD800 || value > 0xDFFF,
@@ -897,7 +897,7 @@ extension Unicode.Scalar {
 }
 
 extension UnicodeCodec {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2519 gh:2531
   public static func _nullCodeUnitOffset(
     in input: UnsafePointer<CodeUnit>
   ) -> Int {

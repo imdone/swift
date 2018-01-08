@@ -3,7 +3,7 @@
 // REQUIRES: CPU=x86_64
 // REQUIRES: objc_interop
 
-// FIXME: These should be SIL tests, but we can't parse generic types in SIL
+// FIXME: These should be SIL tests, but we can't parse generic types in SIL id:3518 gh:3530
 // yet.
 
 @objc protocol ObjC {

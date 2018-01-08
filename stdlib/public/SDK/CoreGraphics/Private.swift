@@ -226,4 +226,4 @@ public var kCGColorBlack: CFString
 public var kCGColorClear: CFString 
   { fatalError() }
 
-// TODO: also add migration support from previous Swift3 betas?
+// TODO: also add migration support from previous Swift3 betas? id:302 gh:310

@@ -15,7 +15,7 @@ protocol P6: P2 {}
 protocol Assoc { associatedtype AT }
 
 func takes_P2<X: P2>(_: X) {}
-// FIXME: "requirement specified as..." isn't accurate below
+// FIXME: "requirement specified as..." isn't accurate below id:2793 gh:2805
 // expected-note@-2{{candidate requires that the types 'U' and 'V' be equivalent (requirement specified as 'U' == 'V')}}
 // expected-note@-3{{requirement from conditional conformance of 'SameTypeGeneric<U, V>' to 'P2'}}
 // expected-note@-4{{candidate requires that the types 'U' and 'Int' be equivalent (requirement specified as 'U' == 'Int')}}
@@ -277,7 +277,7 @@ func inheritequal_bad_bad<U>(_: U) {
 }
 
 struct InheritImplicitGood<T> {}
-// FIXME: per SE-0143, this should result in an implicit conformance
+// FIXME: per SE-0143, this should result in an implicit conformance id:3423 gh:3435
 // InheritImplicitGood: P2.
 extension InheritImplicitGood: P5 where T: P1 {}
 // expected-error@-1{{type 'InheritImplicitGood<T>' does not conform to protocol 'P2'}}
@@ -307,7 +307,7 @@ extension TwoDisjointConformances: P2 where T == String {}
 // expected-note@-1{{'TwoDisjointConformances<T>' declares conformance to protocol 'P2' here}}
 
 
-// FIXME: these cases should be equivalent (and both with the same output as the
+// FIXME: these cases should be equivalent (and both with the same output as the id:3018 gh:3030
 // first), but the second one choses T as the representative of the
 // equivalence class containing both T and U in the extension's generic
 // signature, meaning the stored conditional requirement is T: P1, which isn't
@@ -330,7 +330,7 @@ func existential_good<T: P1>(_: T.Type) {
 }
 
 func existential_bad<T>(_: T.Type) {
-  // FIXME: Poor diagnostic.
+  // FIXME: Poor diagnostic. id:3749 gh:3761
   _ = Free<T>() as P2 // expected-error{{'Free<T>' is not convertible to 'P2'; did you mean to use 'as!' to force downcast?}}
 }
 

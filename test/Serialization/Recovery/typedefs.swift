@@ -72,7 +72,7 @@ func testExtensions(wrapped: WrappedInt, unwrapped: UnwrappedInt) {
 public class UserDynamicSub: UserDynamic {
   override init() {}
 }
-// FIXME: Bad error message; really it's that the convenience init hasn't been
+// FIXME: Bad error message; really it's that the convenience init hasn't been id:3786 gh:3798
 // inherited.
 _ = UserDynamicSub(conveniently: 0) // expected-error {{argument passed to call that takes no arguments}}
 

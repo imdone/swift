@@ -661,7 +661,7 @@ enum class ConformanceCheckFlags {
   Used = 0x02,
   /// Whether to suppress dependency tracking entirely.
   ///
-  /// FIXME: This deals with some oddities with the
+  /// FIXME: This deals with some oddities with the id:303 gh:309
   /// _ObjectiveCBridgeable conformances.
   SuppressDependencyTracking = 0x04,
   /// Whether to skip the check for any conditional conformances.
@@ -1687,7 +1687,7 @@ public:
   /// additional constraints.
   ///
   /// \returns the type of \p expr on success, Type() otherwise.
-  /// FIXME: expr may still be modified...
+  /// FIXME: expr may still be modified... id:170 gh:177
   Type getTypeOfExpressionWithoutApplying(
       Expr *&expr, DeclContext *dc,
       ConcreteDeclRef &referencedDecl,

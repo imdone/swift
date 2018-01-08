@@ -107,7 +107,7 @@ func partialAppends<T, U, V>(partial: PartialKeyPath<T>,
   expect(&h, is: Optional<ReferenceWritableKeyPath<T, V>>.self)
 
 
-  /* TODO
+  /* TODO id:3177 gh:3189
   var i = concrete.appending(path: any)
   expect(&i, is: Optional<PartialKeyPath<U>>.self)
 

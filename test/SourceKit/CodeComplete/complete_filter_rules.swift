@@ -62,12 +62,12 @@ func testHideLiteral02() {
 // SHOW_STRING-NOT: [
 }
 
-// FIXME: custom completions
+// FIXME: custom completions id:2990 gh:3002
 
 // RUN: %complete-test -filter-rules=%S/Inputs/filter-rules/hideModules.json -tok=HIDE_MODULES_1 %s -- -F %S/../Inputs/libIDE-mock-sdk | %FileCheck %s -check-prefix=HIDE_FOO
 func testHideModule01() {
   let x: #^HIDE_MODULES_1^#
-// FIXME: submodules
+// FIXME: submodules id:3389 gh:3401
 // HIDE_FOO-NOT: FooStruct1
 // HIDE_FOO-NOT: FooClassBase
 // HIDE_FOO: FooStruct2

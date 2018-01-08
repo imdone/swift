@@ -154,19 +154,19 @@ public protocol LazySequenceProtocol : Sequence {
 /// property is provided.
 extension LazySequenceProtocol where Elements == Self {
   /// Identical to `self`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1116 gh:1123
   public var elements: Self { return self }
 }
 
 extension LazySequenceProtocol {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1459 gh:1466
   public var lazy: LazySequence<Elements> {
     return elements.lazy
   }
 }
 
 extension LazySequenceProtocol where Elements: LazySequenceProtocol {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1379 gh:1386
   public var lazy: Elements {
     return elements
   }
@@ -177,15 +177,15 @@ extension LazySequenceProtocol where Elements: LazySequenceProtocol {
 /// implemented lazily.
 ///
 /// - See also: `LazySequenceProtocol`
-@_fixed_layout // FIXME(sil-serialize-all)
+@_fixed_layout // FIXME (sil-serialize-all) id:1172 gh:1179
 public struct LazySequence<Base : Sequence>: _SequenceWrapper {
   public var _base: Base
 
   /// Creates a sequence that has the same elements as `base`, but on
   /// which some operations such as `map` and `filter` are implemented
   /// lazily.
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1989 gh:1996
+  @_versioned // FIXME (sil-serialize-all) id:1122 gh:1129
   internal init(_base: Base) {
     self._base = _base
   }
@@ -195,7 +195,7 @@ extension LazySequence: LazySequenceProtocol {
   public typealias Elements = Base
 
   /// The `Base` (presumably non-lazy) sequence from which `self` was created.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1462 gh:1469
   public var elements: Elements { return _base }
 }
 
@@ -203,7 +203,7 @@ extension Sequence {
   /// A sequence containing the same elements as this sequence,
   /// but on which some operations, such as `map` and `filter`, are
   /// implemented lazily.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1382 gh:1389
   public var lazy: LazySequence<Self> {
     return LazySequence(_base: self)
   }

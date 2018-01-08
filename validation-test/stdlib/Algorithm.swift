@@ -9,16 +9,16 @@ import SwiftPrivate
 
 var Algorithm = TestSuite("Algorithm")
 
-// FIXME(prext): remove this conformance.
+// FIXME (prext): remove this conformance. id:4189 gh:4201
 extension String.UnicodeScalarView : Equatable {}
 
-// FIXME(prext): remove this function.
+// FIXME (prext): remove this function. id:3287 gh:3299
 public func == (
   lhs: String.UnicodeScalarView, rhs: String.UnicodeScalarView) -> Bool {
   return Array(lhs) == Array(rhs)
 }
 
-// FIXME(prext): move this struct to the point of use.
+// FIXME (prext): move this struct to the point of use. id:3639 gh:3651
 Algorithm.test("min,max") {
   // Identities are unique in this set.
   let a1 = MinimalComparableValue(0, identity: 1)
@@ -154,7 +154,7 @@ Algorithm.test("invalidOrderings") {
     _ = a.partition(by: { !lt($0, first!) })
   }
   /*
-  // FIXME: Disabled due to <rdar://problem/17734737> Unimplemented:
+  // FIXME: Disabled due to <rdar://problem/17734737> Unimplemented: id:4001 gh:4013
   // abstraction difference in l-value
   withInvalidOrderings {
     var a = randomArray()

@@ -10,14 +10,14 @@ class A1 {
 class A2 {
   var foo1 = 2
   func foo2() {
-    // FIXME: "the var" doesn't sound right.
+    // FIXME: "the var" doesn't sound right. id:3366 gh:3378
     var foo1 = foo1 // expected-error {{variable used within its own initial value; use 'self.' to refer to the var}}{{16-16=self.}}
   }
 }
 
 class A3 {
   func foo2() {
-    // FIXME: this should also add fixit.
+    // FIXME: this should also add fixit. id:3677 gh:3689
     var foo1 = foo1() // expected-error {{variable used within its own initial value}}{{none}}
   }
   func foo1() {}

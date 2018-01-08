@@ -60,7 +60,7 @@
 // CHECK:   [[FOO]]* (%swift.type*)* @"$S17objc_class_export3FooC6createACyFZ",
 // CHECK:   void (double, double, double, double, [[FOO]]*)* @"$S17objc_class_export3FooC10drawInRect5dirtyySC6NSRectV_tF"
 // CHECK: }>, section "__DATA,__objc_data, regular"
-// -- TODO: The OBJC_CLASS symbol should reflect the qualified runtime name of
+// -- TODO: The OBJC_CLASS symbol should reflect the qualified runtime name of id:2717 gh:2729
 //    Foo.
 // CHECK: @"$S17objc_class_export3FooCN" = hidden alias %swift.type, bitcast (i64* getelementptr inbounds ({{.*}} @"$S17objc_class_export3FooCMf", i32 0, i32 2) to %swift.type*)
 // CHECK: @"OBJC_CLASS_$__TtC17objc_class_export3Foo" = hidden alias %swift.type, %swift.type* @"$S17objc_class_export3FooCN"

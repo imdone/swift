@@ -7,7 +7,7 @@ func test_constantFoldAnd1() -> Int {
   while true && true {
     return 42
   }
-  // FIXME: this is a false positive.
+  // FIXME: this is a false positive. id:4193 gh:4206
 } // expected-error {{missing return in a function expected to return 'Int'}}
 
 func test_constantFoldAnd2() -> Int {
@@ -32,21 +32,21 @@ func test_constantFoldOr1() -> Int {
   while true || true {
     return 42
   }
-  // FIXME: this is a false positive.
+  // FIXME: this is a false positive. id:3295 gh:3307
 } // expected-error {{missing return in a function expected to return 'Int'}}
 
 func test_constantFoldOr2() -> Int {
   while true || false {
     return 42
   }
-  // FIXME: this is a false positive.
+  // FIXME: this is a false positive. id:3647 gh:3659
 } // expected-error {{missing return in a function expected to return 'Int'}}
 
 func test_constantFoldOr3() -> Int {
   while false || true {
     return 42
   }
-  // FIXME: this is a false positive.
+  // FIXME: this is a false positive. id:4013 gh:4025
 } // expected-error {{missing return in a function expected to return 'Int'}}
 
 func test_constantFoldOr4() -> Int {

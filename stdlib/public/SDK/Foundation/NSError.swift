@@ -465,7 +465,7 @@ public protocol _BridgedStoredNSError :
   init(_nsError error: NSError)
 }
 
-/// TODO: Better way to do this?
+/// TODO: Better way to do this? id:284 gh:291
 internal func _stringDictToAnyHashableDict(_ input: [String : Any])
     -> [AnyHashable : Any] {
   var result = [AnyHashable : Any](minimumCapacity: input.count)
@@ -478,7 +478,7 @@ internal func _stringDictToAnyHashableDict(_ input: [String : Any])
 /// Various helper implementations for _BridgedStoredNSError
 public extension _BridgedStoredNSError
     where Code: RawRepresentable, Code.RawValue: SignedInteger {
-  // FIXME: Generalize to Integer.
+  // FIXME: Generalize to Integer. id:405 gh:412
   public var code: Code {
     return Code(rawValue: numericCast(_nsError.code))!
   }
@@ -499,7 +499,7 @@ public extension _BridgedStoredNSError
 /// Various helper implementations for _BridgedStoredNSError
 public extension _BridgedStoredNSError
     where Code: RawRepresentable, Code.RawValue: UnsignedInteger {
-  // FIXME: Generalize to Integer.
+  // FIXME: Generalize to Integer. id:404 gh:411
   public var code: Code {
     return Code(rawValue: numericCast(_nsError.code))!
   }
@@ -528,7 +528,7 @@ public extension _BridgedStoredNSError {
 
 /// Implementation of CustomNSError for all _BridgedStoredNSErrors.
 public extension _BridgedStoredNSError {
-  // FIXME: Would prefer to have a clear "extract an NSError
+  // FIXME: Would prefer to have a clear "extract an NSError id:265 gh:272
   // directly" operation.
 
   static var errorDomain: String { return _nsErrorDomain }
@@ -557,7 +557,7 @@ public protocol _ErrorCodeProtocol : Equatable {
   /// The corresponding error code.
   associatedtype _ErrorType
 
-  // FIXME: We want _ErrorType to be _BridgedStoredNSError and have its
+  // FIXME: We want _ErrorType to be _BridgedStoredNSError and have its id:543 gh:550
   // Code match Self, but we cannot express those requirements yet.
 }
 
@@ -566,7 +566,7 @@ extension _ErrorCodeProtocol where Self._ErrorType: _BridgedStoredNSError {
   public static func ~=(match: Self, error: Error) -> Bool {
     guard let specificError = error as? Self._ErrorType else { return false }
 
-    // FIXME: Work around IRGen crash when we set Code == Code._ErrorType.Code.
+    // FIXME: Work around IRGen crash when we set Code == Code._ErrorType.Code. id:286 gh:293
     let specificCode = specificError.code as! Self
     return match == specificCode
   }

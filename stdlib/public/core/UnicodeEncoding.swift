@@ -52,7 +52,7 @@ public protocol _UnicodeEncoding {
     where ReverseParser.Encoding == Self
 
   //===--------------------------------------------------------------------===//
-  // FIXME: this requirement shouldn't be here and is mitigated by the default
+  // FIXME: this requirement shouldn't be here and is mitigated by the default id:2631 gh:2643
   // implementation below.  Compiler bugs prevent it from being expressed in an
   // intermediate, underscored protocol.
   /// Returns true if `x` only appears in this encoding as the representation of
@@ -62,10 +62,10 @@ public protocol _UnicodeEncoding {
 
 extension _UnicodeEncoding {
   // See note on declaration of requirement, above
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3246 gh:3259
   public static func _isScalar(_ x: CodeUnit) -> Bool { return false }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2303 gh:2315
   public static func transcode<FromEncoding : Unicode.Encoding>(
     _ content: FromEncoding.EncodedScalar, from _: FromEncoding.Type
   ) -> EncodedScalar? {
@@ -75,7 +75,7 @@ extension _UnicodeEncoding {
   /// Converts from encoding-independent to encoded representation, returning
   /// `encodedReplacementCharacter` if the scalar can't be represented in this
   /// encoding.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3072 gh:3084
   @_versioned
   internal static func _encode(_ content: Unicode.Scalar) -> EncodedScalar {
     return encode(content) ?? encodedReplacementCharacter
@@ -84,7 +84,7 @@ extension _UnicodeEncoding {
   /// Converts a scalar from another encoding's representation, returning
   /// `encodedReplacementCharacter` if the scalar can't be represented in this
   /// encoding.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2521 gh:2533
   @_versioned
   internal static func _transcode<FromEncoding : Unicode.Encoding>(
     _ content: FromEncoding.EncodedScalar, from _: FromEncoding.Type
@@ -93,7 +93,7 @@ extension _UnicodeEncoding {
       ?? encodedReplacementCharacter
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2633 gh:2645
   @_versioned
   internal static func _transcode<
   Source: Sequence, SourceEncoding: Unicode.Encoding>(

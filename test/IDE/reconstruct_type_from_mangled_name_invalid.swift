@@ -3,7 +3,7 @@
 
 struct GS<T> {
 // CHECK: decl: struct GS<T> for 'GS'
-// FIXME: why do we get this?
+// FIXME: why do we get this? id:3506 gh:3518
 // CHECK: decl: struct GS<T> for 'T' usr=s:14swift_ide_test2GSV1Txmfp
 
   let a: T.Nope
@@ -20,7 +20,7 @@ let global3 = GS<Int>(a: 1, b: 2).b
 // CHECK: decl: let global3: <<error type>>
 
 protocol P {
-// FIXME: missing protocol entries?
+// FIXME: missing protocol entries? id:3375 gh:3387
 // CHECK: decl: protocol P for 'P' usr=s:14swift_ide_test1PP
   associatedtype T
 // CHECK: decl: protocol P for 'T' usr=s:14swift_ide_test1PP1T
@@ -30,6 +30,6 @@ protocol P {
 struct SP: P {
 // CHECK: decl: struct SP : P for 'SP'
   typealias TT = Self.T
-// FIXME: should be the typealias decl
+// FIXME: should be the typealias decl id:3812 gh:3824
 // CHECK: decl: struct SP : P for 'TT' usr=s:14swift_ide_test2SPV2TT
 }

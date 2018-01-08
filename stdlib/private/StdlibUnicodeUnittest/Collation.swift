@@ -189,7 +189,7 @@ public struct HashableArray<Element : Hashable> : Hashable {
   }
 
   public var hashValue: Int {
-    // FIXME: this is a bad approach to combining hash values.
+    // FIXME: this is a bad approach to combining hash values. id:176 gh:183
     var result = 0
     for x in _elements {
       result ^= x.hashValue

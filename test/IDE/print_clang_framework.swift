@@ -1,4 +1,4 @@
-// TODO: Properties with unowned or weak ownership should not be bridged.
+// TODO: Properties with unowned or weak ownership should not be bridged. id:3364 gh:3376
 // XFAIL: *
 
 // RUN: %empty-directory(%t)
@@ -35,7 +35,7 @@
 // printing of @available attributes for OS X, and those are not printed on
 // iOS.
 //
-// FIXME: split OS X parts into a separate test.
+// FIXME: split OS X parts into a separate test. id:3806 gh:3819
 //
 // REQUIRES: OS=macosx
 

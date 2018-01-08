@@ -104,7 +104,7 @@ public struct Selector : ExpressibleByStringLiteral {
     ptr = str.withCString { sel_registerName($0).ptr }
   }
 
-  // FIXME: Fast-path this in the compiler, so we don't end up with
+  // FIXME: Fast-path this in the compiler, so we don't end up with id:459 gh:466
   // the sel_registerName call at compile time.
   /// Create an instance initialized to `value`.
   public init(stringLiteral value: String) {
@@ -139,7 +139,7 @@ extension Selector : CustomStringConvertible {
 extension String {
   /// Construct the C string representation of an Objective-C selector.
   public init(_sel: Selector) {
-    // FIXME: This misses the ASCII optimization.
+    // FIXME: This misses the ASCII optimization. id:455 gh:462
     self = String(cString: sel_getName(_sel))
   }
 }
@@ -196,7 +196,7 @@ public var NO: ObjCBool {
 
 // NSObject implements Equatable's == as -[NSObject isEqual:]
 // NSObject implements Hashable's hashValue() as -[NSObject hash]
-// FIXME: what about NSObjectProtocol?
+// FIXME: what about NSObjectProtocol? id:472 gh:479
 
 extension NSObject : Equatable, Hashable {
   /// The hash value.

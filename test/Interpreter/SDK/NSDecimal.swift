@@ -81,7 +81,7 @@ func +(x: NSDecimalResult, y: NSDecimalResult) -> NSDecimalResult {
   case let (_, .Error(error)):
     return .Error(error)
 
-  // FIXME rdar://problem/19165412
+  // FIXME rdar://problem/19165412 id:3526 gh:3538
   default:
     fatalError("impossible")
   }

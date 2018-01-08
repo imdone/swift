@@ -41,7 +41,7 @@ switch p {
       // CHECK-SCOPES-SAME:                       line: [[@LINE-3]]
       // CHECK-SCOPES: ![[X1LOC]] = !DILocation(line: [[@LINE-4]], column: 15,
       // CHECK-SCOPES-SAME:                     scope: ![[SCOPE1]])
-      // FIXME: ![[SCOPE1]] = distinct !DILexicalBlock({{.*}}line: [[@LINE-6]]
+      // FIXME: ![[SCOPE1]] = distinct !DILexicalBlock({{.*}}line: [[@LINE-6]] id:3742 gh:3754
       markUsed(x)
     case (let x, let y) where x >= -10 && x < 10 && y >= -10 && y < 10:
       // CHECK-SCOPES: ![[X2]] = !DILocalVariable(name: "x", scope: ![[SCOPE2:[0-9]+]],

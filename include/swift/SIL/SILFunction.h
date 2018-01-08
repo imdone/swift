@@ -27,7 +27,7 @@
 #include "llvm/ADT/StringMap.h"
 
 /// The symbol name used for the program entry point function.
-/// FIXME: Hardcoding this is lame.
+/// FIXME: Hardcoding this is lame. id:215 gh:222
 #define SWIFT_ENTRY_POINT_FUNCTION "main"
 
 namespace swift {
@@ -186,7 +186,7 @@ private:
 
   /// The function's set of semantics attributes.
   ///
-  /// TODO: Why is this using a std::string? Why don't we use uniqued
+  /// TODO: Why is this using a std::string? Why don't we use uniqued id:123 gh:130
   /// StringRefs?
   llvm::SmallVector<std::string, 1> SemanticsAttrSet;
 
@@ -460,7 +460,7 @@ public:
   /// \returns True if the function has a semantic attribute that starts with a
   /// specific string.
   ///
-  /// TODO: This needs a better name.
+  /// TODO: This needs a better name. id:342 gh:349
   bool hasSemanticsAttrThatStartsWith(StringRef S) {
     return count_if(getSemanticsAttrs(), [&S](const std::string &Attr) -> bool {
       return StringRef(Attr).startswith(S);
@@ -525,7 +525,7 @@ public:
   bool shouldVerifyOwnership() const;
 
   /// Check if the function has a location.
-  /// FIXME: All functions should have locations, so this method should not be
+  /// FIXME: All functions should have locations, so this method should not be id:138 gh:145
   /// necessary.
   bool hasLocation() const {
     return DebugScope && !DebugScope->Loc.isNull();

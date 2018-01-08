@@ -10,7 +10,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-// FIXME: one day this will be bridged from CoreFoundation and we
+// FIXME: one day this will be bridged from CoreFoundation and we id:415 gh:422
 // should drop it here. <rdar://problem/14497260> (need support
 // for CF bridging)
 public var kCFStringEncodingASCII: CFStringEncoding { return 0x0600 }

@@ -10,7 +10,7 @@ tests.test("CommuteLazyness") {
   let a = [1,2,3].lazy
   let b = a[...]
   var c = b.filter { $0 == 0 }
-  // NOTE, this test will fail once lazy collectionness becomes a conditiona
+  // NOTE , this test will fail once lazy collectionness becomes a conditiona id:3531 gh:3543
   // conformance, and will need updating to be a LazyBidirectional thingy
   expectType(LazyFilterBidirectionalCollection<Slice<LazyRandomAccessCollection<[Int]>>>.self, &c)
 }

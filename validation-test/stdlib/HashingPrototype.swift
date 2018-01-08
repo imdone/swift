@@ -62,7 +62,7 @@ class UserClassA : NSObject {
   //  hasher.combine(a1)
   //}
 
-  // FIXME: Problem: what method should a derived Objective-C subclass
+  // FIXME: Problem: what method should a derived Objective-C subclass id:4044 gh:4057
   // override?  'combineIntoHash' is not @objc.
 }
 

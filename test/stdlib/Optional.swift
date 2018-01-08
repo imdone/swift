@@ -156,7 +156,7 @@ OptionalTests.test("nil comparison") {
   expectFalse(nil != e0)
 
   /*
-  // FIXME: <rdar://problem/17489239> Optional<T>() == nil where T: !Equatable
+  // FIXME: <rdar://problem/17489239> Optional<T>() == nil where T: !Equatable id:3541 gh:3553
   let _: X? = nil
   let _: X? = X()
 
@@ -213,7 +213,7 @@ OptionalTests.test("flatMap") {
   expectNil((3 as Int32?).flatMap(half))
 }
 
-// FIXME: @inline(never) does not inhibit specialization
+// FIXME: @inline(never) does not inhibit specialization id:3873 gh:3885
 
 @inline(never)
 @_optimize(none)

@@ -30,11 +30,11 @@ func testOldInitializerNames(array: NSArray) {
 func testOldEnumCaseNames(i: Int) -> XMLNode.Kind {
   switch i {
   case 0:
-    // FIXME: Bad diagnostic.
+    // FIXME: Bad diagnostic. id:2616 gh:2628
     return .InvalidKind // expected-error{{type 'XMLNode.Kind' has no member 'InvalidKind'}}
 
   case 1:
-    // FIXME: Bad diagnostic.
+    // FIXME: Bad diagnostic. id:2739 gh:2750
     return XMLNode.Kind.InvalidKind // expected-error{{type 'XMLNode.Kind' has no member 'InvalidKind'}}
 
   default:
@@ -66,18 +66,18 @@ func testImportAsMember() {
 
   IAMStruct1InvertInPlace(&iam1)
   // expected-error@-1{{'IAMStruct1InvertInPlace' has been replaced by instance method 'Struct1.invert()'}}{{3-26=(&iam1).invert}}{{27-32=}}
-  // FIXME: "&" part has to be removed for mutating methods.
+  // FIXME: "&" part has to be removed for mutating methods. id:3388 gh:3400
 
   _ = IAMStruct1Rotate(&iam1, 3.14159)
   // expected-error@-1{{'IAMStruct1Rotate' has been replaced by instance method 'Struct1.translate(radians:)'}}{{7-23=(&iam1).translate}} {{24-31=}} {{31-31=radians: }}
-  // FIXME: "&" part has to be removed for mutating methods.
+  // FIXME: "&" part has to be removed for mutating methods. id:2973 gh:2985
 
   _ = IAMStruct1StaticMethod()
   // expected-error@-1{{'IAMStruct1StaticMethod()' has been replaced by 'Struct1.staticMethod()'}}{{7-29=Struct1.staticMethod}}
 
   _ = IAMStruct1GetRadius(&iam1)
   // expected-error@-1{{'IAMStruct1GetRadius' has been replaced by property 'Struct1.radius'}}{{7-26=(&iam1).radius}} {{26-33=}}
-  // FIXME: &iam1 is wrong
+  // FIXME: &iam1 is wrong id:3714 gh:3726
 
   IAMStruct1SetRadius(iam1, 3.14159)
   // expected-error@-1{{'IAMStruct1SetRadius' has been replaced by property 'Struct1.radius'}}{{3-22=iam1.radius}} {{22-29= = }} {{36-37=}}

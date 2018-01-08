@@ -4,7 +4,7 @@
 // Test that runtime functions are invoked using the new calling convention.
 // Test that wrappers are used to invoked them.
 
-// TODO: Once the PreserveRegistersCC calling convention is enabled, check that it is really used.
+// TODO: Once the PreserveRegistersCC calling convention is enabled, check that it is really used. id:3398 gh:3410
 
 public class C {
 }

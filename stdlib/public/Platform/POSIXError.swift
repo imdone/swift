@@ -10,7 +10,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-// FIXME: Only defining POSIXErrorCode for Darwin and Linux at the moment.
+// FIXME: Only defining POSIXErrorCode for Darwin and Linux at the moment. id:185 gh:192
 
 #if os(OSX) || os(iOS) || os(tvOS) || os(watchOS)
 
@@ -207,7 +207,7 @@
   /// Value too large to be stored in data type.
   case EOVERFLOW       = 84
 
-  // MARK: Program loading errors.
+  // MARK: Program loading errors. id:432 gh:439
 
   /// Bad executable.
   case EBADEXEC        = 85
@@ -260,7 +260,7 @@
   /// Must be equal largest errno.
   public static var ELAST: POSIXErrorCode { return EQFULL }
     
-  // FIXME: EOPNOTSUPP has different values depending on __DARWIN_UNIX03 and
+  // FIXME: EOPNOTSUPP has different values depending on __DARWIN_UNIX03 and id:184 gh:191
   // KERNEL.
 }
 

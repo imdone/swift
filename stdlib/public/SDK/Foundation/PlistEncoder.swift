@@ -17,7 +17,7 @@
 /// `PropertyListEncoder` facilitates the encoding of `Encodable` values into property lists.
 open class PropertyListEncoder {
 
-    // MARK: - Options
+    // MARK: - Options id:376 gh:383
 
     /// The output format to write the property list data in. Defaults to `.binary`.
     open var outputFormat: PropertyListSerialization.PropertyListFormat = .binary
@@ -36,12 +36,12 @@ open class PropertyListEncoder {
         return _Options(outputFormat: outputFormat, userInfo: userInfo)
     }
 
-    // MARK: - Constructing a Property List Encoder
+    // MARK: - Constructing a Property List Encoder id:553 gh:560
 
     /// Initializes `self` with default strategies.
     public init() {}
 
-    // MARK: - Encoding Values
+    // MARK: - Encoding Values id:382 gh:389
 
     /// Encodes the given top-level value and returns its property list representation.
     ///
@@ -90,10 +90,10 @@ open class PropertyListEncoder {
     }
 }
 
-// MARK: - _PlistEncoder
+// MARK: - _PlistEncoder id:419 gh:426
 
 fileprivate class _PlistEncoder : Encoder {
-    // MARK: Properties
+    // MARK: Properties id:420 gh:427
 
     /// The encoder's storage.
     fileprivate var storage: _PlistEncodingStorage
@@ -109,7 +109,7 @@ fileprivate class _PlistEncoder : Encoder {
         return self.options.userInfo
     }
 
-    // MARK: - Initialization
+    // MARK: - Initialization id:384 gh:391
 
     /// Initializes `self` with the given top-level encoder options.
     fileprivate init(options: PropertyListEncoder._Options, codingPath: [CodingKey] = []) {
@@ -131,7 +131,7 @@ fileprivate class _PlistEncoder : Encoder {
         return self.storage.count == self.codingPath.count
     }
 
-    // MARK: - Encoder Methods
+    // MARK: - Encoder Methods id:557 gh:564
     public func container<Key>(keyedBy: Key.Type) -> KeyedEncodingContainer<Key> {
         // If an existing keyed container was already requested, return that one.
         let topContainer: NSMutableDictionary
@@ -172,21 +172,21 @@ fileprivate class _PlistEncoder : Encoder {
     }
 }
 
-// MARK: - Encoding Storage and Containers
+// MARK: - Encoding Storage and Containers id:701 gh:708
 
 fileprivate struct _PlistEncodingStorage {
-    // MARK: Properties
+    // MARK: Properties id:424 gh:431
 
     /// The container stack.
     /// Elements may be any one of the plist types (NSNumber, NSString, NSDate, NSArray, NSDictionary).
     private(set) fileprivate var containers: [NSObject] = []
 
-    // MARK: - Initialization
+    // MARK: - Initialization id:423 gh:430
 
     /// Initializes `self` with no containers.
     fileprivate init() {}
 
-    // MARK: - Modifying the Stack
+    // MARK: - Modifying the Stack id:387 gh:394
 
     fileprivate var count: Int {
         return self.containers.count
@@ -214,12 +214,12 @@ fileprivate struct _PlistEncodingStorage {
     }
 }
 
-// MARK: - Encoding Containers
+// MARK: - Encoding Containers id:559 gh:566
 
 fileprivate struct _PlistKeyedEncodingContainer<K : CodingKey> : KeyedEncodingContainerProtocol {
     typealias Key = K
 
-    // MARK: Properties
+    // MARK: Properties id:704 gh:711
 
     /// A reference to the encoder we're writing to.
     private let encoder: _PlistEncoder
@@ -230,7 +230,7 @@ fileprivate struct _PlistKeyedEncodingContainer<K : CodingKey> : KeyedEncodingCo
     /// The path of coding keys taken to get to this point in encoding.
     private(set) public var codingPath: [CodingKey]
 
-    // MARK: - Initialization
+    // MARK: - Initialization id:429 gh:436
 
     /// Initializes `self` with the given references.
     fileprivate init(referencing encoder: _PlistEncoder, codingPath: [CodingKey], wrapping container: NSMutableDictionary) {
@@ -239,7 +239,7 @@ fileprivate struct _PlistKeyedEncodingContainer<K : CodingKey> : KeyedEncodingCo
         self.container = container
     }
 
-    // MARK: - KeyedEncodingContainerProtocol Methods
+    // MARK: - KeyedEncodingContainerProtocol Methods id:427 gh:433
 
     public mutating func encodeNil(forKey key: Key)               throws { self.container[key.stringValue] = _plistNullNSString }
     public mutating func encode(_ value: Bool, forKey key: Key)   throws { self.container[key.stringValue] = self.encoder.box(value) }
@@ -293,7 +293,7 @@ fileprivate struct _PlistKeyedEncodingContainer<K : CodingKey> : KeyedEncodingCo
 }
 
 fileprivate struct _PlistUnkeyedEncodingContainer : UnkeyedEncodingContainer {
-    // MARK: Properties
+    // MARK: Properties id:392 gh:399
 
     /// A reference to the encoder we're writing to.
     private let encoder: _PlistEncoder
@@ -309,7 +309,7 @@ fileprivate struct _PlistUnkeyedEncodingContainer : UnkeyedEncodingContainer {
         return self.container.count
     }
 
-    // MARK: - Initialization
+    // MARK: - Initialization id:562 gh:569
 
     /// Initializes `self` with the given references.
     fileprivate init(referencing encoder: _PlistEncoder, codingPath: [CodingKey], wrapping container: NSMutableArray) {
@@ -318,7 +318,7 @@ fileprivate struct _PlistUnkeyedEncodingContainer : UnkeyedEncodingContainer {
         self.container = container
     }
 
-    // MARK: - UnkeyedEncodingContainer Methods
+    // MARK: - UnkeyedEncodingContainer Methods id:708 gh:715
 
     public mutating func encodeNil()             throws { self.container.add(_plistNullNSString) }
     public mutating func encode(_ value: Bool)   throws { self.container.add(self.encoder.box(value)) }
@@ -368,7 +368,7 @@ fileprivate struct _PlistUnkeyedEncodingContainer : UnkeyedEncodingContainer {
 }
 
 extension _PlistEncoder : SingleValueEncodingContainer {
-    // MARK: - SingleValueEncodingContainer Methods
+    // MARK: - SingleValueEncodingContainer Methods id:431 gh:438
 
     private func assertCanEncodeNewValue() {
         precondition(self.canEncodeNewValue, "Attempt to encode value through single value container when previously value already encoded.")
@@ -455,7 +455,7 @@ extension _PlistEncoder : SingleValueEncodingContainer {
     }
 }
 
-// MARK: - Concrete Value Representations
+// MARK: - Concrete Value Representations id:433 gh:440
 
 extension _PlistEncoder {
 
@@ -501,12 +501,12 @@ extension _PlistEncoder {
     }
 }
 
-// MARK: - _PlistReferencingEncoder
+// MARK: - _PlistReferencingEncoder id:396 gh:403
 
 /// _PlistReferencingEncoder is a special subclass of _PlistEncoder which has its own storage, but references the contents of a different encoder.
 /// It's used in superEncoder(), which returns a new encoder for encoding a superclass -- the lifetime of the encoder should not escape the scope it's created in, but it doesn't necessarily know when it's done being used (to write to the original container).
 fileprivate class _PlistReferencingEncoder : _PlistEncoder {
-    // MARK: Reference types.
+    // MARK: Reference types. id:566 gh:573
 
     /// The type of container we're referencing.
     private enum Reference {
@@ -517,7 +517,7 @@ fileprivate class _PlistReferencingEncoder : _PlistEncoder {
         case dictionary(NSMutableDictionary, String)
     }
 
-    // MARK: - Properties
+    // MARK: - Properties id:712 gh:719
 
     /// The encoder we're referencing.
     private let encoder: _PlistEncoder
@@ -525,7 +525,7 @@ fileprivate class _PlistReferencingEncoder : _PlistEncoder {
     /// The container reference itself.
     private let reference: Reference
 
-    // MARK: - Initialization
+    // MARK: - Initialization id:436 gh:444
 
     /// Initializes `self` by referencing the given array container in the given encoder.
     fileprivate init(referencing encoder: _PlistEncoder, at index: Int, wrapping array: NSMutableArray) {
@@ -545,7 +545,7 @@ fileprivate class _PlistReferencingEncoder : _PlistEncoder {
         self.codingPath.append(key)
     }
 
-    // MARK: - Coding Path Operations
+    // MARK: - Coding Path Operations id:435 gh:442
 
     fileprivate override var canEncodeNewValue: Bool {
         // With a regular encoder, the storage and coding path grow together.
@@ -554,7 +554,7 @@ fileprivate class _PlistReferencingEncoder : _PlistEncoder {
         return self.storage.count == self.codingPath.count - self.encoder.codingPath.count - 1
     }
 
-    // MARK: - Deinitialization
+    // MARK: - Deinitialization id:400 gh:407
 
     // Finalizes `self` by writing the contents of our storage to the referenced encoder's storage.
     deinit {
@@ -581,7 +581,7 @@ fileprivate class _PlistReferencingEncoder : _PlistEncoder {
 
 /// `PropertyListDecoder` facilitates the decoding of property list values into semantic `Decodable` types.
 open class PropertyListDecoder {
-    // MARK: Options
+    // MARK: Options id:569 gh:576
 
     /// Contextual user-provided information for use during decoding.
     open var userInfo: [CodingUserInfoKey : Any] = [:]
@@ -596,12 +596,12 @@ open class PropertyListDecoder {
         return _Options(userInfo: userInfo)
     }
 
-    // MARK: - Constructing a Property List Decoder
+    // MARK: - Constructing a Property List Decoder id:714 gh:721
 
     /// Initializes `self` with default strategies.
     public init() {}
 
-    // MARK: - Decoding Values
+    // MARK: - Decoding Values id:439 gh:446
 
     /// Decodes a top-level value of the given type from the given property list representation.
     ///
@@ -651,10 +651,10 @@ open class PropertyListDecoder {
     }
 }
 
-// MARK: - _PlistDecoder
+// MARK: - _PlistDecoder id:438 gh:443
 
 fileprivate class _PlistDecoder : Decoder {
-    // MARK: Properties
+    // MARK: Properties id:403 gh:410
 
     /// The decoder's storage.
     fileprivate var storage: _PlistDecodingStorage
@@ -670,7 +670,7 @@ fileprivate class _PlistDecoder : Decoder {
         return self.options.userInfo
     }
 
-    // MARK: - Initialization
+    // MARK: - Initialization id:572 gh:579
 
     /// Initializes `self` with the given top-level container and options.
     fileprivate init(referencing container: Any, at codingPath: [CodingKey] = [], options: PropertyListDecoder._Options) {
@@ -680,7 +680,7 @@ fileprivate class _PlistDecoder : Decoder {
         self.options = options
     }
 
-    // MARK: - Decoder Methods
+    // MARK: - Decoder Methods id:717 gh:724
 
     public func container<Key>(keyedBy type: Key.Type) throws -> KeyedDecodingContainer<Key> {
         guard !(self.storage.topContainer is NSNull) else {
@@ -716,21 +716,21 @@ fileprivate class _PlistDecoder : Decoder {
     }
 }
 
-// MARK: - Decoding Storage
+// MARK: - Decoding Storage id:442 gh:449
 
 fileprivate struct _PlistDecodingStorage {
-    // MARK: Properties
+    // MARK: Properties id:441 gh:448
 
     /// The container stack.
     /// Elements may be any one of the plist types (NSNumber, Date, String, Array, [String : Any]).
     private(set) fileprivate var containers: [Any] = []
 
-    // MARK: - Initialization
+    // MARK: - Initialization id:409 gh:416
 
     /// Initializes `self` with no containers.
     fileprivate init() {}
 
-    // MARK: - Modifying the Stack
+    // MARK: - Modifying the Stack id:574 gh:581
 
     fileprivate var count: Int {
         return self.containers.count
@@ -751,12 +751,12 @@ fileprivate struct _PlistDecodingStorage {
     }
 }
 
-// MARK: Decoding Containers
+// MARK: Decoding Containers id:719 gh:726
 
 fileprivate struct _PlistKeyedDecodingContainer<K : CodingKey> : KeyedDecodingContainerProtocol {
     typealias Key = K
 
-    // MARK: Properties
+    // MARK: Properties id:446 gh:453
 
     /// A reference to the decoder we're reading from.
     private let decoder: _PlistDecoder
@@ -767,7 +767,7 @@ fileprivate struct _PlistKeyedDecodingContainer<K : CodingKey> : KeyedDecodingCo
     /// The path of coding keys taken to get to this point in decoding.
     private(set) public var codingPath: [CodingKey]
 
-    // MARK: - Initialization
+    // MARK: - Initialization id:443 gh:450
 
     /// Initializes `self` by referencing the given decoder and container.
     fileprivate init(referencing decoder: _PlistDecoder, wrapping container: [String : Any]) {
@@ -776,7 +776,7 @@ fileprivate struct _PlistKeyedDecodingContainer<K : CodingKey> : KeyedDecodingCo
         self.codingPath = decoder.codingPath
     }
 
-    // MARK: - KeyedDecodingContainerProtocol Methods
+    // MARK: - KeyedDecodingContainerProtocol Methods id:413 gh:420
 
     public var allKeys: [Key] {
         return self.container.keys.compactMap { Key(stringValue: $0) }
@@ -1075,7 +1075,7 @@ fileprivate struct _PlistKeyedDecodingContainer<K : CodingKey> : KeyedDecodingCo
 }
 
 fileprivate struct _PlistUnkeyedDecodingContainer : UnkeyedDecodingContainer {
-    // MARK: Properties
+    // MARK: Properties id:577 gh:584
 
     /// A reference to the decoder we're reading from.
     private let decoder: _PlistDecoder
@@ -1089,7 +1089,7 @@ fileprivate struct _PlistUnkeyedDecodingContainer : UnkeyedDecodingContainer {
     /// The index of the element we're about to decode.
     private(set) public var currentIndex: Int
 
-    // MARK: - Initialization
+    // MARK: - Initialization id:722 gh:729
 
     /// Initializes `self` by referencing the given decoder and container.
     fileprivate init(referencing decoder: _PlistDecoder, wrapping container: [Any]) {
@@ -1099,7 +1099,7 @@ fileprivate struct _PlistUnkeyedDecodingContainer : UnkeyedDecodingContainer {
         self.currentIndex = 0
     }
 
-    // MARK: - UnkeyedDecodingContainer Methods
+    // MARK: - UnkeyedDecodingContainer Methods id:448 gh:455
 
     public var count: Int? {
         return self.container.count
@@ -1429,7 +1429,7 @@ fileprivate struct _PlistUnkeyedDecodingContainer : UnkeyedDecodingContainer {
 }
 
 extension _PlistDecoder : SingleValueDecodingContainer {
-    // MARK: SingleValueDecodingContainer Methods
+    // MARK: SingleValueDecodingContainer Methods id:445 gh:452
 
     private func expectNonNull<T>(_ type: T.Type) throws {
         guard !self.decodeNil() else {
@@ -1521,7 +1521,7 @@ extension _PlistDecoder : SingleValueDecodingContainer {
     }
 }
 
-// MARK: - Concrete Value Representations
+// MARK: - Concrete Value Representations id:416 gh:423
 
 extension _PlistDecoder {
     /// Returns the given value unboxed from a container.
@@ -1529,14 +1529,14 @@ extension _PlistDecoder {
         if let string = value as? String, string == _plistNull { return nil }
 
         if let number = value as? NSNumber {
-            // TODO: Add a flag to coerce non-boolean numbers into Bools?
+            // TODO: Add a flag to coerce non-boolean numbers into Bools? id:580 gh:587
             if number === kCFBooleanTrue as NSNumber {
                 return true
             } else if number === kCFBooleanFalse as NSNumber {
                 return false
             }
 
-        /* FIXME: If swift-corelibs-foundation doesn't change to use NSNumber, this code path will need to be included and tested:
+        /* FIXME: If swift-corelibs-foundation doesn't change to use NSNumber, this code path will need to be included and tested: id:725 gh:732
         } else if let bool = value as? Bool {
             return bool
         */

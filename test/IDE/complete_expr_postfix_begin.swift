@@ -412,7 +412,7 @@ func testGenericTypealias1() {
   var y: (Int, Int)
   y = #^GENERIC_TYPEALIAS_1^#
 }
-// FIXME: should we use the alias name in the annotation?
+// FIXME: should we use the alias name in the annotation? id:3770 gh:3782
 // MY_ALIAS: Decl[TypeAlias]/Local:                        MyAlias[#(T, T)#];
 // MY_ALIAS: Decl[LocalVar]/Local/TypeRelation[Identical]: x[#(Int, Int)#];
 // MY_ALIAS: Decl[LocalVar]/Local/TypeRelation[Identical]: y[#(Int, Int)#];
@@ -431,7 +431,7 @@ func testInForEach1(arg: Int) {
   let after = 4
 // IN_FOR_EACH_1-NOT: Decl[LocalVar]
 // IN_FOR_EACH_1: Decl[LocalVar]/Local:               local[#Int#];
-// FIXME: shouldn't show 'after' here.
+// FIXME: shouldn't show 'after' here. id:2668 gh:2680
 // IN_FOR_EACH_1: Decl[LocalVar]/Local:               after[#Int#];
 // IN_FOR_EACH_1: Decl[LocalVar]/Local:               arg[#Int#];
 // IN_FOR_EACH_1-NOT: Decl[LocalVar]
@@ -453,7 +453,7 @@ func testInForEach3(arg: Int) {
 // IN_FOR_EACH_3: Decl[LocalVar]/Local:               index[#Int#];
 // IN_FOR_EACH_3-NOT: Decl[LocalVar]
 // IN_FOR_EACH_3: Decl[LocalVar]/Local:               local[#Int#];
-// FIXME: shouldn't show 'after' here.
+// FIXME: shouldn't show 'after' here. id:2826 gh:2838
 // IN_FOR_EACH_3: Decl[LocalVar]/Local:               after[#Int#];
 // IN_FOR_EACH_3: Decl[LocalVar]/Local:               arg[#Int#];
 // IN_FOR_EACH_3-NOT: Decl[LocalVar]

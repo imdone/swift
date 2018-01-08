@@ -300,7 +300,7 @@ func testSwitchExprError1() {
   }
 }
 
-// FIXME
+// FIXME id:2667 gh:2679
 func testSwitchInPattern1(e: BazEnum<Int>) {
   switch e {
   case .Baz2(#^ENUM_SW_IN_PATTERN_1^#
@@ -371,7 +371,7 @@ func testWithInvalid1() {
 
   var y : QuxEnum
   y = .#^UNRESOLVED_1^#
-// FIXME: Only contains resolvable ones.
+// FIXME: Only contains resolvable ones. id:2823 gh:2835
 // UNRESOLVED_1:  Begin completions
 // UNRESOLVED_1-NOT:  Baz
 // UNRESOLVED_1-NOT:  Bar

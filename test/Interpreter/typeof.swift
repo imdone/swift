@@ -65,14 +65,14 @@ structMetatype(type(of: S()))
 
 // CHECK: Beads?
 archeMetatype(type(of: B()))
-// FIXME: Deeds? <rdar://problem/14620454>
+// FIXME: Deeds? <rdar://problem/14620454> id:3555 gh:3567
 archeMetatype(type(of: D()))
 // CHECK: Seeds?
 archeMetatype(type(of: S()))
 
 // CHECK: Beads?
 archeMetatype2(B())
-// FIXME: Deeds? <rdar://problem/14620454>
+// FIXME: Deeds? <rdar://problem/14620454> id:3447 gh:3459
 archeMetatype2(D())
 // CHECK: Seeds?
 archeMetatype2(S())

@@ -526,7 +526,7 @@ public:
   /// Returns whether the semantically meaningful content of this expression is
   /// an inout expression.
   ///
-  /// FIXME(Remove InOutType): This should eventually sub-in for
+  /// FIXME (Remove InOutType): This should eventually sub-in for id:61 gh:68
   /// 'E->getType()->is<InOutType>()' in all cases.
   bool isSemanticallyInOutExpr() const {
     return getSemanticsProvidingExpr()->getKind() == ExprKind::InOut;
@@ -1306,11 +1306,11 @@ public:
   TypeLoc &getTypeLoc() { return Info; }
   TypeLoc getTypeLoc() const { return Info; }
   TypeRepr *getTypeRepr() const { return Info.getTypeRepr(); }
-  // NOTE: TypeExpr::getType() returns the type of the expr node, which is the
+  // NOTE: TypeExpr::getType() returns the type of the expr node, which is the id:79 gh:86
   // metatype of what is stored as an operand type.
   
   SourceRange getSourceRange() const { return Info.getSourceRange(); }
-  // TODO: optimize getStartLoc() and getEndLoc() when TypeLoc allows it.
+  // TODO: optimize getStartLoc() and getEndLoc() when TypeLoc allows it. id:65 gh:72
 
   static bool classof(const Expr *E) {
     return E->getKind() == ExprKind::Type;
@@ -2844,7 +2844,7 @@ public:
     /// The element mapping value indicating that the field of the
     /// destination tuple should be default-initialized with an expression
     /// provided by the caller.
-    /// FIXME: Yet another indication that TupleShuffleExpr uses the wrong
+    /// FIXME: Yet another indication that TupleShuffleExpr uses the wrong id:64 gh:71
     /// formulation.
     CallerDefaultInitialize = -3
   };
@@ -2987,7 +2987,7 @@ public:
 /// which might involve renaming the parameters or handling substitutions
 /// of subtypes (in the return) or supertypes (in the input).
 ///
-/// FIXME: This should be a CapturingExpr.
+/// FIXME: This should be a CapturingExpr. id:63 gh:70
 class FunctionConversionExpr : public ImplicitConversionExpr {
 public:
   FunctionConversionExpr(Expr *subExpr, Type type)
@@ -4278,7 +4278,7 @@ public:
 /// and 'a' is a value of some related type. Evaluates to a Bool true if 'a' is
 /// of the type and 'a as T' would succeed, false otherwise.
 ///
-/// FIXME: We should support type queries with a runtime metatype value too.
+/// FIXME: We should support type queries with a runtime metatype value too. id:66 gh:73
 class IsExpr : public CheckedCastExpr {
 public:
   IsExpr(Expr *sub, SourceLoc isLoc, TypeLoc type)

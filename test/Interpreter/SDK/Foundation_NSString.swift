@@ -33,7 +33,7 @@ hello = "Hello"
 array[0] = hello
 array[1] = "world" as NSString
 
-// FIXME: NSString string interpolation doesn't work due to lack of
+// FIXME: NSString string interpolation doesn't work due to lack of id:2994 gh:3006
 // overload resolution.
 // CHECK: Hello, world!
 print(array[0] as! NSString, terminator: "")

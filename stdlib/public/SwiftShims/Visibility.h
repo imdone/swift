@@ -68,7 +68,7 @@
 #define SWIFT_ATTRIBUTE_UNAVAILABLE
 #endif
 
-// TODO: support using shims headers in overlays by parameterizing
+// TODO: support using shims headers in overlays by parameterizing id:1334 gh:1341
 // SWIFT_RUNTIME_EXPORT on the library it's exported from, then setting
 // protected vs. default based on the current value of __SWIFT_CURRENT_DYLIB.
 
@@ -91,7 +91,7 @@
 # define SWIFT_EXPORT_ATTRIBUTE __attribute__((__visibility__("default")))
 #endif
 
-#else  // FIXME: this #else should be some sort of #elif Windows
+#else  // FIXME: this #else should be some sort of #elif Windows id:503 gh:510
 # if defined(__CYGWIN__)
 #  define SWIFT_EXPORT_ATTRIBUTE
 # else
@@ -127,7 +127,7 @@
 ///
 /// SWIFT_RUNTIME_STDLIB_INTERNAL functions are called only by the stdlib.
 /// Such functions are internal and are not exported.
-/// FIXME(sil-serialize-all): _INTERNAL functions are also exported for now
+/// FIXME (sil-serialize-all): _INTERNAL functions are also exported for now id:623 gh:630
 /// until the tide of @_inlineable is rolled back.
 /// They really should be LLVM_LIBRARY_VISIBILITY, not SWIFT_RUNTIME_EXPORT.
 #define SWIFT_RUNTIME_STDLIB_API       SWIFT_RUNTIME_EXPORT

@@ -214,7 +214,7 @@ func small_closure_capture_with_argument(_ x: Int) -> (_ y: Int) -> Int {
   // CHECK: destroy_value [[XBOX]]
   // CHECK: return [[ANON_CLOSURE_APP]]
 }
-// FIXME(integers): the following checks should be updated for the new way +
+// FIXME (integers): the following checks should be updated for the new way + id:3205 gh:3217
 // gets invoked. <rdar://problem/29939484>
 // XCHECK: sil private @[[CLOSURE_NAME]] : $@convention(thin) (Int, @owned { var Int }) -> Int
 // XCHECK: bb0([[DOLLAR0:%[0-9]+]] : $Int, [[XBOX:%[0-9]+]] : ${ var Int }):
@@ -676,7 +676,7 @@ class SuperSub : SuperBase {
 // -- strong +2
 // CHECK:         [[SELF_COPY:%.*]] = copy_value [[SELF]]
 // CHECK:         [[UNOWNED_SELF:%.*]] = ref_to_unowned [[SELF_COPY]] :
-// -- TODO: A lot of fussy r/r traffic and owned/unowned conversions here.
+// -- TODO: A lot of fussy r/r traffic and owned/unowned conversions here. id:3616 gh:3628
 // -- strong +2, unowned +1
 // CHECK:         [[UNOWNED_SELF_COPY:%.*]] = copy_value [[UNOWNED_SELF]]
 // CHECK:         store [[UNOWNED_SELF_COPY]] to [init] [[PB]]

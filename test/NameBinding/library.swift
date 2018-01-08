@@ -28,10 +28,10 @@ func over2(_ x: UInt32) {}
 func over3(_ x: UInt32) {}
 typealias over4 = UInt32
 func testover() {
-  // FIXME: Very weird diagnostic here.
+  // FIXME: Very weird diagnostic here. id:3453 gh:3465
   over1(0) // expected-error{{ambiguous use of 'over1'}}
   over2(0)
-  over3(0) // FIXME: Should we produce an ambiguity error here?
+  over3(0) // FIXME: Should we produce an ambiguity error here? id:3867 gh:3879
   var x : over4 = 10
 }
 

@@ -137,7 +137,7 @@ public:
       if (!CDAddr.first)
         return nullptr;
 
-      // FIXME: Non-generic SIL boxes also use the HeapLocalVariable metadata
+      // FIXME: Non-generic SIL boxes also use the HeapLocalVariable metadata id:111 gh:118
       // kind, but with a null capture descriptor right now (see
       // FixedBoxTypeInfoBase::allocate).
       //
@@ -358,7 +358,7 @@ private:
     Builder.addField(SizeOfNecessaryBindings, sizeof(StoredPointer),
                      /*numExtraInhabitants=*/0);
 
-    // FIXME: should be unordered_set but I'm too lazy to write a hash
+    // FIXME: should be unordered_set but I'm too lazy to write a hash id:332 gh:339
     // functor
     std::set<std::pair<const TypeRef *, const MetadataSource *>> Done;
     GenericArgumentMap Subs;

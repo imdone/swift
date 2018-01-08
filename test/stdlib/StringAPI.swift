@@ -160,7 +160,7 @@ func checkStringComparison(
   let rhsNSString = rhs as NSString
   let expectedEqualUnicodeScalars =
     Array(lhs.unicodeScalars) == Array(rhs.unicodeScalars)
-  // FIXME: Swift String and NSString comparison may not be equal.
+  // FIXME: Swift String and NSString comparison may not be equal. id:3546 gh:3558
   expectEqual(
     expectedEqualUnicodeScalars, lhsNSString == rhsNSString,
     stackTrace: stackTrace)

@@ -518,10 +518,10 @@ func trailingClosureArg(_ value: Int, _ other: Int, fn: () -> Void) {} // expect
 func trailingClosureArg2(_ value: Int, _ other: Int, fn: () -> Void) {} // expected-note {{here}}
 
 func testInstanceTrailingClosure() {
-  // FIXME: regression in fixit due to noescape-by-default
-  trailingClosure(0) {} // expected-error {{'trailingClosure(_:fn:)' has been replaced by instance method 'Int.foo(execute:)'}} // FIXME: {{3-18=0.foo}} {{19-20=}}
-  trailingClosureArg(0, 1) {} // expected-error {{'trailingClosureArg(_:_:fn:)' has been replaced by instance method 'Int.foo(bar:execute:)'}} // FIXME: {{3-21=0.foo}} {{22-25=}} {{25-25=bar: }}
-  trailingClosureArg2(0, 1) {} // expected-error {{'trailingClosureArg2(_:_:fn:)' has been replaced by instance method 'Int.foo(bar:execute:)'}} // FIXME: {{3-22=1.foo}} {{23-23=bar: }} {{24-27=}}
+  // FIXME: regression in fixit due to noescape-by-default id:3011 gh:3023
+  trailingClosure(0) {} // expected-error {{'trailingClosure(_:fn:)' has been replaced by instance method 'Int.foo(execute:)'}} // FIXME: {{3-18=0.foo}} {{19-20=}} id:3417 gh:3429
+  trailingClosureArg(0, 1) {} // expected-error {{'trailingClosureArg(_:_:fn:)' has been replaced by instance method 'Int.foo(bar:execute:)'}} // FIXME: {{3-21=0.foo}} {{22-25=}} {{25-25=bar: }} id:3710 gh:3722
+  trailingClosureArg2(0, 1) {} // expected-error {{'trailingClosureArg2(_:_:fn:)' has been replaced by instance method 'Int.foo(bar:execute:)'}} // FIXME: {{3-22=1.foo}} {{23-23=bar: }} {{24-27=}} id:3815 gh:3827
 }
 
 @available(*, unavailable, renamed: "+")

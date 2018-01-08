@@ -14,9 +14,9 @@
 // RUN: %FileCheck %s -check-prefix=WITH_GLOBAL_TYPES < %t.types.txt
 // RUN: %FileCheck %s -check-prefix=GLOBAL_NEGATIVE < %t.types.txt
 
-// FIXME: %target-swift-ide-test -code-completion -source-filename %s -code-completion-token=TYPE_IN_FUNC_PARAM_5 > %t.types.txt
-// FIXME: %FileCheck %s -check-prefix=WITH_GLOBAL_TYPES < %t.types.txt
-// FIXME: %FileCheck %s -check-prefix=GLOBAL_NEGATIVE < %t.types.txt
+// FIXME: %target-swift-ide-test -code-completion -source-filename %s -code-completion-token=TYPE_IN_FUNC_PARAM_5 > %t.types.txt id:3475 gh:3487
+// FIXME: %FileCheck %s -check-prefix=WITH_GLOBAL_TYPES < %t.types.txt id:3264 gh:3276
+// FIXME: %FileCheck %s -check-prefix=GLOBAL_NEGATIVE < %t.types.txt id:3789 gh:3801
 
 // RUN: %target-swift-ide-test -code-completion -source-filename %s -code-completion-token=TYPE_IN_FUNC_PARAM_6 > %t.types.txt
 // RUN: %FileCheck %s -check-prefix=WITH_GLOBAL_TYPES < %t.types.txt
@@ -52,8 +52,8 @@
 // RUN: %FileCheck %s -check-prefix=GLOBAL_NEGATIVE < %t.types.txt
 
 // RUN: %target-swift-ide-test -code-completion -source-filename %s -code-completion-token=TYPE_IN_CONSTRUCTOR_PARAM_5 > %t.types.txt
-// FIXME: %FileCheck %s -check-prefix=WITH_GLOBAL_TYPES < %t.types.txt
-// FIXME: %FileCheck %s -check-prefix=GLOBAL_NEGATIVE < %t.types.txt
+// FIXME: %FileCheck %s -check-prefix=WITH_GLOBAL_TYPES < %t.types.txt id:2688 gh:2700
+// FIXME: %FileCheck %s -check-prefix=GLOBAL_NEGATIVE < %t.types.txt id:2855 gh:2867
 
 // RUN: %target-swift-ide-test -code-completion -source-filename %s -code-completion-token=TYPE_IN_CONSTRUCTOR_PARAM_6 > %t.types.txt
 // RUN: %FileCheck %s -check-prefix=WITH_GLOBAL_TYPES < %t.types.txt

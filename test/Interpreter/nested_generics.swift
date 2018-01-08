@@ -104,7 +104,7 @@ class SubClass<X : MyPrintable, Y : MyPrintable> : OuterStruct<Y>.InnerClass<X> 
     super.printBoth(t: t)
   }
 
-  // FIXME: Does not work!
+  // FIXME: Does not work! id:3440 gh:3452
   /* override func printAllThree<Z : MyPrintable>(t: Y, v: Z) {
     print("super ", terminator: "")
     super.printAllThree(t: t, v: v)

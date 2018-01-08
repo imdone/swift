@@ -110,7 +110,7 @@ public:
 
   /// Unsafely cast this to the given subtype.
   template <class T> const T &as() const {
-    // FIXME: maybe do an assert somehow if we have RTTI enabled.
+    // FIXME: maybe do an assert somehow if we have RTTI enabled. id:158 gh:163
     return static_cast<const T &>(*this);
   }
 

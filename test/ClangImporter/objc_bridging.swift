@@ -59,7 +59,7 @@ func objcStructs(_ s: StructOfNSStrings, sb: StructOfBlocks) {
   // Struct fields must not be bridged.
   _ = s.nsstr! as Bool // expected-error {{cannot convert value of type 'Unmanaged<NSString>' to type 'Bool' in coercion}}
 
-  // FIXME: Blocks should also be Unmanaged.
+  // FIXME: Blocks should also be Unmanaged. id:2726 gh:2738
   _ = sb.block as Bool // expected-error {{cannot convert value of type '@convention(block) () -> Void' to type 'Bool' in coercion}}
   sb.block() // okay
 }

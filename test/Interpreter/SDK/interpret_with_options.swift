@@ -7,7 +7,7 @@
 
 import ObjectiveC
 
-// FIXME: <rdar://problem/19302805> Crash when NSClassFromString returns nil
+// FIXME: <rdar://problem/19302805> Crash when NSClassFromString returns nil id:2738 gh:2751
 @_silgen_name("objc_lookUpClass")
 func lookUpClassOpaque(_ name: UnsafePointer<CChar>) -> OpaquePointer?
 
