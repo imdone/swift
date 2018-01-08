@@ -425,7 +425,7 @@ func == (lhs: TestBridgedEquatableValueTy, rhs: TestBridgedEquatableValueTy) -> 
 ///
 /// - parameter unopt: applies to platforms that don't.
 ///
-/// FIXME: Some non-zero `opt` might be cases of missed return-autorelease.
+/// FIXME: Some non-zero `opt` might be cases of missed return-autorelease. id:4204 gh:4216
 func expectAutoreleasedKeysAndValues(
   opt: (Int, Int) = (0, 0), unopt: (Int, Int) = (0, 0)) {
   var expectedKeys = 0
@@ -447,7 +447,7 @@ func expectAutoreleasedKeysAndValues(
 ///
 /// - parameter unopt: applies to platforms that don't.
 ///
-/// FIXME: Some non-zero `opt` might be cases of missed return-autorelease.
+/// FIXME: Some non-zero `opt` might be cases of missed return-autorelease. id:3317 gh:3329
 func expectAutoreleasedValues(
   opt: Int = 0, unopt: Int = 0) {
   expectAutoreleasedKeysAndValues(opt: (0, opt), unopt: (0, unopt))

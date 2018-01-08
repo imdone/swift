@@ -105,7 +105,7 @@ func testKeyPath(sub: Sub, optSub: OptSub,
   // expected-error@+1{{ambiguous}} (need to improve diagnostic)
   let _: ReferenceWritableKeyPath<A, Prop> = \.property
 
-  // FIXME: shouldn't be ambiguous
+  // FIXME: shouldn't be ambiguous id:3140 gh:3152
   // expected-error@+1{{ambiguous}}
   let _: PartialKeyPath<A> = \.[sub]
   let _: KeyPath<A, A> = \.[sub]
@@ -152,12 +152,12 @@ func testKeyPath(sub: Sub, optSub: OptSub,
   var m = [\A.property, \A.[sub], \A.optProperty!]
   expect(&m, toHaveType: Exactly<[PartialKeyPath<A>]>.self)
 
-  // FIXME: shouldn't be ambiguous
+  // FIXME: shouldn't be ambiguous id:3490 gh:3502
   // expected-error@+1{{ambiguous}}
   var n = [\A.property, \.optProperty, \.[sub], \.optProperty!]
   expect(&n, toHaveType: Exactly<[PartialKeyPath<A>]>.self)
 
-  // FIXME: shouldn't be ambiguous
+  // FIXME: shouldn't be ambiguous id:3829 gh:3841
   // expected-error@+1{{ambiguous}}
   let _: [PartialKeyPath<A>] = [\.property, \.optProperty, \.[sub], \.optProperty!]
 
@@ -204,7 +204,7 @@ struct TupleStruct {
 }
 
 func tupleComponent() {
-  // TODO: Customized diagnostic
+  // TODO: Customized diagnostic id:3883 gh:3895
   let _ = \(Int, String).0 // expected-error{{}}
   let _ = \(Int, String).1 // expected-error{{}}
   let _ = \TupleStruct.unlabeled.0 // expected-error{{}}
@@ -287,11 +287,11 @@ func testKeyPathSubscript(readonly: ZwithSubscript, writable: inout ZwithSubscri
   readonly[keyPath: kp] = sink // expected-error{{cannot assign through subscript: subscript is get-only}}
   writable[keyPath: kp] = sink // expected-error{{cannot assign through subscript: subscript is get-only}}
   readonly[keyPath: wkp] = sink // expected-error{{cannot assign through subscript: subscript is get-only}}
-  // FIXME: silently falls back to keypath application, which seems inconsistent
+  // FIXME: silently falls back to keypath application, which seems inconsistent id:4122 gh:4134
   writable[keyPath: wkp] = sink
-  // FIXME: silently falls back to keypath application, which seems inconsistent
+  // FIXME: silently falls back to keypath application, which seems inconsistent id:3143 gh:3155
   readonly[keyPath: rkp] = sink
-  // FIXME: silently falls back to keypath application, which seems inconsistent
+  // FIXME: silently falls back to keypath application, which seems inconsistent id:3493 gh:3505
   writable[keyPath: rkp] = sink
 
   let pkp: PartialKeyPath = rkp
@@ -311,9 +311,9 @@ func testKeyPathSubscript(readonly: ZwithSubscript, writable: inout ZwithSubscri
   var anyqSink2 = writable[keyPath: akp]
   expect(&anyqSink2, toHaveType: Exactly<Any?>.self)
 
-  // FIXME: silently falls back to keypath application, which seems inconsistent
+  // FIXME: silently falls back to keypath application, which seems inconsistent id:3832 gh:3844
   readonly[keyPath: akp] = anyqSink1 // expected-error{{cannot assign to immutable}}
-  // FIXME: silently falls back to keypath application, which seems inconsistent
+  // FIXME: silently falls back to keypath application, which seems inconsistent id:3886 gh:3899
   writable[keyPath: akp] = anyqSink2 // expected-error{{cannot assign to immutable}}
 
   _ = wrongType[keyPath: kp] // expected-error{{cannot be applied}}
@@ -433,7 +433,7 @@ func testLabeledSubscript() {
   let _: KeyPath<AA, Int> = \.[labeled: 0]
   let k = \AA.[labeled: 0]
 
-  // TODO: These ought to work without errors.
+  // TODO: These ought to work without errors. id:4123 gh:4135
   let _ = \AA.[keyPath: k] // expected-error{{}}
   let _ = \AA.[keyPath: \AA.[labeled: 0]] // expected-error{{}}
 }

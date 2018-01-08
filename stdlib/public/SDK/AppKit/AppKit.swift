@@ -31,7 +31,7 @@ extension NSView : _DefaultCustomPlaygroundQuickLookable {
     // until you run out of stack and crash
     // This code checks that we aren't trying to log the same view recursively - and if so just returns
     // an empty view, which is probably a safer option than crashing
-    // FIXME: is there a way to say "cacheDisplayInRect butDoNotRedrawEvenIfISaidSo"?
+    // FIXME: is there a way to say "cacheDisplayInRect butDoNotRedrawEvenIfISaidSo"? id:300 gh:307
     if _NSViewQuickLookState.views.contains(self) {
       return .view(NSImage())
     } else {

@@ -22,7 +22,7 @@ BlockGlobalsTestSuite.test("const function pointer") {
   expectEqual("default const FP: abc", constFPGlobal("abc"))
 }
 
-// FIXME: Add tests for mutable globals, including mutating them, once the
+// FIXME: Add tests for mutable globals, including mutating them, once the id:3530 gh:3542
 // compiler supports it, as well as loading from the const globals without
 // immediately calling them.
 

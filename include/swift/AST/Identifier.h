@@ -75,7 +75,7 @@ public:
   
   /// isOperator - Return true if this identifier is an operator, false if it is
   /// a normal identifier.
-  /// FIXME: We should maybe cache this.
+  /// FIXME: We should maybe cache this. id:68 gh:75
   bool isOperator() const {
     if (empty())
       return false;

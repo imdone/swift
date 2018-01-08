@@ -135,7 +135,7 @@ CharacterTests.test("literal") {
 }
 
 CharacterTests.test("sizeof") {
-  // FIXME(ABI)#164: should be 8.
+  // FIXME (ABI)#164: should be 8. id:3154 gh:3165
   // <rdar://problem/16754935> MemoryLayout<Character>.size is 9, should be 8
 
   let size1 = MemoryLayout<Character>.size
@@ -361,7 +361,7 @@ UnicodeScalarTests.test("isASCII()") {
 }
 
 UnicodeScalarTests.test("Comparable") {
-  // FIXME: these tests are insufficient.
+  // FIXME: these tests are insufficient. id:3501 gh:3513
 
   let CharA: UnicodeScalar = "A"
 
@@ -377,7 +377,7 @@ UnicodeScalarTests.test("Comparable") {
 }
 
 UnicodeScalarTests.test("LosslessStringConvertible") {
-  // FIXME: these tests are insufficient.
+  // FIXME: these tests are insufficient. id:3839 gh:3851
 
   checkLosslessStringConvertible((0xE000...0xF000).map { UnicodeScalar(Int($0))! })
   checkLosslessStringConvertible((0...127).map { UnicodeScalar(Int($0))! })

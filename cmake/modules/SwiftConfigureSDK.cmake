@@ -165,7 +165,7 @@ macro(configure_sdk_windows prefix sdk_name environment architectures)
   # variables.
 
   set(SWIFT_SDK_${prefix}_NAME "${sdk_name}")
-  # NOTE: set the path to / to avoid a spurious `--sysroot` from being passed
+  # NOTE: set the path to / to avoid a spurious `--sysroot` from being passed id:23 gh:24
   # to the driver -- rely on the `INCLUDE` AND `LIB` environment variables
   # instead.
   set(SWIFT_SDK_${prefix}_PATH "/")
@@ -198,7 +198,7 @@ endmacro()
 #
 # In addition to the SDK and architecture, a variant determines build settings.
 #
-# FIXME: this is not wired up with anything yet.
+# FIXME: this is not wired up with anything yet. id:25 gh:26
 function(configure_target_variant prefix name sdk build_config lib_subdir)
   set(SWIFT_VARIANT_${prefix}_NAME               ${name})
   set(SWIFT_VARIANT_${prefix}_SDK_PATH           ${SWIFT_SDK_${sdk}_PATH})

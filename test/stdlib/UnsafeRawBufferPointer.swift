@@ -5,7 +5,7 @@
 // General Collection behavior tests are in
 // validation-test/stdlib/UnsafeBufferPointer.swift.
 
-// FIXME: The optimized-build behavior of UnsafeBufferPointer bounds/overflow
+// FIXME: The optimized-build behavior of UnsafeBufferPointer bounds/overflow id:3572 gh:3584
 // checking cannot be tested. The standard library always compiles with debug
 // checking enabled, so the behavior of the optimized test depends on whether
 // the inlining heuristics decide to inline these methods. To fix this, we need

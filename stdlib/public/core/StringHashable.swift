@@ -13,29 +13,29 @@
 import SwiftShims
 
 #if _runtime(_ObjC)
-@_inlineable // FIXME(sil-serialize-all)
-@_versioned // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:2368 gh:2380
+@_versioned // FIXME (sil-serialize-all) id:2895 gh:2907
 @_silgen_name("swift_stdlib_NSStringHashValue")
 internal func _stdlib_NSStringHashValue(
   _ str: AnyObject, _ isASCII: Bool) -> Int
 
-@_inlineable // FIXME(sil-serialize-all)
-@_versioned // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1958 gh:1965
+@_versioned // FIXME (sil-serialize-all) id:2087 gh:2094
 @_silgen_name("swift_stdlib_NSStringHashValuePointer")
 internal func _stdlib_NSStringHashValuePointer(
   _ str: OpaquePointer, _ isASCII: Bool) -> Int
 
-@_inlineable // FIXME(sil-serialize-all)
-@_versioned // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:2261 gh:2273
+@_versioned // FIXME (sil-serialize-all) id:2371 gh:2383
 @_silgen_name("swift_stdlib_CFStringHashCString")
 internal func _stdlib_CFStringHashCString(
   _ str: OpaquePointer, _ len: Int) -> Int
 #endif
 
 extension Unicode {
-  // FIXME: cannot be marked @_versioned. See <rdar://problem/34438258>
-  // @_inlineable // FIXME(sil-serialize-all)
-  // @_versioned // FIXME(sil-serialize-all)
+  // FIXME: cannot be marked @_versioned. See <rdar://problem/34438258> id:2899 gh:2911
+  // @_inlineable // FIXME (sil-serialize-all) id:1960 gh:1967
+  // @_versioned // FIXME (sil-serialize-all) id:2090 gh:2097
   internal static func hashASCII(
     _ string: UnsafeBufferPointer<UInt8>
   ) -> Int {
@@ -53,9 +53,9 @@ extension Unicode {
     return hasher._finalizeAndReturnIntHash()
   }
 
-  // FIXME: cannot be marked @_versioned. See <rdar://problem/34438258>
-  // @_inlineable // FIXME(sil-serialize-all)
-  // @_versioned // FIXME(sil-serialize-all)
+  // FIXME: cannot be marked @_versioned. See <rdar://problem/34438258> id:2263 gh:2275
+  // @_inlineable // FIXME (sil-serialize-all) id:2375 gh:2387
+  // @_versioned // FIXME (sil-serialize-all) id:2903 gh:2915
   internal static func hashUTF16(
     _ string: UnsafeBufferPointer<UInt16>
   ) -> Int {
@@ -82,7 +82,7 @@ extension Unicode {
   }
 }
 
-@_versioned // FIXME(sil-serialize-all)
+@_versioned // FIXME (sil-serialize-all) id:1962 gh:1969
 @inline(never) // Hide the CF dependency
 internal func _hashString(_ string: String) -> Int {
   let core = string._core
@@ -129,7 +129,7 @@ extension String : Hashable {
   ///
   /// Hash values are not guaranteed to be equal across different executions of
   /// your program. Do not save hash values to use during a future execution.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2092 gh:2099
   public var hashValue: Int {
     return _hashString(self)
   }

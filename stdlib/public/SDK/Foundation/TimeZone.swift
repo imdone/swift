@@ -42,7 +42,7 @@ public struct TimeZone : Hashable, Equatable, ReferenceConvertible {
         return TimeZone(adoptingReference: __NSTimeZoneAutoupdating() as! NSTimeZone, autoupdating: true)
     }
     
-    // MARK: -
+    // MARK: - id:451 gh:458
     //
     
     /// Returns a time zone initialized with a given identifier.
@@ -110,7 +110,7 @@ public struct TimeZone : Hashable, Equatable, ReferenceConvertible {
         _autoupdating = autoupdating
     }
 
-    // MARK: -
+    // MARK: - id:447 gh:454
     //
     
     @available(*, unavailable, renamed: "identifier")
@@ -194,7 +194,7 @@ public struct TimeZone : Hashable, Equatable, ReferenceConvertible {
         return _wrapped.localizedName(style, locale: locale)
     }
     
-    // MARK: -
+    // MARK: - id:422 gh:429
     
     public var hashValue : Int {
         if _autoupdating {

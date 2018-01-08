@@ -55,7 +55,7 @@ struct supermeters : ExpressibleByIntegerLiteral { // expected-error{{type 'supe
 
 func chaining() {
   var length : meters = 17
-  // FIXME: missing truncation warning <rdar://problem/14070127>.
+  // FIXME: missing truncation warning <rdar://problem/14070127>. id:3009 gh:3021
   var long_length : meters = 500
   var really_long_length : supermeters = 10
 }

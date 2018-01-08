@@ -29,7 +29,7 @@ struct NonConformingStruct : Codable { // expected-error {{type 'NonConformingSt
   var y: Double
   static var z: String = "foo"
 
-  // FIXME: Remove when conditional conformance lands.
+  // FIXME: Remove when conditional conformance lands. id:3106 gh:3118
   // Because conditional conformance is not yet available, Optional, Array,
   // Set, and Dictionary all conform to Codable even when their generic
   // parameters do not.

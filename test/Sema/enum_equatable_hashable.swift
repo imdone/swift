@@ -150,7 +150,7 @@ private enum Bar<T> {
 
   mutating func value() -> T {
     switch self {
-    // FIXME: Should diagnose here that '.' needs to be inserted, but E has an ErrorType at this point
+    // FIXME: Should diagnose here that '.' needs to be inserted, but E has an ErrorType at this point id:4029 gh:4041
     case E(let x):
       return x.value
     }
@@ -239,7 +239,7 @@ enum ArrayOfNotEquatables : Equatable { // expected-error{{type 'ArrayOfNotEquat
 case only([NotEquatable])
 }
 
-// FIXME: Remove -verify-ignore-unknown.
+// FIXME: Remove -verify-ignore-unknown. id:2977 gh:2989
 // <unknown>:0: error: unexpected error produced: invalid redeclaration of 'hashValue'
 // <unknown>:0: error: unexpected note produced: candidate has non-matching type '(Foo, Foo) -> Bool'
 // <unknown>:0: error: unexpected note produced: candidate has non-matching type '<T> (Generic<T>, Generic<T>) -> Bool'

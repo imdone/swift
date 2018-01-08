@@ -5,8 +5,8 @@ import ImportAsMember.C
 
 // SIL-LABEL: sil {{.*}}readSemiModularPowerSupply{{.*}}
 public func readSemiModularPowerSupply() -> CCPowerSupply {
-  // TODO: actual body
-  // FIXME: this asserts
+  // TODO: actual body id:3559 gh:3571
+  // FIXME: this asserts id:3956 gh:3968
   return CCPowerSupply.semiModular
 }
 

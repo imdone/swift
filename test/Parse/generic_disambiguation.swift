@@ -56,7 +56,7 @@ meta(A<B>.self)
 
 meta2(A<B>.self, 0)
 
-// FIXME: Nested generic types. Need to be able to express $T0<A, B, C> in the
+// FIXME: Nested generic types. Need to be able to express $T0<A, B, C> in the id:3067 gh:3079
 // typechecker.
 /*
 A<B>.C<D>.e()
@@ -67,7 +67,7 @@ meta(A<B>.C<D>.self)
 meta2(A<B>.C<D>.self, 0)
  */
 
-// TODO: parse empty <> list
+// TODO: parse empty <> list id:3583 gh:3595
 //A<>.c() // e/xpected-error{{xxx}}
 
 A<B, D>.c() // expected-error{{generic type 'A' specialized with too many type parameters (got 2, but expected 1)}}

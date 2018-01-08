@@ -227,7 +227,7 @@ public:
   // calls if there is a standard metadata object with the correct layout for
   // the type.
   //
-  // TODO: It might be better to return just a value witness table reference
+  // TODO: It might be better to return just a value witness table reference id:163 gh:170
   // here, since for some types it's easier to get a shared reference to one
   // than a metadata reference, and it would be more type-safe.
   llvm::Value *emitTypeMetadataRefForLayout(SILType type);

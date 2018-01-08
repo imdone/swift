@@ -47,7 +47,7 @@ public:
   /// Modules are checked.  The results in the ResultVector will
   /// be consulted first.  Return true if results have been added
   /// to RV.
-  /// FIXME: I don't think this ever does anything useful.
+  /// FIXME: I don't think this ever does anything useful. id:35 gh:34
   virtual bool lookupOverrides(DeclBaseName Name, DeclContext *DC,
                                SourceLoc Loc, bool IsTypeLookup,
                                ResultVector &RV) = 0;

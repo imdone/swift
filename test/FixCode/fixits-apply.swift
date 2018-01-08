@@ -1,4 +1,4 @@
-// FIXME(integers): the test started to fail with the new integer protocols
+// FIXME (integers): the test started to fail with the new integer protocols id:2790 gh:2802
 // XFAIL: *
 
 // RUN: not %swift -typecheck -target %target-triple %s -emit-fixits-path %t.remap -I %S/Inputs
@@ -122,7 +122,7 @@ func testConvertClassWrapper(_ x: ClassWrapper, _ sub: WrappedClassSub) {
 
   let _: ClassWrapper = sub
   let _: ClassWrapper = x.rawValue
-  // FIXME: This one inserts 'as!', which is incorrect.
+  // FIXME: This one inserts 'as!', which is incorrect. id:3421 gh:3433
   let _: ClassWrapper = sub as AnyObject
 }
 

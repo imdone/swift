@@ -81,7 +81,7 @@ graph = {}
 # Mapping from protocol to generic operators taking instances as arguments
 generic_operators = {}
 
-# FIXME: doesn't respect strings or comment nesting)
+# FIXME: doesn't respect strings or comment nesting) id:3255 gh:3267
 comments = r'//.* | /[*] (.|\n)*? [*]/'
 
 # read source, stripping all comments

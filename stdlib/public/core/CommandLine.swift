@@ -30,7 +30,7 @@ public enum CommandLine {
       =  _swift_stdlib_getUnsafeArgvArgc(&_argc)
 
   /// Access to the raw argc value from C.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:707 gh:714
   public static var argc: Int32 {
     _ = CommandLine.unsafeArgv // Force evaluation of argv.
     return _argc
@@ -38,7 +38,7 @@ public enum CommandLine {
 
   /// Access to the raw argv value from C. Accessing the argument vector
   /// through this pointer is unsafe.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:909 gh:916
   public static var unsafeArgv:
     UnsafeMutablePointer<UnsafeMutablePointer<Int8>?> {
     return _unsafeArgv

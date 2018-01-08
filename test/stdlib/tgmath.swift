@@ -3,7 +3,7 @@
 
 #if os(Linux) || os(FreeBSD) || os(PS4) || os(Android)
   import Glibc
-  // FIXME: this is a quick hack for non Darwin platforms
+  // FIXME: this is a quick hack for non Darwin platforms id:3575 gh:3587
   // where they doesn't have CoreGraphics module.
   #if arch(i386) || arch(arm)
     typealias CGFloat = Float

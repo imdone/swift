@@ -22,7 +22,7 @@ public protocol _Pointer {
 }
 
 /// Derive a pointer argument from a convertible pointer type.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:2268 gh:2280
 @_transparent
 public // COMPILER_INTRINSIC
 func _convertPointerToPointerArgument<
@@ -33,7 +33,7 @@ func _convertPointerToPointerArgument<
 }
 
 /// Derive a pointer argument from the address of an inout parameter.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1401 gh:1408
 @_transparent
 public // COMPILER_INTRINSIC
 func _convertInOutToPointerArgument<
@@ -46,7 +46,7 @@ func _convertInOutToPointerArgument<
 ///
 /// This always produces a non-null pointer, even if the array doesn't have any
 /// storage.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1664 gh:1671
 @_transparent
 public // COMPILER_INTRINSIC
 func _convertConstArrayToPointerArgument<
@@ -69,14 +69,14 @@ func _convertConstArrayToPointerArgument<
 /// Derive a pointer argument from an inout array parameter.
 ///
 /// This always produces a non-null pointer, even if the array's length is 0.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1630 gh:1637
 @_transparent
 public // COMPILER_INTRINSIC
 func _convertMutableArrayToPointerArgument<
   FromElement,
   ToPointer : _Pointer
 >(_ a: inout [FromElement]) -> (AnyObject?, ToPointer) {
-  // TODO: Putting a canary at the end of the array in checked builds might
+  // TODO: Putting a canary at the end of the array in checked builds might id:1336 gh:1343
   // be a good idea
 
   // Call reserve to force contiguous storage.
@@ -87,7 +87,7 @@ func _convertMutableArrayToPointerArgument<
 }
 
 /// Derive a UTF-8 pointer argument from a value string parameter.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:2271 gh:2283
 public // COMPILER_INTRINSIC
 func _convertConstStringToUTF8PointerArgument<
   ToPointer : _Pointer

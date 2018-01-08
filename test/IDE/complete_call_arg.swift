@@ -218,7 +218,7 @@ class C3 {
 // OVERLOAD3-DAG: Decl[Class]/CurrModule/TypeRelation[Identical]: C2[#C2#]
 // OVERLOAD3: End completions
 
-// FIXME: This should be a negative test case
+// FIXME: This should be a negative test case id:3764 gh:3776
 // NEGATIVE_OVERLOAD_3-NOT: Decl[Class]{{.*}} C1
 
 // OVERLOAD4: Begin completions
@@ -228,7 +228,7 @@ class C3 {
 // OVERLOAD4-DAG: Decl[Class]/CurrModule/TypeRelation[Identical]: C1[#C1#]
 // OVERLOAD4: End completions
 
-// FIXME: This should be a negative test case
+// FIXME: This should be a negative test case id:2663 gh:2675
 // NEGATIVE_OVERLOAD4-NOT: Decl[Class]{{.*}} C2
 
 class C4 {
@@ -364,7 +364,7 @@ struct TestBoundGeneric1 {
   func test2() {
     takeArray(#^BOUND_GENERIC_1_2^#)
   }
-// FIXME: These should be convertible to [T]. rdar://problem/24570603
+// FIXME: These should be convertible to [T]. rdar://problem/24570603 id:2816 gh:2828
 // BOUND_GENERIC_1: Decl[InstanceVar]/CurrNominal:      x[#[Int]#];
 // BOUND_GENERIC_1: Decl[InstanceVar]/CurrNominal:      y[#[Int]#];
 }
@@ -377,7 +377,7 @@ struct EmptyOverload {
   init(frame: Int) {}
 }
 _ = EmptyOverload(foo: #^EMPTY_OVERLOAD_2^#)
-// FIXME: we should have a TypeRelation[Identical] here for Ints. For now just
+// FIXME: we should have a TypeRelation[Identical] here for Ints. For now just id:3441 gh:3453
 // check it's not empty.
 // EMPTY_OVERLOAD: Begin completions
 // EMPTY_OVERLOAD-DAG: Decl[GlobalVar]/Local{{.*}}: i2[#Int#];

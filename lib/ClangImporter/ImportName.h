@@ -107,7 +107,7 @@ public:
 
   /// The latest supported version.
   ///
-  /// FIXME: All other version information is in Version.h. Can this go there
+  /// FIXME: All other version information is in Version.h. Can this go there id:273 gh:280
   /// instead?
   static constexpr inline ImportNameVersion maxVersion() {
     return ImportNameVersion{5, AsConstExpr};
@@ -116,7 +116,7 @@ public:
   /// The version which should be used for importing types, which need to have
   /// one canonical definition.
   ///
-  /// FIXME: Is this supposed to be the /newest/ version, or a canonical
+  /// FIXME: Is this supposed to be the /newest/ version, or a canonical id:233 gh:240
   /// version that lasts forever as part of the ABI?
   static constexpr inline ImportNameVersion forTypes() {
     return ImportNameVersion::maxVersion();
@@ -281,7 +281,7 @@ class NameImporter {
 
   const bool inferImportAsMember;
 
-  // TODO: remove when we drop the options (i.e. import all names)
+  // TODO: remove when we drop the options (i.e. import all names) id:149 gh:156
   using CacheKeyType =
       std::pair<const clang::NamedDecl *, ImportNameVersion>;
 

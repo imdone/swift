@@ -7,7 +7,7 @@ import StdlibCollectionUnittest
 var UnfoldTests = TestSuite("UnfoldSequence")
 
 UnfoldTests.test("sequence(state:next:)") {
-  // FIXME: The full type signatures on these closures should not be
+  // FIXME: The full type signatures on these closures should not be id:3805 gh:3818
   // necessary, but at the moment the compiler gives very confusing errors if
   // we don't have them.
 

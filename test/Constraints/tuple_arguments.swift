@@ -606,7 +606,7 @@ do {
 }
 
 do {
-  // TODO: Restore regressed diagnostics rdar://problem/31724211
+  // TODO: Restore regressed diagnostics rdar://problem/31724211 id:3413 gh:3425
   var a = 3 // e/xpected-warning {{variable 'a' was never mutated; consider changing to 'let' constant}}
   var b = 4 // e/xpected-warning {{variable 'b' was never mutated; consider changing to 'let' constant}}
   var d = (a, b) // e/xpected-warning {{variable 'd' was never mutated; consider changing to 'let' constant}}
@@ -1096,7 +1096,7 @@ do {
 }
 
 do {
-  // TODO: Restore regressed diagnostics rdar://problem/31724211
+  // TODO: Restore regressed diagnostics rdar://problem/31724211 id:3008 gh:3020
   var a = 3.0 // e/xpected-warning {{variable 'a' was never mutated; consider changing to 'let' constant}}
   var b = 4.0 // e/xpected-warning {{variable 'b' was never mutated; consider changing to 'let' constant}}
   var d = (a, b) // e/xpected-warning {{variable 'd' was never mutated; consider changing to 'let' constant}}
@@ -1426,7 +1426,7 @@ func processArrayOfFunctions(f1: [((Bool, Bool)) -> ()],
 
 // expected-error@+1 {{cannot create a single-element tuple with an element label}}
 func singleElementTupleArgument(completion: ((didAdjust: Bool)) -> Void) {
-    // TODO: Error could be improved.
+    // TODO: Error could be improved. id:3740 gh:3752
     // expected-error@+1 {{cannot convert value of type '(didAdjust: Bool)' to expected argument type 'Bool'}}
     completion((didAdjust: true))
 }

@@ -41,7 +41,7 @@ struct SomeStructure: Hashable {
                lhs.sub == rhs.sub
     }
 
-    // FIXME: we don't care about this, but Any only finds == on Hashables
+    // FIXME: we don't care about this, but Any only finds == on Hashables id:3967 gh:3979
     var hashValue: Int { return i }
 }
 
@@ -126,7 +126,7 @@ class TestUserInfo : TestUserInfoSuper {
         posted = notif
     }
 
-    // MARK: -
+    // MARK: - id:4163 gh:4175
     func test_classForCoder() {
         // confirm internal bridged impl types are not exposed to archival machinery
         // we have to be circuitous here, as bridging makes it very difficult to confirm this

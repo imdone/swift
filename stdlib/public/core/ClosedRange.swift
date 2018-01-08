@@ -10,7 +10,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-// FIXME: swift-3-indexing-model: Generalize all tests to check both
+// FIXME: swift-3-indexing-model: Generalize all tests to check both id:678 gh:685
 // [Closed]Range and [Closed]CountableRange.
 
 @_versioned
@@ -21,7 +21,7 @@ internal enum _ClosedRangeIndexRepresentation<Bound>
   case inRange(Bound)
 }
 
-// FIXME(ABI)#23 (Nesting types in generics): should be a nested type in
+// FIXME (ABI)#23 (Nesting types in generics): should be a nested type in id:876 gh:883
 // `ClosedRange`.
 /// A position in a `CountableClosedRange` instance.
 @_fixed_layout
@@ -265,7 +265,7 @@ extension CountableClosedRange: RandomAccessCollection {
   ///   index.
   @_inlineable
   public subscript(position: ClosedRangeIndex<Bound>) -> Bound {
-    // FIXME: swift-3-indexing-model: range checks and tests.
+    // FIXME: swift-3-indexing-model: range checks and tests. id:976 gh:984
     return position._dereferenced
   }
 
@@ -388,7 +388,7 @@ extension Comparable {
   /// - Parameters:
   ///   - minimum: The lower bound for the range.
   ///   - maximum: The upper bound for the range.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:677 gh:684
   @_transparent
   public static func ... (minimum: Self, maximum: Self) -> ClosedRange<Self> {
     _precondition(
@@ -420,12 +420,12 @@ extension Strideable where Stride: SignedInteger {
   /// - Parameters:
   ///   - minimum: The lower bound for the range.
   ///   - maximum: The upper bound for the range.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1557 gh:1564
   @_transparent
   public static func ... (
     minimum: Self, maximum: Self
   ) -> CountableClosedRange<Self> {
-    // FIXME: swift-3-indexing-model: tests for traps.
+    // FIXME: swift-3-indexing-model: tests for traps. id:682 gh:689
     _precondition(
       minimum <= maximum, "Can't form Range with upperBound < lowerBound")
     return CountableClosedRange(uncheckedBounds: (lower: minimum, upper: maximum))

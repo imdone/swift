@@ -25,10 +25,10 @@ let _destroyTLSCounter = _stdlib_AtomicInt()
 // pointer. Similarly, shouldn't be created, except by
 // _initializeThreadLocalStorage.
 //
-@_versioned // FIXME(sil-serialize-all)
-@_fixed_layout // FIXME(sil-serialize-all)
+@_versioned // FIXME (sil-serialize-all) id:2191 gh:2203
+@_fixed_layout // FIXME (sil-serialize-all) id:2795 gh:2807
 internal struct _ThreadLocalStorage {
-  // TODO: might be best to absract uBreakIterator handling and caching into
+  // TODO: might be best to absract uBreakIterator handling and caching into id:2410 gh:2422
   // separate struct. That would also make it easier to maintain multiple ones
   // and other TLS entries side-by-side.
 
@@ -39,10 +39,10 @@ internal struct _ThreadLocalStorage {
   // UBreakIterator than recreating one.
   //
   // private
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:2585 gh:2597
   internal var uBreakIterator: OpaquePointer
 
-  // TODO: Consider saving two, e.g. for character-by-character comparison
+  // TODO: Consider saving two, e.g. for character-by-character comparison id:3155 gh:3167
 
   // The below cache key tries to avoid resetting uBreakIterator's text when
   // operating on the same String as before. Avoiding the reset gives a 50%
@@ -55,19 +55,19 @@ internal struct _ThreadLocalStorage {
   // compare unequal if a new StringCore happens to be created in the same
   // memory.
   //
-  // TODO: unowned reference to string owner, base address, and _countAndFlags
+  // TODO: unowned reference to string owner, base address, and _countAndFlags id:2194 gh:2206
 
   // private: Should only be called by _initializeThreadLocalStorage
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2800 gh:2812
+  @_versioned // FIXME (sil-serialize-all) id:2412 gh:2424
   internal init(_uBreakIterator: OpaquePointer) {
     self.uBreakIterator = _uBreakIterator
   }
 
   // Get the current thread's TLS pointer. On first call for a given thread,
   // creates and initializes a new one.
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2587 gh:2599
+  @_versioned // FIXME (sil-serialize-all) id:3159 gh:3171
   static internal func getPointer()
     -> UnsafeMutablePointer<_ThreadLocalStorage>
   {
@@ -82,8 +82,8 @@ internal struct _ThreadLocalStorage {
 
   // Retrieve our thread's local uBreakIterator and set it up for the given
   // StringCore.
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2197 gh:2209
+  @_versioned // FIXME (sil-serialize-all) id:2805 gh:2817
   static internal func getUBreakIterator(
     for core: _StringCore
   ) -> OpaquePointer {
@@ -93,8 +93,8 @@ internal struct _ThreadLocalStorage {
     return getUBreakIterator(
       for: UnsafeBufferPointer(start: corePtr, count: core.count))
   }
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2413 gh:2425
+  @_versioned // FIXME (sil-serialize-all) id:2589 gh:2601
   static internal func getUBreakIterator(
     for bufPtr: UnsafeBufferPointer<UTF16.CodeUnit>
   ) -> OpaquePointer {
@@ -112,8 +112,8 @@ internal struct _ThreadLocalStorage {
 
 // Destructor to register with pthreads. Responsible for deallocating any memory
 // owned.
-@_inlineable // FIXME(sil-serialize-all)
-@_versioned // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:3161 gh:3173
+@_versioned // FIXME (sil-serialize-all) id:2200 gh:2212
 @_silgen_name("_stdlib_destroyTLS")
 internal func _destroyTLS(_ ptr: UnsafeMutableRawPointer?) {
   _sanityCheck(ptr != nil,
@@ -130,7 +130,7 @@ internal func _destroyTLS(_ ptr: UnsafeMutableRawPointer?) {
 }
 
 // Lazily created global key for use with pthread TLS
-@_versioned // FIXME(sil-serialize-all)
+@_versioned // FIXME (sil-serialize-all) id:2809 gh:2821
 internal let _tlsKey: __swift_thread_key_t = {
   let sentinelValue = __swift_thread_key_t.max
   var key: __swift_thread_key_t = sentinelValue
@@ -140,8 +140,8 @@ internal let _tlsKey: __swift_thread_key_t = {
   return key
 }()
 
-@_inlineable // FIXME(sil-serialize-all)
-@_versioned // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:2415 gh:2426
+@_versioned // FIXME (sil-serialize-all) id:2591 gh:2603
 @inline(never)
 internal func _initializeThreadLocalStorage()
   -> UnsafeMutablePointer<_ThreadLocalStorage>

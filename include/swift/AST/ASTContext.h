@@ -238,7 +238,7 @@ public:
   /// \brief The list of external definitions imported by this context.
   llvm::SetVector<Decl *> ExternalDefinitions;
 
-  /// FIXME: HACK HACK HACK
+  /// FIXME: HACK HACK HACK id:33 gh:38
   /// This state should be tracked somewhere else.
   unsigned LastCheckedExternalDefinition = 0;
 

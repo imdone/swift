@@ -10,7 +10,7 @@ extension behavior {
   }
 }
 
-// TODO: global accessor doesn't get walked??
+// TODO: global accessor doesn't get walked?? id:3980 gh:3992
 var global: Int __behavior behavior
 
 struct S1<T> {
@@ -41,7 +41,7 @@ var zero: Int { get { } }
 func exerciseBehavior<T>(_ sx: inout S1<T>, _ sy: inout S1<Int>,
                          _ cx: C1<T>, _ cy: C1<Int>,
                          _ z: T) {
-  /* FIXME
+  /* FIXME id:2930 gh:2942
   var local: T __behavior behavior
 
   _ = local
@@ -94,18 +94,18 @@ extension withStorage {
   static func initStorage() -> Value? { }
 }
 
-// TODO: storage behaviors in non-instance context
+// TODO: storage behaviors in non-instance context id:3235 gh:3247
 struct S2<T> {
   var instance: T __behavior withStorage
 
-  // FIXME: Hack because we can't find the synthesized associated type witness
+  // FIXME: Hack because we can't find the synthesized associated type witness id:3642 gh:3654
   // during witness matching.
   typealias Value = T
 }
 class C2<T> {
   var instance: T __behavior withStorage
 
-  // FIXME: Hack because we can't find the synthesized associated type witness
+  // FIXME: Hack because we can't find the synthesized associated type witness id:3587 gh:3599
   // during witness matching.
   typealias Value = T
 }
@@ -140,12 +140,12 @@ extension withInit {
   static func initStorage() -> Value? { }
 }
 
-// TODO: parameterized behaviors in non-instance context
+// TODO: parameterized behaviors in non-instance context id:3983 gh:3995
 func any<T>() -> T { }
 
 struct S3<T> {
 
-  // FIXME: Hack because we can't find the synthesized associated type witness
+  // FIXME: Hack because we can't find the synthesized associated type witness id:2933 gh:2944
   // during witness matching.
   typealias Value = T
   var instance: T __behavior withInit { any() }
@@ -153,7 +153,7 @@ struct S3<T> {
 class C3<T> {
   var instance: T __behavior withInit { any() }
 
-  // FIXME: Hack because we can't find the synthesized associated type witness
+  // FIXME: Hack because we can't find the synthesized associated type witness id:3318 gh:3330
   // during witness matching.
   typealias Value = T
 }
@@ -174,7 +174,7 @@ func exerciseStorage<T>(_ sx: inout S3<T>, _ sy: inout S3<Int>,
   cy.instance = zero
 }
 
-// FIXME: printing sil_witness_tables for behaviors should indicate what
+// FIXME: printing sil_witness_tables for behaviors should indicate what id:3644 gh:3657
 //        var decl the behavior is attached to
 // CHECK-LABEL: sil_witness_table private (): behavior module property_behavior
 // CHECK:         associated_type Value: Int

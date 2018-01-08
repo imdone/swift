@@ -1,4 +1,4 @@
-// NOTE: This test does NOT run under Address Sanitizer because it triggers
+// NOTE: This test does NOT run under Address Sanitizer because it triggers id:4048 gh:4060
 // a heap use-after-free (SR-1070).
 
 // This source file is part of the Swift.org open source project

@@ -32,4 +32,4 @@ open class MMSub3 : MMSuper3 { }
 
 open class MMSuper4 : MMP1 { }
 
-// FIXME: Enums, once the standard library deserialization is working
+// FIXME: Enums, once the standard library deserialization is working id:3824 gh:3837

@@ -9,5 +9,5 @@ takes_float4(makes_float4())
 takes_int3(makes_int3())
 takes_double2(makes_double2())
 
-// FIXME: float4 should not have been transitively imported.
+// FIXME: float4 should not have been transitively imported. id:3384 gh:3396
 let x: float4 = makes_float4() // fixme-error{{undeclared type 'float4'}}

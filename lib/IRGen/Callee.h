@@ -66,7 +66,7 @@ namespace irgen {
         : Value(value), Sig(signature) {
       // The function pointer should have function type.
       assert(value->getType()->getPointerElementType()->isFunctionTy());
-      // TODO: maybe assert similarity to signature.getType()?
+      // TODO: maybe assert similarity to signature.getType()? id:151 gh:158
     }
 
     static FunctionPointer forDirect(IRGenModule &IGM,

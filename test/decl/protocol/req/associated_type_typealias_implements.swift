@@ -28,11 +28,11 @@ struct Y1: R {
 struct Y2: R { // expected-error{{type 'Y2' does not conform to protocol 'Q'}}
   typealias T = XTWithoutP
 
-  // FIXME: More detail from diagnostic.
+  // FIXME: More detail from diagnostic. id:4082 gh:4094
   // error: T: P fails
 }
 
 struct Y3: Q { // expected-error{{type 'Y3' does not conform to protocol 'Q'}}
   typealias T = XT
-  // FIXME: More detail from diagnostic.
+  // FIXME: More detail from diagnostic. id:3028 gh:3040
 }

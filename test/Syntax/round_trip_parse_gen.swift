@@ -317,7 +317,7 @@ func statementTests() {
   for case is Int in foo {}
 }
 
-// MARK: - ExtensionDecl
+// MARK: - ExtensionDecl id:4062 gh:4074
 
 extension ext {
   var s: Int {

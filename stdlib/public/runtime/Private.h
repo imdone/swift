@@ -108,7 +108,7 @@ namespace swift {
     // Load the isa field.
     uintptr_t bits = *reinterpret_cast<const uintptr_t*>(object);
     // If the low bit is set, then we are definitely an objc object.
-    // FIXME: Use a variable for this.
+    // FIXME: Use a variable for this. id:2927 gh:2939
     return bits & 1;
   }
 #endif

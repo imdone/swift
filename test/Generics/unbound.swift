@@ -25,7 +25,7 @@ typealias OFW = Optional<() -> Foo> // expected-error{{reference to generic type
 class MyDict : Dict { } // expected-error{{reference to generic type 'Dict' requires arguments in <...>}}
 
 // Cannot create variables of a generic type without arguments.
-// FIXME: <rdar://problem/14238814> would allow it for local variables
+// FIXME: <rdar://problem/14238814> would allow it for local variables id:3031 gh:3043
 // only
 var x : Dict // expected-error{{reference to generic type 'Dict' requires arguments in <...>}}
 

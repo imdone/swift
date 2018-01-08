@@ -89,7 +89,7 @@ var b : Base
 _ = b as! Derived
 
 // Construction doesn't permit conversion.
-// NOTE: Int and other integer-literal convertible types
+// NOTE: Int and other integer-literal convertible types id:3724 gh:3736
 //  are special cased in the library.
 Int(i) // expected-warning{{unused}}
 _ = i as Int

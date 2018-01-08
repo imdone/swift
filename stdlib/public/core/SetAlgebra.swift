@@ -400,7 +400,7 @@ extension SetAlgebra {
   ///     // Prints "[6, 0, 1, 3]"
   ///
   /// - Parameter sequence: The elements to use as members of the new set.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2457 gh:2469
   public init<S : Sequence>(_ sequence: S)
     where S.Element == Element {
     self.init()
@@ -420,7 +420,7 @@ extension SetAlgebra {
   ///     // Prints "["Diana", "Chris", "Alicia"]"
   ///
   /// - Parameter other: A set of the same type as the current set.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1644 gh:1651
   public mutating func subtract(_ other: Self) {
     self.formIntersection(self.symmetricDifference(other))
   }
@@ -438,7 +438,7 @@ extension SetAlgebra {
   ///
   /// - Parameter other: A set of the same type as the current set.
   /// - Returns: `true` if the set is a subset of `other`; otherwise, `false`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1843 gh:1850
   public func isSubset(of other: Self) -> Bool {
     return self.intersection(other) == self
   }
@@ -457,7 +457,7 @@ extension SetAlgebra {
   /// - Parameter other: A set of the same type as the current set.
   /// - Returns: `true` if the set is a superset of `other`; otherwise,
   ///   `false`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1826 gh:1833
   public func isSuperset(of other: Self) -> Bool {
     return other.isSubset(of: self)
   }
@@ -476,7 +476,7 @@ extension SetAlgebra {
   /// - Parameter other: A set of the same type as the current set.
   /// - Returns: `true` if the set has no elements in common with `other`;
   ///   otherwise, `false`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2096 gh:2103
   public func isDisjoint(with other: Self) -> Bool {
     return self.intersection(other).isEmpty
   }
@@ -495,13 +495,13 @@ extension SetAlgebra {
   ///
   /// - Parameter other: A set of the same type as the current set.
   /// - Returns: A new set.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2459 gh:2471
   public func subtracting(_ other: Self) -> Self {
     return self.intersection(self.symmetricDifference(other))
   }
 
   /// A Boolean value that indicates whether the set has no elements.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1676 gh:1683
   public var isEmpty: Bool {
     return self == Self()
   }
@@ -525,7 +525,7 @@ extension SetAlgebra {
   /// - Parameter other: A set of the same type as the current set.
   /// - Returns: `true` if the set is a strict superset of `other`; otherwise,
   ///   `false`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1846 gh:1853
   public func isStrictSuperset(of other: Self) -> Bool {
     return self.isSuperset(of: other) && self != other
   }
@@ -549,7 +549,7 @@ extension SetAlgebra {
   /// - Parameter other: A set of the same type as the current set.
   /// - Returns: `true` if the set is a strict subset of `other`; otherwise,
   ///   `false`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1830 gh:1837
   public func isStrictSubset(of other: Self) -> Bool {
     return other.isStrictSuperset(of: self)
   }
@@ -574,7 +574,7 @@ extension SetAlgebra where Element == ArrayLiteralElement {
   ///     // Prints "Whatever it is, it's bound to be delicious!"
   ///
   /// - Parameter arrayLiteral: A list of elements of the new set.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2099 gh:2106
   public init(arrayLiteral: Element...) {
     self.init(arrayLiteral)
   }  

@@ -116,7 +116,7 @@ func testForcedMethodResult(dummy: DummyClass) {
   useNS(dummy.fetchNullproneString() as NSString)
 
   //   This is not a force.
-  //   TODO: we could do it more efficiently than this, though
+  //   TODO: we could do it more efficiently than this, though id:3969 gh:3981
   // CHECK:      [[SELF:%.*]] = begin_borrow %0
   // CHECK-NEXT: [[METHOD:%.*]] = objc_method
   // CHECK-NEXT: [[RESULT:%.*]] = apply [[METHOD]]([[SELF]])
@@ -244,7 +244,7 @@ func testForcedPropertyValue(dummy: DummyClass) {
   useNS(dummy.nullproneStringProperty as NSString)
 
   //   This is not a force.
-  //   TODO: we could do it more efficiently than this, though
+  //   TODO: we could do it more efficiently than this, though id:2921 gh:2933
   // CHECK-NEXT: [[SELF:%.*]] = begin_borrow %0
   // CHECK-NEXT: [[METHOD:%.*]] = objc_method
   // CHECK-NEXT: [[RESULT:%.*]] = apply [[METHOD]]([[SELF]])
@@ -272,7 +272,7 @@ func testForcedPropertyValue(dummy: DummyClass) {
 
 /*** Subscript loads *********************************************************/
 
-// FIXME: apply peepholes to indices, too!
+// FIXME: apply peepholes to indices, too! id:3228 gh:3240
 
 // CHECK-LABEL: sil hidden @$S22objc_bridging_peephole23testNonnullSubscriptGet6object5indexySo0eF0C_yXltF
 func testNonnullSubscriptGet(object: NonnullSubscript, index: AnyObject) {
@@ -534,7 +534,7 @@ func testOptToOptPropertySetter(dummy: DummyClass) {
 
 /*** Subscript assignments ***************************************************/
 
-// FIXME: apply peepholes to indices, too!
+// FIXME: apply peepholes to indices, too! id:3636 gh:3648
 
 // CHECK-LABEL: sil hidden @$S22objc_bridging_peephole23testNonnullSubscriptSet6object5indexySo0eF0C_yXltF
 func testNonnullSubscriptSet(object: NonnullSubscript, index: AnyObject) {

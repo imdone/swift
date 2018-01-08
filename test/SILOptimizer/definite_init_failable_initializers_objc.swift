@@ -1,6 +1,6 @@
 // RUN: %target-swift-frontend -emit-sil -enable-sil-ownership -disable-objc-attr-requires-foundation-module %s | %FileCheck %s
 
-// FIXME: This needs more tests
+// FIXME: This needs more tests id:3656 gh:3669
 
 @objc protocol P3 {
   init?(p3: Int64)
@@ -50,7 +50,7 @@ class Cat : FakeNSObject {
     // CHECK-NEXT: [[NEW_SUPER_SELF:%.*]] = apply [[SUPER_FN]]([[SUPER]]) : $@convention(objc_method) (@owned FakeNSObject) -> @owned FakeNSObject
     // CHECK-NEXT: [[NEW_SELF:%.*]] = unchecked_ref_cast [[NEW_SUPER_SELF]] : $FakeNSObject to $Cat
     // CHECK-NEXT: store [[NEW_SELF]] to [[SELF_BOX]] : $*Cat
-    // TODO: Once we re-enable arbitrary take promotion, this retain and the associated destroy_addr will go away.
+    // TODO: Once we re-enable arbitrary take promotion, this retain and the associated destroy_addr will go away. id:3761 gh:3773
     // CHECK-NEXT: strong_retain [[NEW_SELF]]
     // CHECK-NEXT: [[RESULT:%.*]] = enum $Optional<Cat>, #Optional.some!enumelt.1, [[NEW_SELF]] : $Cat
     // CHECK-NEXT: destroy_addr [[SELF_BOX]]

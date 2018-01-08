@@ -254,7 +254,7 @@ func typeInference_commonTypes() {
 }
 
 func disallowSubscriptingOnIntegers() {
-  // FIXME: swift-3-indexing-model: decide what to do with the following QoI.
+  // FIXME: swift-3-indexing-model: decide what to do with the following QoI. id:3933 gh:3945
   // The previous implementation was imposing an ABI burden.
 
   // The point of this test is to check that we don't allow indexing

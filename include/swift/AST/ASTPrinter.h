@@ -93,7 +93,7 @@ public:
 
   virtual void printText(StringRef Text) = 0;
 
-  // MARK: Callback interface.
+  // MARK: Callback interface. id:52 gh:59
 
   /// Called after the printer decides not to print D.
   ///
@@ -216,7 +216,7 @@ public:
   void setSynthesizedTarget(NominalTypeDecl *Target) {
     assert((!SynthesizeTarget || !Target || Target == SynthesizeTarget) &&
            "unexpected change of setSynthesizedTarget");
-    // FIXME: this can overwrite the original target with nullptr.
+    // FIXME: this can overwrite the original target with nullptr. id:34 gh:33
     SynthesizeTarget = Target;
   }
 
@@ -237,7 +237,7 @@ public:
 
   virtual void printIndent();
 
-  // MARK: Callback interface wrappers that perform ASTPrinter bookkeeping.
+  // MARK: Callback interface wrappers that perform ASTPrinter bookkeeping. id:36 gh:40
 
    /// Make a callback to printDeclPre(), performing any necessary bookeeping.
   void callPrintDeclPre(const Decl *D, Optional<BracketOptions> Bracket);

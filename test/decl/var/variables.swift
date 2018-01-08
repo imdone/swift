@@ -67,7 +67,7 @@ weak let V = SomeClass()  // expected-error {{'weak' must be a mutable variable,
 
 let a = b ; let b = a // expected-error{{could not infer type for 'a'}} 
 // expected-error@-1 {{'a' used within its own type}}
-// FIXME: That second error is bogus.
+// FIXME: That second error is bogus. id:3464 gh:3476
 
 // <rdar://problem/17501765> Swift should warn about immutable default initialized values
 let uselessValue : String?

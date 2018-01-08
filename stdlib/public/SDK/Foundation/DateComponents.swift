@@ -61,7 +61,7 @@ public struct DateComponents : ReferenceConvertible, Hashable, Equatable, _Mutab
     }
 
     
-    // MARK: - Properties
+    // MARK: - Properties id:243 gh:250
     
     /// Translate from the NSDateComponentUndefined value into a proper Swift optional
     private func _getter(_ x : Int) -> Int? { return x == NSDateComponentUndefined ? nil : x }
@@ -211,7 +211,7 @@ public struct DateComponents : ReferenceConvertible, Hashable, Equatable, _Mutab
         }
     }
     
-    // MARK: - Generic Setter/Getters
+    // MARK: - Generic Setter/Getters id:330 gh:337
     
     /// Set the value of one of the properties, using an enumeration value instead of a property name.
     ///
@@ -233,7 +233,7 @@ public struct DateComponents : ReferenceConvertible, Hashable, Equatable, _Mutab
         }
     }
     
-    // MARK: -
+    // MARK: - id:351 gh:358
     
     /// Returns true if the combination of properties which have been set in the receiver is a date which exists in the `calendar` property.
     ///
@@ -261,13 +261,13 @@ public struct DateComponents : ReferenceConvertible, Hashable, Equatable, _Mutab
         return _handle.map { $0.isValidDate(in: calendar) }
     }
     
-    // MARK: -
+    // MARK: - id:212 gh:219
     
     public var hashValue : Int {
         return _handle.map { $0.hash }
     }
     
-    // MARK: - Bridging Helpers
+    // MARK: - Bridging Helpers id:480 gh:487
     
     fileprivate init(reference: NSDateComponents) {
         _handle = _MutableHandle(reference: reference)
@@ -315,7 +315,7 @@ extension DateComponents : CustomStringConvertible, CustomDebugStringConvertible
     }
 }
 
-// MARK: - Bridging
+// MARK: - Bridging id:246 gh:253
 
 extension DateComponents : _ObjectiveCBridgeable {
     public static func _getObjectiveCType() -> Any.Type {

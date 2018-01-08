@@ -722,7 +722,7 @@ mirrors.test("PlaygroundQuickLook") {
   switch PlaygroundQuickLook(reflecting: X()) {
   case .text(let text):
 #if _runtime(_ObjC)
-// FIXME: Enable if non-objc hasSuffix is implemented.
+// FIXME: Enable if non-objc hasSuffix is implemented. id:3863 gh:3875
     expectTrue(text.contains("X #1 in"), text)
 #endif
   default:

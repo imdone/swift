@@ -247,7 +247,7 @@ func testCompleteStructMembers1() {
 
 func testCompleteClassMembers1() {
   FooClassBase#^CLANG_CLASS_MEMBERS_1^#
-// FIXME: do we want to show curried instance functions for Objective-C classes?
+// FIXME: do we want to show curried instance functions for Objective-C classes? id:3448 gh:3460
 // CLANG_CLASS_MEMBERS_1: Begin completions
 // CLANG_CLASS_MEMBERS_1-NEXT: Decl[StaticMethod]/CurrNominal:     .fooBaseInstanceFunc0()[#Void#]{{; name=.+$}}
 // CLANG_CLASS_MEMBERS_1-NEXT: Decl[InstanceMethod]/CurrNominal:   .fooBaseInstanceFunc0({#self: FooClassBase#})[#() -> Void#]{{; name=.+$}}

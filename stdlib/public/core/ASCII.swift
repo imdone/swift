@@ -18,7 +18,7 @@ extension Unicode.ASCII : Unicode.Encoding {
   public typealias CodeUnit = UInt8
   public typealias EncodedScalar = CollectionOfOne<CodeUnit>
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:793 gh:800
   public static var encodedReplacementCharacter : EncodedScalar {
     return EncodedScalar(0x1a) // U+001A SUBSTITUTE; best we can do for ASCII
   }
@@ -46,7 +46,7 @@ extension Unicode.ASCII : Unicode.Encoding {
   }
 
   @inline(__always)
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:494 gh:501
   public static func transcode<FromEncoding : Unicode.Encoding>(
     _ content: FromEncoding.EncodedScalar, from _: FromEncoding.Type
   ) -> EncodedScalar? {
@@ -64,9 +64,9 @@ extension Unicode.ASCII : Unicode.Encoding {
     return encode(FromEncoding.decode(content))
   }
 
-  @_fixed_layout // FIXME(sil-serialize-all)
+  @_fixed_layout // FIXME (sil-serialize-all) id:1337 gh:1344
   public struct Parser {
-    @_inlineable // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:511 gh:518
     public init() { }
   }
   
@@ -78,7 +78,7 @@ extension Unicode.ASCII.Parser : Unicode.Parser {
   public typealias Encoding = Unicode.ASCII
 
   /// Parses a single Unicode scalar value from `input`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:626 gh:633
   public mutating func parseScalar<I : IteratorProtocol>(
     from input: inout I
   ) -> Unicode.ParseResult<Encoding.EncodedScalar>

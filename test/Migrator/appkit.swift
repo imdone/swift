@@ -43,22 +43,22 @@ NSRectFillListUsingOperation(rekts, 1, NSCompositingOperation.clear)
 // rekts.clip()
 NSRectClipList(&rekts, 1)
 
-// TODO: zip2(rekts, kolors).fill()
+// TODO: zip2(rekts, kolors).fill() id:3862 gh:3874
 // NSRectFillListWithColors(&rekts, &kolors, 1)
 
-// TODO: zip2(rekts, kolors).fill(using: NSCompositingOperation.clear)
+// TODO: zip2(rekts, kolors).fill(using: NSCompositingOperation.clear) id:2765 gh:2777
 // NSRectFillListWithColorsUsingOperation(&rekts, &kolors, 1, NSCompositingOperation.clear)
 
-// TODO: zip2(rekts, grays).fill()
+// TODO: zip2(rekts, grays).fill() id:3033 gh:3045
 // NSRectFillListWithGrays(&rekts, &grays, 1)
 
-// TODO: NSAnimationEffect.poof.show(centeredAt: NSPoint.zero, size: NSSize.zero)
+// TODO: NSAnimationEffect.poof.show(centeredAt: NSPoint.zero, size: NSSize.zero) id:3560 gh:3572
 // NSShowAnimationEffect(NSAnimationEffect.poof, NSPoint.zero, NSSize.zero, nil, nil, nil)
 
 // _ = NSWindow.Depth.availableDepths
 _ = NSAvailableWindowDepths()
 
-// TODO: _ = NSWindow.Depth.bestDepth("", 24, 0, false)
+// TODO: _ = NSWindow.Depth.bestDepth("", 24, 0, false) id:3450 gh:3462
 // _ = NSBestDepth("", 24, 0, false, nil)
 
 var cacheSize: GLint = 0
@@ -72,7 +72,7 @@ NSOpenGLSetOption(NSOpenGLGOFormatCacheSize, 5)
 var major = GLint(0)
 var minor = GLint(0)
 
-// TODO: (major, minor) = NSOpenGLContext.openGLVersion
+// TODO: (major, minor) = NSOpenGLContext.openGLVersion id:3865 gh:3877
 // NSOpenGLGetVersion(&major, &minor)
 
 class MyDocument : NSDocument {

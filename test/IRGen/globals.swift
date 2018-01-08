@@ -7,11 +7,11 @@ var g1 : (Void, Int, Void)
 var g2 : (Void, Int, Int)
 var g3 : Bool
 
-// FIXME: enum IRgen
+// FIXME: enum IRgen id:3816 gh:3828
 // enum TY4 { case some(Int, Int); case none }
 // var g4 : TY4
 
-// FIXME: enum IRgen
+// FIXME: enum IRgen id:2715 gh:2727
 // enum TY5 { case a(Int8, Int8, Int8, Int8)
 //             case b(Int16) }
 // var g5 : TY5
@@ -19,7 +19,7 @@ var g3 : Bool
 var g6 : Double
 var g7 : Float
 
-// FIXME: enum IRgen
+// FIXME: enum IRgen id:2902 gh:2914
 // enum TY8 { case a }
 // var g8 : TY8
 
@@ -53,6 +53,6 @@ extension A {
 // CHECK: define{{( protected)?}} i32 @main(i32, i8**) {{.*}} {
 // CHECK:      store  i64 {{.*}}, i64* getelementptr inbounds ([[INT]], [[INT]]* @"$S7globals2g0Sivp", i32 0, i32 0), align 8
 
-// FIXME: give these initializers a real mangled name
+// FIXME: give these initializers a real mangled name id:3512 gh:3524
 // CHECK: define internal void @globalinit_{{.*}}func0() {{.*}} {
 // CHECK:      store i64 5, i64* getelementptr inbounds (%TSi, %TSi* @"$S7globals1AV3fooSivpZ", i32 0, i32 0), align 8

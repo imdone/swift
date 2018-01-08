@@ -48,7 +48,7 @@ struct ExistentialLayout {
   bool isAnyObject() const;
 
   bool isObjC() const {
-    // FIXME: Does the superclass have to be @objc?
+    // FIXME: Does the superclass have to be @objc? id:60 gh:67
     return ((superclass ||
              hasExplicitAnyObject ||
              getProtocols().size() > 0)

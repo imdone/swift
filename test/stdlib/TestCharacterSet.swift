@@ -166,7 +166,7 @@ class TestCharacterSet : TestCharacterSetSuper {
         expectEqual(2, result.count)
     }
 
-    // MARK: -
+    // MARK: - id:3941 gh:3953
     func test_classForCoder() {
         // confirm internal bridged impl types are not exposed to archival machinery
         let cs = CharacterSet() as NSCharacterSet
@@ -291,7 +291,7 @@ class TestCharacterSet : TestCharacterSetSuper {
         // previous to these releases the subset methods improperly calculated strict subsets
         // as of macOS 10.12.4, iOS 10.3, watchOS 3.2 and tvOS 10.2 CoreFoundation had a bug
         // fix that corrected this behavior.
-        // TODO: figure out why the simulator is claiming this as a failure.
+        // TODO: figure out why the simulator is claiming this as a failure. id:4154 gh:4166
         // https://bugs.swift.org/browse/SR-4457
 
         /* Disabled now: rdar://problem/31746923

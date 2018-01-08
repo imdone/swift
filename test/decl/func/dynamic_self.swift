@@ -66,7 +66,7 @@ class C1 {
 
   // Instance methods have a self of type Self.
   func f(_ b: Bool) -> Self {
-    // FIXME: below diagnostic should complain about C1 -> Self conversion
+    // FIXME: below diagnostic should complain about C1 -> Self conversion id:4072 gh:4084
     if b { return C1(int: 5) } // expected-error{{cannot convert return expression of type 'C1' to return type 'Self'}}
 
     // One can use `type(of:)` to attempt to construct an object of type Self.
@@ -346,7 +346,7 @@ class InvariantSelf {
   }
 }
 
-// FIXME: This should be allowed
+// FIXME: This should be allowed id:3019 gh:3031
 
 final class FinalInvariantSelf {
   func me() -> Self {
@@ -375,7 +375,7 @@ class Factory : FactoryPattern {
   convenience init(string: String) {
     self.init(factory: Factory(_string: string))
     // expected-error@-1 {{incorrect argument label in call (have 'factory:', expected '_string:')}}
-    // FIXME: Bogus diagnostic
+    // FIXME: Bogus diagnostic id:3427 gh:3439
   }
 }
 

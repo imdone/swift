@@ -44,7 +44,7 @@ import Swift
 var ImplicitlyUnwrappedOptionalTests = TestSuite("ImplicitlyUnwrappedOptional")
 
 ImplicitlyUnwrappedOptionalTests.test("flatMap") {
-  // FIXME(19798684): can't call map or flatMap on ImplicitlyUnwrappedOptional
+  // FIXME (19798684): can't call map or flatMap on ImplicitlyUnwrappedOptional id:3858 gh:3870
 
   // let half: Int32 -> Int16! =
   //   { if $0 % 2 == 0 { return Int16($0 / 2) } else { return .none } }

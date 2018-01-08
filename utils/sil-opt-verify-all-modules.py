@@ -80,7 +80,7 @@ def get_verify_resource_dir_modules_commands(
         modules = glob.glob(os.path.join(modules_dir, '*.swiftmodule'))
         for module_file_name in modules:
             if module_file_name.endswith('XCTest.swiftmodule'):
-                # FIXME: sil-opt does not have the '-F' option.
+                # FIXME: sil-opt does not have the '-F' option. id:3613 gh:3625
                 continue
             commands.append([
                 'xcrun', '--toolchain', toolchain_name, '--sdk', subdir,

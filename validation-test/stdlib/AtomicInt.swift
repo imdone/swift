@@ -819,19 +819,19 @@ AtomicIntTestSuite.test("fetchAndAnd/1") {
   runRaceTest(AtomicInt_fetchAndAnd_1_RaceTest.self,
     operations: 6400, timeoutInSeconds: 60)
 }
-// FIXME: add more tests for fetchAndAnd, like we have for fetchAndAdd.
+// FIXME: add more tests for fetchAndAnd, like we have for fetchAndAdd. id:3645 gh:3655
 
 AtomicIntTestSuite.test("fetchAndOr/1") {
   runRaceTest(AtomicInt_fetchAndOr_1_RaceTest.self,
     operations: 6400, timeoutInSeconds: 60)
 }
-// FIXME: add more tests for fetchAndOr, like we have for fetchAndAdd.
+// FIXME: add more tests for fetchAndOr, like we have for fetchAndAdd. id:4010 gh:4022
 
 AtomicIntTestSuite.test("fetchAndXor/1") {
   runRaceTest(AtomicInt_fetchAndXor_1_RaceTest.self,
     operations: 6400, timeoutInSeconds: 60)
 }
-// FIXME: add more tests for fetchAndXor, like we have for fetchAndAdd.
+// FIXME: add more tests for fetchAndXor, like we have for fetchAndAdd. id:4060 gh:4072
 
 
 var AtomicARCRefTestSuite = TestSuite("AtomicARCRef")

@@ -84,7 +84,7 @@ public:
   bool shouldLink() const { return LinkAction != LinkKind::None; }
 
   /// Whether or not the output should contain debug info.
-  // FIXME: Eventually this should be replaced by dSYM generation.
+  // FIXME: Eventually this should be replaced by dSYM generation. id:173 gh:180
   IRGenDebugInfoKind DebugInfoKind = IRGenDebugInfoKind::None;
 
   /// Whether or not the driver should generate a module.

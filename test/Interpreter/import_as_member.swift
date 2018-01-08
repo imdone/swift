@@ -11,5 +11,5 @@ import ImportAsMember
 var v3 = Vec3(x: 1.0, y: 2.0, z: 2.0)
 print("Norm: \(v3.norm)") // CHECK: Norm: 3.0
 
-// TODO: Test protocols
+// TODO: Test protocols id:3852 gh:3864
 

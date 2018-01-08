@@ -28,7 +28,7 @@ func test3(_ fridge: CCRefrigerator) {
 }
 
 func test4() {
-  // FIXME: this should not require a type annotation
+  // FIXME: this should not require a type annotation id:3688 gh:3700
   let power: CCPowerSupply = kCCPowerStandard
   assertManaged(power)
   let fridge = CCRefrigeratorCreate(power)!

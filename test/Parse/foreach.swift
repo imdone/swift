@@ -30,7 +30,7 @@ func for_each(r: Range<Int>, iir: IntRange<Int>) { // expected-note {{did you me
   }
 
   // Parse errors
-  // FIXME: Bad diagnostics; should be just 'expected 'in' after for-each patter'.
+  // FIXME: Bad diagnostics; should be just 'expected 'in' after for-each patter'. id:2794 gh:2806
   for i r { // expected-error {{found an unexpected second identifier in constant declaration}}
   }         // expected-note @-1 {{join the identifiers together}}
             // expected-note @-2 {{join the identifiers together with camel-case}}

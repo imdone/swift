@@ -8,7 +8,7 @@ func test0() {
 }
 // CHECK:    sil hidden @$S10reabstract5test0yyF : $@convention(thin) () -> () {
 //   Emit a generalized reference to liftOptional.
-//   TODO: just emit a globalized thunk
+//   TODO: just emit a globalized thunk id:2935 gh:2947
 // CHECK:      reabstract.liftOptional
 // CHECK-NEXT: [[T1:%.*]] = function_ref @$S10reabstract12liftOptional{{[_0-9a-zA-Z]*}}F
 // CHECK-NEXT: [[T2:%.*]] = thin_to_thick_function [[T1]]

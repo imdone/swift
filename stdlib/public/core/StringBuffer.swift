@@ -10,19 +10,19 @@
 //
 //===----------------------------------------------------------------------===//
 
-@_fixed_layout // FIXME(sil-serialize-all)
+@_fixed_layout // FIXME (sil-serialize-all) id:1825 gh:1832
 @_versioned
 internal struct _StringBufferIVars {
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1928 gh:1935
+  @_versioned // FIXME (sil-serialize-all) id:2195 gh:2207
   internal init(_elementWidth: Int) {
     _sanityCheck(_elementWidth == 1 || _elementWidth == 2)
     usedEnd = nil
     capacityAndElementShift = _elementWidth - 1
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2280 gh:2292
+  @_versioned // FIXME (sil-serialize-all) id:2544 gh:2556
   internal init(
     _usedEnd: UnsafeMutableRawPointer,
     byteCapacity: Int,
@@ -36,28 +36,28 @@ internal struct _StringBufferIVars {
 
   // This stored property should be stored at offset zero.  We perform atomic
   // operations on it using _HeapBuffer's pointer.
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:1827 gh:1834
   var usedEnd: UnsafeMutableRawPointer?
 
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:1930 gh:1937
   var capacityAndElementShift: Int
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2199 gh:2211
+  @_versioned // FIXME (sil-serialize-all) id:2287 gh:2299
   var byteCapacity: Int {
     return capacityAndElementShift & ~0x1
   }
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2634 gh:2647
+  @_versioned // FIXME (sil-serialize-all) id:1829 gh:1836
   var elementShift: Int {
     return capacityAndElementShift & 0x1
   }
 }
 
-// FIXME: Wanted this to be a subclass of
+// FIXME: Wanted this to be a subclass of id:1986 gh:1993
 // _HeapBuffer<_StringBufferIVars, UTF16.CodeUnit>, but
 // <rdar://problem/15520519> (Can't call static method of derived
 // class of generic class with dependent argument type) prevents it.
-@_fixed_layout // FIXME(sil-serialize-all)
+@_fixed_layout // FIXME (sil-serialize-all) id:2202 gh:2214
 public struct _StringBuffer {
 
   // Make this a buffer of UTF-16 code units so that it's properly
@@ -66,13 +66,13 @@ public struct _StringBuffer {
   typealias HeapBufferStorage
     = _HeapBufferStorage<_StringBufferIVars, UTF16.CodeUnit>
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2292 gh:2304
+  @_versioned // FIXME (sil-serialize-all) id:2777 gh:2789
   init(_ storage: _Storage) {
     _storage = storage
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1832 gh:1839
   public init(capacity: Int, initialSize: Int, elementWidth: Int) {
     _sanityCheck(elementWidth == 1 || elementWidth == 2)
     _sanityCheck(initialSize <= capacity)
@@ -106,8 +106,8 @@ public struct _StringBuffer {
       = ((_storage.capacity - capacityBump) &<< 1) + elementShift
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2010 gh:2017
+  @_versioned // FIXME (sil-serialize-all) id:2204 gh:2216
   static func fromCodeUnits<Input : Sequence, Encoding : _UnicodeEncoding>(
     _ input: Input, encoding: Encoding.Type, repairIllFormedSequences: Bool,
     minimumCapacity: Int = 0
@@ -158,15 +158,15 @@ public struct _StringBuffer {
   }
 
   /// A pointer to the start of this buffer's data area.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2297 gh:2309
   public // @testable
   var start: UnsafeMutableRawPointer {
     return UnsafeMutableRawPointer(_storage.baseAddress)
   }
 
   /// A past-the-end pointer for this buffer's stored data.
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2781 gh:2793
+  @_versioned // FIXME (sil-serialize-all) id:1835 gh:1842
   var usedEnd: UnsafeMutableRawPointer {
     get {
       return _storage.value.usedEnd!
@@ -176,35 +176,35 @@ public struct _StringBuffer {
     }
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2014 gh:2021
+  @_versioned // FIXME (sil-serialize-all) id:2206 gh:2218
   var usedCount: Int {
     return (usedEnd - start) &>> elementShift
   }
 
   /// A past-the-end pointer for this buffer's available storage.
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2304 gh:2316
+  @_versioned // FIXME (sil-serialize-all) id:2812 gh:2824
   var capacityEnd: UnsafeMutableRawPointer {
     return start + _storage.value.byteCapacity
   }
 
   /// The number of elements that can be stored in this buffer.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1838 gh:1845
   public var capacity: Int {
     return _storage.value.byteCapacity &>> elementShift
   }
 
   /// 1 if the buffer stores UTF-16; 0 otherwise.
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2016 gh:2023
+  @_versioned // FIXME (sil-serialize-all) id:2208 gh:2220
   var elementShift: Int {
     return _storage.value.elementShift
   }
 
   /// The number of bytes per element.
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2306 gh:2318
+  @_versioned // FIXME (sil-serialize-all) id:2815 gh:2827
   var elementWidth: Int {
     return elementShift + 1
   }
@@ -214,8 +214,8 @@ public struct _StringBuffer {
   // reserveCapacity on String and subsequently use that capacity, in
   // two separate phases.  Operations with one-phase growth should use
   // "grow()," below.
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1842 gh:1849
+  @_versioned // FIXME (sil-serialize-all) id:2019 gh:2026
   func hasCapacity(
     _ cap: Int, forSubRange r: Range<UnsafeRawPointer>
   ) -> Bool {
@@ -225,12 +225,12 @@ public struct _StringBuffer {
     return cap + offset <= capacity
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2211 gh:2223
+  @_versioned // FIXME (sil-serialize-all) id:2308 gh:2321
   var _anyObject: AnyObject? {
     return _storage.storage
   }
 
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:2819 gh:2831
   var _storage: _Storage
 }

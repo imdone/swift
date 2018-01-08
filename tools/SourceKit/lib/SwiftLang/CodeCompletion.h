@@ -228,7 +228,7 @@ struct FilterRules {
   llvm::DenseMap<CodeCompletionKeywordKind, bool> hideKeyword;
 
   bool hideCustomCompletions = false;
-  // FIXME: hide individual custom completions
+  // FIXME: hide individual custom completions id:4169 gh:4181
 
   llvm::StringMap<bool> hideModule;
   llvm::StringMap<bool> hideByFilterName;

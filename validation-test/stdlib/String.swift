@@ -206,7 +206,7 @@ StringTests.test("ForeignIndexes/UnexpectedCrash")
   // Adjust donor.startIndex to ensure it caches a stride
   let start = donor.index(before: donor.index(after: donor.startIndex))
   
-  // FIXME: this traps right now when trying to construct Character("ab").
+  // FIXME: this traps right now when trying to construct Character("ab"). id:3803 gh:3815
   expectEqual("a", acceptor[start])
 }
 
@@ -491,7 +491,7 @@ StringTests.test("appendToSubstringBug") {
       return (s0[s0.index(_nth: 5)..<s0.endIndex], unused)
     }()
     let originalID = s.bufferID
-    // FIXME: Ideally, appending to a Substring with a unique buffer reference
+    // FIXME: Ideally, appending to a Substring with a unique buffer reference id:4117 gh:4129
     // does not reallocate unless necessary.  Today, however, it appears to do
     // so unconditionally unless the slice falls at the beginning of its buffer.
     s += "z"
@@ -1129,7 +1129,7 @@ StringTests.test("unicodeViews") {
       ]))
 
   /*
-  // FIXME: note changed String(describing:) results
+  // FIXME: note changed String(describing:) results id:4146 gh:4159
   expectEqual(
     "\u{FFFD}",
     String(describing: 

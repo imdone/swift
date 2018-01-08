@@ -1,7 +1,7 @@
 // RUN: %target-swift-frontend(mock-sdk: %clang-importer-sdk) -O -emit-sil %s | %FileCheck %s
 // REQUIRES: objc_interop
 
-// TODO: Update optimizer for id-as-Any changes.
+// TODO: Update optimizer for id-as-Any changes. id:3332 gh:3344
 
 // Note: no 'import Foundation'
 

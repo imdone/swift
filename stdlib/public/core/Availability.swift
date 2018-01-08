@@ -17,7 +17,7 @@ import SwiftShims
 ///
 /// This is a magic entry point known to the compiler. It is called in
 /// generated code for API availability checking.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1389 gh:1396
 @_semantics("availability.osversion")
 public func _stdlib_isOSVersionAtLeast(
   _ major: Builtin.Word,
@@ -36,7 +36,7 @@ public func _stdlib_isOSVersionAtLeast(
   
   return result._value
 #else
-  // FIXME: As yet, there is no obvious versioning standard for platforms other
+  // FIXME: As yet, there is no obvious versioning standard for platforms other id:549 gh:556
   // than Darwin-based OSes, so we just assume false for now. 
   // rdar://problem/18881232
   return false._value
@@ -45,7 +45,7 @@ public func _stdlib_isOSVersionAtLeast(
 
 extension _SwiftNSOperatingSystemVersion : Comparable {
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:657 gh:664
   public static func == (
     lhs: _SwiftNSOperatingSystemVersion,
     rhs: _SwiftNSOperatingSystemVersion
@@ -56,7 +56,7 @@ extension _SwiftNSOperatingSystemVersion : Comparable {
   }
 
   /// Lexicographic comparison of version components.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:841 gh:848
   public static func < (
     lhs: _SwiftNSOperatingSystemVersion,
     rhs: _SwiftNSOperatingSystemVersion
@@ -72,7 +72,7 @@ extension _SwiftNSOperatingSystemVersion : Comparable {
     return lhs.patchVersion < rhs.patchVersion
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:526 gh:533
   public static func >= (
     lhs: _SwiftNSOperatingSystemVersion,
     rhs: _SwiftNSOperatingSystemVersion

@@ -55,7 +55,7 @@ public:
   TaskQueue(unsigned NumberOfParallelTasks = 0);
   virtual ~TaskQueue();
 
-  // TODO: remove once -Wdocumentation stops warning for \param, \returns on
+  // TODO: remove once -Wdocumentation stops warning for \param, \returns on id:101 gh:108
   // std::function (<rdar://problem/15665132>).
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdocumentation"

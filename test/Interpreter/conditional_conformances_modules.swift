@@ -6,7 +6,7 @@
 // RUN: %target-run %t/conditional_conformances_modules %t/libBasic.%target-dylib-extension %t/libWithAssoc.%target-dylib-extension
 
 // REQUIRES: executable_test
-// FIXME: seems to fail on 32-bit simulator?
+// FIXME: seems to fail on 32-bit simulator? id:3538 gh:3550
 // REQUIRES: OS=macosx || OS=linux
 
 import Basic

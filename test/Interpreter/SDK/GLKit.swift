@@ -1,7 +1,7 @@
 // RUN: %target-run-simple-swift | %FileCheck %s
 // REQUIRES: executable_test
 
-// NOTE: Clang used to miscompile GLKit functions on i386. rdar://problem/19184403
+// NOTE: Clang used to miscompile GLKit functions on i386. rdar://problem/19184403 id:3833 gh:3845
 
 // On i386, it seems to work optimized mode, but fails in non-optimized.
 // rdar://problem/26392402
@@ -61,7 +61,7 @@ let flipXY = GLKMatrix4Make(0, 1, 0, 0,
 // CHECK-NEXT: ⎢0.0 0.0 1.0 0.0⎥
 // CHECK-NEXT: ⎣0.0 0.0 0.0 1.0⎦
 printM4(flipXY)
-// FIXME: GLKMatrix4MakeWithArray takes mutable pointer arguments for no
+// FIXME: GLKMatrix4MakeWithArray takes mutable pointer arguments for no id:2732 gh:2744
 // good reason. rdar://problem/19124355
 var flipYZElements: [Float] = [1, 0, 0, 0,
                                0, 0, 1, 0,

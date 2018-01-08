@@ -13,14 +13,14 @@ func test() {
 
   // Enumerator remapping.
   var excuse: HomeworkExcuse = .dogAteIt
-  excuse = .overslept // FIXME: should provide Fix-It  expected-error{{type 'HomeworkExcuse' has no member 'overslept'}} {{none}}
+  excuse = .overslept // FIXME: should provide Fix-It  expected-error{{type 'HomeworkExcuse' has no member 'overslept'}} {{none}} id:2602 gh:2614
   excuse = .tired
-  excuse = .tooHard // FIXME: should provide Fix-It expected-error{{type 'HomeworkExcuse' has no member 'tooHard'}} {{none}}
+  excuse = .tooHard // FIXME: should provide Fix-It expected-error{{type 'HomeworkExcuse' has no member 'tooHard'}} {{none}} id:2718 gh:2730
   excuse = .challenging
 
   // Typedef-of-anonymous-type-name renaming
   var p = Point()
-  var p2 = PointType() // FIXME: should provide Fix-It expected-error{{use of unresolved identifier 'PointType'}} {{none}}
+  var p2 = PointType() // FIXME: should provide Fix-It expected-error{{use of unresolved identifier 'PointType'}} {{none}} id:3355 gh:3367
 
   // Field name remapping
   p.x = 7

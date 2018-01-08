@@ -91,7 +91,7 @@ func test1(_ cell: Blammo) {}
 // CHECK:    ret void
 
 
-// FIXME: These ownership convention tests should become SILGen tests.
+// FIXME: These ownership convention tests should become SILGen tests. id:3818 gh:3830
 func test2(_ v: Test2) { v.bar() }
 func test3() -> NSObject {
   return Gizmo()

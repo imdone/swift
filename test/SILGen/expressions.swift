@@ -299,7 +299,7 @@ func generic_downcast<T : B>(_ x: T, y: B) -> T {
   // CHECK: return
 }
 
-// TODO: generic_downcast
+// TODO: generic_downcast id:3620 gh:3632
 
 // CHECK-LABEL: sil hidden @$S11expressions15metatype_upcast{{[_0-9a-zA-Z]*}}F
 func metatype_upcast() -> B.Type {
@@ -361,7 +361,7 @@ func existential_member_ref(_ x: Mincible) {
   // CHECK-NEXT: apply
 }
 
-/*TODO archetype and existential properties and subscripts
+/*TODO archetype and existential properties and subscripts id:3549 gh:3561
 func archetype_property_ref<T : Runcible>(_ x: T) -> (Int, T.U) {
   x.free = x.free_method()
   x.associated = x.associated_method()
@@ -419,7 +419,7 @@ func declref_to_metatype() -> Spoon.Type {
 
 // CHECK-LABEL: sil hidden @$S11expressions27declref_to_generic_metatype{{[_0-9a-zA-Z]*}}F
 func declref_to_generic_metatype() -> Generic<UnicodeScalar>.Type {
-  // FIXME parsing of T<U> in expression context
+  // FIXME parsing of T<U> in expression context id:3947 gh:3959
   typealias GenericChar = Generic<UnicodeScalar>
   return GenericChar.self
   // CHECK: metatype $@thin Generic<Unicode.Scalar>.Type

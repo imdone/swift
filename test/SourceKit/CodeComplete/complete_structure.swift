@@ -40,7 +40,7 @@ func test1(_ x: S1) {
 // S1_DOT: {name:method3}({params:{n:a:}{t: Int}, {n:b:}{t: Int}})
 // S1_DOT: {name:method4}({params:{t:Int}, {t:Int}})
 // S1_DOT: {name:method5}({params:{t:&Int}, {n:b:}{t: &Int}})
-// FIXME: put throws in a range!
+// FIXME: put throws in a range! id:4049 gh:4061
 // S1_DOT: {name:method6}({params:{l:c:}{t: Int}}){throws: throws}
 // S1_DOT: {name:method7}({params:{l:callback:}{t: () throws -> ()}}){throws: rethrows}
 // S1_DOT: {name:method8}({params:{l:d:}{t: (T, U) -> T}, {n:e:}{t: (T) -> U}})
@@ -99,7 +99,7 @@ class C1 {
 class C2 : C1 {
   override func #^OVERRIDE_0^#
 }
-// FIXME: overrides don't break out their code completion string structure.
+// FIXME: overrides don't break out their code completion string structure. id:2996 gh:3008
 // OVERRIDE_0: {name:foo(x: S1, y: S1, z: (S1) -> S1) -> S1}
 // OVERRIDE_0: {name:zap<T, U>(x: T, y: U, z: (T) -> U) -> T}
 
@@ -107,7 +107,7 @@ func test8() {
   #^S1_INNER_0,S1^#
 }
 // S1_INNER_0: {name:S1.}
-// FIXME: should the ( go inside the name here?
+// FIXME: should the ( go inside the name here? id:3396 gh:3408
 // S1_INNER_0: {name:S1}(
 
 func test9(_ x: inout Int) {

@@ -24,7 +24,7 @@ var d_as_b_2 : B = d
 var b_as_d_2 = b as! D
 
 var b_is_d:Bool = B() is D
-// FIXME: Poor diagnostic below.
+// FIXME: Poor diagnostic below. id:3397 gh:3409
 var bad_d_is_b:Bool = D() is B // expected-warning{{always true}}
 
 func base_class_archetype_casts<T : B>(_ t: T) {

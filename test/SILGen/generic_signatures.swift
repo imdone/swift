@@ -17,7 +17,7 @@ func b<T: P>(x: G<T>, y: T.Assoc) {}
 func c<T where T: P>(x: T, y: T.Assoc) {}
 func d<T: P, U: P & Q>(x: T, y: U) {}
 func e<T, U where T: P, U: P, U: Q>(x: T, y: U) {}
-// FIXME: Same-type constraints expose a typechecker bug.
+// FIXME: Same-type constraints expose a typechecker bug. id:3952 gh:3964
 // <rdar://problem/15730168>
 func f<T: Q where T.Assoc1 == T.Assoc2>(x: T) {}
 func g<T where T: Q, T.Assoc1 == T.Assoc2>(x: T) {}

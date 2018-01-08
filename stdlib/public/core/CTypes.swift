@@ -64,14 +64,14 @@ public typealias CFloat = Float
 /// The C 'double' type.
 public typealias CDouble = Double
 
-// FIXME: long double
+// FIXME: long double id:627 gh:634
 
-// FIXME: Is it actually UTF-32 on Darwin?
+// FIXME: Is it actually UTF-32 on Darwin? id:1516 gh:1523
 //
 /// The C++ 'wchar_t' type.
 public typealias CWideChar = Unicode.Scalar
 
-// FIXME: Swift should probably have a UTF-16 type other than UInt16.
+// FIXME: Swift should probably have a UTF-16 type other than UInt16. id:648 gh:655
 //
 /// The C++11 'char16_t' type, which has UTF-16 encoding.
 public typealias CChar16 = UInt16
@@ -91,7 +91,7 @@ public struct OpaquePointer {
   @_versioned
   internal var _rawValue: Builtin.RawPointer
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:843 gh:850
   @_versioned
   @_transparent
   internal init(_ v: Builtin.RawPointer) {
@@ -99,7 +99,7 @@ public struct OpaquePointer {
   }
 
   /// Creates an `OpaquePointer` from a given address in memory.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:944 gh:951
   @_transparent
   public init?(bitPattern: Int) {
     if bitPattern == 0 { return nil }
@@ -107,7 +107,7 @@ public struct OpaquePointer {
   }
 
   /// Creates an `OpaquePointer` from a given address in memory.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:630 gh:637
   @_transparent
   public init?(bitPattern: UInt) {
     if bitPattern == 0 { return nil }
@@ -115,7 +115,7 @@ public struct OpaquePointer {
   }
 
   /// Converts a typed `UnsafePointer` to an opaque C pointer.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1520 gh:1527
   @_transparent
   public init<T>(_ from: UnsafePointer<T>) {
     self._rawValue = from._rawValue
@@ -124,7 +124,7 @@ public struct OpaquePointer {
   /// Converts a typed `UnsafePointer` to an opaque C pointer.
   ///
   /// The result is `nil` if `from` is `nil`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:652 gh:659
   @_transparent
   public init?<T>(_ from: UnsafePointer<T>?) {
     guard let unwrapped = from else { return nil }
@@ -132,7 +132,7 @@ public struct OpaquePointer {
   }
 
   /// Converts a typed `UnsafeMutablePointer` to an opaque C pointer.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:846 gh:853
   @_transparent
   public init<T>(_ from: UnsafeMutablePointer<T>) {
     self._rawValue = from._rawValue
@@ -141,7 +141,7 @@ public struct OpaquePointer {
   /// Converts a typed `UnsafeMutablePointer` to an opaque C pointer.
   ///
   /// The result is `nil` if `from` is `nil`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:948 gh:955
   @_transparent
   public init?<T>(_ from: UnsafeMutablePointer<T>?) {
     guard let unwrapped = from else { return nil }
@@ -150,7 +150,7 @@ public struct OpaquePointer {
 }
 
 extension OpaquePointer: Equatable {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:634 gh:641
   public static func == (lhs: OpaquePointer, rhs: OpaquePointer) -> Bool {
     return Bool(Builtin.cmp_eq_RawPointer(lhs._rawValue, rhs._rawValue))
   }
@@ -162,7 +162,7 @@ extension OpaquePointer: Hashable {
   /// The hash value is not guaranteed to be stable across different
   /// invocations of the same program.  Do not persist the hash value across
   /// program runs.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1522 gh:1529
   public var hashValue: Int {
     return Int(Builtin.ptrtoint_Word(_rawValue))
   }
@@ -170,7 +170,7 @@ extension OpaquePointer: Hashable {
 
 extension OpaquePointer : CustomDebugStringConvertible {
   /// A textual representation of the pointer, suitable for debugging.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:656 gh:663
   public var debugDescription: String {
     return _rawPointerToString(_rawValue)
   }
@@ -184,7 +184,7 @@ extension Int {
   ///
   /// - Parameter pointer: The pointer to use as the source for the new
   ///   integer.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:848 gh:855
   public init(bitPattern pointer: OpaquePointer?) {
     self.init(bitPattern: UnsafeRawPointer(pointer))
   }
@@ -198,7 +198,7 @@ extension UInt {
   ///
   /// - Parameter pointer: The pointer to use as the source for the new
   ///   integer.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:951 gh:958
   public init(bitPattern pointer: OpaquePointer?) {
     self.init(bitPattern: UnsafeRawPointer(pointer))
   }
@@ -207,10 +207,10 @@ extension UInt {
 /// A wrapper around a C `va_list` pointer.
 @_fixed_layout
 public struct CVaListPointer {
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:638 gh:645
   internal var value: UnsafeMutableRawPointer
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1525 gh:1532
   public // @testable
   init(_fromUnsafeMutablePointer from: UnsafeMutableRawPointer) {
     value = from
@@ -219,7 +219,7 @@ public struct CVaListPointer {
 
 extension CVaListPointer : CustomDebugStringConvertible {
   /// A textual representation of the pointer, suitable for debugging.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:659 gh:666
   public var debugDescription: String {
     return value.debugDescription
   }

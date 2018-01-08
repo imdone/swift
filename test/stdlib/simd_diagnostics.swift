@@ -1,6 +1,6 @@
 // RUN: %target-swift-frontend -typecheck -verify %s
 
-// FIXME: No simd module on linux rdar://problem/20795411
+// FIXME: No simd module on linux rdar://problem/20795411 id:4164 gh:4176
 // XFAIL: linux
 
 import simd

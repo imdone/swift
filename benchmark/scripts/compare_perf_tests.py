@@ -293,7 +293,7 @@ class ReportFormatter(object):
                     ]))
 
         return ''.join([
-            # FIXME print self.old_branch, self.new_branch
+            # FIXME print self.old_branch, self.new_branch id:0 gh:1
             table('Regression', self.comparator.decreased, True, True),
             table('Improvement', self.comparator.increased, True),
             ('' if self.changes_only else
@@ -367,7 +367,7 @@ class ReportFormatter(object):
 
         return self.HTML.format(
             ''.join([
-                # FIXME print self.old_branch, self.new_branch
+                # FIXME print self.old_branch, self.new_branch id:3 gh:4
                 table('Regression', self.comparator.decreased, 'red'),
                 table('Improvement', self.comparator.increased, 'green'),
                 ('' if self.changes_only else

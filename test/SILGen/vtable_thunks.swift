@@ -149,7 +149,7 @@ class F: D {
 // CHECK:   return [[WRAP_RES]]
 
 // CHECK-LABEL: sil private @$S13vtable_thunks1DC1g{{[_0-9a-zA-Z]*}}FTV
-// TODO: extra copies here
+// TODO: extra copies here id:3990 gh:4002
 // CHECK:         [[WRAPPED_X_ADDR:%.*]] = init_enum_data_addr [[WRAP_X_ADDR:%.*]] :
 // CHECK:         copy_addr [take] {{%.*}} to [initialization] [[WRAPPED_X_ADDR]]
 // CHECK:         inject_enum_addr [[WRAP_X_ADDR]]

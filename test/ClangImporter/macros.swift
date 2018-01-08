@@ -78,7 +78,7 @@ func testCFString() -> String {
 
 func testInvalidIntegerLiterals() {
   var l1 = INVALID_INTEGER_LITERAL_1 // expected-error {{use of unresolved identifier 'INVALID_INTEGER_LITERAL_1'}}
-  // FIXME: <rdar://problem/16445608> Swift should set up a DiagnosticConsumer for Clang
+  // FIXME: <rdar://problem/16445608> Swift should set up a DiagnosticConsumer for Clang id:2607 gh:2619
   // var l2 = INVALID_INTEGER_LITERAL_2 // FIXME {{use of unresolved identifier 'INVALID_INTEGER_LITERAL_2'}}
 }
 

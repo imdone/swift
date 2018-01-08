@@ -314,7 +314,7 @@ public:
   ManagedValue createOptionalSome(SILLocation Loc, ManagedValue Arg);
   ManagedValue createManagedOptionalNone(SILLocation Loc, SILType Type);
 
-  // TODO: Rename this to createFunctionRef once all calls to createFunctionRef
+  // TODO: Rename this to createFunctionRef once all calls to createFunctionRef id:283 gh:290
   // are removed.
   ManagedValue createManagedFunctionRef(SILLocation loc, SILFunction *f);
 

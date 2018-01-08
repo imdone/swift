@@ -99,7 +99,7 @@ typedef struct TDStruct TDStruct;
 struct TDStruct {
   double x;
 };
-// FIXME: the below doesn't appear in the output
+// FIXME: the below doesn't appear in the output id:3756 gh:3768
 const TDStruct TDStructCreateWithFloat(float Float);
 
 /// Class

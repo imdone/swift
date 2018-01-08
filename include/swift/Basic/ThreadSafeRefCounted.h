@@ -24,7 +24,7 @@ namespace swift {
 ///
 /// Should be used instead of \c ThreadSafeRefCountedBase for classes that
 /// already have virtual methods to enforce dynamic allocation via 'new'.
-/// FIXME: This should eventually move to llvm.
+/// FIXME: This should eventually move to llvm. id:318 gh:325
 class ThreadSafeRefCountedBaseVPTR {
   mutable std::atomic<unsigned> ref_cnt;
   virtual void anchor();

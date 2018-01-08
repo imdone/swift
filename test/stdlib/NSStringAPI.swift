@@ -3,7 +3,7 @@
 
 // REQUIRES: objc_interop
 
-// FIXME: rdar://problem/31311598
+// FIXME: rdar://problem/31311598 id:3924 gh:3936
 // UNSUPPORTED: OS=ios
 // UNSUPPORTED: OS=tvos
 // UNSUPPORTED: OS=watchos
@@ -559,7 +559,7 @@ NSStringAPIs.test("enumerateSubstringsIn(_:options:_:)") {
   let endIndex = s.index(s.startIndex, offsetBy: 5)
   do {
     var substrings: [String] = []
-    // FIXME(strings): this API should probably change to accept a Substring?
+    // FIXME (strings): this API should probably change to accept a Substring? id:4147 gh:4160
     // instead of a String? and a range.
     s.enumerateSubstrings(in: startIndex..<endIndex,
       options: String.EnumerationOptions.byComposedCharacterSequences) {
@@ -770,14 +770,14 @@ NSStringAPIs.test("init(bytes:encoding:)") {
     s, String(bytes: s.utf8, encoding: .utf8))
 
   /*
-  FIXME: Test disabled because the NSString documentation is unclear about
+  FIXME: Test disabled because the NSString documentation is unclear about id:3183 gh:3195
   what should actually happen in this case.
 
   expectNil(String(bytes: bytes, length: bytes.count,
       encoding: .ascii))
   */
 
-  // FIXME: add a test where this function actually returns nil.
+  // FIXME: add a test where this function actually returns nil. id:3537 gh:3549
 }
 
 NSStringAPIs.test("init(bytesNoCopy:length:encoding:freeWhenDone:)") {
@@ -788,14 +788,14 @@ NSStringAPIs.test("init(bytesNoCopy:length:encoding:freeWhenDone:)") {
       freeWhenDone: false))
 
   /*
-  FIXME: Test disabled because the NSString documentation is unclear about
+  FIXME: Test disabled because the NSString documentation is unclear about id:3868 gh:3880
   what should actually happen in this case.
 
   expectNil(String(bytesNoCopy: &bytes, length: bytes.count,
       encoding: .ascii, freeWhenDone: false))
   */
 
-  // FIXME: add a test where this function actually returns nil.
+  // FIXME: add a test where this function actually returns nil. id:3927 gh:3939
 }
 
 NSStringAPIs.test("init(utf16CodeUnits:count:)") {
@@ -1181,7 +1181,7 @@ NSStringAPIs.test("range(of:options:range:locale:)") {
     // grapheme cluster boundaries -- these cannot be created with public
     // String interface.
     //
-    // FIXME: why does this search succeed and the above queries fail?  There is
+    // FIXME: why does this search succeed and the above queries fail?  There is id:4149 gh:4158
     // no apparent pattern.
     expectEqual("\u{3099}", s[s.range(of: "\u{3099}")!])
   }
@@ -1193,7 +1193,7 @@ NSStringAPIs.test("range(of:options:range:locale:)") {
     expectNil(s.range(of: "б"))
     expectNil(s.range(of: "\u{0301}б"))
 
-    // FIXME: Again, indexes that don't correspond to grapheme
+    // FIXME: Again, indexes that don't correspond to grapheme id:3186 gh:3198
     // cluster boundaries.
     expectEqual("\u{0301}", s[s.range(of: "\u{0301}")!])
   }
@@ -1303,7 +1303,7 @@ NSStringAPIs.test("localizedStandardRange(of:)") {
       expectEqual(0..<1, rangeOf("a\u{0301}", "a\u{0301}"))
       expectEqual(0..<1, rangeOf("a\u{0301}", "a"))
       do {
-        // FIXME: Indices that don't correspond to grapheme cluster boundaries.
+        // FIXME: Indices that don't correspond to grapheme cluster boundaries. id:3539 gh:3551
         let s = "a\u{0301}"
         expectEqual(
           "\u{0301}", s[s.localizedStandardRange(of: "\u{0301}")!])

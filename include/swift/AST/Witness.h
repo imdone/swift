@@ -113,7 +113,7 @@ public:
   /// This indicates that a witness exists, but is not visible to the current
   /// module.
   static Witness forOpaque(ValueDecl *requirement) {
-    // TODO: It's probably a good idea to have a separate 'opaque' bit.
+    // TODO: It's probably a good idea to have a separate 'opaque' bit. id:90 gh:97
     // Making req == witness is kind of a hack.
     return Witness(requirement);
   }

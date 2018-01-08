@@ -43,7 +43,7 @@ public struct Locale : Hashable, Equatable, ReferenceConvertible {
     @available(*, unavailable, message: "Consider using the user's locale or nil instead, depending on use case")
     public static var system : Locale { fatalError() }
     
-    // MARK: -
+    // MARK: - id:394 gh:401
     //
     
     /// Return a locale with the specified identifier.
@@ -66,7 +66,7 @@ public struct Locale : Hashable, Equatable, ReferenceConvertible {
         _autoupdating = autoupdating
     }
 
-    // MARK: -
+    // MARK: - id:257 gh:264
     //
     
     /// Returns a localized string for a specified identifier.
@@ -133,7 +133,7 @@ public struct Locale : Hashable, Equatable, ReferenceConvertible {
         return _wrapped.displayName(forKey: .collatorIdentifier, value: collatorIdentifier)
     }
 
-    // MARK: -
+    // MARK: - id:533 gh:540
     //
 
     /// Returns the identifier of the locale.
@@ -281,7 +281,7 @@ public struct Locale : Hashable, Equatable, ReferenceConvertible {
         return _wrapped.object(forKey: .alternateQuotationEndDelimiterKey) as? String
     }
     
-    // MARK: -
+    // MARK: - id:280 gh:287
     // 
     
     /// Returns a list of available `Locale` identifiers.
@@ -364,7 +364,7 @@ public struct Locale : Hashable, Equatable, ReferenceConvertible {
         return NSLocale.lineDirection(forLanguage: isoLangCode)
     }
     
-    // MARK: -
+    // MARK: - id:398 gh:405
     
     @available(*, unavailable, renamed: "init(identifier:)")
     public init(localeIdentifier: String) { fatalError() }
@@ -402,7 +402,7 @@ public struct Locale : Hashable, Equatable, ReferenceConvertible {
     @available(*, unavailable, renamed: "isoRegionCodes")
     public static var isoCountryCodes: [String] { fatalError() }
 
-    // MARK: -
+    // MARK: - id:397 gh:404
     //
     
     public var hashValue : Int {

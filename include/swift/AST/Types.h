@@ -1333,7 +1333,7 @@ public:
   
   /// Get the least supported value for the width.
   ///
-  /// FIXME: This should be build-configuration-dependent.
+  /// FIXME: This should be build-configuration-dependent. id:81 gh:88
   unsigned getLeastWidth() const {
     if (isFixedWidth())
       return getFixedWidth();
@@ -1344,7 +1344,7 @@ public:
   
   /// Get the greatest supported value for the width.
   ///
-  /// FIXME: This should be build-configuration-dependent.
+  /// FIXME: This should be build-configuration-dependent. id:82 gh:89
   unsigned getGreatestWidth() const {
     if (isFixedWidth())
       return getFixedWidth();
@@ -1408,14 +1408,14 @@ public:
   
   /// Return the least supported width of the integer.
   ///
-  /// FIXME: This should be build-configuration-dependent.
+  /// FIXME: This should be build-configuration-dependent. id:84 gh:91
   unsigned getLeastWidth() const {
     return Width.getLeastWidth();
   }
   
   /// Return the greatest supported width of the integer.
   ///
-  /// FIXME: This should be build-configuration-dependent.
+  /// FIXME: This should be build-configuration-dependent. id:96 gh:103
   unsigned getGreatestWidth() const {
     return Width.getGreatestWidth();
   }
@@ -1535,7 +1535,7 @@ public:
   }
 };
 
-// TODO: As part of AST modernization, replace with a proper
+// TODO: As part of AST modernization, replace with a proper id:122 gh:129
 // 'ParameterTypeElt' or similar, and have FunctionTypes only have a list
 // of 'ParameterTypeElt's. Then, this information can be removed from
 // TupleTypeElt.
@@ -2352,7 +2352,7 @@ enum class FunctionTypeRepresentation : uint8_t {
 /// This is a superset of FunctionTypeRepresentation. The common representations
 /// must share an enum value.
 ///
-/// TODO: The overlap of SILFunctionTypeRepresentation and
+/// TODO: The overlap of SILFunctionTypeRepresentation and id:85 gh:92
 /// FunctionTypeRepresentation is a total hack necessitated by the way SIL
 /// TypeLowering is currently written. We ought to refactor TypeLowering so that
 /// it is not necessary to distinguish these cases.
@@ -2469,7 +2469,7 @@ public:
       return CanType(getType());
     }
     
-    /// FIXME(Remove InOutType): This is mostly for copying between param
+    /// FIXME (Remove InOutType): This is mostly for copying between param id:88 gh:95
     /// types and should go away.
     Type getPlainType() const { return Ty; }
 
@@ -3919,7 +3919,7 @@ public:
   CanType getFieldLoweredType(SILModule &M, unsigned index) const;
   SILType getFieldType(SILModule &M, unsigned index) const;
 
-  // TODO: SILBoxTypes should be explicitly constructed in terms of specific
+  // TODO: SILBoxTypes should be explicitly constructed in terms of specific id:87 gh:94
   // layouts. As a staging mechanism, we expose the old single-boxed-type
   // interface.
   
@@ -4524,7 +4524,7 @@ public:
   /// (defaults to \c true). Otherwise, the nested types might be
   /// null.
   ///
-  /// FIXME: This operation should go away, because it breaks recursive
+  /// FIXME: This operation should go away, because it breaks recursive id:100 gh:107
   /// protocol constraints.
   ArrayRef<std::pair<Identifier, Type>>
   getAllNestedTypes(bool resolveTypes = true) const;
@@ -5148,7 +5148,7 @@ ParameterTypeFlags::fromParameterType(Type paramTy, bool isVariadic, bool isShar
                      paramTy->castTo<AnyFunctionType>()->isAutoClosure();
   bool escaping = paramTy->is<AnyFunctionType>() &&
                   !paramTy->castTo<AnyFunctionType>()->isNoEscape();
-  // FIXME(Remove InOut): The last caller that needs this is argument
+  // FIXME (Remove InOut): The last caller that needs this is argument id:125 gh:132
   // decomposition.  Start by enabling the assertion there and fixing up those
   // callers, then remove this, then remove
   // ParameterTypeFlags::fromParameterType entirely.

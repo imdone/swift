@@ -27,7 +27,7 @@ struct S: Fooable {
 
   // CHECK-LABEL: sil hidden @$S15guaranteed_self1SV{{[_0-9a-zA-Z]*}}fC : $@convention(method) (@thin S.Type) -> @owned S
   init() {}
-  // TODO: Way too many redundant r/r pairs here. Should use +0 rvalues.
+  // TODO: Way too many redundant r/r pairs here. Should use +0 rvalues. id:2908 gh:2920
   // CHECK-LABEL: sil hidden @$S15guaranteed_self1SV3foo{{[_0-9a-zA-Z]*}}F : $@convention(method) (Int, @guaranteed S) -> () {
   // CHECK:       bb0({{.*}} [[SELF:%.*]] : @guaranteed $S):
   // CHECK-NOT:     copy_value [[SELF]]
@@ -176,7 +176,7 @@ struct S: Fooable {
 // CHECK:       } // end sil function '$S15guaranteed_self1SVAA7FooableA2aDP5prop3SivmTW'
 
 //
-// TODO: Expected output for the other cases
+// TODO: Expected output for the other cases id:3217 gh:3229
 //
 
 struct AO<T>: Fooable {

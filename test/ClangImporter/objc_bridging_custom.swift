@@ -36,9 +36,9 @@ class Base : NSObject {
   init?(generic: ManufacturerInfo<NSString>, b: ManufacturerInfo<NSString>) {} // expected-note {{potential overridden initializer 'init(generic:b:)' here}} {{none}}
   init(singleArgument: Refrigerator) {} // expected-note {{potential overridden initializer 'init(singleArgument:)' here}} {{none}}
 
-  // FIXME: expected-note@+1 {{getter for 'prop' declared here}}
+  // FIXME: expected-note@+1 {{getter for 'prop' declared here}} id:3367 gh:3379
   var prop: Refrigerator // expected-note {{attempt to override property here}}
-  // FIXME: expected-note@+1 {{getter for 'propGeneric' declared here}}
+  // FIXME: expected-note@+1 {{getter for 'propGeneric' declared here}} id:2955 gh:2967
   var propGeneric: ManufacturerInfo<NSString> // expected-note {{attempt to override property here}}
 }
 
@@ -78,12 +78,12 @@ class Sub : Base {
   // expected-note@+1 {{type does not match superclass initializer with argument '(singleArgument: Refrigerator)'}} {{33-48=Refrigerator}}
   override init(singleArgument: APPRefrigerator) {} // expected-error {{initializer does not override a designated initializer from its superclass}}
 
-  // FIXME: expected-error@+2 {{getter for 'prop' with Objective-C selector 'prop' conflicts with getter for 'prop' from superclass 'Base' with the same Objective-C selector}}
+  // FIXME: expected-error@+2 {{getter for 'prop' with Objective-C selector 'prop' conflicts with getter for 'prop' from superclass 'Base' with the same Objective-C selector}} id:3699 gh:3711
   // expected-note@+1 {{type does not match superclass var with type 'Refrigerator'}} {{22-37=Refrigerator}}
   override var prop: APPRefrigerator { // expected-error {{property 'prop' with type 'APPRefrigerator' cannot override a property with type 'Refrigerator'}}
     return super.prop as APPRefrigerator
   }
-  // FIXME: expected-error@+2 {{getter for 'propGeneric' with Objective-C selector 'propGeneric' conflicts with getter for 'propGeneric' from superclass 'Base' with the same Objective-C selector}}
+  // FIXME: expected-error@+2 {{getter for 'propGeneric' with Objective-C selector 'propGeneric' conflicts with getter for 'propGeneric' from superclass 'Base' with the same Objective-C selector}} id:2609 gh:2621
   // expected-note@+1 {{type does not match superclass var with type 'ManufacturerInfo<NSString>'}} {{29-59=ManufacturerInfo<NSString>}}
   override var propGeneric: APPManufacturerInfo<AnyObject> { // expected-error {{property 'propGeneric' with type 'APPManufacturerInfo<AnyObject>' cannot override a property with type 'ManufacturerInfo<NSString>'}}
     return super.prop // expected-error {{return type}}

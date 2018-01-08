@@ -27,7 +27,7 @@ var glob_b:    Bool = true
 // CHECK-DAG: !DIGlobalVariable(name: "glob_b",{{.*}} scope: ![[TLC]],{{.*}} line: [[@LINE-1]],{{.*}} type: ![[B:[^,]+]]
 var glob_s:    String = "😄"
 // CHECK-DAG: !DIGlobalVariable(name: "glob_s",{{.*}} scope: ![[TLC]],{{.*}} line: [[@LINE-1]],{{.*}} type: ![[S:[^,]+]]
-// FIXME: Dreadful type-checker performance prevents this from being this single
+// FIXME: Dreadful type-checker performance prevents this from being this single id:3419 gh:3431
 // print expression:
 //   print("\(glob_v), \(glob_i8), \(glob_i16), \(glob_i32), \(glob_i64), \(glob_f), \(glob_d), \(glob_b), \(glob_s)", terminator: "")
 print(", \(glob_i8)", terminator: "")

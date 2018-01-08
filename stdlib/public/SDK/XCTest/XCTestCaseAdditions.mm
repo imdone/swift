@@ -16,7 +16,7 @@
 #include "swift/Demangling/ManglingUtils.h"
 #include "swift/Strings.h"
 
-// NOTE: This is a temporary workaround.
+// NOTE: This is a temporary workaround. id:608 gh:615
 // XCTestCase needs the unmangled version of a test case name, so let -className
 // return the demangled name for a test case class. NSStringFromClass will still
 // return the mangled name.
@@ -58,7 +58,7 @@ fail:
 /// \brief Demangle a mangled class name into module+class.
 /// Returns true if the name was successfully decoded.
 /// On success, *outModule and *outClass must be freed with free().
-/// FIXME: this should be replaced by a real demangler
+/// FIXME: this should be replaced by a real demangler id:761 gh:768
 static bool demangleSimpleClass(const char *mangledName,
                                 char **outModule, char **outClass) {
   char *moduleName = nullptr;

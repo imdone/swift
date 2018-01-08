@@ -48,8 +48,8 @@ func hasNested() {
   func nested() { }
 }
 
-// TODO: Handle error conventions in SILGen for toplevel functions.
+// TODO: Handle error conventions in SILGen for toplevel functions. id:4067 gh:4078
 @_cdecl("throwing") // expected-error{{raising errors from @_cdecl functions is not supported}}
 func throwing() throws { }
 
-// TODO: cdecl name collisions
+// TODO: cdecl name collisions id:3014 gh:3026

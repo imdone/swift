@@ -394,7 +394,7 @@ func canBeClass<T>(_: T) {
   Builtin.canBeClass(O.self)
   // CHECK: integer_literal $Builtin.Int8, 1
   Builtin.canBeClass(OP1.self)
-  // -- FIXME: 'OP1 & OP2' doesn't parse as a value
+  // -- FIXME: 'OP1 & OP2' doesn't parse as a value id:3201 gh:3213
   typealias ObjCCompo = OP1 & OP2
   // CHECK: integer_literal $Builtin.Int8, 1
   Builtin.canBeClass(ObjCCompo.self)
@@ -413,7 +413,7 @@ func canBeClass<T>(_: T) {
   Builtin.canBeClass(T.self)
 }
 
-// FIXME: "T.Type.self" does not parse as an expression
+// FIXME: "T.Type.self" does not parse as an expression id:3612 gh:3624
 
 // CHECK-LABEL: sil hidden @$S8builtins18canBeClassMetatype{{[_0-9a-zA-Z]*}}F
 func canBeClassMetatype<T>(_: T) {
@@ -423,7 +423,7 @@ func canBeClassMetatype<T>(_: T) {
   // CHECK: integer_literal $Builtin.Int8, 0
   typealias OP1T = OP1.Type
   Builtin.canBeClass(OP1T.self)
-  // -- FIXME: 'OP1 & OP2' doesn't parse as a value
+  // -- FIXME: 'OP1 & OP2' doesn't parse as a value id:3532 gh:3544
   typealias ObjCCompoT = (OP1 & OP2).Type
   // CHECK: integer_literal $Builtin.Int8, 0
   Builtin.canBeClass(ObjCCompoT.self)

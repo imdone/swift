@@ -3,7 +3,7 @@
 // RUN: %target-run %t/a.out.optimized | %FileCheck %s
 // REQUIRES: executable_test
 
-// FIXME: rdar://problem/19648117 Needs splitting objc parts out
+// FIXME: rdar://problem/19648117 Needs splitting objc parts out id:3432 gh:3444
 // XFAIL: linux
 
 import Foundation
@@ -150,7 +150,7 @@ print(u is D.Type) // CHECK: true
 print(u is E.Type) // CHECK: false
 print(u is Int.Type) // CHECK: false
 
-// FIXME: Can't spell AnyObject.Protocol
+// FIXME: Can't spell AnyObject.Protocol id:3849 gh:3861
 // CHECK-LABEL: AnyObject casts:
 print("AnyObject casts:")
 print(allToAll(C(), AnyObject.self)) // CHECK-NEXT: true

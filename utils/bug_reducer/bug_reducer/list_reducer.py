@@ -57,7 +57,7 @@ class ListReducer(object):
         print("*** Testing shuffled set...")
         shuffled_list = list(self.target_list)
         random.shuffle(shuffled_list)
-        # TODO: Is this correct? I guess we are always doing something.
+        # TODO: Is this correct? I guess we are always doing something. id:3991 gh:4003
         self.num_iters_without_progress = 0
 
         # Check that the random shuffle does not lose the bug.

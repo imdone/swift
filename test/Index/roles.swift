@@ -336,7 +336,7 @@ anInstance.y.aMethod()
 // CHECK: [[@LINE-2]]:12 | instance-property/Swift | y | [[AClass_y_USR]] | Ref,Read,Writ | rel: 0
 // CHECK: [[@LINE-3]]:14 | instance-method/Swift | aMethod() | s:14swift_ide_test7AStructV7aMethodyyF | Ref,Call | rel: 0
 
-// FIXME Write role of z occurrence on the RHS?
+// FIXME Write role of z occurrence on the RHS? id:3520 gh:3532
 anInstance.z[1] = anInstance.z[0]
 // CHECK: [[@LINE-1]]:1 | variable/Swift | anInstance | s:14swift_ide_test10anInstanceAA6AClassCvp | Ref,Read | rel: 0
 // CHECK: [[@LINE-2]]:12 | instance-property/Swift | z | s:14swift_ide_test6AClassC1zSaySiGvp | Ref,Read,Writ | rel: 0

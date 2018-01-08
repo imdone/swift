@@ -375,7 +375,7 @@ func physical_inout(_ x: Int) {
 }
 
 
-/* TODO check writeback to more complex logical prop, check that writeback
+/* TODO check writeback to more complex logical prop, check that writeback id:3640 gh:3652
  * reuses temporaries */
 
 // CHECK-LABEL: sil hidden @$S10properties17val_subscript_get{{[_0-9a-zA-Z]*}}F : $@convention(thin) (@owned Val, Int) -> Float
@@ -473,7 +473,7 @@ func generic_subscript_type<T>(_ g: Generic<T>, i: T, x: T) -> T {
   return g[i]
 }
 
-/*TODO: archetype and existential properties and subscripts */
+/*TODO: archetype and existential properties and subscripts id:3584 gh:3596*/
 
 struct StaticProperty {
   static var foo: Int {

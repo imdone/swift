@@ -2,7 +2,7 @@
 
 import imported_enums
 
-// TODO: Implement tuple equality in the library.
+// TODO: Implement tuple equality in the library. id:3476 gh:3488
 // BLOCKED: <rdar://problem/13822406>
 func ~= (x: (Int,Int,Int), y: (Int,Int,Int)) -> Bool {
   return true
@@ -288,7 +288,7 @@ case (_, var e, 3) +++ (1, 2, 3):
   ()
 }
 
-// FIXME: We don't currently allow subpatterns for "isa" patterns that
+// FIXME: We don't currently allow subpatterns for "isa" patterns that id:3892 gh:3904
 // require interesting conditional downcasts.
 class Base { }
 class Derived : Base { }

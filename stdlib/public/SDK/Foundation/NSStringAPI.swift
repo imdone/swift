@@ -357,7 +357,7 @@ extension String {
     }
   }
 
-  // FIXME: handle optional locale with default arguments
+  // FIXME: handle optional locale with default arguments id:546 gh:553
 
   // - (instancetype)
   //     initWithData:(NSData *)data
@@ -428,7 +428,7 @@ extension StringProtocol where Index == String.Index {
   //===--------------------------------------------------------------------===//
 
   /// The corresponding `NSString` - a convenience for bridging code.
-  // FIXME(strings): There is probably a better way to bridge Self to NSString
+  // FIXME (strings): There is probably a better way to bridge Self to NSString id:371 gh:378
   var _ns: NSString {
     return self._ephemeralString._bridgeToObjectiveC()
   }
@@ -671,7 +671,7 @@ extension StringProtocol where Index == String.Index {
     let result: Int = outputName._withNilOrAddress(of: &nsOutputName) {
       outputName in outputArray._withNilOrAddress(of: &nsMatches) {
         outputArray in
-        // FIXME: completePath(...) is incorrectly annotated as requiring
+        // FIXME: completePath(...) is incorrectly annotated as requiring id:411 gh:418
         // non-optional output parameters. rdar://problem/25494184
         let outputNonOptionalName = unsafeBitCast(
           outputName, to: AutoreleasingUnsafeMutablePointer<NSString?>.self)
@@ -738,7 +738,7 @@ extension StringProtocol where Index == String.Index {
   /// - Parameter separator: The separator string.
   /// - Returns: An array containing substrings that have been divided from the
   ///   string using `separator`.
-  // FIXME(strings): now when String conforms to Collection, this can be
+  // FIXME (strings): now when String conforms to Collection, this can be id:412 gh:419
   //   replaced by split(separator:maxSplits:omittingEmptySubsequences:)
   public func components<
     T : StringProtocol
@@ -977,7 +977,7 @@ extension StringProtocol where Index == String.Index {
   public func addingPercentEncoding(
     withAllowedCharacters allowedCharacters: CharacterSet
   ) -> String? {
-    // FIXME: the documentation states that this method can return nil if the
+    // FIXME: the documentation states that this method can return nil if the id:373 gh:380
     // transformation is not possible, without going into further details.  The
     // implementation can only return nil if malloc() returns nil, so in
     // practice this is not possible.  Still, to be consistent with
@@ -1007,7 +1007,7 @@ extension StringProtocol where Index == String.Index {
   // - (NSString *)stringByAppendingString:(NSString *)aString
 
   /// Returns a new string created by appending the given string.
-  // FIXME(strings): shouldn't it be deprecated in favor of `+`?
+  // FIXME (strings): shouldn't it be deprecated in favor of `+`? id:550 gh:557
   public func appending<
     T : StringProtocol
   >(_ aString: T) -> String {
@@ -1459,7 +1459,7 @@ extension StringProtocol where Index == String.Index {
     scheme tagScheme: T,
     options opts: NSLinguisticTagger.Options = [],
     orthography: NSOrthography? = nil,
-    tokenRanges: UnsafeMutablePointer<[Range<Index>]>? = nil // FIXME:Can this be nil?
+    tokenRanges: UnsafeMutablePointer<[Range<Index>]>? = nil // FIXME: Can this be nil? id:378 gh:385
   ) -> [String] where R.Bound == Index {
     var nsTokenRanges: NSArray?
     let result = tokenRanges._withNilOrAddress(of: &nsTokenRanges) {

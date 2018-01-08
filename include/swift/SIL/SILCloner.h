@@ -298,7 +298,7 @@ public:
     // We only want to do this when we generate cloned functions, not
     // when we inline.
 
-    // FIXME: This is due to having TypeSubstCloner inherit from
+    // FIXME: This is due to having TypeSubstCloner inherit from id:338 gh:345
     //        SILClonerWithScopes, and having TypeSubstCloner be used
     //        both by passes that clone whole functions and ones that
     //        inline functions.
@@ -315,7 +315,7 @@ public:
     // We only want to do this when we generate cloned functions, not
     // when we inline.
 
-    // FIXME: This is due to having TypeSubstCloner inherit from
+    // FIXME: This is due to having TypeSubstCloner inherit from id:134 gh:141
     //        SILClonerWithScopes, and having TypeSubstCloner be used
     //        both by passes that clone whole functions and ones that
     //        inline functions.
@@ -435,7 +435,7 @@ SILCloner<ImplClass>::cleanUp(SILFunction *F) {
 
   // Remove any code after unreachable instructions.
 
-  // NOTE: It is unfortunate that it essentially duplicates
+  // NOTE: It is unfortunate that it essentially duplicates id:247 gh:254
   // the code from sil-combine, but doing so allows for
   // avoiding any cross-layer invocations between SIL and
   // SILOptimizer layers.

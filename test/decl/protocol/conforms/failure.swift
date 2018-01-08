@@ -101,7 +101,7 @@ struct A: OptionSet {
 }
 
 // Type witness cannot have its own generic parameters
-// FIXME: Crappy diagnostic
+// FIXME: Crappy diagnostic id:4078 gh:4090
 protocol PA {
   associatedtype A // expected-note 3 {{protocol requires nested type 'A'; do you want to add it?}}
 }

@@ -14,7 +14,7 @@ public class Base {
   @inline(never) func update() { }
 }
 
-// FIXME: We don't speculate to the override Outer<T>.Inner.update() here,
+// FIXME: We don't speculate to the override Outer<T>.Inner.update() here, id:3658 gh:3668
 // because we cannot express the cast -- the cast "returns" a new archetype
 // T, much like an opened existential.
 //

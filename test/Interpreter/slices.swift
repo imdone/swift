@@ -11,7 +11,7 @@ extension Int : Showable {
   }
 }
 
-/*FIXME crashes irgen
+/*FIXME crashes irgen id:3551 gh:3563
 
 func show_slice<T : Showable>(_ xs: [T]) {
   for x in xs {

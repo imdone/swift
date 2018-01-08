@@ -252,7 +252,7 @@ inline Iterator prev_or_begin(Iterator it, Iterator begin) {
 /// @}
 
 /// A range of iterators.
-/// TODO: Add `llvm::iterator_range::empty()`, then remove this helper, along
+/// TODO: Add `llvm::iterator_range::empty()`, then remove this helper, along id:127 gh:134
 /// with the superfluous FilterIterator and TransformIterator.
 template<typename Iterator>
 class IteratorRange {
@@ -290,7 +290,7 @@ template<typename Iterator, typename Predicate>
 class FilterIterator {
   Iterator Current, End;
 
-  /// FIXME: Could optimize away this storage with EBCO tricks.
+  /// FIXME: Could optimize away this storage with EBCO tricks. id:98 gh:105
   Predicate Pred;
 
   /// Skip any non-matching elements.
@@ -420,7 +420,7 @@ template<typename Iterator, typename Operation>
 class TransformIterator {
   Iterator Current;
 
-  /// FIXME: Could optimize away this storage with EBCO tricks.
+  /// FIXME: Could optimize away this storage with EBCO tricks. id:99 gh:106
   Operation Op;
 
   /// The underlying reference type, which will be passed to the
@@ -431,7 +431,7 @@ public:
   using iterator_category = std::bidirectional_iterator_tag;
   using value_type = typename OpTraits::result_type;
   using reference = value_type;
-  using pointer = void; // FIXME: Should provide a pointer proxy.
+  using pointer = void; // FIXME: Should provide a pointer proxy. id:313 gh:320
   using difference_type =
       typename std::iterator_traits<Iterator>::difference_type;
 
@@ -524,7 +524,7 @@ template<typename Iterator, typename OptionalTransform>
 class OptionalTransformIterator {
   Iterator Current, End;
 
-  /// FIXME: Could optimize away this storage with EBCO tricks.
+  /// FIXME: Could optimize away this storage with EBCO tricks. id:107 gh:114
   OptionalTransform Op;
 
   /// Skip any non-matching elements.
@@ -548,7 +548,7 @@ public:
   typedef std::forward_iterator_tag iterator_category;
   typedef typename ResultReference::value_type reference;
   typedef typename ResultReference::value_type value_type;
-  typedef void pointer; // FIXME: should add a proxy here.
+  typedef void pointer; // FIXME: should add a proxy here. id:130 gh:137
   typedef typename std::iterator_traits<Iterator>::difference_type
     difference_type;
 

@@ -71,7 +71,7 @@ protected:
   }
 
   static llvm::SMFixIt getRawFixIt(SourceManager &SM, DiagnosticInfo::FixIt F) {
-    // FIXME: It's unfortunate that we have to copy the replacement text.
+    // FIXME: It's unfortunate that we have to copy the replacement text. id:59 gh:66
     return llvm::SMFixIt(getRawRange(SM, F.getRange()), F.getText());
   }
 

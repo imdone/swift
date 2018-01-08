@@ -12,7 +12,7 @@ sys.path.append(os.path.join(os.path.dirname(
 
 import passes  # noqa (E402 module level import not at top of file)
 
-# TODO: This should not be hard coded.
+# TODO: This should not be hard coded. id:4008 gh:4020
 PIPELINES = ["PreSpecialize", "HighLevel", "EarlyLoopOpt",
              "MidLevelOpt", "Lower", "LowLevel", "LateLoopOpt"]
 PASSES = [p.name for p in passes.PASSES]

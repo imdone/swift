@@ -3,7 +3,7 @@
 
 // This test verifies that, when Objective-C interop is disabled, private
 // methods are *not* surfaced as "test candidates".
-// FIXME: Ideally this test would run on any OS, provided Objective-C interop
+// FIXME: Ideally this test would run on any OS, provided Objective-C interop id:3809 gh:3821
 //        was disabled.
 // REQUIRES: OS=linux-gnu
 

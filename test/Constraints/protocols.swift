@@ -52,7 +52,7 @@ g(f1) // okay (exact match)
 
 g(f2) // expected-error{{cannot convert value of type '(Float) -> ()' to expected argument type '(Barable & Fooable) -> ()'}}
 
-// FIXME: Workaround for ?? not playing nice with function types.
+// FIXME: Workaround for ?? not playing nice with function types. id:3005 gh:3017
 infix operator ??*
 func ??*<T>(lhs: T?, rhs: T) -> T { return lhs ?? rhs }
 g(nilFunc ??* f0)
@@ -339,7 +339,7 @@ func testClonableArchetype<T : Clonable>(_ t: T) {
 func testClonableExistential(_ v: Clonable, _ vv: Clonable.Type) {
   let _: Clonable? = v.maybeClone()
   let _: Clonable?? = v.doubleMaybeClone()
-  // FIXME: Tuple-to-tuple conversions are not implemented
+  // FIXME: Tuple-to-tuple conversions are not implemented id:3738 gh:3750
   let _: (Clonable, Clonable) = v.subdivideClone()
   // expected-error@-1{{cannot express tuple conversion '(Clonable, Clonable)' to '(Clonable, Clonable)'}}
   let _: Clonable.Type = v.metatypeOfClone()

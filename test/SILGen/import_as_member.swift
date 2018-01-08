@@ -65,7 +65,7 @@ extension SomeClass {
 }
 
 public func useSpecialInit() -> Struct1 {
-  // FIXME: the below triggers an assert, due to number or params mismatch
+  // FIXME: the below triggers an assert, due to number or params mismatch id:3626 gh:3638
   // return Struct1(specialLabel:())
 }
 

@@ -53,13 +53,13 @@ extension DefaultIndices: Collection {
 
   @_inlineable
   public subscript(i: Index) -> Elements.Index {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:954 gh:961
     return i
   }
 
   @_inlineable
   public subscript(bounds: Range<Index>) -> DefaultIndices<Elements> {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:1047 gh:1054
     return DefaultIndices(
       _elements: _elements,
       startIndex: bounds.lowerBound,
@@ -68,13 +68,13 @@ extension DefaultIndices: Collection {
 
   @_inlineable
   public func index(after i: Index) -> Index {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:1179 gh:1186
     return _elements.index(after: i)
   }
 
   @_inlineable
   public func formIndex(after i: inout Index) {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:824 gh:831
     _elements.formIndex(after: &i)
   }
 
@@ -88,13 +88,13 @@ extension DefaultIndices: BidirectionalCollection
 where Elements: BidirectionalCollection {
   @_inlineable
   public func index(before i: Index) -> Index {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:1766 gh:1773
     return _elements.index(before: i)
   }
 
   @_inlineable
   public func formIndex(before i: inout Index) {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:957 gh:964
     _elements.formIndex(before: &i)
   }
 }
@@ -120,7 +120,7 @@ extension Collection where Indices == DefaultIndices<Self> {
   ///         i = c.index(after: i)
   ///     }
   ///     // c == MyFancyCollection([2, 4, 6, 8, 10])
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1049 gh:1056
   public var indices: DefaultIndices<Self> {
     return DefaultIndices(
       _elements: self,

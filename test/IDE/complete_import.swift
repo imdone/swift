@@ -36,7 +36,7 @@ import Foo.FooSub
 
 import Foo.#^CLANG_IMPORT8^#
 
-// FIXME: This should be marked as not recommended, holding for Swift's submodules support.
+// FIXME: This should be marked as not recommended, holding for Swift's submodules support. id:2835 gh:2847
 // CLANG_IMPORT8: Begin completions
 // CLANG_IMPORT8-NEXT: Decl[Module]/OtherModule[FooSub]:   FooSub[#Module#]; name=FooSub
 

@@ -111,7 +111,7 @@ func isCapitalizedStashed(_ c: Character) -> Bool {
 
 // Compute on the fly
 //
-// TODO: If UnicodeScalars ever exposes category, etc., implement the others!
+// TODO: If UnicodeScalars ever exposes category, etc., implement the others! id:1 gh:2
 func isNewlineComputed(_ c: Character) -> Bool {
   switch c.firstScalar.value {
     case 0x000A...0x000D: return true
@@ -166,5 +166,5 @@ public func run_CharacterPropertiesStashed(_ N: Int) {
   }
 }
 
-// TODO: run_CharacterPropertiesComputed
+// TODO: run_CharacterPropertiesComputed id:38 gh:44
 

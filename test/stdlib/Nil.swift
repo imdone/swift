@@ -1,7 +1,7 @@
 // RUN: %target-run-simple-swift | %FileCheck %s
 // REQUIRES: executable_test
 
-// FIXME: rdar://problem/19648117 Needs splitting objc parts out
+// FIXME: rdar://problem/19648117 Needs splitting objc parts out id:3931 gh:3943
 // XFAIL: linux
 
 import Foundation

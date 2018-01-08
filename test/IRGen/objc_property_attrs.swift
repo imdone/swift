@@ -30,7 +30,7 @@ class Foo: NSManagedObject {
   @NSManaged var e: Int
 
   // -- Class types:
-  // TODO: These should use the elaborated @"ClassName" encoding.
+  // TODO: These should use the elaborated @"ClassName" encoding. id:3514 gh:3526
 
   // nonatomic, retain, ivar f
   // CHECK: private unnamed_addr constant {{.*}} c"T@\22NSData\22,N,&,Vf\00"

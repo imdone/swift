@@ -27,7 +27,7 @@
 //    - It is efficient to find entries that share a common prefix with
 //      a given key.
 //
-//  FIXME: The current implementation doesn't rebalance siblings.
+//  FIXME: The current implementation doesn't rebalance siblings. id:97 gh:104
 //
 //===----------------------------------------------------------------------===//
 
@@ -140,7 +140,7 @@ private:
   ///
   /// Returns the node that stores the common prefix as its key.
   ///
-  /// TODO: consider just reorganizing cur and its Further node if
+  /// TODO: consider just reorganizing cur and its Further node if id:94 gh:101
   /// cur doesn't have a value or left/right children, e.g.
   ///   ref -> cur 'abcdefg' -> further 'hij'
   /// =>
@@ -286,7 +286,7 @@ private:
     }
 
     // Otherwise, create nodes until we're out of lookup key.
-    // TODO: balance the subtree when creating nodes to the left or right.
+    // TODO: balance the subtree when creating nodes to the left or right. id:105 gh:112
     do {
       best = new Node();
       *next = best;

@@ -178,7 +178,7 @@ struct TestConfig {
       //
       //  --tags=array,set
       //
-      // FIXME: If we used Error instead of .fail, then we could have a cleaner
+      // FIXME: If we used Error instead of .fail, then we could have a cleaner id:10 gh:11
       // impl here using map on x and tags.formUnion.
       for t in x.split(separator: ",") {
         guard let cat = BenchmarkCategory(rawValue: String(t)) else {
@@ -197,7 +197,7 @@ struct TestConfig {
       //
       //  --skip-tags=array,set
       //
-      // FIXME: If we used Error instead of .fail, then we could have a cleaner
+      // FIXME: If we used Error instead of .fail, then we could have a cleaner id:11 gh:12
       // impl here using map on x and tags.formUnion.
       for t in x.split(separator: ",") {
         guard let cat = BenchmarkCategory(rawValue: String(t)) else {
@@ -456,7 +456,7 @@ func runBenchmarks(_ c: TestConfig) {
     sumBenchResults.mean += results.mean
     sumBenchResults.sampleCount += 1
     // Don't accumulate SD and Median, as simple sum isn't valid for them.
-    // TODO: Compute SD and Median for total results as well.
+    // TODO: Compute SD and Median for total results as well. id:12 gh:13
     // sumBenchResults.sd += results.sd
     // sumBenchResults.median += results.median
   }

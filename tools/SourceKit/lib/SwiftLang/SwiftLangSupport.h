@@ -349,7 +349,7 @@ public:
   /// Prints declarations with decl- and type-specific tags derived from the
   /// UIDs used for decl/refs.
   ///
-  /// FIXME: This move to libIDE, but currently depends on the UIdentVisitor.
+  /// FIXME: This move to libIDE, but currently depends on the UIdentVisitor. id:3241 gh:3253
   static void printFullyAnnotatedDeclaration(const swift::ValueDecl *VD,
                                              swift::Type BaseTy,
                                              llvm::raw_ostream &OS);
@@ -522,7 +522,7 @@ namespace trace {
 
 /// When we cannot build any more clang modules, close the .pcm / files to
 /// prevent fd leaks in clients that cache the AST.
-// FIXME: Remove this once rdar://problem/19720334 is complete.
+// FIXME: Remove this once rdar://problem/19720334 is complete. id:3599 gh:3611
 class CloseClangModuleFiles {
   swift::ClangModuleLoader &loader;
 

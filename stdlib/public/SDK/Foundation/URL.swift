@@ -607,7 +607,7 @@ public struct URL : ReferenceConvertible, Equatable {
         return _url.hash
     }
     
-    // MARK: -
+    // MARK: - id:583 gh:590
     
     /// Returns the data representation of the URL's relativeString. 
     ///
@@ -617,7 +617,7 @@ public struct URL : ReferenceConvertible, Equatable {
         return _url.dataRepresentation
     }
     
-    // MARK: -
+    // MARK: - id:728 gh:735
     
     // Future implementation note:
     // NSURL (really CFURL, which provides its implementation) has quite a few quirks in its processing of some more esoteric (and some not so esoteric) strings. We would like to move much of this over to the more modern NSURLComponents, but binary compat concerns have made this difficult.
@@ -659,7 +659,7 @@ public struct URL : ReferenceConvertible, Equatable {
         }
     }
     
-    // MARK: -
+    // MARK: - id:454 gh:461
     
     /// Returns the scheme of the URL.
     public var scheme: String? {
@@ -779,8 +779,8 @@ public struct URL : ReferenceConvertible, Equatable {
         return try block(_url.fileSystemRepresentation)
     }
     
-    // MARK: -
-    // MARK: Path manipulation
+    // MARK: - id:450 gh:457
+    // MARK: Path manipulation id:425 gh:432
     
     /// Returns the path components of the URL, or an empty array if the path is an empty string.
     public var pathComponents: [String] {
@@ -990,7 +990,7 @@ public struct URL : ReferenceConvertible, Equatable {
         self = self.resolvingSymlinksInPath()
     }
 
-    // MARK: - Reachability
+    // MARK: - Reachability id:586 gh:593
     
     /// Returns whether the URL's resource exists and is reachable. 
     ///
@@ -1019,7 +1019,7 @@ public struct URL : ReferenceConvertible, Equatable {
         }
     }
     
-    // MARK: - Resource Values
+    // MARK: - Resource Values id:731 gh:738
     
     /// Sets the resource value identified by a given resource key.
     /// 
@@ -1096,7 +1096,7 @@ public struct URL : ReferenceConvertible, Equatable {
         fatalError()
     }
     
-    // MARK: - Bookmarks and Alias Files
+    // MARK: - Bookmarks and Alias Files id:457 gh:464
     
     /// Returns bookmark data for the URL, created with specified options and resource values.
     public func bookmarkData(options: BookmarkCreationOptions = [], includingResourceValuesForKeys keys: Set<URLResourceKey>? = nil, relativeTo url: URL? = nil) throws -> Data {
@@ -1133,7 +1133,7 @@ public struct URL : ReferenceConvertible, Equatable {
         _url.stopAccessingSecurityScopedResource()
     }
     
-    // MARK: - Bridging Support
+    // MARK: - Bridging Support id:452 gh:459
     
     /// We must not store an NSURL without running it through this function. This makes sure that we do not hold a file reference URL, which changes the nullability of many NSURL functions.
     private static func _converted(from url: NSURL) -> NSURL {

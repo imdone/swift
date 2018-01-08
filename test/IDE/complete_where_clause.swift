@@ -114,7 +114,7 @@ protocol P2 {
 // P2: End completions
 
 // U_DOT: Begin completions
-// FIXME: Should complete Q from Assoc.
+// FIXME: Should complete Q from Assoc. id:3272 gh:3284
 // U_DOT-DAG: Keyword/None:                       Type[#Self.U.Type#];
 // U_DOT-DAG: Keyword/CurrNominal:                self[#Self.U#];
 // U_DOT: End completions

@@ -26,7 +26,7 @@ class RCIdentityFunctionInfo;
 /// \brief Per-Region state.
 class ARCRegionState {
 public:
-  // TODO: These are relatively expensive, find something else to use here.
+  // TODO: These are relatively expensive, find something else to use here. id:395 gh:402
   using TopDownMapTy = SmallBlotMapVector<SILValue, TopDownRefCountState, 4>;
   using BottomUpMapTy = SmallBlotMapVector<SILValue, BottomUpRefCountState, 4>;
 
@@ -61,7 +61,7 @@ private:
   /// users/decrements in subregions without caring if there is only one along a
   /// path. This is for simplicity in the first iteration.
   ///
-  /// TODO: This needs a better name.
+  /// TODO: This needs a better name. id:168 gh:175
   llvm::SmallVector<SILInstruction *, 4> SummarizedInterestingInsts;
 
 public:

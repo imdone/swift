@@ -13,4 +13,4 @@ import Module
 // RUN: %FileCheck -input-file=%tw.err.txt %s -check-prefix=CHECK-WARN
 
 // CHECK-WARN: Sub2.h:7:2: warning: here is some warning about something
-// FIXME: show the clang warning: <module-includes>:1:1: warning: umbrella header for module 'Module' does not include header 'NotInModule.h' [-Wincomplete-umbrella]
+// FIXME: show the clang warning: <module-includes>:1:1: warning: umbrella header for module 'Module' does not include header 'NotInModule.h' [-Wincomplete-umbrella] id:2951 gh:2963

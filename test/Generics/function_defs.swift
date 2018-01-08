@@ -277,7 +277,7 @@ func beginsWith3<S0: P2, S1: P2>(_ seq1: S0, _ seq2: S1) -> Bool
 }
 
 
-// FIXME: Test same-type constraints that try to equate things we
+// FIXME: Test same-type constraints that try to equate things we id:3428 gh:3440
 // don't want to equate, e.g., T == U.
 
 //===----------------------------------------------------------------------===//

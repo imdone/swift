@@ -26,7 +26,7 @@ public final class ReplayableGenerator<S: Sequence> : IteratorProtocol {
     }
 }
 
-// FIXME: Dependent member lookup of typealiases is not subject
+// FIXME: Dependent member lookup of typealiases is not subject id:3672 gh:3684
 // to accessibility checking.
 struct Generic<T> {
   fileprivate typealias Dependent = T
@@ -42,7 +42,7 @@ private func privateFuncWithFileprivateAlias() -> Generic<Int>.Dependent {
   return 3
 }
 
-// FIXME: No error here
+// FIXME: No error here id:3777 gh:3789
 var y = privateFuncWithFileprivateAlias()
 
 

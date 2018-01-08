@@ -20,14 +20,14 @@ internal protocol _HeapBufferHeader_ {
   var value: Value { get set }
 }
 
-@_fixed_layout // FIXME(sil-serialize-all)
+@_fixed_layout // FIXME (sil-serialize-all) id:811 gh:818
 @_versioned
 internal struct _HeapBufferHeader<T> : _HeapBufferHeader_ {
   internal typealias Value = T
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1754 gh:1761
+  @_versioned // FIXME (sil-serialize-all) id:943 gh:950
   internal init(_ value: T) { self.value = value }
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:1041 gh:1048
   internal var value: T
 }
 
@@ -40,7 +40,7 @@ internal typealias _HeapBufferStorage<Value,Element>
 extension ManagedBufferPointer where Header : _HeapBufferHeader_ {
   internal typealias Value = Header.Value
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1170 gh:1177
   @_versioned
   internal init(
     _ storageClass: AnyClass,
@@ -54,7 +54,7 @@ extension ManagedBufferPointer where Header : _HeapBufferHeader_ {
     }
   }
   
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:814 gh:821
   @_versioned
   internal var value: Value {
     @inline(__always)
@@ -67,7 +67,7 @@ extension ManagedBufferPointer where Header : _HeapBufferHeader_ {
     }
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1757 gh:1764
   @_versioned
   internal subscript(i: Int) -> Element {
     @inline(__always)
@@ -76,7 +76,7 @@ extension ManagedBufferPointer where Header : _HeapBufferHeader_ {
     }
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:946 gh:953
   @_versioned
   internal var baseAddress: UnsafeMutablePointer<Element> {
     @inline(__always)
@@ -85,7 +85,7 @@ extension ManagedBufferPointer where Header : _HeapBufferHeader_ {
     }
   }
   
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1043 gh:1050
   @_versioned
   internal var storage: AnyObject? {
     @inline(__always)

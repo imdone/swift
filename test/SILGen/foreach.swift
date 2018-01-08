@@ -79,7 +79,7 @@ func trivialStruct(_ xx: [Int]) {
   funcEnd()
 }
 
-// TODO: Write this test
+// TODO: Write this test id:2901 gh:2913
 func trivialStructContinue(_ xx: [Int]) {
   for x in xx {
     if (condition()) {
@@ -92,7 +92,7 @@ func trivialStructContinue(_ xx: [Int]) {
   funcEnd()
 }
 
-// TODO: Write this test
+// TODO: Write this test id:3212 gh:3224
 func trivialStructBreak(_ xx: [Int]) {
   for x in xx {
     if (condition()) {

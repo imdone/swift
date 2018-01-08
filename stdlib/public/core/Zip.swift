@@ -41,7 +41,7 @@
 ///   - sequence2: The second sequence or collection to zip.
 /// - Returns: A sequence of tuple pairs, where the elements of each pair are
 ///   corresponding elements of `sequence1` and `sequence2`.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:2700 gh:2712
 public func zip<Sequence1, Sequence2>(
   _ sequence1: Sequence1, _ sequence2: Sequence2
 ) -> Zip2Sequence<Sequence1, Sequence2> {
@@ -67,11 +67,11 @@ public func zip<Sequence1, Sequence2>(
 ///     // Prints "two: 2
 ///     // Prints "three: 3"
 ///     // Prints "four: 4"
-@_fixed_layout // FIXME(sil-serialize-all)
+@_fixed_layout // FIXME (sil-serialize-all) id:3326 gh:3338
 public struct Zip2Sequence<Sequence1 : Sequence, Sequence2 : Sequence> {
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:2919 gh:2931
   internal let _sequence1: Sequence1
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:3170 gh:3182
   internal let _sequence2: Sequence2
 
   @available(*, deprecated, renamed: "Sequence1.Iterator")
@@ -81,7 +81,7 @@ public struct Zip2Sequence<Sequence1 : Sequence, Sequence2 : Sequence> {
 
   /// Creates an instance that makes pairs of elements from `sequence1` and
   /// `sequence2`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2586 gh:2598
   public // @testable
   init(_sequence1 sequence1: Sequence1, _sequence2 sequence2: Sequence2) {
     (_sequence1, _sequence2) = (sequence1, sequence2)
@@ -90,18 +90,18 @@ public struct Zip2Sequence<Sequence1 : Sequence, Sequence2 : Sequence> {
 
 extension Zip2Sequence {
   /// An iterator for `Zip2Sequence`.
-  @_fixed_layout // FIXME(sil-serialize-all)
+  @_fixed_layout // FIXME (sil-serialize-all) id:2702 gh:2714
   public struct Iterator {
-    @_versioned // FIXME(sil-serialize-all)
+    @_versioned // FIXME (sil-serialize-all) id:3331 gh:3343
     internal var _baseStream1: Sequence1.Iterator
-    @_versioned // FIXME(sil-serialize-all)
+    @_versioned // FIXME (sil-serialize-all) id:2922 gh:2934
     internal var _baseStream2: Sequence2.Iterator
-    @_versioned // FIXME(sil-serialize-all)
+    @_versioned // FIXME (sil-serialize-all) id:3175 gh:3186
     internal var _reachedEnd: Bool = false
 
     /// Creates an instance around a pair of underlying iterators.
-    @_inlineable // FIXME(sil-serialize-all)
-    @_versioned // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:2588 gh:2600
+    @_versioned // FIXME (sil-serialize-all) id:2704 gh:2716
     internal init(
     _ iterator1: Sequence1.Iterator, 
     _ iterator2: Sequence2.Iterator
@@ -119,7 +119,7 @@ extension Zip2Sequence.Iterator: IteratorProtocol {
   /// exists.
   ///
   /// Once `nil` has been returned, all subsequent calls return `nil`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3335 gh:3347
   public mutating func next() -> Element? {
     // The next() function needs to track if it has reached the end.  If we
     // didn't, and the first sequence is longer than the second, then when we
@@ -145,7 +145,7 @@ extension Zip2Sequence: Sequence {
   public typealias Element = (Sequence1.Element, Sequence2.Element)
 
   /// Returns an iterator over the elements of this sequence.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2925 gh:2937
   public func makeIterator() -> Iterator {
     return Iterator(
       _sequence1.makeIterator(),

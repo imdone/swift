@@ -13,7 +13,7 @@ class X<T> where T == X { // expected-error{{same-type constraint 'T' == 'X<T>' 
     var type: T { return type(of: self) } // expected-error{{cannot convert return expression of type 'X<T>.Type' to return type 'T'}}
 }
 
-// FIXME: The "associated type 'Foo' is not a member type of 'Self'" diagnostic
+// FIXME: The "associated type 'Foo' is not a member type of 'Self'" diagnostic id:3728 gh:3740
 // should also become "associated type 'Foo' references itself"
 protocol CircularAssocTypeDefault {
   associatedtype Z = Z // expected-error{{associated type 'Z' references itself}}

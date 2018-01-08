@@ -7,7 +7,7 @@
 // RUN: %target-swift-frontend -index-store-path %t/idx -primary-file %s -o %t/s1.o -I %S/Inputs -typecheck -module-cache-path %t/mcp
 // RUN: c-index-test core -print-unit %t/idx | %FileCheck %s -check-prefix=FILE1
 
-// FIXME: index the bridging header!
+// FIXME: index the bridging header! id:2989 gh:3001
 
 // RUN: rm -rf %t && mkdir %t
 // RUN: echo 'import ClangModuleA' > %t/s2.swift

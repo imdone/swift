@@ -21,7 +21,7 @@ extension NSDictionary : ExpressibleByDictionaryLiteral {
   public required convenience init(
     dictionaryLiteral elements: (Any, Any)...
   ) {
-    // FIXME: Unfortunate that the `NSCopying` check has to be done at runtime.
+    // FIXME: Unfortunate that the `NSCopying` check has to be done at runtime. id:282 gh:289
     self.init(
       objects: elements.map { $0.1 as AnyObject },
       forKeys: elements.map { $0.0 as AnyObject as! NSCopying },
@@ -39,7 +39,7 @@ extension Dictionary {
       _isBridgedVerbatimToObjectiveC(Key.self) &&
       _isBridgedVerbatimToObjectiveC(Value.self),
       "Dictionary can be backed by NSDictionary storage only when both key and value are bridged verbatim to Objective-C")
-    // FIXME: We would like to call CFDictionaryCreateCopy() to avoid doing an
+    // FIXME: We would like to call CFDictionaryCreateCopy() to avoid doing an id:402 gh:409
     // objc_msgSend() for instances of CoreFoundation types.  We can't do that
     // today because CFDictionaryCreateCopy() copies dictionary contents
     // unconditionally, resulting in O(n) copies even for immutable dictionaries.
@@ -139,7 +139,7 @@ extension Dictionary : _ObjectiveCBridgeable {
 }
 
 extension NSDictionary : Sequence {
-  // FIXME: A class because we can't pass a struct with class fields through an
+  // FIXME: A class because we can't pass a struct with class fields through an id:401 gh:408
   // [objc] interface without prematurely destroying the references.
   final public class Iterator : IteratorProtocol {
     var _fastIterator: NSFastEnumerationIterator
@@ -190,7 +190,7 @@ extension NSMutableDictionary {
     }
     @objc(_swift_setObject:forKeyedSubscript:)
     set {
-      // FIXME: Unfortunate that the `NSCopying` check has to be done at
+      // FIXME: Unfortunate that the `NSCopying` check has to be done at id:262 gh:269
       // runtime.
       let copyingKey = key as AnyObject as! NSCopying
       if let newValue = newValue {
@@ -211,7 +211,7 @@ extension NSDictionary {
   ///   found in `otherDictionary`.
   @objc(_swiftInitWithDictionary_NSDictionary:)
   public convenience init(dictionary otherDictionary: NSDictionary) {
-    // FIXME(performance)(compiler limitation): we actually want to do just
+    // FIXME (performance)(compiler limitation): we actually want to do just id:539 gh:546
     // `self = otherDictionary.copy()`, but Swift does not have factory
     // initializers right now.
     let numElems = otherDictionary.count

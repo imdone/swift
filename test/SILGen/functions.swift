@@ -190,7 +190,7 @@ func calls(_ i:Int, j:Int, k:Int) {
 
   // -- Curry property accesses.
 
-  // -- FIXME: class_method-ify class getters.
+  // -- FIXME: class_method-ify class getters. id:3949 gh:3961
   // CHECK: [[READC:%.*]] = begin_access [read] [unknown] [[CADDR]]
   // CHECK: [[C:%[0-9]+]] = load [copy] [[READC]]
   // CHECK: [[BORROWED_C:%.*]] = begin_borrow [[C]]
@@ -266,9 +266,9 @@ func calls(_ i:Int, j:Int, k:Int) {
   var sp : SomeProtocol = ConformsToSomeProtocol()
   sp.method(i)
 
-  // FIXME: [[PMETHOD:%[0-9]+]] = witness_method $[[OPENED:@opened(.*) SomeProtocol]], #SomeProtocol.static_method!1
-  // FIXME: [[I:%[0-9]+]] = load [trivial] [[IADDR]]
-  // FIXME: apply [[PMETHOD]]([[I]], [[PMETA]])
+  // FIXME: [[PMETHOD:%[0-9]+]] = witness_method $[[OPENED:@opened(.*) SomeProtocol]], #SomeProtocol.static_method!1 id:2904 gh:2916
+  // FIXME: [[I:%[0-9]+]] = load [trivial] [[IADDR]] id:3215 gh:3227
+  // FIXME: apply [[PMETHOD]]([[I]], [[PMETA]]) id:3624 gh:3636
   // Needs existential metatypes
   //type(of: p).static_method(i)
 
@@ -314,7 +314,7 @@ func calls(_ i:Int, j:Int, k:Int) {
   // CHECK: destroy_value [[C]]
   c.generic(k)
 
-  // FIXME: curried generic entry points
+  // FIXME: curried generic entry points id:3557 gh:3569
   //var gm1 = g.method
   //gm1(i)
 

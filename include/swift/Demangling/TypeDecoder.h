@@ -167,7 +167,7 @@ class TypeDecoder {
       if (Node->getKind() == NodeKind::Metatype) {
         return Builder.createMetatypeType(instance, wasAbstract);
       } else if (Node->getKind() == NodeKind::ExistentialMetatype) {
-        // FIXME: Ignore representation of existential metatype
+        // FIXME: Ignore representation of existential metatype id:110 gh:117
         // completely for now
         return Builder.createExistentialMetatypeType(instance);
       } else {
@@ -307,7 +307,7 @@ class TypeDecoder {
       // reflection as capture types. For the reflection library's
       // purposes, the only part that matters is the convention.
       //
-      // TODO: Do we want to reflect @escaping?
+      // TODO: Do we want to reflect @escaping? id:133 gh:140
       FunctionTypeFlags flags;
 
       for (unsigned i = 0; i < Node->getNumChildren(); i++) {
@@ -473,7 +473,7 @@ class TypeDecoder {
       return Builder.createSILBoxType(base);
     }
     case NodeKind::SILBoxTypeWithLayout: {
-      // TODO: Implement SILBoxTypeRefs with layout. As a stopgap, specify the
+      // TODO: Implement SILBoxTypeRefs with layout. As a stopgap, specify the id:169 gh:176
       // NativeObject type ref.
       return Builder.createBuiltinType("Bo");
     }

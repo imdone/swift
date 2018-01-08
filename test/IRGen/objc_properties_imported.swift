@@ -3,7 +3,7 @@
 // REQUIRES: CPU=x86_64
 // REQUIRES: objc_interop
 
-// FIXME: This test uses IRGen with -enable-source-import; it may fail with -g.
+// FIXME: This test uses IRGen with -enable-source-import; it may fail with -g. id:2906 gh:2918
 
 import Properties
 

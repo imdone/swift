@@ -24,7 +24,7 @@ class var foo: Int {
   return 1
   }
 }
-// FIXME: may be crashing non-deterministically
+// FIXME: may be crashing non-deterministically id:3696 gh:3708
 
 // RUN: %sourcekitd-test -req=format -line=1 -length=1 %s >%t.response
 // RUN: %sourcekitd-test -req=format -line=2 -length=1 %s >>%t.response

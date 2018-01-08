@@ -440,7 +440,7 @@ public:
 /// A pattern which performs a dynamic type check. The match succeeds if the
 /// class, archetype, or existential value is dynamically of the given type.
 ///
-/// TODO: Introduce type refinement of the value being matched.
+/// TODO: Introduce type refinement of the value being matched. id:73 gh:80
 class IsPattern : public Pattern {
   SourceLoc IsLoc;
   

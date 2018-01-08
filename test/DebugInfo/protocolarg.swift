@@ -16,7 +16,7 @@ public protocol IGiveOutInts {
 
 public func printSomeNumbers(_ gen: IGiveOutInts) {
   var gen = gen
-  // FIXME: Should be DW_TAG_interface_type
+  // FIXME: Should be DW_TAG_interface_type id:2643 gh:2655
   // CHECK: ![[ARG]] = !DILocalVariable(name: "gen", arg: 1,
   // CHECK-SAME:                        line: [[@LINE-4]], type: ![[PT:[0-9]+]]
   // CHECK: ![[PT]] = !DICompositeType(tag: DW_TAG_structure_type, name: "IGiveOutInts"

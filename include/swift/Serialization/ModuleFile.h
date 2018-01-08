@@ -719,7 +719,7 @@ public:
   void getDisplayDecls(SmallVectorImpl<Decl*> &results);
 
   StringRef getModuleFilename() const {
-    // FIXME: This seems fragile, maybe store the filename separately ?
+    // FIXME: This seems fragile, maybe store the filename separately ? id:143 gh:150
     return ModuleInputBuffer->getBufferIdentifier();
   }
 
@@ -761,7 +761,7 @@ public:
 
   Identifier getDiscriminatorForPrivateValue(const ValueDecl *D);
 
-  // MARK: Deserialization interface
+  // MARK: Deserialization interface id:359 gh:366
 
   llvm::BitstreamCursor getSILCursor() const {
     return SILCursor;

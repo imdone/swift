@@ -79,12 +79,12 @@
 ///   collection type, don't use `Slice` as its subsequence type. Instead,
 ///   define your own subsequence type that takes your index invalidation
 ///   requirements into account.
-@_fixed_layout // FIXME(sil-serialize-all)
+@_fixed_layout // FIXME (sil-serialize-all) id:1849 gh:1856
 public struct Slice<Base: Collection> {
   public var _startIndex: Base.Index
   public var _endIndex: Base.Index
 
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:1833 gh:1840
   internal var _base: Base
 
   /// Creates a view into the given collection that allows access to elements
@@ -106,7 +106,7 @@ public struct Slice<Base: Collection> {
   /// - Parameters:
   ///   - base: The collection to create a view into.
   ///   - bounds: The range of indices to allow access to in the new slice.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2101 gh:2108
   public init(base: Base, bounds: Range<Base.Index>) {
     self._base = base
     self._startIndex = bounds.lowerBound
@@ -131,7 +131,7 @@ public struct Slice<Base: Collection> {
   ///     // Prints "10"
   ///     print(singleDigits == singleNonZeroDigits.base)
   ///     // Prints "true"
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2463 gh:2475
   public var base: Base {
     return _base
   }
@@ -144,17 +144,17 @@ extension Slice: Collection {
   public typealias SubSequence = Slice<Base>
   public typealias Iterator = IndexingIterator<Slice<Base>>
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1681 gh:1688
   public var startIndex: Index {
     return _startIndex
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1852 gh:1859
   public var endIndex: Index {
     return _endIndex
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1836 gh:1843
   public subscript(index: Index) -> Base.Element {
     get {
       _failEarlyRangeCheck(index, bounds: startIndex..<endIndex)
@@ -162,7 +162,7 @@ extension Slice: Collection {
     }
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2104 gh:2111
   public subscript(bounds: Range<Index>) -> Slice<Base> {
     get {
       _failEarlyRangeCheck(bounds, bounds: startIndex..<endIndex)
@@ -174,66 +174,66 @@ extension Slice: Collection {
     return _base.indices[_startIndex..<_endIndex]
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2465 gh:2477
   public func index(after i: Index) -> Index {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:1683 gh:1690
     return _base.index(after: i)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1855 gh:1862
   public func formIndex(after i: inout Index) {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:1839 gh:1846
     _base.formIndex(after: &i)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2108 gh:2115
   public func index(_ i: Index, offsetBy n: Int) -> Index {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:2467 gh:2479
     return _base.index(i, offsetBy: n)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1685 gh:1692
   public func index(
     _ i: Index, offsetBy n: Int, limitedBy limit: Index
   ) -> Index? {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:1858 gh:1865
     return _base.index(i, offsetBy: n, limitedBy: limit)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1841 gh:1848
   public func distance(from start: Index, to end: Index) -> Int {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:2112 gh:2119
     return _base.distance(from: start, to: end)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2469 gh:2481
   public func _failEarlyRangeCheck(_ index: Index, bounds: Range<Index>) {
     _base._failEarlyRangeCheck(index, bounds: bounds)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1687 gh:1695
   public func _failEarlyRangeCheck(_ range: Range<Index>, bounds: Range<Index>) {
     _base._failEarlyRangeCheck(range, bounds: bounds)
   }
 }
 
 extension Slice: BidirectionalCollection where Base: BidirectionalCollection {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1861 gh:1868
   public func index(before i: Index) -> Index {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:1844 gh:1851
     return _base.index(before: i)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2115 gh:2122
   public func formIndex(before i: inout Index) {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:2471 gh:2483
     _base.formIndex(before: &i)
   }
 }
 
 
 extension Slice: MutableCollection where Base: MutableCollection {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1689 gh:1696
   public subscript(index: Index) -> Base.Element {
     get {
       _failEarlyRangeCheck(index, bounds: startIndex..<endIndex)
@@ -248,7 +248,7 @@ extension Slice: MutableCollection where Base: MutableCollection {
     }
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1864 gh:1871
   public subscript(bounds: Range<Index>) -> Slice<Base> {
     get {
       _failEarlyRangeCheck(bounds, bounds: startIndex..<endIndex)
@@ -265,33 +265,33 @@ extension Slice: RandomAccessCollection where Base: RandomAccessCollection { }
 
 extension Slice: RangeReplaceableCollection
   where Base: RangeReplaceableCollection {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1848 gh:1855
   public init() {
     self._base = Base()
     self._startIndex = _base.startIndex
     self._endIndex = _base.endIndex
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2120 gh:2127
   public init(repeating repeatedValue: Base.Element, count: Int) {
     self._base = Base(repeating: repeatedValue, count: count)
     self._startIndex = _base.startIndex
     self._endIndex = _base.endIndex
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2473 gh:2485
   public init<S>(_ elements: S) where S: Sequence, S.Element == Base.Element {
     self._base = Base(elements)
     self._startIndex = _base.startIndex
     self._endIndex = _base.endIndex
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1691 gh:1698
   public mutating func replaceSubrange<C>(
     _ subRange: Range<Index>, with newElements: C
   ) where C : Collection, C.Element == Base.Element {
 
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:1867 gh:1874
     let sliceOffset =
       _base.distance(from: _base.startIndex, to: _startIndex)
     let newSliceCount =
@@ -303,9 +303,9 @@ extension Slice: RangeReplaceableCollection
     _endIndex = _base.index(_startIndex, offsetBy: newSliceCount)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1850 gh:1857
   public mutating func insert(_ newElement: Base.Element, at i: Index) {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:2123 gh:2130
     let sliceOffset = _base.distance(from: _base.startIndex, to: _startIndex)
     let newSliceCount = count + 1
     _base.insert(newElement, at: i)
@@ -313,11 +313,11 @@ extension Slice: RangeReplaceableCollection
     _endIndex = _base.index(_startIndex, offsetBy: newSliceCount)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2475 gh:2487
   public mutating func insert<S>(contentsOf newElements: S, at i: Index)
   where S: Collection, S.Element == Base.Element {
 
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:1693 gh:1700
     let sliceOffset = _base.distance(from: _base.startIndex, to: _startIndex)
     let newSliceCount = count + newElements.count
     _base.insert(contentsOf: newElements, at: i)
@@ -325,9 +325,9 @@ extension Slice: RangeReplaceableCollection
     _endIndex = _base.index(_startIndex, offsetBy: newSliceCount)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1870 gh:1877
   public mutating func remove(at i: Index) -> Base.Element {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:1853 gh:1860
     let sliceOffset = _base.distance(from: _base.startIndex, to: _startIndex)
     let newSliceCount = count - 1
     let result = _base.remove(at: i)
@@ -336,9 +336,9 @@ extension Slice: RangeReplaceableCollection
     return result
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2128 gh:2136
   public mutating func removeSubrange(_ bounds: Range<Index>) {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:2477 gh:2489
     let sliceOffset = _base.distance(from: _base.startIndex, to: _startIndex)
     let newSliceCount =
       count - distance(from: bounds.lowerBound, to: bounds.upperBound)
@@ -351,11 +351,11 @@ extension Slice: RangeReplaceableCollection
 extension Slice
   where Base: RangeReplaceableCollection, Base: BidirectionalCollection {
   
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1697 gh:1704
   public mutating func replaceSubrange<C>(
     _ subRange: Range<Index>, with newElements: C
   ) where C : Collection, C.Element == Base.Element {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:1873 gh:1880
     if subRange.lowerBound == _base.startIndex {
       let newSliceCount =
         _base.distance(from: _startIndex, to: subRange.lowerBound)
@@ -378,9 +378,9 @@ extension Slice
     }
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1856 gh:1863
   public mutating func insert(_ newElement: Base.Element, at i: Index) {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:2130 gh:2137
     if i == _base.startIndex {
       let newSliceCount = count + 1
       _base.insert(newElement, at: i)
@@ -398,10 +398,10 @@ extension Slice
     }
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2479 gh:2491
   public mutating func insert<S>(contentsOf newElements: S, at i: Index)
   where S : Collection, S.Element == Base.Element {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:1700 gh:1707
     if i == _base.startIndex {
       let newSliceCount = count + numericCast(newElements.count)
       _base.insert(contentsOf: newElements, at: i)
@@ -421,9 +421,9 @@ extension Slice
     }
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1875 gh:1882
   public mutating func remove(at i: Index) -> Base.Element {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:1859 gh:1866
     if i == _base.startIndex {
       let newSliceCount = count - 1
       let result = _base.remove(at: i)
@@ -443,9 +443,9 @@ extension Slice
     }
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2132 gh:2139
   public mutating func removeSubrange(_ bounds: Range<Index>) {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:2481 gh:2493
     if bounds.lowerBound == _base.startIndex {
       let newSliceCount =
         count - _base.distance(from: bounds.lowerBound, to: bounds.upperBound)

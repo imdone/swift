@@ -85,7 +85,7 @@ CFTestSuite.test("Dictionary/round-trip") {
   expectNotNil(swiftBridged)
   expectEqual(swiftBridged!["abcxxxxxxxxxxx"] as! String?, "abc")
 
-  // FIXME: CF-to-AnyHashable isn't permitted yet, so we need 'as?'.
+  // FIXME: CF-to-AnyHashable isn't permitted yet, so we need 'as?'. id:3838 gh:3850
   let swiftAny = cf as? [AnyHashable: Any]
   expectNotNil(swiftAny)
   expectEqual(swiftAny!["abcxxxxxxxxxxx"] as! String?, "abc")

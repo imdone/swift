@@ -56,7 +56,7 @@ func whileTrueTwoPredecessorsEliminated() -> () {
 
 func unreachableBranch() -> Int {
   if false { // expected-note {{always evaluates to false}}
-    // FIXME: It'd be nice if the warning were on 'if true' instead of the 
+    // FIXME: It'd be nice if the warning were on 'if true' instead of the  id:3356 gh:3368
     // body.
     if true {
       return 0 // expected-warning {{will never be executed}}
@@ -81,9 +81,9 @@ func testIfTrueTransparent() {
 }
 
 // We should not report unreachable user code inside generic instantiations.
-// TODO: This test should start failing after we add support for generic 
+// TODO: This test should start failing after we add support for generic  id:3670 gh:3682
 // specialization in SIL. To fix it, add generic instantiation detection 
-// within the DeadCodeElimination pass to address the corresponding FIXME note.
+// within the DeadCodeElimination pass to address the corresponding FIXME note. id:3775 gh:3787
 protocol HavingGetCond {
   func getCond() -> Bool
 }

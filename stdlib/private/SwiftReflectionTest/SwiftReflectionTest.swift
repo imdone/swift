@@ -16,7 +16,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-// FIXME: Make this work with Linux
+// FIXME: Make this work with Linux id:315 gh:322
 
 import MachO
 import Darwin

@@ -50,7 +50,7 @@ public func foo(_ x: Double) {
   // CHECK: end_borrow [[BORROWED_A]] from [[A]]
   z = a(x)
 
-  // TODO: Support @convention(c) references that only capture thin metatype
+  // TODO: Support @convention(c) references that only capture thin metatype id:2882 gh:2894
   // let b: @convention(c) (Double) -> Struct1 = Struct1.init(value:)
   // z = b(x)
 
@@ -90,7 +90,7 @@ public func foo(_ x: Double) {
   // CHECK: destroy_value [[COPY]]
   z = d(z)(x)
 
-  // TODO: If we implement SE-0042, this should thunk the value Struct1 param
+  // TODO: If we implement SE-0042, this should thunk the value Struct1 param id:3203 gh:3215
   // to a const* param to the underlying C symbol.
   //
   // let e: @convention(c) (Struct1, Double) -> Struct1
@@ -122,7 +122,7 @@ public func foo(_ x: Double) {
   // CHECK: [[ZVAL:%.*]] = load [trivial] [[READ]]
   z = g(z)(x)
 
-  // TODO: If we implement SE-0042, this should directly reference the
+  // TODO: If we implement SE-0042, this should directly reference the id:3614 gh:3626
   // underlying C function.
   // let h: @convention(c) (Struct1, Double) -> Struct1 = Struct1.scale
   // z = h(z, x)
@@ -172,7 +172,7 @@ public func foo(_ x: Double) {
   // CHECK: end_borrow [[BORROWED_I]] from [[I]]
   y = i()
 
-  // TODO: Support @convention(c) references that only capture thin metatype
+  // TODO: Support @convention(c) references that only capture thin metatype id:3536 gh:3548
   // let j: @convention(c) () -> Int32 = Struct1.staticMethod
   // y = j()
 
@@ -216,7 +216,7 @@ public func foo(_ x: Double) {
   // CHECK: [[ZVAL:%.*]] = load [trivial] [[READ]]
   l(z)(x)
 
-  // TODO: If we implement SE-0042, this should thunk to reorder the arguments.
+  // TODO: If we implement SE-0042, this should thunk to reorder the arguments. id:3937 gh:3949
   // let m: @convention(c) (Struct1, Double) -> () = Struct1.selfComesLast(x:)
   // m(z, x)
 
@@ -231,7 +231,7 @@ public func foo(_ x: Double) {
     = Struct1.selfComesThird(a:b:x:)
   o(z)(y, 0, x)
 
-  // TODO: If we implement SE-0042, this should thunk to reorder the arguments.
+  // TODO: If we implement SE-0042, this should thunk to reorder the arguments. id:2890 gh:2902
   // let p: @convention(c) (Struct1, Int, Float, Double) -> ()
   //   = Struct1.selfComesThird(a:b:x:)
   // p(z, y, 0, x)

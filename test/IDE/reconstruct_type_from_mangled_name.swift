@@ -48,7 +48,7 @@ func f1() {
 // CHECK: type: (Mystruct1) -> () -> Int
 
   if let ifletf1 = Int?(1) {
-// FIXME: lookup incorrect for if let binding.
+// FIXME: lookup incorrect for if let binding. id:2707 gh:2719
 // CHECK: decl: struct Int : {{.*}} for 'ifletf1' usr=s:14swift_ide_test2f1yyF7ifletf1L_Siv
   }
 }
@@ -63,7 +63,7 @@ class Myclass2 {
 // CHECK: type: Array<Int>
 
     arr1.append(1)
-// FIXME: missing append()
+// FIXME: missing append() id:2886 gh:2898
 // CHECK: dref: FAILURE	for 'append' usr=s:Sa6appendyyxF
 // CHECK: type: (@lvalue Array<Int>) -> (Int) -> ()
 
@@ -88,7 +88,7 @@ class Myclass2 {
 
 // CHECK: decl: enum MyEnum
 enum MyEnum {
-// FIXME
+// FIXME id:3502 gh:3514
 // CHECK: decl:   for 'ravioli'
   case ravioli
 // CHECK: decl:   for 'pasta'
@@ -122,8 +122,8 @@ func f2() {
 
 struct MyGenStruct1<T, U: ExpressibleByStringLiteral, V: Sequence> {
 // CHECK: decl: struct MyGenStruct1<T, U, V> where U : ExpressibleByStringLiteral, V : Sequence
-// FIXME: why are these references to the base type?
-// FIXME: TypeReconstruction should support Node::Kind::GenericTypeParamDecl ('fp')
+// FIXME: why are these references to the base type? id:3371 gh:3383
+// FIXME: TypeReconstruction should support Node::Kind::GenericTypeParamDecl ('fp') id:3810 gh:3822
 // CHECK: decl: FAILURE for 'T' usr=s:14swift_ide_test12MyGenStruct1V1Txmfp
 // CHECK: decl: FAILURE for 'U' usr=s:14swift_ide_test12MyGenStruct1V1Uq_mfp
 // CHECK: decl: FAILURE for 'V' usr=s:14swift_ide_test12MyGenStruct1V1Vq0_mfp
@@ -255,7 +255,7 @@ func takesGeneric(_ t: GenericOuter<Int>.GenericInner<String>) {
 func hasLocalDecls() {
   func localFunction() {}
 
-  // FIXME
+  // FIXME id:2709 gh:2721
   // CHECK: decl: FAILURE for 'LocalType'
   // The following is the implicit ctor
   // CHECK: decl: FAILURE for ''
@@ -267,6 +267,6 @@ func hasLocalDecls() {
 
 fileprivate struct VeryPrivateData {}
 
-// FIXME
+// FIXME id:2889 gh:2901
 // CHECK: decl: FAILURE for 'privateFunction'
 fileprivate func privateFunction(_ d: VeryPrivateData) {}

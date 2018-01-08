@@ -1172,7 +1172,7 @@ extension Sequence where SubSequence == AnySequence<Element> {
   public func suffix(_ maxLength: Int) -> AnySequence<Element> {
     _precondition(maxLength >= 0, "Can't take a suffix of negative length from a sequence")
     if maxLength == 0 { return AnySequence([]) }
-    // FIXME: <rdar://problem/21885650> Create reusable RingBuffer<T>
+    // FIXME: <rdar://problem/21885650> Create reusable RingBuffer<T> id:1634 gh:1641
     // Put incoming elements into a ring buffer to save space. Once all
     // elements are consumed, reorder the ring buffer into an `Array`
     // and return it. This saves memory for sequences particularly longer
@@ -1248,7 +1248,7 @@ extension Sequence where SubSequence == AnySequence<Element> {
     _precondition(n >= 0, "Can't drop a negative number of elements from a sequence")
     if n == 0 { return AnySequence(self) }
 
-    // FIXME: <rdar://problem/21885650> Create reusable RingBuffer<T>
+    // FIXME: <rdar://problem/21885650> Create reusable RingBuffer<T> id:1831 gh:1838
     // Put incoming elements from this sequence in a holding tank, a ring buffer
     // of size <= n. If more elements keep coming in, pull them out of the
     // holding tank into the result, an `Array`. This saves
@@ -1437,7 +1437,7 @@ extension Sequence {
     }
 }
 
-// FIXME(ABI)#182
+// FIXME (ABI)#182 id:1812 gh:1819
 // Pending <rdar://problem/14011860> and <rdar://problem/14396120>,
 // pass an IteratorProtocol through IteratorSequence to give it "Sequence-ness"
 /// A sequence built around an iterator of type `Base`.

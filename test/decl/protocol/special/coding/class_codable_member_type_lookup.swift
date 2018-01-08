@@ -5,7 +5,7 @@ public enum CodingKeys : String, CodingKey {
   case topLevel
 }
 
-// MARK: - Synthesized CodingKeys Enum
+// MARK: - Synthesized CodingKeys Enum id:3449 gh:3461
 
 // Classes which get synthesized Codable implementations should have visible
 // CodingKey enums during member type lookup.
@@ -170,7 +170,7 @@ struct SynthesizedClass : Codable {
   }
 }
 
-// MARK: - No CodingKeys Enum
+// MARK: - No CodingKeys Enum id:3733 gh:3745
 
 // Classes which don't get synthesized Codable implementations should expose the
 // appropriate CodingKeys type.
@@ -246,7 +246,7 @@ struct NonSynthesizedClass : Codable {
   }
 }
 
-// MARK: - Explicit CodingKeys Enum
+// MARK: - Explicit CodingKeys Enum id:3846 gh:3858
 
 // Classes which explicitly define their own CodingKeys types should have
 // visible CodingKey enums during member type lookup.
@@ -420,7 +420,7 @@ struct ExplicitClass : Codable {
   }
 }
 
-// MARK: - CodingKeys Enums in Extensions
+// MARK: - CodingKeys Enums in Extensions id:4090 gh:4102
 
 // Classes which get a CodingKeys type in an extension should be able to see
 // that type during member type lookup.

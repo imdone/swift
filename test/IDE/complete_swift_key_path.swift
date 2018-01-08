@@ -25,7 +25,7 @@ let keyPath1 = \Person.#^PART_1^#
 let keyPath2 = \Person.friends[0].#^PART_2^#
 let keyPath3 = \Person.friends[0].friends[0].friends[0].#^PART_3^#
 
-// FIXME: the optionality keypath should work after our compiler is ready.
+// FIXME: the optionality keypath should work after our compiler is ready. id:2849 gh:2861
 let keyPath4 = \Person.bestFriend?.#^PART_4^#
 let keyPath5 = \Person.friends.[0].friends[0].friends[0].#^PART_5^#
 let keyPath6 = \[Person].[0].#^PART_6^#

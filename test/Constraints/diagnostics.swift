@@ -669,7 +669,7 @@ func r24251022() {
 
 func overloadSetResultType(_ a : Int, b : Int) -> Int {
   // https://twitter.com/_jlfischer/status/712337382175952896
-  // TODO: <rdar://problem/27391581> QoI: Nonsensical "binary operator '&&' cannot be applied to two 'Bool' operands"
+  // TODO: <rdar://problem/27391581> QoI: Nonsensical "binary operator '&&' cannot be applied to two 'Bool' operands" id:2987 gh:2999
   return a == b && 1 == 2  // expected-error {{cannot convert return expression of type 'Bool' to return type 'Int'}}
 }
 
@@ -701,7 +701,7 @@ func nilComparison(i: Int, o: AnyObject) {
   _ = i != nil // expected-warning {{comparing non-optional value of type 'Int' to nil always returns true}}
   _ = nil != i // expected-warning {{comparing non-optional value of type 'Int' to nil always returns true}}
   
-  // FIXME(integers): uncomment these tests once the < is no longer ambiguous
+  // FIXME (integers): uncomment these tests once the < is no longer ambiguous id:3727 gh:3739
   // _ = i < nil  // _xpected-error {{type 'Int' is not optional, value can never be nil}}
   // _ = nil < i  // _xpected-error {{type 'Int' is not optional, value can never be nil}}
   // _ = i <= nil // _xpected-error {{type 'Int' is not optional, value can never be nil}}
@@ -735,7 +735,7 @@ class Foo23752537 {
 
 extension Foo23752537 {
   func isEquivalent(other: Foo23752537) {
-    // TODO: <rdar://problem/27391581> QoI: Nonsensical "binary operator '&&' cannot be applied to two 'Bool' operands"
+    // TODO: <rdar://problem/27391581> QoI: Nonsensical "binary operator '&&' cannot be applied to two 'Bool' operands" id:2628 gh:2640
     // expected-error @+1 {{unexpected non-void return value in void function}}
     return (self.title != other.title && self.message != other.message)
   }
@@ -839,7 +839,7 @@ func foo1255_2() -> Int {
 
 func sr_2505(_ a: Any) {} // expected-note {{}}
 sr_2505()          // expected-error {{missing argument for parameter #1 in call}}
-sr_2505(a: 1)      // FIXME: emit a warning saying this becomes an error in Swift 4
+sr_2505(a: 1)      // FIXME: emit a warning saying this becomes an error in Swift 4 id:2759 gh:2771
 sr_2505(1, 2)      // expected-error {{extra argument in call}}
 sr_2505(a: 1, 2)   // expected-error {{extra argument in call}}
 
@@ -859,7 +859,7 @@ extension C_2505 {
 class C2_2505: P_2505 {
 }
 
-// FIXME: emit a warning saying this becomes an error in Swift 4
+// FIXME: emit a warning saying this becomes an error in Swift 4 id:3401 gh:3413
 let c_2505 = C_2505(arg: [C2_2505()])
 
 // Diagnostic message for initialization with binary operations as right side
@@ -1115,5 +1115,5 @@ func badTypes() {
   let sequence:AnySequence<[Int]> = AnySequence() { AnyIterator() { [3] }}
   let array = [Int](sequence)
   // expected-error@-1 {{type of expression is ambiguous without more context}}
-  // FIXME: terrible diagnostic
+  // FIXME: terrible diagnostic id:2992 gh:3004
 }

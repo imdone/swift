@@ -21,7 +21,7 @@ protocol Zim {
   associatedtype Zang
 
   init()
-  // TODO class var prop: Int { get }
+  // TODO class var prop: Int { get } id:3479 gh:3491
   static func meth() {} // expected-error{{protocol methods must not have bodies}}
   func instMeth() {} // expected-error{{protocol methods must not have bodies}}
 }
@@ -133,7 +133,7 @@ func typeOfShadowing() {
     return t
   }
 
-  // TODO: Errors need improving here.
+  // TODO: Errors need improving here. id:3895 gh:3907
   _ = type(of: Gen<Foo>.Bar) // expected-error{{argument labels '(of:)' do not match any available overloads}}
                              // expected-note@-1{{overloads for 'type' exist with these partially matching parameter lists: (T.Type), (fo: T.Type)}}
   _ = type(Gen<Foo>.Bar) // expected-error{{expected member name or constructor call after type name}}
@@ -147,7 +147,7 @@ func typeOfShadowing() {
 func archetype<T: Zim>(_: T) {
   _ = T.self
   _ = T()
-  // TODO let prop = T.prop
+  // TODO let prop = T.prop id:2799 gh:2811
   _ = T.meth
   let _ : () = T.meth()
 
@@ -157,7 +157,7 @@ func archetype<T: Zim>(_: T) {
 func assocType<T: Zim>(_: T) where T.Zang: Zim {
   _ = T.Zang.self
   _ = T.Zang()
-  // TODO _ = T.Zang.prop
+  // TODO _ = T.Zang.prop id:3074 gh:3086
   _ = T.Zang.meth
   let _ : () = T.Zang.meth()
 
@@ -268,7 +268,7 @@ func compositionType() {
   _ = P1 & P2 // expected-error {{expected member name or constructor call after type name}} expected-note{{use '.self'}} {{7-7=(}} {{14-14=).self}}
   _ = P1 & P2.self // expected-error {{binary operator '&' cannot be applied to operands of type 'P1.Protocol' and 'P2.Protocol'}} expected-note {{overloads}}
   _ = (P1 & P2).self // Ok.
-  _ = (P1 & (P2)).self // FIXME: OK? while `typealias P = P1 & (P2)` is rejected.
+  _ = (P1 & (P2)).self // FIXME: OK? while `typealias P = P1 & (P2)` is rejected. id:3588 gh:3600
   _ = (P1 & (P2, P3)).self // expected-error {{non-protocol, non-class type '(P2, P3)' cannot be used within a protocol-constrained type}}
   _ = (P1 & Int).self // expected-error {{non-protocol, non-class type 'Int' cannot be used within a protocol-constrained type}}
   _ = (P1? & P2).self // expected-error {{non-protocol, non-class type 'P1?' cannot be used within a protocol-constrained type}}

@@ -1617,7 +1617,7 @@ extension TestSuite {
       isMultiPass, isEquatableMultiPass,
       "Two sequence types are of different kinds?")
 
-    // FIXME: swift-3-indexing-model: add tests for `underestimatedCount`
+    // FIXME: swift-3-indexing-model: add tests for `underestimatedCount` id:291 gh:298
     // Check that it is non-negative, and an underestimate of the actual
     // element count.
 
@@ -1716,7 +1716,7 @@ self.test("\(testNamePrefix).dropLast/semantics/equivalence") {
 
     let droppedOnce = s1.dropLast(4)
 
-    // FIXME: this line should read:
+    // FIXME: this line should read: id:305 gh:312
     //
     //   let droppedTwice_ = s2.dropLast(2).dropLast(2)
     //

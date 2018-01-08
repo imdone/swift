@@ -1,6 +1,6 @@
 // RUN: %target-swift-frontend -emit-silgen %s | %FileCheck %s
 
-// TODO: Implement tuple equality in the library.
+// TODO: Implement tuple equality in the library. id:3324 gh:3336
 // BLOCKED: <rdar://problem/13822406>
 func ~= (x: (Int, Int), y: (Int, Int)) -> Bool {
   return x.0 == y.0 && x.1 == y.1
@@ -72,7 +72,7 @@ func test_var_2() {
   // CHECK:   load [trivial] [[READ]]
   // CHECK:   function_ref @$S10switch_var6runced1xSbSi_tF
   // CHECK:   cond_br {{%.*}}, [[CASE1:bb[0-9]+]], [[NO_CASE1:bb[0-9]+]]
-  // -- TODO: Clean up these empty waypoint bbs.
+  // -- TODO: Clean up these empty waypoint bbs. id:3648 gh:3660
   case var x where runced(x: x):
   // CHECK: [[CASE1]]:
   // CHECK:   [[READ:%.*]] = begin_access [read] [unknown] [[X]]
@@ -578,7 +578,7 @@ func test_multiple_patterns1() {
   }
 }
 
-// FIXME(integers): the following checks should be updated for the new integer
+// FIXME (integers): the following checks should be updated for the new integer id:3753 gh:3765
 // protocols. <rdar://problem/29939484>
 // XCHECK-LABEL: sil hidden @$S10switch_var23test_multiple_patterns2yyF : $@convention(thin) () -> () {
 func test_multiple_patterns2() {

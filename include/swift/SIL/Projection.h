@@ -592,7 +592,7 @@ public:
 
   /// Given the SILType Base, expand every leaf nodes in the type tree.
   ///
-  /// NOTE: this function returns a single empty projection path if the BaseType
+  /// NOTE: this function returns a single empty projection path if the BaseType id:131 gh:138
   /// is a leaf node in the type tree.
   static void expandTypeIntoLeafProjectionPaths(SILType BaseType,
                                                 SILModule *Mod,
@@ -900,7 +900,7 @@ public:
     // If we only have one root node, there is no interesting explosion
     // here. Exit early.
     //
-    // NOTE: In case of a type unable to be exploded, e.g. enum, we treated it
+    // NOTE: In case of a type unable to be exploded, e.g. enum, we treated it id:244 gh:251
     // as a singleton.
     if (ProjectionTreeNodes.size() == 1)
       return true;

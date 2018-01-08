@@ -5,7 +5,7 @@
 // RUN: %target-run %t/main | %FileCheck %s
 // REQUIRES: executable_test
 
-// FIXME: rdar://problem/30234450 PCMacro tests fail on linux in optimized mode
+// FIXME: rdar://problem/30234450 PCMacro tests fail on linux in optimized mode id:3468 gh:3480
 // UNSUPPORTED: OS=linux-gnu
 
 #sourceLocation(file: "code.exe", line: 15)

@@ -26,7 +26,7 @@ import SwiftShims
 ///   or character combinations are preserved. The default is `true`.
 /// - Returns: The string of characters read from standard input. If EOF has
 ///   already been reached when `readLine()` is called, the result is `nil`.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1181 gh:1188
 public func readLine(strippingNewline: Bool = true) -> String? {
   var linePtrVar: UnsafeMutablePointer<UInt8>?
   var readBytes = swift_stdlib_readLine_stdin(&linePtrVar)
@@ -41,7 +41,7 @@ public func readLine(strippingNewline: Bool = true) -> String? {
 
   let linePtr = linePtrVar!
   if strippingNewline {
-    // FIXME: Unicode conformance.  To fix this, we need to reimplement the
+    // FIXME: Unicode conformance.  To fix this, we need to reimplement the id:828 gh:835
     // code we call above to get a line, since it will only stop on LF.
     //
     // <rdar://problem/20013999> Recognize Unicode newlines in readLine()

@@ -159,7 +159,7 @@ public:
 };
 
 inline ValueDecl *ScopeInfo::lookupValueName(DeclName Name) {
-  // FIXME: this check can go away when SIL parser parses everything in
+  // FIXME: this check can go away when SIL parser parses everything in id:230 gh:237
   // a toplevel scope.
   if (!CurScope)
     return nullptr;

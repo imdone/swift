@@ -398,7 +398,7 @@ enum class EnumElementRawValueKind : uint8_t {
   None = 0,
   /// Integer literal.
   IntegerLiteral,
-  /// TODO: Float, string, char, etc.
+  /// TODO: Float, string, char, etc. id:154 gh:161
 };
 
 // These IDs must \em not be renumbered or reordered without incrementing
@@ -1140,7 +1140,7 @@ namespace decls_block {
     ANY_PATTERN,
     TypeIDField, // type
     BCFixed<1>   // implicit?
-    // FIXME: is the type necessary?
+    // FIXME: is the type necessary? id:269 gh:276
   >;
 
   using TypedPatternLayout = BCRecordLayout<

@@ -245,10 +245,10 @@ struct NestedOuter1 {
 // NESTED_NOMINAL_DECL_A_1-DAG: Decl[Class]/CurrNominal:          NestedInnerAClass[#NestedInnerA.NestedInnerAClass#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_A_1-DAG: Decl[Enum]/CurrNominal:           NestedInnerAEnum[#NestedInnerA.NestedInnerAEnum#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_A_1-DAG: Decl[TypeAlias]/CurrNominal:      NestedInnerATypealias[#Int#]{{; name=.+$}}
-// FIXME: should this really come as Local?
+// FIXME: should this really come as Local? id:3778 gh:3790
 // NESTED_NOMINAL_DECL_A_1-DAG: Decl[Struct]/Local:               NestedInnerA[#NestedInnerA#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_A_1-DAG: Decl[Struct]/CurrModule:          NestedOuter1[#NestedOuter1#]{{; name=.+$}}
-// FIXME: the following decls are wrong.
+// FIXME: the following decls are wrong. id:2676 gh:2688
 // NESTED_NOMINAL_DECL_A_1-DAG: Decl[LocalVar]/Local:             self[#NestedOuter1#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_A_1-DAG: Decl[InstanceMethod]/OutNominal:  testInstanceFunc()[#Void#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_A_1-DAG: Decl[InstanceVar]/OutNominal:     outerInstanceVar[#Int#]{{; name=.+$}}
@@ -268,10 +268,10 @@ struct NestedOuter1 {
 // NESTED_NOMINAL_DECL_A_2-DAG: Decl[Class]/CurrNominal:          NestedInnerAClass[#NestedInnerA.NestedInnerAClass#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_A_2-DAG: Decl[Enum]/CurrNominal:           NestedInnerAEnum[#NestedInnerA.NestedInnerAEnum#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_A_2-DAG: Decl[TypeAlias]/CurrNominal:      NestedInnerATypealias[#Int#]{{; name=.+$}}
-// FIXME: should this really come as Local?
+// FIXME: should this really come as Local? id:2838 gh:2850
 // NESTED_NOMINAL_DECL_A_2-DAG: Decl[Struct]/Local:               NestedInnerA[#NestedInnerA#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_A_2-DAG: Decl[Struct]/CurrModule:          NestedOuter1[#NestedOuter1#]{{; name=.+$}}
-// FIXME: the following decls are wrong.
+// FIXME: the following decls are wrong. id:3460 gh:3472
 // NESTED_NOMINAL_DECL_A_2-DAG: Decl[LocalVar]/Local:             self[#NestedOuter1#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_A_2-DAG: Decl[InstanceMethod]/OutNominal:  testInstanceFunc()[#Void#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_A_2-DAG: Decl[InstanceVar]/OutNominal:     outerInstanceVar[#Int#]{{; name=.+$}}
@@ -285,7 +285,7 @@ struct NestedOuter1 {
 // NESTED_NOMINAL_DECL_A_3-DAG: Decl[Class]/CurrNominal:     NestedInnerAClass[#NestedInnerA.NestedInnerAClass#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_A_3-DAG: Decl[Enum]/CurrNominal:      NestedInnerAEnum[#NestedInnerA.NestedInnerAEnum#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_A_3-DAG: Decl[TypeAlias]/CurrNominal: NestedInnerATypealias[#Int#]{{; name=.+$}}
-// FIXME: should this really come as Local?
+// FIXME: should this really come as Local? id:3078 gh:3090
 // NESTED_NOMINAL_DECL_A_3-DAG: Decl[Struct]/Local:          NestedInnerA[#NestedInnerA#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_A_3-DAG: Decl[TypeAlias]/OutNominal:  OuterTypealias[#Int#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_A_3-DAG: Decl[Struct]/CurrModule:     NestedOuter1[#NestedOuter1#]{{; name=.+$}}
@@ -346,10 +346,10 @@ struct NestedOuter1 {
 // NESTED_NOMINAL_DECL_B_1-DAG: Decl[Class]/CurrNominal:          NestedInnerBClass[#NestedInnerB.NestedInnerBClass#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_B_1-DAG: Decl[Enum]/CurrNominal:           NestedInnerBEnum[#NestedInnerB.NestedInnerBEnum#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_B_1-DAG: Decl[TypeAlias]/CurrNominal:      NestedInnerBTypealias[#Int#]{{; name=.+$}}
-// FIXME: should this really come as Local?
+// FIXME: should this really come as Local? id:3780 gh:3792
 // NESTED_NOMINAL_DECL_B_1-DAG: Decl[Struct]/Local:               NestedInnerB[#NestedInnerB#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_B_1-DAG: Decl[Struct]/CurrModule:          NestedOuter1[#NestedOuter1#]{{; name=.+$}}
-// FIXME: the following decls are wrong.
+// FIXME: the following decls are wrong. id:2678 gh:2691
 // NESTED_NOMINAL_DECL_B_1-DAG: Decl[LocalVar]/Local:             self[#NestedOuter1.Type#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_B_1-DAG: Decl[InstanceMethod]/OutNominal:  testInstanceFunc()[#Void#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_B_1-DAG: Decl[StaticMethod]/OutNominal:    testStaticFunc()[#Void#]{{; name=.+$}}
@@ -372,10 +372,10 @@ struct NestedOuter1 {
 // NESTED_NOMINAL_DECL_B_2-DAG: Decl[Class]/CurrNominal:          NestedInnerBClass[#NestedInnerB.NestedInnerBClass#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_B_2-DAG: Decl[Enum]/CurrNominal:           NestedInnerBEnum[#NestedInnerB.NestedInnerBEnum#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_B_2-DAG: Decl[TypeAlias]/CurrNominal:      NestedInnerBTypealias[#Int#]{{; name=.+$}}
-// FIXME: should this really come as Local?
+// FIXME: should this really come as Local? id:2840 gh:2852
 // NESTED_NOMINAL_DECL_B_2-DAG: Decl[Struct]/Local:               NestedInnerB[#NestedInnerB#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_B_2-DAG: Decl[Struct]/CurrModule:          NestedOuter1[#NestedOuter1#]{{; name=.+$}}
-// FIXME: the following decls are wrong.
+// FIXME: the following decls are wrong. id:3463 gh:3475
 // NESTED_NOMINAL_DECL_B_2-DAG: Decl[LocalVar]/Local:             self[#NestedOuter1.Type#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_B_2-DAG: Decl[InstanceMethod]/OutNominal:  testInstanceFunc()[#Void#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_B_2-DAG: Decl[StaticMethod]/OutNominal:    testStaticFunc()[#Void#]{{; name=.+$}}
@@ -392,7 +392,7 @@ struct NestedOuter1 {
 // NESTED_NOMINAL_DECL_B_3-DAG: Decl[Class]/CurrNominal:     NestedInnerBClass[#NestedInnerB.NestedInnerBClass#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_B_3-DAG: Decl[Enum]/CurrNominal:      NestedInnerBEnum[#NestedInnerB.NestedInnerBEnum#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_B_3-DAG: Decl[TypeAlias]/CurrNominal: NestedInnerBTypealias[#Int#]{{; name=.+$}}
-// FIXME: should this really come as Local?
+// FIXME: should this really come as Local? id:3082 gh:3094
 // NESTED_NOMINAL_DECL_B_3-DAG: Decl[Struct]/Local:          NestedInnerB[#NestedInnerB#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_B_3-DAG: Decl[TypeAlias]/OutNominal:  OuterTypealias[#Int#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_B_3-DAG: Decl[Struct]/CurrModule:     NestedOuter1[#NestedOuter1#]{{; name=.+$}}
@@ -463,7 +463,7 @@ func testOuterC() {
 // NESTED_NOMINAL_DECL_C_1-DAG: Decl[Class]/CurrNominal:          NestedInnerCClass[#NestedInnerC.NestedInnerCClass#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_C_1-DAG: Decl[Enum]/CurrNominal:           NestedInnerCEnum[#NestedInnerC.NestedInnerCEnum#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_C_1-DAG: Decl[TypeAlias]/CurrNominal:      NestedInnerCTypealias[#Int#]{{; name=.+$}}
-// FIXME: should this really come as Local?
+// FIXME: should this really come as Local? id:3782 gh:3794
 // NESTED_NOMINAL_DECL_C_1-DAG: Decl[Struct]/Local:               NestedInnerC[#NestedInnerC#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_C_1-DAG: Decl[Struct]/CurrModule:          NestedOuter1[#NestedOuter1#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_C_1: End completions
@@ -481,7 +481,7 @@ func testOuterC() {
 // NESTED_NOMINAL_DECL_C_2-DAG: Decl[Class]/CurrNominal:          NestedInnerCClass[#NestedInnerC.NestedInnerCClass#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_C_2-DAG: Decl[Enum]/CurrNominal:           NestedInnerCEnum[#NestedInnerC.NestedInnerCEnum#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_C_2-DAG: Decl[TypeAlias]/CurrNominal:      NestedInnerCTypealias[#Int#]{{; name=.+$}}
-// FIXME: should this really come as Local?
+// FIXME: should this really come as Local? id:2680 gh:2692
 // NESTED_NOMINAL_DECL_C_2-DAG: Decl[Struct]/Local:               NestedInnerC[#NestedInnerC#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_C_2-DAG: Decl[Struct]/CurrModule:          NestedOuter1[#NestedOuter1#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_C_2: End completions
@@ -493,7 +493,7 @@ func testOuterC() {
 // NESTED_NOMINAL_DECL_C_3-DAG: Decl[Class]/CurrNominal:     NestedInnerCClass[#NestedInnerC.NestedInnerCClass#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_C_3-DAG: Decl[Enum]/CurrNominal:      NestedInnerCEnum[#NestedInnerC.NestedInnerCEnum#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_C_3-DAG: Decl[TypeAlias]/CurrNominal: NestedInnerCTypealias[#Int#]{{; name=.+$}}
-// FIXME: should this really come as Local?
+// FIXME: should this really come as Local? id:2843 gh:2855
 // NESTED_NOMINAL_DECL_C_3-DAG: Decl[Struct]/Local:          NestedInnerC[#NestedInnerC#]{{; name=.+$}}
 // NESTED_NOMINAL_DECL_C_3: End completions
 

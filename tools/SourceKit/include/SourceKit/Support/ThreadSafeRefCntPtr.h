@@ -141,7 +141,7 @@ public:
 
   void swap(llvm::IntrusiveRefCntPtr<T> &other) {
     llvm::sys::ScopedLock L(*getMutex(this));
-    // FIXME: If ThreadSafeRefCntPtr has private access to IntrusiveRefCntPtr
+    // FIXME: If ThreadSafeRefCntPtr has private access to IntrusiveRefCntPtr id:3984 gh:3996
     // we can eliminate the Retain/Release pair for this->Obj.
     llvm::IntrusiveRefCntPtr<T> Ref(Obj.load());
     Ref.swap(other);

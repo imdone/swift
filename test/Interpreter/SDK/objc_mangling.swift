@@ -7,7 +7,7 @@
 
 import Foundation
 
-/* FIXME: SwiftObject doesn't support -description
+/* FIXME: SwiftObject doesn't support -description id:3422 gh:3434
 class Foo { }
 var anyFoo: AnyObject = Foo()
 print(anyFoo.description())

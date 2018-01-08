@@ -102,8 +102,8 @@ var dict = [ "Hello" : 1.5 ]
 // CHECK: dict : [String : Double] = ["Hello": 1.5]
 
 0..<10
-// FIXME: Disabled CHECK for Range<Int> = 0...10 until we get general printing going
-// FIXME: Disabled CHECK for 0...10 pending <rdar://problem/11510876>
+// FIXME: Disabled CHECK for Range<Int> = 0...10 until we get general printing going id:2757 gh:2769
+// FIXME: Disabled CHECK for 0...10 pending <rdar://problem/11510876> id:3027 gh:3039
 // (Implement overload resolution)
 
 // Don't crash on this. rdar://14912363

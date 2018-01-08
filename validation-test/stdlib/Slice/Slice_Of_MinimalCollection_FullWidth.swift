@@ -8,7 +8,7 @@
 // RUN: %target-run-simple-swift
 // REQUIRES: executable_test
 
-// FIXME: the test is too slow when the standard library is not optimized.
+// FIXME: the test is too slow when the standard library is not optimized. id:4114 gh:4126
 // REQUIRES: optimized_stdlib
 
 import StdlibUnittest

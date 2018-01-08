@@ -61,7 +61,7 @@ func testSubclasses() {
   _ = IncompleteUnknownInitSubclass(missing: 0) // expected-error {{argument labels '(missing:)' do not match any available overloads}} expected-note {{overloads}}
   _ = IncompleteUnknownInitSubclass(conveniently: 0) // okay
 
-  // FIXME: This initializer isn't being inherited for some reason, unrelated
+  // FIXME: This initializer isn't being inherited for some reason, unrelated id:2730 gh:2742
   // to the non-importable -initMissing:.
   // https://bugs.swift.org/browse/SR-4566
   _ = IncompleteUnknownInitSubclass(category: 0) // expected-error {{argument labels '(category:)' do not match any available overloads}} expected-note {{overloads}}

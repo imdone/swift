@@ -318,7 +318,7 @@ func testMyEnumWithCaseLabels(_ a : MyEnumWithCaseLabels) {
   switch a {
   case let .Case(one: _, two: x): break // ok
   case let .Case(xxx: _, two: x): break // expected-error {{tuple pattern element label 'xxx' must be 'one'}}
-  // TODO: In principle, reordering like this could be supported.
+  // TODO: In principle, reordering like this could be supported. id:3231 gh:3243
   case let .Case(two: _, one: x): break // expected-error {{tuple pattern element label}}
   }
 }
@@ -517,4 +517,4 @@ func bad_if() {
 class
 case, // expected-error {{expected identifier in enum 'case' declaration}} expected-error {{expected pattern}}
 case  // expected-error {{expected identifier after comma in enum 'case' declaration}} expected-error {{expected identifier in enum 'case' declaration}} expected-error {{enum 'case' is not allowed outside of an enum}} expected-error {{expected pattern}}
-// NOTE: EOF is important here to properly test a code path that used to crash the parser
+// NOTE: EOF is important here to properly test a code path that used to crash the parser id:3579 gh:3591

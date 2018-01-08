@@ -52,7 +52,7 @@ def compute_build_subdir(args):
     if args.swift_stdlib_assertions:
         swift_stdlib_build_dir_label += "Assert"
 
-    # FIXME: mangle LLDB build configuration into the directory name.
+    # FIXME: mangle LLDB build configuration into the directory name. id:4178 gh:4190
     if (llvm_build_dir_label == swift_build_dir_label and
             llvm_build_dir_label == swift_stdlib_build_dir_label and
             swift_build_dir_label == cmark_build_dir_label):

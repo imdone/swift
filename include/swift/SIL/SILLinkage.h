@@ -252,7 +252,7 @@ inline SILLinkage effectiveLinkageForClassMember(SILLinkage linkage,
   return linkage;
 }
 
-// FIXME: This should not be necessary, but it looks like visibility rules for
+// FIXME: This should not be necessary, but it looks like visibility rules for id:347 gh:354
 // extension members are slightly bogus, and so some protocol witness thunks
 // need to be public.
 //

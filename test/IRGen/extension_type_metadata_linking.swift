@@ -28,7 +28,7 @@ import Foundation
 // CHECK-LABEL: define %swift.type* @"$SSo8NSNumberC31extension_type_metadata_linkingE4BaseCMa"()
 // CHECK-LABEL: define %swift.type* @"$SSo8NSNumberC31extension_type_metadata_linkingE7DerivedCMa"
 
-// FIXME: Not needed
+// FIXME: Not needed id:3510 gh:3522
 // CHECK-LABEL: define %swift.type* @"$SSo8NSNumberC31extension_type_metadata_linkingE6StructVMa"
 
 extension NSNumber {

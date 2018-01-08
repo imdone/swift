@@ -12,14 +12,14 @@ var testsuite = TestSuite("Vision")
 
 if #available(OSX 10.13, iOS 11.0, tvOS 11.0, *) {
   testsuite.test("normalizedPoints overlay") {
-    // NOTE: This function is here only to validate syntactical correctness of the overlay.
+    // NOTE: This function is here only to validate syntactical correctness of the overlay. id:3922 gh:3934
     func overlaySyntaxTest(region: VNFaceLandmarkRegion2D) -> [CGPoint] {
       return region.normalizedPoints
     }
   }
 
   testsuite.test("pointsInImage() overlay") {
-    // NOTE: This function is here only to validate syntactical correctness of the overlay.
+    // NOTE: This function is here only to validate syntactical correctness of the overlay. id:3970 gh:3982
     func overlaySyntaxTest(region: VNFaceLandmarkRegion2D) -> [CGPoint] {
       return region.pointsInImage(imageSize: CGSize(width: 1024, height: 768))
     }

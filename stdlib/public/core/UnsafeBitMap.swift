@@ -11,7 +11,7 @@
 //===----------------------------------------------------------------------===//
 
 /// A wrapper around a bitmap storage with room for at least `bitCount` bits.
-@_fixed_layout // FIXME(sil-serialize-all)
+@_fixed_layout // FIXME (sil-serialize-all) id:3104 gh:3116
 public // @testable
 struct _UnsafeBitMap {
   public // @testable
@@ -20,7 +20,7 @@ struct _UnsafeBitMap {
   public // @testable
   let bitCount: Int
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2543 gh:2555
   public // @testable
   static func wordIndex(_ i: Int) -> Int {
     // Note: We perform the operation on UInts to get faster unsigned math
@@ -28,7 +28,7 @@ struct _UnsafeBitMap {
     return Int(bitPattern: UInt(bitPattern: i) / UInt(UInt.bitWidth))
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2656 gh:2668
   public // @testable
   static func bitIndex(_ i: Int) -> UInt {
     // Note: We perform the operation on UInts to get faster unsigned math
@@ -36,32 +36,32 @@ struct _UnsafeBitMap {
     return UInt(bitPattern: i) % UInt(UInt.bitWidth)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3278 gh:3290
   public // @testable
   static func sizeInWords(forSizeInBits bitCount: Int) -> Int {
     return (bitCount + Int.bitWidth - 1) / Int.bitWidth
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2438 gh:2450
   public // @testable
   init(storage: UnsafeMutablePointer<UInt>, bitCount: Int) {
     self.bitCount = bitCount
     self.values = storage
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3107 gh:3119
   public // @testable
   var numberOfWords: Int {
     return _UnsafeBitMap.sizeInWords(forSizeInBits: bitCount)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2545 gh:2557
   public // @testable
   func initializeToZero() {
     values.initialize(repeating: 0, count: numberOfWords)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2658 gh:2670
   public // @testable
   subscript(i: Int) -> Bool {
     get {

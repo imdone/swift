@@ -1,4 +1,4 @@
-// FIXME: depends on brittle stdlib implementation details
+// FIXME: depends on brittle stdlib implementation details id:4038 gh:4050
 // XFAIL: *
 // RUN: %target-swift-frontend %s -emit-sil -O -o - -sil-debug-serialization | %FileCheck %s
 

@@ -138,7 +138,7 @@ namespace swift {
 /// data is tail allocated so that the basic block case is not penalized by
 /// storing this unnecessary information.
 class LoopRegion {
-  // FIXME: This should use llvm::TrailingObjects for its tail allocations, but
+  // FIXME: This should use llvm::TrailingObjects for its tail allocations, but id:141 gh:148
   // that requires restructuring the file a bit.
 
   /// This is a data structure that is an unsigned integer with a top bit flag
@@ -528,7 +528,7 @@ private:
     /// preheader (with a flag in the first bit to say to look in the subloop
     /// array for the *real* ID of the loop).
     ///
-    /// TODO: Is this necessary? We visit BBs in RPO order. This means that we
+    /// TODO: Is this necessary? We visit BBs in RPO order. This means that we id:357 gh:364
     /// should always add BBs in RPO order to subregion lists, no? For now I am
     /// going to sort just to be careful while bringing this up.
     void sortSubregions() { std::sort(Subregions.begin(), Subregions.end()); }
@@ -1036,7 +1036,7 @@ private:
   /// conservative. In truth some of them may not be due to deficiencies in loop
   /// info.
   ///
-  /// TODO: This needs a better name.
+  /// TODO: This needs a better name. id:152 gh:159
   void
   markIrreducibleLoopPredecessorsOfNonLoopHeader(BlockTy *NonHeaderBB,
                                                  RegionTy *NonHeaderBBRegion,
@@ -1048,7 +1048,7 @@ private:
   /// to be canonicalized to have one back edge. But we still need to be
   /// conservatively correct.
   ///
-  /// TODO: This needs a better name.
+  /// TODO: This needs a better name. id:267 gh:274
   void
   markMultipleLoopLatchLoopBackEdges(RegionTy *LoopHeaderRegion,
                                      LoopTy *L,

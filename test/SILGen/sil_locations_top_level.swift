@@ -39,7 +39,7 @@ var topLevelObject2:TopLevelObjectTyWithoutDestructor
 // CHECK: return {{.*}}// {{.*}} line:14:3:imp_return:auto_gen
 
 // Check explicit constructor
-// FIXME: The ConstructorDecl location is wrong here (looks like it's wrong in the AST).
+// FIXME: The ConstructorDecl location is wrong here (looks like it's wrong in the AST). id:3987 gh:3999
 // CHECK-LABEL: sil hidden @$S23sil_locations_top_level33TopLevelObjectTyWithoutDestructorC{{[_0-9a-zA-Z]*}}fc
 // CHECK: return {{.*}}// {{.*}} line:14:3:imp_return
 

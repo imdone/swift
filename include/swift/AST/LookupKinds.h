@@ -80,7 +80,7 @@ enum NLOptions : unsigned {
 
   /// The default set of options used for qualified name lookup.
   ///
-  /// FIXME: Eventually, add NL_ProtocolMembers to this, once all of the
+  /// FIXME: Eventually, add NL_ProtocolMembers to this, once all of the id:71 gh:78
   /// callers can handle it.
   NL_QualifiedDefault = NL_RemoveNonVisible | NL_RemoveOverridden,
 

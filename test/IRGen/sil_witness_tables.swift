@@ -6,7 +6,7 @@
 
 import sil_witness_tables_external_conformance
 
-// FIXME: This should be a SIL test, but we can't parse sil_witness_tables
+// FIXME: This should be a SIL test, but we can't parse sil_witness_tables id:3402 gh:3414
 // yet.
 
 protocol A {}
@@ -71,7 +71,7 @@ func externalErasure(c c: ExternalConformer) -> ExternalP {
   return c
 }
 
-// FIXME: why do these have different linkages?
+// FIXME: why do these have different linkages? id:3826 gh:3838
 
 // CHECK-LABEL: define hidden %swift.type* @"$S18sil_witness_tables14AssocConformerVMa"()
 // CHECK:         ret %swift.type* bitcast (i64* getelementptr inbounds {{.*}} @"$S18sil_witness_tables14AssocConformerVMf", i32 0, i32 1) to %swift.type*)

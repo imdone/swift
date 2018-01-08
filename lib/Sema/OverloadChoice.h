@@ -99,7 +99,7 @@ class OverloadChoice {
   llvm::PointerUnion<ValueDecl*, OverloadChoiceKindWithTupleIndex> DeclOrKind;
 
   /// The kind of function reference.
-  /// FIXME: This needs two bits. Can we pack them somewhere?
+  /// FIXME: This needs two bits. Can we pack them somewhere? id:289 gh:296
   FunctionRefKind TheFunctionRefKind;
 
 public:

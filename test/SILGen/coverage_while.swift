@@ -62,7 +62,7 @@ func foo() -> Int32 {
     y = nil
   }
 
-  // TODO: [[@LINE+1]]:9 -> [[@LINE+1]]:18 : ((0 + 14) - 12)
+  // TODO: [[@LINE+1]]:9 -> [[@LINE+1]]:18 : ((0 + 14) - 12) id:3544 gh:3556
   while let _ = y {
   }
   // CHECK: [[@LINE-1]]:4 -> [[@LINE+1]]:11 : (0 - 12)
@@ -121,7 +121,7 @@ func goo() {
     } while false // CHECK-DAG: [[@LINE]]:13 -> [[@LINE]]:18 : ([[RWS9]] - [[RET1]])
   } while false // CHECK-DAG: [[@LINE]]:11 -> [[@LINE]]:16 : ([[RWS8]] - [[RET1]])
 
-  // TODO(vsk): need tests for fail and throw statements.
+  // TODO (vsk): need tests for fail and throw statements. id:3943 gh:3955
 }
 
 eoo()

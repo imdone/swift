@@ -5,7 +5,7 @@
 import Foundation
 import SubclassExistentialsExtra
 
-// FIXME: Consider better diagnostics here.
+// FIXME: Consider better diagnostics here. id:3711 gh:3723
 
 class SwiftLaundryService : NSLaundry {
 // expected-error@-1 {{type 'SwiftLaundryService' does not conform to protocol 'NSLaundry'}}

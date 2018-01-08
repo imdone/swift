@@ -218,7 +218,7 @@ extension TriviaPiece: TextOutputStreamable {
       var col = 0
       var total = 0
       var prevChar: UInt8? = nil
-      // TODO: CR + LF should be regarded as one newline
+      // TODO: CR + LF should be regarded as one newline id:3243 gh:3255
       for char in text.utf8 {
         total += 1
         switch char {

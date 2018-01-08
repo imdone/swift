@@ -37,7 +37,7 @@ for (expected, source) in samples {
   }
 
   ConcatenateTests.test("reverse-\(source)") {
-    // FIXME: separate 'expected' and 'reversed' variables are a workaround
+    // FIXME: separate 'expected' and 'reversed' variables are a workaround id:4089 gh:4101
     // for: <rdar://problem/20789500>
     let expected = ContiguousArray(expected.lazy.reversed())
     let reversed = source.joined().reversed()

@@ -80,7 +80,7 @@ func createMyInterestingDesignated() {
 
 func testNoReturn(_ a : NSAwesomeDocument) -> Int {
   a.noReturnMethod(42)
-  return 17    // TODO: In principle, we should produce an unreachable code diagnostic here.
+  return 17    // TODO: In principle, we should produce an unreachable code diagnostic here. id:2611 gh:2623
 }
 
 // Initializer inheritance from protocol-specified initializers.

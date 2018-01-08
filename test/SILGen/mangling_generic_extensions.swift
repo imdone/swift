@@ -42,7 +42,7 @@ extension Foo where T: Runcible, T.Spoon: Runcible {
 }
 
 // Protocol extensions always use the extension mangling.
-// TODO: When default implementations are properly implemented, and protocol
+// TODO: When default implementations are properly implemented, and protocol id:3962 gh:3974
 // extensions receive dynamic dispatch, it would be possible for an
 // unconstrained protocol extension method to be moved in or out of its
 // declaration, so we would no longer want to use the extension mangling

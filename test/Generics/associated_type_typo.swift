@@ -60,7 +60,7 @@ public protocol Indexable : _Indexable1 {
 protocol Pattern {
   associatedtype Element : Equatable
 
-  // FIXME: This works for all of the wrong reasons, but it is correct that
+  // FIXME: This works for all of the wrong reasons, but it is correct that id:3747 gh:3759
   // it works.
   func matched<C: Indexable>(atStartOf c: C)
   where Element_<C> == Element

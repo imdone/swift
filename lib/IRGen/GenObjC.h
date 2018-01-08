@@ -67,7 +67,7 @@ namespace irgen {
     SILType getSearchType() const { return searchTypeAndSuper.getPointer(); }
     bool shouldStartAtSuper() const { return searchTypeAndSuper.getInt(); }
     
-    /// FIXME: Thunk down to a Swift function value?
+    /// FIXME: Thunk down to a Swift function value? id:153 gh:160
     llvm::Value *getExplosionValue(IRGenFunction &IGF) const {
       llvm_unreachable("thunking unapplied objc method to swift function "
                        "not yet implemented");

@@ -211,7 +211,7 @@ extension Decimal : SignedNumeric {
           _reserved: 0, _mantissa: self._mantissa)
   }
 
-  // FIXME(integers): implement properly
+  // FIXME (integers): implement properly id:333 gh:340
   public init?<T : BinaryInteger>(exactly source: T) {
       fatalError()
   }

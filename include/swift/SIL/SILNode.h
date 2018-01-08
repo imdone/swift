@@ -220,7 +220,7 @@ protected:
 
   UIWTDOB_BITFIELD_EMPTY(AllocValueBufferInst, AllocationInst);
 
-  // TODO: Sort the following in SILNodes.def order
+  // TODO: Sort the following in SILNodes.def order id:135 gh:142
 
   SWIFT_INLINE_BITFIELD_EMPTY(NonValueInstruction, SILInstruction);
   SWIFT_INLINE_BITFIELD(RefCountingInst, NonValueInstruction, 1,

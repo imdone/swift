@@ -50,7 +50,7 @@ public class PrintingDiagnosticConsumer: DiagnosticConsumer {
     write(diagnostic.message.text)
     write("\n")
 
-    // TODO: Write original file contents out and highlight them.
+    // TODO: Write original file contents out and highlight them. id:3942 gh:3954
   }
 
   public func finalize() {

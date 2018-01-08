@@ -20,7 +20,7 @@ extension Set {
   public init(_cocoaSet: _NSSet) {
     _sanityCheck(_isBridgedVerbatimToObjectiveC(Element.self),
       "Set can be backed by NSSet _variantStorage only when the member type can be bridged verbatim to Objective-C")
-    // FIXME: We would like to call CFSetCreateCopy() to avoid doing an
+    // FIXME: We would like to call CFSetCreateCopy() to avoid doing an id:407 gh:414
     // objc_msgSend() for instances of CoreFoundation types.  We can't do that
     // today because CFSetCreateCopy() copies dictionary contents
     // unconditionally, resulting in O(n) copies even for immutable dictionaries.
@@ -166,7 +166,7 @@ extension NSSet {
   ///   receiver.
   @nonobjc
   public convenience init(set anSet: NSSet) {
-    // FIXME(performance)(compiler limitation): we actually want to do just
+    // FIXME (performance)(compiler limitation): we actually want to do just id:368 gh:375
     // `self = anSet.copy()`, but Swift does not have factory
     // initializers right now.
     let numElems = anSet.count

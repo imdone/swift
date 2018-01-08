@@ -7,7 +7,7 @@ func takeClosure(_ a : () -> Int) {}
 // CHECK-LABEL: sil hidden @{{.*}}test1
 func test1(_ a : Int) -> Int {
   // CHECK-NOT: alloc_box
-  // FIXME(integers): the following check should be updated for the new way +
+  // FIXME (integers): the following check should be updated for the new way + id:3628 gh:3640
   // gets invoked. <rdar://problem/29939484>
   // XCHECK-NOT: alloc_stack
 

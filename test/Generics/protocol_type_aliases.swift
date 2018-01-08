@@ -69,8 +69,8 @@ func getP_X<T: P>(_: T.Type) -> T.X.Type { return T.X.self }
 func checkQ4_A<T: Q4>(x: T.Type) { sameType(getP_A(x), Int.self) }
 func checkQ4_X<T: Q4>(x: T.Type) { sameType(getP_X(x), Int.self) }
 
-// FIXME: these do not work, seemingly mainly due to the 'recursive decl validation'
-// FIXME in GenericSignatureBuilder.cpp.
+// FIXME: these do not work, seemingly mainly due to the 'recursive decl validation' id:3754 gh:3766
+// FIXME in GenericSignatureBuilder.cpp. id:2653 gh:2665
 /*
 func checkQ5_A<T: Q5>(x: T.Type) { sameType(getP_A(x), Int.self) }
 func checkQ5_X<T: Q5>(x: T.Type) { sameType(getP_X(x), Int.self) }

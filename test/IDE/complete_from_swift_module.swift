@@ -28,12 +28,12 @@
 // RUN: %target-swift-ide-test -code-completion -source-filename %s -I %t -code-completion-token=TOP_LEVEL_1 > %t.compl.txt
 // RUN: %FileCheck %s -check-prefix=TOP_LEVEL_1 < %t.compl.txt
 // rdar://15305873 Code completion: implement proper shadowing of declarations represented by cached results
-// FIXME: %FileCheck %s -check-prefix=TOP_LEVEL_1_NEGATIVE < %t.compl.txt
+// FIXME: %FileCheck %s -check-prefix=TOP_LEVEL_1_NEGATIVE < %t.compl.txt id:2832 gh:2844
 //
 // RUN: %target-swift-ide-test -code-completion -source-filename %s -I %S/Inputs -enable-source-import -code-completion-token=TOP_LEVEL_1 > %t.compl.txt
 // RUN: %FileCheck %s -check-prefix=TOP_LEVEL_1 < %t.compl.txt
 // rdar://15305873 Code completion: implement proper shadowing of declarations represented by cached results
-// FIXME: %FileCheck %s -check-prefix=TOP_LEVEL_1_NEGATIVE < %t.compl.txt
+// FIXME: %FileCheck %s -check-prefix=TOP_LEVEL_1_NEGATIVE < %t.compl.txt id:3454 gh:3466
 
 // ERROR_COMMON: found code completion token
 // ERROR_COMMON-NOT: Begin completions

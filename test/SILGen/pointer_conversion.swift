@@ -1,6 +1,6 @@
 // RUN: %target-swift-frontend -emit-silgen -sdk %S/Inputs -I %S/Inputs -enable-source-import %s | %FileCheck %s
 
-// FIXME: rdar://problem/19648117 Needs splitting objc parts out
+// FIXME: rdar://problem/19648117 Needs splitting objc parts out id:3580 gh:3592
 // XFAIL: linux
 
 import Foundation
@@ -421,7 +421,7 @@ func optOptStringToOptOptPointer(string: String??) {
   // CHECK:   [[SIDE1:%.*]] = function_ref @$S18pointer_conversion11sideEffect1SiyF
   // CHECK:   [[RESULT1:%.*]] = apply [[SIDE1]]()
   // CHECK:   [[T0:%.*]] = select_enum [[COPY]]
-  //   FIXME: this should really go somewhere that will make nil, not some(nil)
+  //   FIXME: this should really go somewhere that will make nil, not some(nil) id:3977 gh:3989
   // CHECK:   cond_br [[T0]], [[SOME_BB:bb[0-9]+]], [[NONE_BB:bb[0-9]+]]
   // CHECK: [[SOME_BB]]:
   // CHECK:   [[SOME_VALUE:%.*]] = unchecked_enum_data [[COPY]]

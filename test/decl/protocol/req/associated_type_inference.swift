@@ -440,7 +440,7 @@ struct X15c : P15c { }
 struct X15d : P15d { }
 
 // Ambiguity.
-// FIXME: Better diagnostic here?
+// FIXME: Better diagnostic here? id:3837 gh:3849
 struct X15g : P15g { } // expected-error{{type 'X15g' does not conform to protocol 'P15g'}}
 
 // Associated type defaults in overidden associated types that require

@@ -125,7 +125,7 @@ func postRethrows2(_ f: () throws -> Int) -> rethrows Int { // expected-error{{'
 }
 
 func incompleteThrowType() {
-  // FIXME: Bad recovery for incomplete function type.
+  // FIXME: Bad recovery for incomplete function type. id:3889 gh:3901
   let _: () throws
   // expected-error @-1 {{consecutive statements on a line must be separated by ';'}}
   // expected-error @-2 {{expected expression}}

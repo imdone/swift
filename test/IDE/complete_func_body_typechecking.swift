@@ -65,7 +65,7 @@ func testTypecheckVar2() {
 }
 
 func testTypecheckVar3() {
-  // FIXME: We don't display any useful completions here, although we could --
+  // FIXME: We don't display any useful completions here, although we could -- id:3071 gh:3083
   // it is obvious that 'foo' could only have type 'FooStruct'.
   //
   // In any case, ensure that we don't crash.
@@ -90,7 +90,7 @@ func testTypecheckVar6() {
 }
 
 func testTypecheckVar7() {
-  // FIXME: We don't display any useful completions here, although we could --
+  // FIXME: We don't display any useful completions here, although we could -- id:3776 gh:3788
   // it is obvious that the expression could only have type 'FooStruct'.
   //
   // In any case, ensure that we don't crash.

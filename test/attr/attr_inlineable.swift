@@ -172,7 +172,7 @@ enum InternalEnum {
 @_versioned enum VersionedEnum {
   case apple
   case orange
-  // FIXME: Should this be banned?
+  // FIXME: Should this be banned? id:3420 gh:3432
   case pear(InternalEnum)
   case persimmon(String)
 }

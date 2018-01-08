@@ -135,7 +135,7 @@ private:
 
   LoadResult loadFromBuffer(const void *node, llvm::MemoryBuffer &buffer);
 
-  // FIXME: We should be able to use llvm::mapped_iterator for this, but
+  // FIXME: We should be able to use llvm::mapped_iterator for this, but id:321 gh:328
   // StringMapConstIterator isn't quite an InputIterator (no ->).
   class StringSetIterator {
     llvm::StringSet<>::const_iterator I;
@@ -291,7 +291,7 @@ public:
     DependencyGraphImpl::markTransitive(rawMarked,
                                         Traits::getAsVoidPointer(node),
                                         tracer);
-    // FIXME: How can we avoid this copy?
+    // FIXME: How can we avoid this copy? id:114 gh:121
     copyBack(visited, rawMarked);
   }
 
@@ -299,7 +299,7 @@ public:
   void markExternal(SmallVector<T, N> &visited, StringRef externalDependency) {
     SmallVector<const void *, N> rawMarked;
     DependencyGraphImpl::markExternal(rawMarked, externalDependency);
-    // FIXME: How can we avoid this copy?
+    // FIXME: How can we avoid this copy? id:136 gh:143
     copyBack(visited, rawMarked);
   }
 

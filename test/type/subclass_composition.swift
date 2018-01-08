@@ -48,7 +48,7 @@ struct Unrelated {}
 // If a class conforms to a protocol concretely, the resulting protocol
 // composition type should be equivalent to the class type.
 //
-// FIXME: Not implemented yet.
+// FIXME: Not implemented yet. id:4166 gh:4178
 //
 
 func alreadyConforms<T>(_: Base<T>) {} // expected-note {{'alreadyConforms' previously declared here}}
@@ -292,7 +292,7 @@ func dependentMemberTypes<T : BaseIntAndP2>(
   _: T.DependentClass,
   _: T.FullyConcrete,
 
-  _: BaseIntAndP2.DependentInConcreteConformance, // FIXME expected-error {{}}
+  _: BaseIntAndP2.DependentInConcreteConformance, // FIXME expected-error {{}} id:3234 gh:3246
   _: BaseIntAndP2.DependentProtocol, // expected-error {{type alias 'DependentProtocol' can only be used with a concrete type or generic parameter base}}
   _: BaseIntAndP2.DependentClass,
   _: BaseIntAndP2.FullyConcrete) {}
@@ -401,7 +401,7 @@ func conformsTo<T1 : P2, T2 : Base<Int> & P2>(
   p2Archetype: T1,
   baseAndP2Archetype: T2) {
 
-  // FIXME: Uninformative diagnostics
+  // FIXME: Uninformative diagnostics id:3582 gh:3594
 
   // Errors
   conformsToAnyObject(p1)
@@ -449,10 +449,10 @@ func conformsTo<T1 : P2, T2 : Base<Int> & P2>(
 
 protocol ProtoConstraintsSelfToClass where Self : Base<Int> {}
 
-protocol ProtoRefinesClass : Base<Int> {} // FIXME expected-error {{}}
+protocol ProtoRefinesClass : Base<Int> {} // FIXME expected-error {{}} id:3930 gh:3942
 protocol ProtoRefinesClassAndProtocolAlias : BaseIntAndP2 {}
 protocol ProtoRefinesClassAndProtocolDirect : Base<Int> & P2 {}
-protocol ProtoRefinesClassAndProtocolExpanded : Base<Int>, P2 {} // FIXME expected-error {{}}
+protocol ProtoRefinesClassAndProtocolExpanded : Base<Int>, P2 {} // FIXME expected-error {{}} id:3978 gh:3990
 
 class ClassConformsToClassProtocolBad1 : ProtoConstraintsSelfToClass {}
 // expected-error@-1 {{'ProtoConstraintsSelfToClass' requires that 'ClassConformsToClassProtocolBad1' inherit from 'Base<Int>'}}

@@ -4,7 +4,7 @@
 
 // REQUIRES: CPU=x86_64
 
-// FIXME: rdar://problem/19648117 Needs splitting objc parts out
+// FIXME: rdar://problem/19648117 Needs splitting objc parts out id:3386 gh:3398
 // XFAIL: linux
 
 import Foundation

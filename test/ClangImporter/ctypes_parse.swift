@@ -74,7 +74,7 @@ func testUnnamedStructs() {
   let _: UnnamedStructs.__Unnamed_struct_x = u_s.x
 }
 
-// FIXME: Import pointers to opaque types as unique types.
+// FIXME: Import pointers to opaque types as unique types. id:3690 gh:3702
 
 func testPointers() {
   _ = HWND(bitPattern: 0)

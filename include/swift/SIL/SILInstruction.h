@@ -1625,7 +1625,7 @@ class PartialApplyInst;
 
 // There's no good reason for the OverloadToken type to be internal
 // or protected, and it makes it very difficult to write our CRTP classes
-// if it is, so pull it out.  TODO: just fix LLVM.
+// if it is, so pull it out.  TODO: just fix LLVM. id:216 gh:223
 struct TerribleOverloadTokenHack :
     llvm::trailing_objects_internal::TrailingObjectsBase {
   template <class T>
@@ -1899,7 +1899,7 @@ public:
   /// first. The reason to add this method is to wrap that dichotomy to reduce
   /// errors.
   ///
-  /// FIXME: Could this be standardized? It has and will lead to bugs. IMHO.
+  /// FIXME: Could this be standardized? It has and will lead to bugs. IMHO. id:129 gh:136
   SILValue getSelfArgument() const {
     assert(hasSelfArgument() && "Must have a self argument");
     assert(getNumArguments() && "Should only be called when Callee has "
@@ -2742,7 +2742,7 @@ class GlobalAddrInst
 
   GlobalAddrInst(SILDebugLocation DebugLoc, SILGlobalVariable *Global);
 public:
-  // FIXME: This constructor should be private but is currently used
+  // FIXME: This constructor should be private but is currently used id:345 gh:352
   //        in the SILParser.
 
   /// Create a placeholder instruction with an unset global reference.
@@ -2753,7 +2753,7 @@ public:
 /// Gives the value of a global variable.
 ///
 /// The referenced global variable must be a statically initialized object.
-/// TODO: in future we might support global variables in general.
+/// TODO: in future we might support global variables in general. id:142 gh:149
 class GlobalValueInst
     : public InstructionBase<SILInstructionKind::GlobalValueInst,
                              GlobalAccessInst> {
@@ -3111,7 +3111,7 @@ enum class SILAccessEnforcement : uint8_t {
   /// The access is statically known to not conflict with other accesses.
   Static,
 
-  /// TODO: maybe add InitiallyStatic for when the access is statically
+  /// TODO: maybe add InitiallyStatic for when the access is statically id:253 gh:260
   /// known to not interfere with any accesses when it begins but where
   /// it's possible that other accesses might be started during this access.
 
@@ -5039,7 +5039,7 @@ public:
   /// If there is a single case that returns a literal "true" value (an
   /// "integer_literal $Builtin.Int1, 1" value), return it.
   ///
-  /// FIXME: This is used to interoperate with passes that reasoned about the
+  /// FIXME: This is used to interoperate with passes that reasoned about the id:218 gh:225
   /// old enum_is_tag insn. Ideally those passes would become general enough
   /// not to need this.
   NullablePtr<EnumElementDecl> getSingleTrueElement() const;
@@ -6883,7 +6883,7 @@ class SwitchEnumInstBase : public TermInst {
   // - `NumCases + HasDefault` SILSuccessor records, referencing the
   //   destinations for each case, ending with the default destination if
   //   present.
-  // FIXME: This should use llvm::TrailingObjects, but it has subclasses
+  // FIXME: This should use llvm::TrailingObjects, but it has subclasses id:132 gh:139
   // (which are empty, of course).
 
   EnumElementDecl **getCaseBuf() {

@@ -98,7 +98,7 @@ struct String {
 
 #if SWIFT_OBJC_INTEROP
   explicit String(NSString *s)
-    // FIXME: Use the usual NSString bridging entry point.
+    // FIXME: Use the usual NSString bridging entry point. id:3182 gh:3194
     : String([s UTF8String])
   {}
 #endif
@@ -302,7 +302,7 @@ static std::tuple<const Metadata *, const OpaqueValue *>
 unwrapExistential(const Metadata *T, const OpaqueValue *Value) {
   // If the value is an existential container, look through it to reflect the
   // contained value.
-  // TODO: Should look through existential metatypes too, but it doesn't
+  // TODO: Should look through existential metatypes too, but it doesn't id:2592 gh:2604
   // really matter yet since we don't have any special mirror behavior for
   // concrete metatypes yet.
   while (T->getKind() == MetadataKind::Existential) {
@@ -730,7 +730,7 @@ void swift_ClassMirror_subscript(String *outString,
     // If the class has a superclass, the superclass instance is treated as the
     // first child.
     if (i == 0) {
-      // FIXME: Put superclass name here
+      // FIXME: Put superclass name here id:2708 gh:2720
       new (outString) String("super");
       new (outMirror) Mirror(
         getMirrorForSuperclass(Clas->SuperClass, owner, value, type));
@@ -747,7 +747,7 @@ void swift_ClassMirror_subscript(String *outString,
   assert(!fieldType.isIndirect()
          && "class indirect properties not implemented");
 
-  // FIXME: If the class has ObjC heritage, get the field offset using the ObjC
+  // FIXME: If the class has ObjC heritage, get the field offset using the ObjC id:3341 gh:3353
   // metadata, because we don't update the field offsets in the face of
   // resilient base classes.
   uintptr_t fieldOffset;
@@ -1059,7 +1059,7 @@ getImplementationForType(const Metadata *T, const OpaqueValue *Value) {
     LLVM_FALLTHROUGH;
   }
 
-  /// TODO: Implement specialized mirror witnesses for all kinds.
+  /// TODO: Implement specialized mirror witnesses for all kinds. id:2929 gh:2941
   case MetadataKind::Function:
   case MetadataKind::Existential:
     return std::make_tuple(
@@ -1081,7 +1081,7 @@ getImplementationForType(const Metadata *T, const OpaqueValue *Value) {
 MagicMirror::MagicMirror(OpaqueValue *value, const Metadata *T,
                          bool take) {
   // Put value types into a box so we can take stable interior pointers.
-  // TODO: Specialize behavior here. If the value is a swift-refcounted class
+  // TODO: Specialize behavior here. If the value is a swift-refcounted class id:3185 gh:3197
   // we don't need to put it in a box to point into it.
   BoxPair box = swift_allocBox(T);
 
@@ -1155,7 +1155,7 @@ MirrorReturn swift::swift_reflectAny(OpaqueValue *value, const Metadata *T) {
 /// \param outputBufferSize is the size of the output buffer. If the demangled
 /// name does not fit into the outputBuffer, the output will be truncated and
 /// the size will be updated, indicating how large the buffer should be.
-/// \param flags can be used to select the demangling style. TODO: We should
+/// \param flags can be used to select the demangling style. TODO: We should id:2594 gh:2606
 //// define what these will be.
 /// \returns the demangled name. Returns nullptr if the input String is not a
 /// Swift mangled name.

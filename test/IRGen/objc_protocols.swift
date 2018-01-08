@@ -175,7 +175,7 @@ func objc_swift_protocol_composition
   // CHECK: [[RUNCE:%.*]] = load i8*, i8** @"\01L_selector(runce)", align 8
   // CHECK: bitcast %objc_object* %0 to [[OBJTYPE:.*]]*
   // CHECK: call void bitcast (void ()* @objc_msgSend to void ([[OBJTYPE]]*, i8*)*)([[OBJTYPE]]* {{%.*}}, i8* [[RUNCE]])
-  /* TODO: Abstraction difference from ObjC protocol composition to 
+  /* TODO: Abstraction difference from ObjC protocol composition to  id:3394 gh:3406
    * opaque protocol
   x.anse()
    */
@@ -184,7 +184,7 @@ func objc_swift_protocol_composition
   // CHECK: call void bitcast (void ()* @objc_msgSend to void ([[OBJTYPE]]*, i8*)*)([[OBJTYPE]]* {{%.*}}, i8* [[FUNGE]])
 }
 
-// TODO: Mixed class-bounded/fully general protocol compositions.
+// TODO: Mixed class-bounded/fully general protocol compositions. id:3820 gh:3832
 
 @objc protocol SettableProperty {
   var reqt: NSRuncing { get set }

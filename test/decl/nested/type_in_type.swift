@@ -213,7 +213,7 @@ struct GS<T> {
     }
   }
 
-  // FIXME: We're losing some sugar here by performing the substitution.
+  // FIXME: We're losing some sugar here by performing the substitution. id:3021 gh:3033
   func ng() -> NestedGeneric { } // expected-error{{reference to generic type 'GS<T>.NestedGeneric' requires arguments in <...>}}
 }
 
@@ -400,7 +400,7 @@ func test() {
   let _: Claws.Fangs<Puppy> = Claws.Fangs()
   // expected-error@-1 {{cannot convert value of type 'Claws<_>.Fangs<_>' to specified type 'Claws.Fangs<Puppy>'}}
   let _: Claws.Fangs<NotADog> = something()
-  // expected-error@-1 {{generic parameter 'T' could not be inferred}} // FIXME: bad diagnostic
+  // expected-error@-1 {{generic parameter 'T' could not be inferred}} // FIXME: bad diagnostic id:3430 gh:3442
   _ = Claws.Fangs<NotADog>()
   // expected-error@-1 {{type 'NotADog' does not conform to protocol 'ExpressibleByDogLiteral'}}
 }

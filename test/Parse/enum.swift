@@ -1,6 +1,6 @@
 // RUN: %target-typecheck-verify-swift
 
-// FIXME: this test only passes on platforms which have Float80.
+// FIXME: this test only passes on platforms which have Float80. id:3471 gh:3483
 // <rdar://problem/19508460> Floating point enum raw values are not portable
 
 // REQUIRES: CPU=i386 || CPU=x86_64
@@ -148,7 +148,7 @@ enum ExpressibleByRawTypeNotLiteral : Array<Int> { // expected-error {{raw type 
   case Ladd, Elliott, Sixteenth, Harrison
 }
 
-enum RawTypeCircularityA : RawTypeCircularityB, ExpressibleByIntegerLiteral { // expected-error {{circular enum raw types 'RawTypeCircularityA' -> 'RawTypeCircularityB' -> 'RawTypeCircularityA'}} FIXME: expected-error{{RawRepresentable}}
+enum RawTypeCircularityA : RawTypeCircularityB, ExpressibleByIntegerLiteral { // expected-error {{circular enum raw types 'RawTypeCircularityA' -> 'RawTypeCircularityB' -> 'RawTypeCircularityA'}} FIXME: expected-error{{RawRepresentable}} id:3887 gh:3900
   case Morrison, Belmont, Madison, Hawthorne
 
   init(integerLiteral value: Int) {
@@ -243,21 +243,21 @@ enum RawTypeWithRepeatValues4 : Double {
 }
 
 enum RawTypeWithRepeatValues5 : Double {
-  // FIXME: should reject.
+  // FIXME: should reject. id:2792 gh:2804
   // 2^65-1
   case Vaughn = 36893488147419103231
   case Wilson = 36893488147419103231.0
 }
 
 enum RawTypeWithRepeatValues6 : Double {
-  // FIXME: should reject.
+  // FIXME: should reject. id:3063 gh:3075
   // 2^127-1
   case Vaughn = 170141183460469231731687303715884105727
   case Wilson = 170141183460469231731687303715884105727.0
 }
 
 enum RawTypeWithRepeatValues7 : Double {
-  // FIXME: should reject.
+  // FIXME: should reject. id:3581 gh:3593
   // 2^128-1
   case Vaughn = 340282366920938463463374607431768211455
   case Wilson = 340282366920938463463374607431768211455.0

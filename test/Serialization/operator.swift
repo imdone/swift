@@ -6,7 +6,7 @@
 
 // REQUIRES: swift_interpreter
 
-// FIXME: iOS doesn't work because this test needs the interpreter to handle 
+// FIXME: iOS doesn't work because this test needs the interpreter to handle  id:3689 gh:3701
 // func typeCheckOnly (which causes link errors if built as an executable).
 
 // CHECK-NOT: UnknownCode

@@ -5,7 +5,7 @@
 // RUN: ! %target-run %t/InvalidStrideableCmp 2>&1 | %FileCheck %s --check-prefix=CHECK-COMPARABLE
 // REQUIRES: executable_test
 
-// FIXME: rdar://35780657
+// FIXME: rdar://35780657 id:4096 gh:4108
 // UNSUPPORTED: swift_test_mode_optimize_size
 
 //

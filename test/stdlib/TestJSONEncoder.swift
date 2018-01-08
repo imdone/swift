@@ -13,7 +13,7 @@
 import Swift
 import Foundation
 
-// MARK: - Test Suite
+// MARK: - Test Suite id:3200 gh:3212
 
 #if FOUNDATION_XCTEST
 import XCTest
@@ -24,7 +24,7 @@ class TestJSONEncoderSuper { }
 #endif
 
 class TestJSONEncoder : TestJSONEncoderSuper {
-  // MARK: - Encoding Top-Level Empty Types
+  // MARK: - Encoding Top-Level Empty Types id:3552 gh:3564
   func testEncodingTopLevelEmptyStruct() {
     let empty = EmptyStruct()
     _testRoundTrip(of: empty, expectedJSON: _jsonEmptyDictionary)
@@ -35,7 +35,7 @@ class TestJSONEncoder : TestJSONEncoderSuper {
     _testRoundTrip(of: empty, expectedJSON: _jsonEmptyDictionary)
   }
 
-  // MARK: - Encoding Top-Level Single-Value Types
+  // MARK: - Encoding Top-Level Single-Value Types id:3890 gh:3902
   func testEncodingTopLevelSingleValueEnum() {
     _testEncodeFailure(of: Switch.off)
     _testEncodeFailure(of: Switch.on)
@@ -54,7 +54,7 @@ class TestJSONEncoder : TestJSONEncoderSuper {
     _testRoundTrip(of: TopLevelWrapper(Counter()))
   }
 
-  // MARK: - Encoding Top-Level Structured Types
+  // MARK: - Encoding Top-Level Structured Types id:3946 gh:3957
   func testEncodingTopLevelStructuredStruct() {
     // Address is a struct type with multiple fields.
     let address = Address.testValue
@@ -103,7 +103,7 @@ class TestJSONEncoder : TestJSONEncoderSuper {
     _testRoundTrip(of: TopLevelWrapper(EnhancedBool.fileNotFound), expectedJSON: "{\"value\":null}".data(using: .utf8)!)
   }
 
-  // MARK: - Output Formatting Tests
+  // MARK: - Output Formatting Tests id:4156 gh:4168
   func testEncodingOutputFormattingDefault() {
     let expectedJSON = "{\"name\":\"Johnny Appleseed\",\"email\":\"appleseed@apple.com\"}".data(using: .utf8)!
     let person = Person.testValue
@@ -132,7 +132,7 @@ class TestJSONEncoder : TestJSONEncoderSuper {
     }
   }
 
-  // MARK: - Date Strategy Tests
+  // MARK: - Date Strategy Tests id:3202 gh:3214
   func testEncodingDate() {
     // We can't encode a top-level Date, so it'll be wrapped in a dictionary.
     _testRoundTrip(of: TopLevelWrapper(Date()))
@@ -266,7 +266,7 @@ class TestJSONEncoder : TestJSONEncoderSuper {
                    dateDecodingStrategy: .custom(decode))
   }
 
-  // MARK: - Data Strategy Tests
+  // MARK: - Data Strategy Tests id:3554 gh:3566
   func testEncodingData() {
     let data = Data(bytes: [0xDE, 0xAD, 0xBE, 0xEF])
 
@@ -336,7 +336,7 @@ class TestJSONEncoder : TestJSONEncoderSuper {
                    dataDecodingStrategy: .custom(decode))
   }
 
-  // MARK: - Non-Conforming Floating Point Strategy Tests
+  // MARK: - Non-Conforming Floating Point Strategy Tests id:3894 gh:3906
   func testEncodingNonConformingFloats() {
     _testEncodeFailure(of: TopLevelWrapper(Float.infinity))
     _testEncodeFailure(of: TopLevelWrapper(-Float.infinity))
@@ -409,7 +409,7 @@ class TestJSONEncoder : TestJSONEncoderSuper {
                    nonConformingFloatDecodingStrategy: decodingStrategy)
   }
 
-  // MARK: - Key Strategy Tests
+  // MARK: - Key Strategy Tests id:3950 gh:3962
   private struct EncodeMe : Encodable {
     var keyName: String
     func encode(to coder: Encoder) throws {
@@ -714,7 +714,7 @@ class TestJSONEncoder : TestJSONEncoderSuper {
     expectEqual("{\"oneTwo\":\"test2\"}", decodingResultString)
   }
 
-  // MARK: - Encoder Features
+  // MARK: - Encoder Features id:4157 gh:4169
   func testNestedContainerCodingPaths() {
     let encoder = JSONEncoder()
     do {
@@ -755,7 +755,7 @@ class TestJSONEncoder : TestJSONEncoderSuper {
     _testRoundTrip(of: OptionalTopLevelWrapper(url), expectedJSON: expectedJSON)
   }
     
-  // MARK: - Type coercion
+  // MARK: - Type coercion id:3204 gh:3216
   func testTypeCoercion() {
     _testRoundTripTypeCoercionFailure(of: [false, true], as: [Int].self)
     _testRoundTripTypeCoercionFailure(of: [false, true], as: [Int8].self)
@@ -799,7 +799,7 @@ class TestJSONEncoder : TestJSONEncoderSuper {
       expectEqual(type(of: decoded), Employee.self, "Expected decoded value to be of type Employee; got \(type(of: decoded)) instead.")
   }
 
-  // MARK: - Helper Functions
+  // MARK: - Helper Functions id:3556 gh:3568
   private var _jsonEmptyDictionary: Data {
     return "{}".data(using: .utf8)!
   }
@@ -861,7 +861,7 @@ class TestJSONEncoder : TestJSONEncoderSuper {
     }
 }
 
-// MARK: - Helper Global Functions
+// MARK: - Helper Global Functions id:3898 gh:3910
 func expectEqualPaths(_ lhs: [CodingKey], _ rhs: [CodingKey], _ prefix: String) {
   if lhs.count != rhs.count {
     expectUnreachable("\(prefix) [CodingKey].count mismatch: \(lhs.count) != \(rhs.count)")
@@ -890,10 +890,10 @@ func expectEqualPaths(_ lhs: [CodingKey], _ rhs: [CodingKey], _ prefix: String) 
   }
 }
 
-// MARK: - Test Types
-/* FIXME: Import from %S/Inputs/Coding/SharedTypes.swift somehow. */
+// MARK: - Test Types id:3953 gh:3965
+/* FIXME: Import from %S/Inputs/Coding/SharedTypes.swift somehow. id:4158 gh:4170*/
 
-// MARK: - Empty Types
+// MARK: - Empty Types id:3207 gh:3219
 fileprivate struct EmptyStruct : Codable, Equatable {
   static func ==(_ lhs: EmptyStruct, _ rhs: EmptyStruct) -> Bool {
     return true
@@ -906,7 +906,7 @@ fileprivate class EmptyClass : Codable, Equatable {
   }
 }
 
-// MARK: - Single-Value Types
+// MARK: - Single-Value Types id:3558 gh:3570
 /// A simple on-off switch type that encodes as a single Bool value.
 fileprivate enum Switch : Codable {
   case off
@@ -973,7 +973,7 @@ fileprivate final class Counter : Codable, Equatable {
   }
 }
 
-// MARK: - Structured Types
+// MARK: - Structured Types id:3901 gh:3913
 /// A simple address type that encodes as a dictionary of values.
 fileprivate struct Address : Codable, Equatable {
   let street: String
@@ -1025,7 +1025,7 @@ fileprivate class Person : Codable, Equatable {
     case website
   }
 
-  // FIXME: Remove when subclasses (Employee) are able to override synthesized conformance.
+  // FIXME: Remove when subclasses (Employee) are able to override synthesized conformance. id:3955 gh:3967
   required init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     name = try container.decode(String.self, forKey: .name)
@@ -1284,7 +1284,7 @@ struct NestedContainersTestType : Encodable {
   }
 }
 
-// MARK: - Helper Types
+// MARK: - Helper Types id:4159 gh:4171
 
 /// A key type which can take on any string or integer value.
 /// This needs to mirror _JSONKey.
@@ -1391,7 +1391,7 @@ fileprivate struct DoubleNaNPlaceholder : Codable, Equatable {
   }
 }
 
-// MARK: - Run Tests
+// MARK: - Run Tests id:3210 gh:3222
 
 #if !FOUNDATION_XCTEST
 var JSONEncoderTests = TestSuite("TestJSONEncoder")

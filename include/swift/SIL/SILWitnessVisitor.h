@@ -57,7 +57,7 @@ public:
 
       for (Decl *member : protocol->getMembers()) {
         if (auto associatedType = dyn_cast<AssociatedTypeDecl>(member)) {
-          // TODO: only add associated types when they're new?
+          // TODO: only add associated types when they're new? id:258 gh:265
           asDerived().addAssociatedType(AssociatedType(associatedType));
         }
       }

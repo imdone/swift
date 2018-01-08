@@ -182,7 +182,7 @@ extension CGContext {
 // CGDataProvider
 //===----------------------------------------------------------------------===//
 
-// TODO: replace init(UnsafePointer<UInt8>) with init(String)
+// TODO: replace init(UnsafePointer<UInt8>) with init(String) id:186 gh:193
 // blocked on rdar://problem/27444567
 
 //===----------------------------------------------------------------------===//
@@ -515,7 +515,7 @@ extension CGImage {
 // CGLayer
 //===----------------------------------------------------------------------===//
 
-// TODO: remove auxiliaryInfo parameter from CGLayer.init,
+// TODO: remove auxiliaryInfo parameter from CGLayer.init, id:434 gh:441
 // or at least give it a default value (empty/nil)
 // blocked on rdar://problem/27444567
 extension CGContext {
@@ -532,7 +532,7 @@ extension CGContext {
 // CGPath & CGMutablePath
 //===----------------------------------------------------------------------===//
 
-// TODO: Make this a nested type (CGPath.FillRule)
+// TODO: Make this a nested type (CGPath.FillRule) id:187 gh:194
 public enum CGPathFillRule: Int {
   /// Nonzero winding number fill rule.
   /// 

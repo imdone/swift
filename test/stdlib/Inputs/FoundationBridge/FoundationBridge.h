@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger, ObjectBehaviorAction) {
     ObjectBehaviorActionMutableCopy
 };
 
-// NOTE: this class is NOT meant to be used in threaded contexts.
+// NOTE: this class is NOT meant to be used in threaded contexts. id:3669 gh:3681
 @interface ObjectBehaviorVerifier : NSObject
 @property (readonly) BOOL wasRetained;
 @property (readonly) BOOL wasCopied;

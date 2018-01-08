@@ -48,7 +48,7 @@ public func A_renameAllTheThings(
 // CHECK-3-LABEL: func A_renameAllTheThings(
 // CHECK-3-SAME: a: Swift3RenamedClass?
 
-// FIXME: An issue not specific to the importer where generic typealiases are
+// FIXME: An issue not specific to the importer where generic typealiases are id:4035 gh:4047
 // not preserved when provided arguments.
 // CHECK-3-SAME: b: RenamedGenericClass<AnyObject>?
 
@@ -64,7 +64,7 @@ public func A_renameGeneric<T: Swift3RenamedProtocol>(obj: T) {}
 // CHECK-4-LABEL: func A_renameGeneric<T>(
 // CHECK-4-SAME: where T : RenamedProtocol
 
-// FIXME: Preserve sugar in requirements.
+// FIXME: Preserve sugar in requirements. id:2983 gh:2995
 // CHECK-3-LABEL: func A_renameGeneric<T>(
 // CHECK-3-SAME: where T : RenamedProtocol
 
@@ -77,7 +77,7 @@ public struct B_RequiresConformance<T: Swift3RenamedProtocol> {}
 
 // CHECK-4-LABEL: struct B_RequiresConformance<T> where T : RenamedProtocol
 
-// FIXME: Preserve sugar in requirements.
+// FIXME: Preserve sugar in requirements. id:3379 gh:3391
 // CHECK-3-LABEL: struct B_RequiresConformance<T> where T : RenamedProtocol
 
 public protocol C_RelyOnConformance {

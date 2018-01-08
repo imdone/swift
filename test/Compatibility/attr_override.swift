@@ -205,7 +205,7 @@ class D1 : C {
 class D2 : C {
   init(string: String) { super.init(string: string) } // expected-error{{overriding declaration requires an 'override' keyword}}{{3-3=override }}
 
-  // FIXME: Would like to remove the space after 'override' as well.
+  // FIXME: Would like to remove the space after 'override' as well. id:3717 gh:3729
   required override init(double: Double) { } // expected-warning{{'override' is implied when overriding a required initializer}} {{12-21=}}
   override convenience init() { self.init(string: "hello") } // expected-error{{initializer does not override a designated initializer from its superclass}}
 }

@@ -61,7 +61,7 @@ func test_property(_ x: Error) -> String {
 // CHECK: bb0([[ARG:%.*]] : @owned $Error):
 // CHECK:         [[BORROWED_ARG:%.*]] = begin_borrow [[ARG]]
 // CHECK:         [[VALUE:%.*]] = open_existential_box [[BORROWED_ARG]] : $Error to $*[[VALUE_TYPE:@opened\(.*\) Error]]
-// FIXME: Extraneous copy here
+// FIXME: Extraneous copy here id:3932 gh:3944
 // CHECK-NEXT:    [[COPY:%[0-9]+]] = alloc_stack $[[VALUE_TYPE]]
 // CHECK-NEXT:    copy_addr [[VALUE]] to [initialization] [[COPY]] : $*[[VALUE_TYPE]]
 // CHECK:         [[METHOD:%.*]] = witness_method $[[VALUE_TYPE]], #Error._domain!getter.1
@@ -159,7 +159,7 @@ func test_open_existential_semantics(_ guaranteed: Error,
   // CHECK-NOT: copy_addr
   // CHECK: apply [[METHOD]]<{{.*}}>([[VALUE]])
   // -- end the guarantee
-  // -- TODO: could in theory do this sooner, after the value's been copied
+  // -- TODO: could in theory do this sooner, after the value's been copied id:2878 gh:2891
   //    out.
   // CHECK: destroy_value [[IMMEDIATE]]
 

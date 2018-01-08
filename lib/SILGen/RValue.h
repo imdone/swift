@@ -63,7 +63,7 @@ class TypeLowering;
 ///   but some parts of ArgEmission pass in addresses for loadable values. So
 ///   RValue loads them in the constructor.
 ///
-///  FIXME(opaque_values): Update invariant #2 once address only types are no
+///  FIXME (opaque_values): Update invariant #2 once address only types are no id:166 gh:173
 ///  longer emitted by SILGen.
 ///
 /// *NOTE* In SILGen we don't try to explode structs, because doing so would

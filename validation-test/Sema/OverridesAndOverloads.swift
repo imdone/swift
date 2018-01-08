@@ -76,13 +76,13 @@ Overrides.test("covariant argument override, optional derived class to non-optio
 }
 
 Overrides.test("covariant argument override, protocol to protocol") {
-  // FIXME: https://bugs.swift.org/browse/SR-731
+  // FIXME: https://bugs.swift.org/browse/SR-731 id:3973 gh:3985
   // Covariant overrides don't work with protocols
   class Base {
     func foo(_: P1x) { which = "Base.foo(P1x)" }
   }
   class Derived : Base {
-    /*FIXME: override */ func foo(_: P1) { which = "Derived.foo(P1)" }
+    /*FIXME: override id:4023 gh:4036*/ func foo(_: P1) { which = "Derived.foo(P1)" }
   }
 
   Derived().foo(P1ImplS1())
@@ -93,16 +93,16 @@ Overrides.test("covariant argument override, protocol to protocol") {
 }
 
 Overrides.test("covariant argument override, struct to protocol") {
-  // FIXME: https://bugs.swift.org/browse/SR-731
+  // FIXME: https://bugs.swift.org/browse/SR-731 id:4181 gh:4193
   // Covariant overrides don't work with protocols
   class Base {
     func foo(_: P1ImplS1) { which = "Base.foo(P1ImplS1)" }
   }
   class Derived : Base {
-    /*FIXME: override */ func foo(_: P1) { which = "Derived.foo(P1)" }
+    /*FIXME: override id:3265 gh:3277*/ func foo(_: P1) { which = "Derived.foo(P1)" }
   }
 
-  // FIXME: https://bugs.swift.org/browse/SR-731
+  // FIXME: https://bugs.swift.org/browse/SR-731 id:3623 gh:3635
   expectFailure {
     Derived().foo(P1ImplS1())
     expectEqual("Derived.foo(P1)", which)
@@ -164,19 +164,19 @@ Overrides.test("contravariant return type override, optional base class to non-o
 }
 
 Overrides.test("contravariant return type override, protocol to protocol") {
-  // FIXME: https://bugs.swift.org/browse/SR-733
+  // FIXME: https://bugs.swift.org/browse/SR-733 id:3976 gh:3988
   // Contravariant overrides on return type don't work with protocols
   class Base {
     func foo() -> P1 { which = "Base.foo() -> P1"; return P1ImplS1() }
   }
   class Derived : Base {
-    /*FIXME: override */ func foo() -> P1x {
+    /*FIXME: override id:4027 gh:4039*/ func foo() -> P1x {
       which = "Derived.foo() -> P1x"; return P1xImplS1()
     }
   }
 
   // https://bugs.swift.org/browse/SR-733
-  // FIXME: uncomment when the bug is fixed.
+  // FIXME: uncomment when the bug is fixed. id:4182 gh:4194
   // Derived().foo() as P1 // error: ambiguous use of 'foo()'
   // expectEqual("Derived.foo() -> P1x", which)
 
@@ -185,19 +185,19 @@ Overrides.test("contravariant return type override, protocol to protocol") {
 }
 
 Overrides.test("contravariant return type override, protocol to struct") {
-  // FIXME: https://bugs.swift.org/browse/SR-733
+  // FIXME: https://bugs.swift.org/browse/SR-733 id:3270 gh:3282
   // Contravariant overrides on return type don't work with protocols
   class Base {
     func foo() -> P1 { which = "Base.foo() -> P1"; return P1ImplS1() }
   }
   class Derived : Base {
-    /*FIXME: override */ func foo() -> P1ImplS1 {
+    /*FIXME: override id:3625 gh:3637*/ func foo() -> P1ImplS1 {
       which = "Derived.foo() -> P1ImplS1"; return P1ImplS1()
     }
   }
 
   // https://bugs.swift.org/browse/SR-733
-  // FIXME: uncomment when the bug is fixed.
+  // FIXME: uncomment when the bug is fixed. id:3979 gh:3991
   // Derived().foo() as P1 // error: ambiguous use of 'foo()'
   // expectEqual("Derived.foo() -> P1ImplS1", which)
 

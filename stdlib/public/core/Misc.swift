@@ -12,9 +12,9 @@
 // Extern C functions
 //===----------------------------------------------------------------------===//
 
-// FIXME: Once we have an FFI interface, make these have proper function bodies
+// FIXME: Once we have an FFI interface, make these have proper function bodies id:1563 gh:1570
 
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1256 gh:1263
 @_transparent
 public // @testable
 func _countLeadingZeros(_ value: Int64) -> Int64 {
@@ -22,7 +22,7 @@ func _countLeadingZeros(_ value: Int64) -> Int64 {
 }
 
 /// Returns if `x` is a power of 2.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:2218 gh:2228
 @_transparent
 public // @testable
 func _isPowerOf2(_ x: UInt) -> Bool {
@@ -35,7 +35,7 @@ func _isPowerOf2(_ x: UInt) -> Bool {
 }
 
 /// Returns if `x` is a power of 2.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1215 gh:1222
 @_transparent
 public // @testable
 func _isPowerOf2(_ x: Int) -> Bool {
@@ -48,7 +48,7 @@ func _isPowerOf2(_ x: Int) -> Bool {
 }
 
 #if _runtime(_ObjC)
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1562 gh:1569
 @_transparent
 public func _autorelease(_ x: AnyObject) {
   Builtin.retain(x)
@@ -61,8 +61,8 @@ public func _autorelease(_ x: AnyObject) {
 ///
 /// This function is primarily useful to call various runtime functions
 /// written in C++.
-@_inlineable // FIXME(sil-serialize-all)
-@_versioned // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1566 gh:1573
+@_versioned // FIXME (sil-serialize-all) id:1259 gh:1266
 internal func _withUninitializedString<R>(
   _ body: (UnsafeMutablePointer<String>) -> R
 ) -> (R, String) {
@@ -73,18 +73,18 @@ internal func _withUninitializedString<R>(
   return (bodyResult, stringResult)
 }
 
-// FIXME(ABI)#51 : this API should allow controlling different kinds of
+// FIXME (ABI)#51 : this API should allow controlling different kinds of id:2221 gh:2233
 // qualification separately: qualification with module names and qualification
 // with type names that we are nested in.
 // But we can place it behind #if _runtime(_Native) and remove it from ABI on
 // Apple platforms, deferring discussions mentioned above.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1218 gh:1225
 @_silgen_name("swift_getTypeName")
 public func _getTypeName(_ type: Any.Type, qualified: Bool)
   -> (UnsafePointer<UInt8>, Int)
 
 /// Returns the demangled qualified name of a metatype.
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:1565 gh:1572
 public // @testable
 func _typeName(_ type: Any.Type, qualified: Bool = true) -> String {
   let (stringPtr, count) = _getTypeName(type, qualified: qualified)
@@ -129,8 +129,8 @@ func _typeByMangledName(_ name: String) -> Any.Type? {
 ///      floorLog2(2) == floorLog2(3) == 1
 ///      floorLog2(9) == floorLog2(15) == 3
 ///
-/// TODO: Implement version working on Int instead of Int64.
-@_inlineable // FIXME(sil-serialize-all)
+/// TODO: Implement version working on Int instead of Int64. id:1569 gh:1575
+@_inlineable // FIXME (sil-serialize-all) id:1262 gh:1269
 @_transparent
 public // @testable
 func _floorLog2(_ x: Int64) -> Int {

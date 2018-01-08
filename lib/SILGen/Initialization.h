@@ -75,7 +75,7 @@ class ConvertingInitialization;
 /// an Initialization subclass only need implement this when the subclass
 /// might be used for an irrefutable pattern lacking an initializer.
 ///
-/// FIXME: provide a reset() operation to support multiple
+/// FIXME: provide a reset() operation to support multiple id:390 gh:397
 /// initialization paths.
 class Initialization {
 public:

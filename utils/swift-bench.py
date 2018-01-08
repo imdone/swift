@@ -246,7 +246,7 @@ extern "C" int64_t opaqueGetInt64(int64_t x) { return x; }
 """
         with open('opaque.cpp', 'w') as f:
             f.write(file_body)
-        # TODO: Handle subprocess.CalledProcessError for this call:
+        # TODO: Handle subprocess.CalledProcessError for this call: id:4011 gh:4023
         self.run_command(
             ['clang++', 'opaque.cpp', '-o', 'opaque.o', '-c', '-O2'])
 
@@ -355,7 +355,7 @@ extern "C" int64_t opaqueGetInt64(int64_t x) { return x; }
                                       self.tests[name].name])
                 (test_name, iters_computed, exec_time) = \
                     self.parse_benchmark_output(r)
-                # TODO: Verify test_name and iters_computed
+                # TODO: Verify test_name and iters_computed id:4177 gh:4189
                 samples.append(int(exec_time) / iter_scale)
                 self.tests[name].output = r
             except subprocess.CalledProcessError as e:

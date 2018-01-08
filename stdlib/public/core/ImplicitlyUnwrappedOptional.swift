@@ -34,7 +34,7 @@ public enum ImplicitlyUnwrappedOptional<Wrapped> : ExpressibleByNilLiteral {
   case some(Wrapped)
 
   /// Creates an instance that stores the given value.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:820 gh:827
   public init(_ some: Wrapped) { self = .some(some) }
 
   /// Creates an instance initialized with `nil`.
@@ -43,7 +43,7 @@ public enum ImplicitlyUnwrappedOptional<Wrapped> : ExpressibleByNilLiteral {
   /// you initialize an `Optional` instance with a `nil` literal. For example:
   ///
   ///     let i: Index! = nil
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1763 gh:1770
   @_transparent
   public init(nilLiteral: ()) {
     self = .none

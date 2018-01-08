@@ -15,7 +15,7 @@ import DispatchObjects
 
 // CHECK: Get current queue
 print("Get current queue")
-// TODO: Properly implement generalized dynamic casts from Any to
+// TODO: Properly implement generalized dynamic casts from Any to id:3415 gh:3427
 // runtime-visible classes. `as AnyObject` should be unnecessary here.
 let obj = dispatch_get_current_queue() as AnyObject
 

@@ -26,7 +26,7 @@ f0(a) // expected-error{{cannot convert value of type 'A' to expected argument t
 f0(ef)
 f0(fi)
 
-// FIXME: Test subtyping of class metatypes.
+// FIXME: Test subtyping of class metatypes. id:2984 gh:2996
 
 _ = ternary(true, ef, c)
 

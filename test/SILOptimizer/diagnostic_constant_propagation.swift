@@ -1,4 +1,4 @@
-// FIXME(integer): with new integer protocols implemented the overflows are no
+// FIXME (integer): with new integer protocols implemented the overflows are no id:3763 gh:3775
 // longer caught: <rdar://problem/29937936>
 // XFAIL: *
 
@@ -6,7 +6,7 @@
 
 // REQUIRES: PTRSIZE=64
 
-// FIXME: <rdar://problem/19508336> Extend test/SILOptimizer/diagnostic_constant_propagation.swift to 32-bit platforms
+// FIXME: <rdar://problem/19508336> Extend test/SILOptimizer/diagnostic_constant_propagation.swift to 32-bit platforms id:4003 gh:4015
 
 // These are tests for diagnostics produced by constant propagation pass.
 
@@ -33,7 +33,7 @@ func testArithmeticOverflow() {
   xu8_3 += 40 // expected-error {{arithmetic operation '240 + 40' (on type 'UInt8') results in an overflow}}
   var _ : UInt8 = 240 + 5 + 15 // expected-error {{arithmetic operation '245 + 15' (on type 'UInt8') results in an overflow}}
   
-  // TODO: We should remove the second init for Int8 - see rdar://problem/19224768
+  // TODO: We should remove the second init for Int8 - see rdar://problem/19224768 id:2954 gh:2966
   _ = Int8(126) + Int8(1+1) // expected-error {{arithmetic operation '126 + 2' (on type 'Int8') results in an overflow}}
 //  DISABLED FOR NOW
 //  asserts in the shift operators confuse constant propagation
@@ -224,7 +224,7 @@ func testFallBackDiagnosticMessages() {
   _ = intConversionWrapperForLiteral() // expected-error {{integer literal '255' overflows when stored into signed 'Builtin.Int8'}}
 }
 
-// XXX FIXME -- blocked by: 15735295 Need [su]{div,rem}_with_overflow IR
+// XXX FIXME -- blocked by: 15735295 Need [su]{div,rem}_with_overflow IR id:3340 gh:3352
 /*
 func testDivision() {
   var i  : Int = 3 / 3

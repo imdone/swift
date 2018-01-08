@@ -16,7 +16,7 @@
 
 /// `JSONEncoder` facilitates the encoding of `Encodable` values into JSON.
 open class JSONEncoder {
-    // MARK: Options
+    // MARK: Options id:254 gh:261
 
     /// The formatting of the output JSON data.
     public struct OutputFormatting : OptionSet {
@@ -195,12 +195,12 @@ open class JSONEncoder {
                         userInfo: userInfo)
     }
 
-    // MARK: - Constructing a JSON Encoder
+    // MARK: - Constructing a JSON Encoder id:344 gh:351
 
     /// Initializes `self` with default strategies.
     public init() {}
 
-    // MARK: - Encoding Values
+    // MARK: - Encoding Values id:360 gh:367
 
     /// Encodes the given top-level value and returns its JSON representation.
     ///
@@ -232,10 +232,10 @@ open class JSONEncoder {
     }
 }
 
-// MARK: - _JSONEncoder
+// MARK: - _JSONEncoder id:221 gh:228
 
 fileprivate class _JSONEncoder : Encoder {
-    // MARK: Properties
+    // MARK: Properties id:490 gh:497
 
     /// The encoder's storage.
     fileprivate var storage: _JSONEncodingStorage
@@ -251,7 +251,7 @@ fileprivate class _JSONEncoder : Encoder {
         return self.options.userInfo
     }
 
-    // MARK: - Initialization
+    // MARK: - Initialization id:256 gh:263
 
     /// Initializes `self` with the given top-level encoder options.
     fileprivate init(options: JSONEncoder._Options, codingPath: [CodingKey] = []) {
@@ -273,7 +273,7 @@ fileprivate class _JSONEncoder : Encoder {
         return self.storage.count == self.codingPath.count
     }
 
-    // MARK: - Encoder Methods
+    // MARK: - Encoder Methods id:350 gh:357
     public func container<Key>(keyedBy: Key.Type) -> KeyedEncodingContainer<Key> {
         // If an existing keyed container was already requested, return that one.
         let topContainer: NSMutableDictionary
@@ -314,21 +314,21 @@ fileprivate class _JSONEncoder : Encoder {
     }
 }
 
-// MARK: - Encoding Storage and Containers
+// MARK: - Encoding Storage and Containers id:363 gh:370
 
 fileprivate struct _JSONEncodingStorage {
-    // MARK: Properties
+    // MARK: Properties id:224 gh:231
 
     /// The container stack.
     /// Elements may be any one of the JSON types (NSNull, NSNumber, NSString, NSArray, NSDictionary).
     private(set) fileprivate var containers: [NSObject] = []
 
-    // MARK: - Initialization
+    // MARK: - Initialization id:492 gh:499
 
     /// Initializes `self` with no containers.
     fileprivate init() {}
 
-    // MARK: - Modifying the Stack
+    // MARK: - Modifying the Stack id:260 gh:267
 
     fileprivate var count: Int {
         return self.containers.count
@@ -356,12 +356,12 @@ fileprivate struct _JSONEncodingStorage {
     }
 }
 
-// MARK: - Encoding Containers
+// MARK: - Encoding Containers id:356 gh:363
 
 fileprivate struct _JSONKeyedEncodingContainer<K : CodingKey> : KeyedEncodingContainerProtocol {
     typealias Key = K
 
-    // MARK: Properties
+    // MARK: Properties id:365 gh:372
 
     /// A reference to the encoder we're writing to.
     private let encoder: _JSONEncoder
@@ -372,7 +372,7 @@ fileprivate struct _JSONKeyedEncodingContainer<K : CodingKey> : KeyedEncodingCon
     /// The path of coding keys taken to get to this point in encoding.
     private(set) public var codingPath: [CodingKey]
 
-    // MARK: - Initialization
+    // MARK: - Initialization id:228 gh:235
 
     /// Initializes `self` with the given references.
     fileprivate init(referencing encoder: _JSONEncoder, codingPath: [CodingKey], wrapping container: NSMutableDictionary) {
@@ -381,7 +381,7 @@ fileprivate struct _JSONKeyedEncodingContainer<K : CodingKey> : KeyedEncodingCon
         self.container = container
     }
 
-    // MARK: - Coding Path Operations
+    // MARK: - Coding Path Operations id:493 gh:500
 
     private func _converted(_ key: CodingKey) -> CodingKey {
         switch encoder.options.keyEncodingStrategy {
@@ -395,7 +395,7 @@ fileprivate struct _JSONKeyedEncodingContainer<K : CodingKey> : KeyedEncodingCon
         }
     }
     
-    // MARK: - KeyedEncodingContainerProtocol Methods
+    // MARK: - KeyedEncodingContainerProtocol Methods id:263 gh:270
 
     public mutating func encodeNil(forKey key: Key) throws {
         self.container[_converted(key).stringValue] = NSNull()
@@ -487,7 +487,7 @@ fileprivate struct _JSONKeyedEncodingContainer<K : CodingKey> : KeyedEncodingCon
 }
 
 fileprivate struct _JSONUnkeyedEncodingContainer : UnkeyedEncodingContainer {
-    // MARK: Properties
+    // MARK: Properties id:361 gh:368
 
     /// A reference to the encoder we're writing to.
     private let encoder: _JSONEncoder
@@ -503,7 +503,7 @@ fileprivate struct _JSONUnkeyedEncodingContainer : UnkeyedEncodingContainer {
         return self.container.count
     }
 
-    // MARK: - Initialization
+    // MARK: - Initialization id:367 gh:374
 
     /// Initializes `self` with the given references.
     fileprivate init(referencing encoder: _JSONEncoder, codingPath: [CodingKey], wrapping container: NSMutableArray) {
@@ -512,7 +512,7 @@ fileprivate struct _JSONUnkeyedEncodingContainer : UnkeyedEncodingContainer {
         self.container = container
     }
 
-    // MARK: - UnkeyedEncodingContainer Methods
+    // MARK: - UnkeyedEncodingContainer Methods id:232 gh:239
 
     public mutating func encodeNil()             throws { self.container.add(NSNull()) }
     public mutating func encode(_ value: Bool)   throws { self.container.add(self.encoder.box(value)) }
@@ -574,7 +574,7 @@ fileprivate struct _JSONUnkeyedEncodingContainer : UnkeyedEncodingContainer {
 }
 
 extension _JSONEncoder : SingleValueEncodingContainer {
-    // MARK: - SingleValueEncodingContainer Methods
+    // MARK: - SingleValueEncodingContainer Methods id:498 gh:505
 
     fileprivate func assertCanEncodeNewValue() {
         precondition(self.canEncodeNewValue, "Attempt to encode value through single value container when previously value already encoded.")
@@ -661,7 +661,7 @@ extension _JSONEncoder : SingleValueEncodingContainer {
     }
 }
 
-// MARK: - Concrete Value Representations
+// MARK: - Concrete Value Representations id:266 gh:273
 
 extension _JSONEncoder {
     /// Returns the given value boxed in a container appropriate for pushing onto the container stack.
@@ -812,12 +812,12 @@ extension _JSONEncoder {
     }
 }
 
-// MARK: - _JSONReferencingEncoder
+// MARK: - _JSONReferencingEncoder id:366 gh:373
 
 /// _JSONReferencingEncoder is a special subclass of _JSONEncoder which has its own storage, but references the contents of a different encoder.
 /// It's used in superEncoder(), which returns a new encoder for encoding a superclass -- the lifetime of the encoder should not escape the scope it's created in, but it doesn't necessarily know when it's done being used (to write to the original container).
 fileprivate class _JSONReferencingEncoder : _JSONEncoder {
-    // MARK: Reference types.
+    // MARK: Reference types. id:370 gh:377
 
     /// The type of container we're referencing.
     private enum Reference {
@@ -828,7 +828,7 @@ fileprivate class _JSONReferencingEncoder : _JSONEncoder {
         case dictionary(NSMutableDictionary, String)
     }
 
-    // MARK: - Properties
+    // MARK: - Properties id:235 gh:242
 
     /// The encoder we're referencing.
     fileprivate let encoder: _JSONEncoder
@@ -836,7 +836,7 @@ fileprivate class _JSONReferencingEncoder : _JSONEncoder {
     /// The container reference itself.
     private let reference: Reference
 
-    // MARK: - Initialization
+    // MARK: - Initialization id:502 gh:509
 
     /// Initializes `self` by referencing the given array container in the given encoder.
     fileprivate init(referencing encoder: _JSONEncoder, at index: Int, wrapping array: NSMutableArray) {
@@ -857,7 +857,7 @@ fileprivate class _JSONReferencingEncoder : _JSONEncoder {
         self.codingPath.append(key)
     }
 
-    // MARK: - Coding Path Operations
+    // MARK: - Coding Path Operations id:268 gh:275
 
     fileprivate override var canEncodeNewValue: Bool {
         // With a regular encoder, the storage and coding path grow together.
@@ -866,7 +866,7 @@ fileprivate class _JSONReferencingEncoder : _JSONEncoder {
         return self.storage.count == self.codingPath.count - self.encoder.codingPath.count - 1
     }
 
-    // MARK: - Deinitialization
+    // MARK: - Deinitialization id:372 gh:379
 
     // Finalizes `self` by writing the contents of our storage to the referenced encoder's storage.
     deinit {
@@ -893,7 +893,7 @@ fileprivate class _JSONReferencingEncoder : _JSONEncoder {
 
 /// `JSONDecoder` facilitates the decoding of JSON into semantic `Decodable` types.
 open class JSONDecoder {
-    // MARK: Options
+    // MARK: Options id:375 gh:382
 
     /// The strategy to use for decoding `Date` values.
     public enum DateDecodingStrategy {
@@ -1040,12 +1040,12 @@ open class JSONDecoder {
                         userInfo: userInfo)
     }
 
-    // MARK: - Constructing a JSON Decoder
+    // MARK: - Constructing a JSON Decoder id:238 gh:245
 
     /// Initializes `self` with default strategies.
     public init() {}
 
-    // MARK: - Decoding Values
+    // MARK: - Decoding Values id:505 gh:512
 
     /// Decodes a top-level value of the given type from the given JSON representation.
     ///
@@ -1071,10 +1071,10 @@ open class JSONDecoder {
     }
 }
 
-// MARK: - _JSONDecoder
+// MARK: - _JSONDecoder id:270 gh:277
 
 fileprivate class _JSONDecoder : Decoder {
-    // MARK: Properties
+    // MARK: Properties id:377 gh:384
 
     /// The decoder's storage.
     fileprivate var storage: _JSONDecodingStorage
@@ -1090,7 +1090,7 @@ fileprivate class _JSONDecoder : Decoder {
         return self.options.userInfo
     }
 
-    // MARK: - Initialization
+    // MARK: - Initialization id:379 gh:386
 
     /// Initializes `self` with the given top-level container and options.
     fileprivate init(referencing container: Any, at codingPath: [CodingKey] = [], options: JSONDecoder._Options) {
@@ -1100,7 +1100,7 @@ fileprivate class _JSONDecoder : Decoder {
         self.options = options
     }
 
-    // MARK: - Decoder Methods
+    // MARK: - Decoder Methods id:242 gh:249
 
     public func container<Key>(keyedBy type: Key.Type) throws -> KeyedDecodingContainer<Key> {
         guard !(self.storage.topContainer is NSNull) else {
@@ -1136,21 +1136,21 @@ fileprivate class _JSONDecoder : Decoder {
     }
 }
 
-// MARK: - Decoding Storage
+// MARK: - Decoding Storage id:507 gh:514
 
 fileprivate struct _JSONDecodingStorage {
-    // MARK: Properties
+    // MARK: Properties id:272 gh:279
 
     /// The container stack.
     /// Elements may be any one of the JSON types (NSNull, NSNumber, String, Array, [String : Any]).
     private(set) fileprivate var containers: [Any] = []
 
-    // MARK: - Initialization
+    // MARK: - Initialization id:381 gh:388
 
     /// Initializes `self` with no containers.
     fileprivate init() {}
 
-    // MARK: - Modifying the Stack
+    // MARK: - Modifying the Stack id:383 gh:390
 
     fileprivate var count: Int {
         return self.containers.count
@@ -1171,12 +1171,12 @@ fileprivate struct _JSONDecodingStorage {
     }
 }
 
-// MARK: Decoding Containers
+// MARK: Decoding Containers id:245 gh:252
 
 fileprivate struct _JSONKeyedDecodingContainer<K : CodingKey> : KeyedDecodingContainerProtocol {
     typealias Key = K
 
-    // MARK: Properties
+    // MARK: Properties id:509 gh:516
 
     /// A reference to the decoder we're reading from.
     private let decoder: _JSONDecoder
@@ -1187,7 +1187,7 @@ fileprivate struct _JSONKeyedDecodingContainer<K : CodingKey> : KeyedDecodingCon
     /// The path of coding keys taken to get to this point in decoding.
     private(set) public var codingPath: [CodingKey]
 
-    // MARK: - Initialization
+    // MARK: - Initialization id:274 gh:281
 
     /// Initializes `self` by referencing the given decoder and container.
     fileprivate init(referencing decoder: _JSONDecoder, wrapping container: [String : Any]) {
@@ -1209,7 +1209,7 @@ fileprivate struct _JSONKeyedDecodingContainer<K : CodingKey> : KeyedDecodingCon
         self.codingPath = decoder.codingPath
     }
 
-    // MARK: - KeyedDecodingContainerProtocol Methods
+    // MARK: - KeyedDecodingContainerProtocol Methods id:386 gh:393
 
     public var allKeys: [Key] {
         return self.container.keys.compactMap { Key(stringValue: $0) }
@@ -1522,7 +1522,7 @@ fileprivate struct _JSONKeyedDecodingContainer<K : CodingKey> : KeyedDecodingCon
 }
 
 fileprivate struct _JSONUnkeyedDecodingContainer : UnkeyedDecodingContainer {
-    // MARK: Properties
+    // MARK: Properties id:388 gh:395
 
     /// A reference to the decoder we're reading from.
     private let decoder: _JSONDecoder
@@ -1536,7 +1536,7 @@ fileprivate struct _JSONUnkeyedDecodingContainer : UnkeyedDecodingContainer {
     /// The index of the element we're about to decode.
     private(set) public var currentIndex: Int
 
-    // MARK: - Initialization
+    // MARK: - Initialization id:248 gh:255
 
     /// Initializes `self` by referencing the given decoder and container.
     fileprivate init(referencing decoder: _JSONDecoder, wrapping container: [Any]) {
@@ -1546,7 +1546,7 @@ fileprivate struct _JSONUnkeyedDecodingContainer : UnkeyedDecodingContainer {
         self.currentIndex = 0
     }
 
-    // MARK: - UnkeyedDecodingContainer Methods
+    // MARK: - UnkeyedDecodingContainer Methods id:527 gh:534
 
     public var count: Int? {
         return self.container.count
@@ -1877,7 +1877,7 @@ fileprivate struct _JSONUnkeyedDecodingContainer : UnkeyedDecodingContainer {
 }
 
 extension _JSONDecoder : SingleValueDecodingContainer {
-    // MARK: SingleValueDecodingContainer Methods
+    // MARK: SingleValueDecodingContainer Methods id:276 gh:283
 
     private func expectNonNull<T>(_ type: T.Type) throws {
         guard !self.decodeNil() else {
@@ -1965,7 +1965,7 @@ extension _JSONDecoder : SingleValueDecodingContainer {
     }
 }
 
-// MARK: - Concrete Value Representations
+// MARK: - Concrete Value Representations id:389 gh:396
 
 extension _JSONDecoder {
     /// Returns the given value unboxed from a container.
@@ -1973,14 +1973,14 @@ extension _JSONDecoder {
         guard !(value is NSNull) else { return nil }
 
         if let number = value as? NSNumber {
-            // TODO: Add a flag to coerce non-boolean numbers into Bools?
+            // TODO: Add a flag to coerce non-boolean numbers into Bools? id:391 gh:398
             if number === kCFBooleanTrue as NSNumber {
                 return true
             } else if number === kCFBooleanFalse as NSNumber {
                 return false
             }
 
-        /* FIXME: If swift-corelibs-foundation doesn't change to use NSNumber, this code path will need to be included and tested:
+        /* FIXME: If swift-corelibs-foundation doesn't change to use NSNumber, this code path will need to be included and tested: id:252 gh:259
         } else if let bool = value as? Bool {
             return bool
         */
@@ -2157,7 +2157,7 @@ extension _JSONDecoder {
 
             return Float(double)
 
-        /* FIXME: If swift-corelibs-foundation doesn't change to use NSNumber, this code path will need to be included and tested:
+        /* FIXME: If swift-corelibs-foundation doesn't change to use NSNumber, this code path will need to be included and tested: id:530 gh:537
         } else if let double = value as? Double {
             if abs(double) <= Double(Float.max) {
                 return Float(double)
@@ -2196,7 +2196,7 @@ extension _JSONDecoder {
             // * If it was Decimal, you will get back the nearest approximation
             return number.doubleValue
 
-        /* FIXME: If swift-corelibs-foundation doesn't change to use NSNumber, this code path will need to be included and tested:
+        /* FIXME: If swift-corelibs-foundation doesn't change to use NSNumber, this code path will need to be included and tested: id:278 gh:285
         } else if let double = value as? Double {
             return double
         } else if let int = value as? Int {
@@ -2385,7 +2385,7 @@ fileprivate struct _JSONKey : CodingKey {
 // Shared ISO8601 Date Formatter
 //===----------------------------------------------------------------------===//
 
-// NOTE: This value is implicitly lazy and _must_ be lazy. We're compiled against the latest SDK (w/ ISO8601DateFormatter), but linked against whichever Foundation the user has. ISO8601DateFormatter might not exist, so we better not hit this code path on an older OS.
+// NOTE: This value is implicitly lazy and _must_ be lazy. We're compiled against the latest SDK (w/ ISO8601DateFormatter), but linked against whichever Foundation the user has. ISO8601DateFormatter might not exist, so we better not hit this code path on an older OS. id:393 gh:400
 @available(OSX 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *)
 fileprivate var _iso8601Formatter: ISO8601DateFormatter = {
     let formatter = ISO8601DateFormatter()

@@ -4,7 +4,7 @@
 // RUN: %target-build-swift -parse-stdlib %s -module-name Reflection -I %S/Inputs/Mirror/ -Xlinker %t/Mirror.mm.o -o %t/a.out
 // RUN: %S/timeout.sh 360 %target-run %t/a.out %S/Inputs/shuffle.jpg | %FileCheck %s
 // REQUIRES: executable_test
-// FIXME: timeout wrapper is necessary because the ASan test runs for hours
+// FIXME: timeout wrapper is necessary because the ASan test runs for hours id:3191 gh:3203
 
 //
 // DO NOT add more tests to this file.  Add them to test/1_stdlib/Runtime.swift.
@@ -273,7 +273,7 @@ testQLO(HasDebugQLO.self)
 
 testQLO(HasNumberQLO.self)
 // CHECK-NEXT: HasNumberQLO overboard
-// TODO: tagged numbers are immortal, so we can't reliably check for
+// TODO: tagged numbers are immortal, so we can't reliably check for id:3543 gh:3555
 //   cleanup here
 
 testQLO(HasAttributedQLO.self)

@@ -119,7 +119,7 @@ func test() {
 // CHECK-NEXT: },
 
 // FooHelper == 4
-// FIXME: rdar://problem/20230030
+// FIXME: rdar://problem/20230030 id:2993 gh:3005
 // We're picking up the implicit import of FooHelper used to attach FooHelperExplicit to.
 // xCHECK-LABEL:  key.name: "FooHelperUnnamedEnumeratorA2",
 // xCHECK-NEXT:   key.sourcetext: "FooHelperUnnamedEnumeratorA2",

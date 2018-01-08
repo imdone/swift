@@ -1,6 +1,6 @@
 // RUN: not %target-swift-frontend -emit-ir -primary-file %s
 
-// FIXME: Should this type check?
+// FIXME: Should this type check? id:3995 gh:4007
 
 struct ArrayWrapper<Element>: Collection
     where Element: Comparable {

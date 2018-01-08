@@ -62,7 +62,7 @@ fooify(H<Int>()) // CHECK-NEXT: not fooable
 fooify(H<Float>()) // CHECK-NEXT: not fooable
 fooify(H<Int>()) // CHECK-NEXT: not fooable
 
-// TODO: generics w/ dependent witness tables
+// TODO: generics w/ dependent witness tables id:3854 gh:3866
 
 // Check casts from existentials.
 

@@ -446,7 +446,7 @@ class OmitKW3 : ProtocolA {
 }
 
 // OMIT_KEYWORD3:        Begin completions
-// FIXME: missing 'override'
+// FIXME: missing 'override' id:2846 gh:2858
 // OMIT_KEYWORD3-NOT:    Decl[InstanceVar]/Super:            var protoAVarRW: Int{{; name=.+$}}
 // OMIT_KEYWORD3-NOT:    Decl[Constructor]
 // OMIT_KEYWORD3-DAG:    Decl[InstanceMethod]/Super:         protoAFunc() {|}; name=protoAFunc(){{$}}

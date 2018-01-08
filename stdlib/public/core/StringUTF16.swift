@@ -10,7 +10,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-// FIXME(ABI)#71 : The UTF-16 string view should have a custom iterator type to
+// FIXME (ABI)#71 : The UTF-16 string view should have a custom iterator type to id:2462 gh:2474
 // allow performance optimizations of linear traversals.
 
 extension String {
@@ -98,7 +98,7 @@ extension String {
   ///         print(snowy[range])
   ///     }
   ///     // Prints "Let it snow!"
-  @_fixed_layout // FIXME(sil-serialize-all)
+  @_fixed_layout // FIXME (sil-serialize-all) id:2953 gh:2965
   public struct UTF16View
     : BidirectionalCollection,
     CustomStringConvertible,
@@ -108,7 +108,7 @@ extension String {
 
     /// The position of the first code unit if the `String` is
     /// nonempty; identical to `endIndex` otherwise.
-    @_inlineable // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:1997 gh:2004
     public var startIndex: Index {
       return Index(encodedOffset: _offset)
     }
@@ -117,15 +117,15 @@ extension String {
     /// the last valid subscript argument.
     ///
     /// In an empty UTF-16 view, `endIndex` is equal to `startIndex`.
-    @_inlineable // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:2152 gh:2159
     public var endIndex: Index {
       return Index(encodedOffset: _offset + _length)
     }
 
-    @_fixed_layout // FIXME(sil-serialize-all)
+    @_fixed_layout // FIXME (sil-serialize-all) id:2300 gh:2312
     public struct Indices {
-      @_inlineable // FIXME(sil-serialize-all)
-      @_versioned // FIXME(sil-serialize-all)
+      @_inlineable // FIXME (sil-serialize-all) id:2464 gh:2476
+      @_versioned // FIXME (sil-serialize-all) id:2956 gh:2968
       internal init(
         _elements: String.UTF16View, _startIndex: Index, _endIndex: Index
       ) {
@@ -133,47 +133,47 @@ extension String {
         self._startIndex = _startIndex
         self._endIndex = _endIndex
       }
-      @_versioned // FIXME(sil-serialize-all)
+      @_versioned // FIXME (sil-serialize-all) id:2001 gh:2008
       internal var _elements: String.UTF16View
-      @_versioned // FIXME(sil-serialize-all)
+      @_versioned // FIXME (sil-serialize-all) id:2155 gh:2161
       internal var _startIndex: Index
-      @_versioned // FIXME(sil-serialize-all)
+      @_versioned // FIXME (sil-serialize-all) id:2302 gh:2314
       internal var _endIndex: Index
     }
 
-    @_inlineable // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:2466 gh:2478
     public var indices: Indices {
       return Indices(
         _elements: self, startIndex: startIndex, endIndex: endIndex)
     }
 
-    // TODO: swift-3-indexing-model - add docs
-    @_inlineable // FIXME(sil-serialize-all)
+    // TODO: swift-3-indexing-model - add docs id:2960 gh:2972
+    @_inlineable // FIXME (sil-serialize-all) id:2004 gh:2011
     public func index(after i: Index) -> Index {
-      // FIXME: swift-3-indexing-model: range check i?
+      // FIXME: swift-3-indexing-model: range check i? id:2158 gh:2169
       return Index(encodedOffset: _unsafePlus(i.encodedOffset, 1))
     }
 
-    // TODO: swift-3-indexing-model - add docs
-    @_inlineable // FIXME(sil-serialize-all)
+    // TODO: swift-3-indexing-model - add docs id:2305 gh:2317
+    @_inlineable // FIXME (sil-serialize-all) id:2468 gh:2480
     public func index(before i: Index) -> Index {
-      // FIXME: swift-3-indexing-model: range check i?
+      // FIXME: swift-3-indexing-model: range check i? id:2963 gh:2975
       return Index(encodedOffset: _unsafeMinus(i.encodedOffset, 1))
     }
 
-    // TODO: swift-3-indexing-model - add docs
-    @_inlineable // FIXME(sil-serialize-all)
+    // TODO: swift-3-indexing-model - add docs id:2086 gh:2093
+    @_inlineable // FIXME (sil-serialize-all) id:2160 gh:2172
     public func index(_ i: Index, offsetBy n: Int) -> Index {
-      // FIXME: swift-3-indexing-model: range check i?
+      // FIXME: swift-3-indexing-model: range check i? id:2309 gh:2320
       return Index(encodedOffset: i.encodedOffset.advanced(by: n))
     }
 
-    // TODO: swift-3-indexing-model - add docs
-    @_inlineable // FIXME(sil-serialize-all)
+    // TODO: swift-3-indexing-model - add docs id:2470 gh:2482
+    @_inlineable // FIXME (sil-serialize-all) id:2966 gh:2978
     public func index(
       _ i: Index, offsetBy n: Int, limitedBy limit: Index
     ) -> Index? {
-      // FIXME: swift-3-indexing-model: range check i?
+      // FIXME: swift-3-indexing-model: range check i? id:2089 gh:2096
       let d = i.encodedOffset.distance(to: limit.encodedOffset)
       if (d >= 0) ? (d < n) : (d > n) {
         return nil
@@ -181,15 +181,15 @@ extension String {
       return Index(encodedOffset: i.encodedOffset.advanced(by: n))
     }
 
-    // TODO: swift-3-indexing-model - add docs
-    @_inlineable // FIXME(sil-serialize-all)
+    // TODO: swift-3-indexing-model - add docs id:2163 gh:2175
+    @_inlineable // FIXME (sil-serialize-all) id:2312 gh:2324
     public func distance(from start: Index, to end: Index) -> Int {
-      // FIXME: swift-3-indexing-model: range check start and end?
+      // FIXME: swift-3-indexing-model: range check start and end? id:2472 gh:2484
       return start.encodedOffset.distance(to: end.encodedOffset)
     }
 
-    @_inlineable // FIXME(sil-serialize-all)
-    @_versioned // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:2968 gh:2980
+    @_versioned // FIXME (sil-serialize-all) id:2093 gh:2100
     internal func _internalIndex(at i: Int) -> Int {
       return _core.startIndex + i
     }
@@ -206,7 +206,7 @@ extension String {
     ///
     /// - Parameter position: A valid index of the view. `position` must be
     ///   less than the view's end index.
-    @_inlineable // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:2165 gh:2177
     public subscript(i: Index) -> UTF16.CodeUnit {
       _precondition(i >= startIndex && i < endIndex,
           "out-of-range access on a UTF16View")
@@ -256,42 +256,42 @@ extension String {
     }
 #endif
 
-    @_inlineable // FIXME(sil-serialize-all)
-    @_versioned // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:2314 gh:2326
+    @_versioned // FIXME (sil-serialize-all) id:2474 gh:2486
     internal init(_ _core: _StringCore) {
       self.init(_core, offset: 0, length: _core.count)
     }
 
-    @_inlineable // FIXME(sil-serialize-all)
-    @_versioned // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:2971 gh:2983
+    @_versioned // FIXME (sil-serialize-all) id:2097 gh:2104
     internal init(_ _core: _StringCore, offset: Int, length: Int) {
       self._offset = offset
       self._length = length
       self._core = _core
     }
 
-    @_inlineable // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:2168 gh:2180
     public var description: String {
       let start = _internalIndex(at: _offset)
       let end = _internalIndex(at: _offset + _length)
       return String(_core[start..<end])
     }
 
-    @_inlineable // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:2317 gh:2329
     public var debugDescription: String {
       return "StringUTF16(\(self.description.debugDescription))"
     }
 
-    @_versioned // FIXME(sil-serialize-all)
+    @_versioned // FIXME (sil-serialize-all) id:2476 gh:2488
     internal var _offset: Int
-    @_versioned // FIXME(sil-serialize-all)
+    @_versioned // FIXME (sil-serialize-all) id:2974 gh:2986
     internal var _length: Int
-    @_versioned // FIXME(sil-serialize-all)
+    @_versioned // FIXME (sil-serialize-all) id:2102 gh:2109
     internal let _core: _StringCore
   }
 
   /// A UTF-16 encoding of `self`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2172 gh:2184
   public var utf16: UTF16View {
     get {
       return UTF16View(_core)
@@ -319,7 +319,7 @@ extension String {
   /// slice of the `picnicGuest.utf16` view.
   ///
   /// - Parameter utf16: A UTF-16 code sequence.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2319 gh:2331
   @available(swift, deprecated: 3.2, obsoleted: 4.0)
   public init?(_ utf16: UTF16View) {
     // Attempt to recover the whole string, the better to implement the actual
@@ -344,7 +344,7 @@ extension String {
   }
 
   /// Creates a string corresponding to the given sequence of UTF-16 code units.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2478 gh:2490
   @available(swift, introduced: 4.0)
   public init(_ utf16: UTF16View) {
     self = String(utf16._core)
@@ -355,11 +355,11 @@ extension String {
 }
 
 extension String.UTF16View : _SwiftStringView {
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2979 gh:2991
+  @_versioned // FIXME (sil-serialize-all) id:2105 gh:2112
   internal var _ephemeralContent : String { return _persistentContent }
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2175 gh:2187
+  @_versioned // FIXME (sil-serialize-all) id:2322 gh:2334
   internal var _persistentContent : String { return String(self._core) }
 }
 
@@ -390,7 +390,7 @@ extension String.UTF16View.Index {
   ///   - sourcePosition: A position in at least one of the views of the string
   ///     shared by `target`.
   ///   - target: The `UTF16View` in which to find the new position.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2480 gh:2492
   public init?(
     _ sourcePosition: String.Index, within target: String.UTF16View
   ) {
@@ -421,7 +421,7 @@ extension String.UTF16View.Index {
   ///   position in `unicodeScalars`, this method returns `nil`. For example,
   ///   an attempt to convert the position of a UTF-16 trailing surrogate
   ///   returns `nil`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3041 gh:3053
   public func samePosition(
     in unicodeScalars: String.UnicodeScalarView
   ) -> String.UnicodeScalarIndex? {
@@ -432,14 +432,14 @@ extension String.UTF16View.Index {
 // Reflection
 extension String.UTF16View : CustomReflectable {
   /// Returns a mirror that reflects the UTF-16 view of a string.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2107 gh:2114
   public var customMirror: Mirror {
     return Mirror(self, unlabeledChildren: self)
   }
 }
 
 extension String.UTF16View : CustomPlaygroundQuickLookable {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2178 gh:2190
   public var customPlaygroundQuickLook: PlaygroundQuickLook {
     return .text(description)
   }
@@ -450,8 +450,8 @@ extension String.UTF16View.Indices : BidirectionalCollection {
   public typealias Indices = String.UTF16View.Indices
   public typealias SubSequence = String.UTF16View.Indices
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2327 gh:2339
+  @_versioned // FIXME (sil-serialize-all) id:2482 gh:2494
   internal init(
     _elements: String.UTF16View,
     startIndex: Index,
@@ -462,92 +462,92 @@ extension String.UTF16View.Indices : BidirectionalCollection {
     self._endIndex = endIndex
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3046 gh:3059
   public var startIndex: Index {
     return _startIndex
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2110 gh:2117
   public var endIndex: Index {
     return _endIndex
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2181 gh:2193
   public var indices: Indices {
     return self
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2330 gh:2342
   public subscript(i: Index) -> Index {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:2484 gh:2495
     return i
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3051 gh:3063
   public subscript(bounds: Range<Index>) -> String.UTF16View.Indices {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:2113 gh:2121
     return String.UTF16View.Indices(
       _elements: _elements,
       startIndex: bounds.lowerBound,
       endIndex: bounds.upperBound)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2184 gh:2196
   public func index(after i: Index) -> Index {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:2332 gh:2344
     return _elements.index(after: i)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2486 gh:2498
   public func formIndex(after i: inout Index) {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:3055 gh:3067
     _elements.formIndex(after: &i)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2117 gh:2124
   public func index(before i: Index) -> Index {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:2186 gh:2198
     return _elements.index(before: i)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2335 gh:2347
   public func formIndex(before i: inout Index) {
-    // FIXME: swift-3-indexing-model: range check.
+    // FIXME: swift-3-indexing-model: range check. id:2488 gh:2500
     _elements.formIndex(before: &i)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3060 gh:3072
   public func index(_ i: Index, offsetBy n: Int) -> Index {
-    // FIXME: swift-3-indexing-model: range check i?
+    // FIXME: swift-3-indexing-model: range check i? id:2121 gh:2128
     return _elements.index(i, offsetBy: n)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2190 gh:2202
   public func index(
     _ i: Index, offsetBy n: Int, limitedBy limit: Index
   ) -> Index? {
-    // FIXME: swift-3-indexing-model: range check i?
+    // FIXME: swift-3-indexing-model: range check i? id:2339 gh:2351
     return _elements.index(i, offsetBy: n, limitedBy: limit)
   }
 
-  // TODO: swift-3-indexing-model - add docs
-  @_inlineable // FIXME(sil-serialize-all)
+  // TODO: swift-3-indexing-model - add docs id:2490 gh:2502
+  @_inlineable // FIXME (sil-serialize-all) id:3066 gh:3078
   public func distance(from start: Index, to end: Index) -> Int {
-    // FIXME: swift-3-indexing-model: range check start and end?
+    // FIXME: swift-3-indexing-model: range check start and end? id:2124 gh:2131
     return _elements.distance(from: start, to: end)
   }
 }
 
 // backward compatibility for index interchange.  
 extension String.UTF16View {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2724 gh:2736
   @available(
     swift, obsoleted: 4.0,
     message: "Any String view index conversion can fail in Swift 4; please unwrap the optional index")
   public func index(after i: Index?) -> Index {
     return index(after: i!)
   }
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2342 gh:2354
   @available(
     swift, obsoleted: 4.0,
     message: "Any String view index conversion can fail in Swift 4; please unwrap the optional index")
@@ -555,14 +555,14 @@ extension String.UTF16View {
     _ i: Index?, offsetBy n: Int) -> Index {
     return index(i!, offsetBy: n)
   }
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2492 gh:2504
   @available(
     swift, obsoleted: 4.0,
     message: "Any String view index conversion can fail in Swift 4; please unwrap the optional indices")
   public func distance(from i: Index?, to j: Index?) -> Int {
     return distance(from: i!, to: j!)
   }
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3070 gh:3082
   @available(
     swift, obsoleted: 4.0,
     message: "Any String view index conversion can fail in Swift 4; please unwrap the optional index")
@@ -582,13 +582,13 @@ extension String.UTF16View {
 extension String.UTF16View {
   public typealias SubSequence = Substring.UTF16View
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2127 gh:2135
   @available(swift, introduced: 4)
   public subscript(r: Range<Index>) -> String.UTF16View.SubSequence {
     return String.UTF16View.SubSequence(self, _bounds: r)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2727 gh:2739
   @available(swift, obsoleted: 4)
   public subscript(bounds: Range<Index>) -> String.UTF16View {
     return String.UTF16View(
@@ -597,7 +597,7 @@ extension String.UTF16View {
       length: bounds.upperBound.encodedOffset - bounds.lowerBound.encodedOffset)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2345 gh:2357
   @available(swift, obsoleted: 4)
   public subscript(bounds: ClosedRange<Index>) -> String.UTF16View {
     return self[bounds.relative(to: self)]

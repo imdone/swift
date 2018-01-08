@@ -12,7 +12,7 @@
 
 @_exported import Foundation // Clang module
 
-// FIXME: move inside NSIndexSet when the compiler supports this.
+// FIXME: move inside NSIndexSet when the compiler supports this. id:408 gh:415
 public struct NSIndexSetIterator : IteratorProtocol {
   public typealias Element = Int
 

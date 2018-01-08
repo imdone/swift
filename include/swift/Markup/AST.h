@@ -553,7 +553,7 @@ class Image final : public InlineContent,
 
   size_t NumChildren;
 
-  // FIXME: Hyperlink destinations can't be wrapped - use a Line
+  // FIXME: Hyperlink destinations can't be wrapped - use a Line id:327 gh:334
   StringRef Destination;
   Optional<StringRef> Title;
 

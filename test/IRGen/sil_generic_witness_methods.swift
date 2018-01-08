@@ -2,7 +2,7 @@
 
 // REQUIRES: CPU=x86_64
 
-// FIXME: These should be SIL tests, but we can't parse generic types in SIL
+// FIXME: These should be SIL tests, but we can't parse generic types in SIL id:2985 gh:2997
 // yet.
 
 protocol P {

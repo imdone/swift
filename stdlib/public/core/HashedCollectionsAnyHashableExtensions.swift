@@ -15,7 +15,7 @@
 //===----------------------------------------------------------------------===//
 
 extension Set where Element == AnyHashable {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:906 gh:913
   public mutating func insert<ConcreteElement : Hashable>(
     _ newMember: ConcreteElement
   ) -> (inserted: Bool, memberAfterInsert: ConcreteElement) {
@@ -26,7 +26,7 @@ extension Set where Element == AnyHashable {
       memberAfterInsert: memberAfterInsert.base as! ConcreteElement)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1033 gh:1040
   @discardableResult
   public mutating func update<ConcreteElement : Hashable>(
     with newMember: ConcreteElement
@@ -35,7 +35,7 @@ extension Set where Element == AnyHashable {
       .map { $0.base as! ConcreteElement }
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1158 gh:1165
   @discardableResult
   public mutating func remove<ConcreteElement : Hashable>(
     _ member: ConcreteElement

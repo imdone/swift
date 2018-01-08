@@ -19,7 +19,7 @@ let a2 = <#T##Int#> // expected-error{{editor placeholder in source file}}
 f(a2)
 <#T#> // expected-error{{editor placeholder in source file}}
 
-// FIXME: <rdar://problem/22432828> Lexer yields "editor placeholder in source file" error twice when placeholder is first token
+// FIXME: <rdar://problem/22432828> Lexer yields "editor placeholder in source file" error twice when placeholder is first token id:3781 gh:3793
 _ = <#T##Int#> // expected-error {{editor placeholder in source file}}
 
 f(<#T#> + 1) // expected-error{{editor placeholder in source file}}

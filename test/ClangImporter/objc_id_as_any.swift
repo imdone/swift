@@ -27,7 +27,7 @@ idLover.takesId(y)
 
 install_global_event_handler(idLover) // expected-error {{cannot convert value of type 'NSIdLover' to expected argument type 'event_handler?' (aka 'Optional<@convention(c) (Any) -> ()>')}}
 
-// FIXME: this should not type-check!
+// FIXME: this should not type-check! id:3704 gh:3716
 // Function conversions are not legal when converting to a thin function type.
 let handler: @convention(c) (Any) -> () = { object in () }
 install_global_event_handler(handler)

@@ -29,7 +29,7 @@ do {
       OpaqueValue(element.value, identity: element.identity)
     },
     makeCollectionOfEquatable: { (elements: [MinimalEquatableValue]) in
-      // FIXME: use LifetimeTracked.
+      // FIXME: use LifetimeTracked. id:4196 gh:4208
       return DefaultedMutableRangeReplaceableCollection(elements: elements)
     },
     wrapValueIntoEquatable: identityEq,
@@ -47,13 +47,13 @@ do {
       OpaqueValue(element.value, identity: element.identity)
     },
     makeCollectionOfEquatable: { (elements: [MinimalEquatableValue]) in
-      // FIXME: use LifetimeTracked.
+      // FIXME: use LifetimeTracked. id:3301 gh:3313
       return DefaultedMutableRangeReplaceableCollection(elements: elements)
     },
     wrapValueIntoEquatable: identityEq,
     extractValueFromEquatable: identityEq,
     makeCollectionOfComparable: { (elements: [MinimalComparableValue]) in
-      // FIXME: use LifetimeTracked.
+      // FIXME: use LifetimeTracked. id:3653 gh:3665
       return DefaultedMutableRangeReplaceableCollection(elements: elements)
     },
     wrapValueIntoComparable: identityComp,

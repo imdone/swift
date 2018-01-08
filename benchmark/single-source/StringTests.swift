@@ -19,7 +19,7 @@ public let StringTests = [
   BenchmarkInfo(name: "StringHasSuffixUnicode", runFunction: run_StringHasSuffixUnicode, tags: [.validation, .api, .String]),
 ]
 
-// FIXME(string)
+// FIXME (string) id:6 gh:7
 public func run_StringHasPrefixAscii(_ N: Int) {
 #if _runtime(_ObjC)
   let prefix = "prefix"
@@ -32,7 +32,7 @@ public func run_StringHasPrefixAscii(_ N: Int) {
 #endif
 }
 
-// FIXME(string)
+// FIXME (string) id:8 gh:9
 public func run_StringHasSuffixAscii(_ N: Int) {
 #if _runtime(_ObjC)
   let suffix = "Suffixed"
@@ -45,7 +45,7 @@ public func run_StringHasSuffixAscii(_ N: Int) {
 #endif
 }
 
-// FIXME(string)
+// FIXME (string) id:9 gh:10
 public func run_StringHasPrefixUnicode(_ N: Int) {
 #if _runtime(_ObjC)
   let prefix = "❄️prefix"
@@ -58,7 +58,7 @@ public func run_StringHasPrefixUnicode(_ N: Int) {
 #endif
 }
 
-// FIXME(string)
+// FIXME (string) id:40 gh:47
 public func run_StringHasSuffixUnicode(_ N: Int) {
 #if _runtime(_ObjC)
   let suffix = "❄️Suffixed"

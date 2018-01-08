@@ -56,7 +56,7 @@ func escapedDollarFunc() {
 }
 
 func escapedDollarAnd() {
-  // FIXME: Bad diagnostics.
+  // FIXME: Bad diagnostics. id:3578 gh:3590
   `$0` = 1 // expected-error {{expected expression}}
   `$$` = 2 // expected-error {{expected numeric value following '$'}}
   `$abc` = 3 // expected-error {{expected numeric value following '$'}}

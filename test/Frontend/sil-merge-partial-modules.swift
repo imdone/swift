@@ -41,7 +41,7 @@ public class CircleManager : ShapeManager {
   public override func manage() {}
 }
 
-// FIXME: Why is the definition order totally random?
+// FIXME: Why is the definition order totally random? id:3015 gh:3027
 
 // CHECK-LABEL: sil @$S4test17versionedFunctionyyF : $@convention(thin) () -> ()
 

@@ -27,7 +27,7 @@ private func _utfRangeToCFRange(_ inRange : ClosedRange<Unicode.Scalar>) -> CFRa
         length: Int(inRange.upperBound.value - inRange.lowerBound.value + 1))
 }
 
-// MARK: -
+// MARK: - id:308 gh:315
 
 fileprivate final class _CharacterSetStorage : Hashable {
     fileprivate enum Backing {
@@ -47,7 +47,7 @@ fileprivate final class _CharacterSetStorage : Hashable {
         _backing = .mutable(r)
     }
     
-    // MARK: -
+    // MARK: - id:328 gh:335
     
     fileprivate var hashValue : Int {
         switch _backing {
@@ -71,7 +71,7 @@ fileprivate final class _CharacterSetStorage : Hashable {
         }
     }
     
-    // MARK: -
+    // MARK: - id:194 gh:201
     
     fileprivate func mutableCopy() -> _CharacterSetStorage {
         switch _backing {
@@ -83,7 +83,7 @@ fileprivate final class _CharacterSetStorage : Hashable {
     }
 
     
-    // MARK: Immutable Functions
+    // MARK: Immutable Functions id:449 gh:456
     
     fileprivate var bitmapRepresentation : Data {
         switch _backing {
@@ -103,7 +103,7 @@ fileprivate final class _CharacterSetStorage : Hashable {
         }
     }
     
-    // MARK: Mutable functions
+    // MARK: Mutable functions id:195 gh:202
     
     fileprivate func insert(charactersIn range: Range<Unicode.Scalar>) {
         switch _backing {
@@ -183,26 +183,26 @@ fileprivate final class _CharacterSetStorage : Hashable {
     }
     
     // -----
-    // MARK: -
-    // MARK: SetAlgebraType
+    // MARK: - id:310 gh:317
+    // MARK: SetAlgebraType id:331 gh:338
     
     @discardableResult
     fileprivate func insert(_ character: Unicode.Scalar) -> (inserted: Bool, memberAfterInsert: Unicode.Scalar) {
         insert(charactersIn: character...character)
-        // TODO: This should probably return the truth, but figuring it out requires two calls into NSCharacterSet
+        // TODO: This should probably return the truth, but figuring it out requires two calls into NSCharacterSet id:196 gh:203
         return (true, character)
     }
     
     @discardableResult
     fileprivate func update(with character: Unicode.Scalar) -> Unicode.Scalar? {
         insert(character)
-        // TODO: This should probably return the truth, but figuring it out requires two calls into NSCharacterSet
+        // TODO: This should probably return the truth, but figuring it out requires two calls into NSCharacterSet id:453 gh:460
         return character
     }
     
     @discardableResult
     fileprivate func remove(_ character: Unicode.Scalar) -> Unicode.Scalar? {
-        // TODO: Add method to CFCharacterSet to do this in one call
+        // TODO: Add method to CFCharacterSet to do this in one call id:197 gh:204
         let result : Unicode.Scalar? = contains(character) ? character : nil
         remove(charactersIn: character...character)
         return result
@@ -217,7 +217,7 @@ fileprivate final class _CharacterSetStorage : Hashable {
         }
     }
     
-    // MARK: -
+    // MARK: - id:312 gh:319
     // Why do these return CharacterSet instead of CharacterSetStorage?
     // We want to keep the knowledge of if the returned value happened to contain a mutable or immutable CFCharacterSet as close to the creation of that instance as possible
     
@@ -326,7 +326,7 @@ fileprivate final class _CharacterSetStorage : Hashable {
         }
     }
     
-    // MARK: -
+    // MARK: - id:335 gh:342
     
     fileprivate var description: String {
         switch _backing {
@@ -341,7 +341,7 @@ fileprivate final class _CharacterSetStorage : Hashable {
         return description
     }
     
-    // MARK: -
+    // MARK: - id:198 gh:205
     
     public func bridgedReference() -> NSCharacterSet {
         switch _backing {
@@ -353,7 +353,7 @@ fileprivate final class _CharacterSetStorage : Hashable {
     }
 }
 
-// MARK: -
+// MARK: - id:456 gh:463
 
 /**
  A `CharacterSet` represents a set of Unicode-compliant characters. Foundation types use `CharacterSet` to group characters together for searching operations, so that they can find any of a particular set of characters during a search.
@@ -365,7 +365,7 @@ public struct CharacterSet : ReferenceConvertible, Equatable, Hashable, SetAlgeb
     
     fileprivate var _storage : _CharacterSetStorage
     
-    // MARK: Init methods
+    // MARK: Init methods id:199 gh:206
     
     /// Initialize an empty instance.
     public init() {
@@ -431,7 +431,7 @@ public struct CharacterSet : ReferenceConvertible, Equatable, Hashable, SetAlgeb
         _storage = _CharacterSetStorage(immutableReference: CFCharacterSetGetPredefined(_builtIn))
     }
     
-    // MARK: Static functions
+    // MARK: Static functions id:314 gh:321
     
     /// Returns a character set containing the characters in Unicode General Category Cc and Cf.
     public static var controlCharacters : CharacterSet {
@@ -513,7 +513,7 @@ public struct CharacterSet : ReferenceConvertible, Equatable, Hashable, SetAlgeb
         return CharacterSet(_builtIn: .newline)
     }
     
-    // MARK: Static functions, from NSURL
+    // MARK: Static functions, from NSURL id:339 gh:346
 
     /// Returns the character set for characters allowed in a user URL subcomponent.
     public static var urlUserAllowed : CharacterSet {
@@ -569,7 +569,7 @@ public struct CharacterSet : ReferenceConvertible, Equatable, Hashable, SetAlgeb
         }
     }
     
-    // MARK: Immutable functions
+    // MARK: Immutable functions id:200 gh:207
     
     /// Returns a representation of the `CharacterSet` in binary format.
     @nonobjc
@@ -590,7 +590,7 @@ public struct CharacterSet : ReferenceConvertible, Equatable, Hashable, SetAlgeb
         return _storage.hasMember(inPlane: plane)
     }
     
-    // MARK: Mutable functions
+    // MARK: Mutable functions id:461 gh:468
     
     /// Insert a range of integer values in the `CharacterSet`.
     ///
@@ -653,8 +653,8 @@ public struct CharacterSet : ReferenceConvertible, Equatable, Hashable, SetAlgeb
     }
     
     // -----
-    // MARK: -
-    // MARK: SetAlgebraType
+    // MARK: - id:202 gh:209
+    // MARK: SetAlgebraType id:316 gh:323
     
     /// Insert a `Unicode.Scalar` representation of a character into the `CharacterSet`.
     ///
@@ -749,7 +749,7 @@ public struct CharacterSet : ReferenceConvertible, Equatable, Hashable, SetAlgeb
         return _storage.isSuperset(of: other._storage)
     }
 
-    // MARK: -
+    // MARK: - id:341 gh:348
     
     public var hashValue: Int {
         return _storage.hashValue
@@ -762,7 +762,7 @@ public struct CharacterSet : ReferenceConvertible, Equatable, Hashable, SetAlgeb
 }
 
 
-// MARK: Objective-C Bridging
+// MARK: Objective-C Bridging id:201 gh:208
 extension CharacterSet : _ObjectiveCBridgeable {
     public static func _getObjectiveCType() -> Any.Type {
         return NSCharacterSet.self

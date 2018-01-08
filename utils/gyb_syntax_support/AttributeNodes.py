@@ -11,7 +11,7 @@ ATTRIBUTE_NODES = [
          children=[
              Child('AtSignToken', kind='AtSignToken'),
              Child('AttributeName', kind='Token'),
-             # FIXME: more structure
+             # FIXME: more structure id:3611 gh:3623
              Child('BalancedTokens', kind='TokenList'),
          ]),
 

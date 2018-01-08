@@ -8,7 +8,7 @@
 // RUN: %target-swift-ide-test(mock-sdk: %clang-importer-sdk) -code-completion -source-filename %s -code-completion-token=TOP_LEVEL_CATCH1 | %FileCheck %s -check-prefix=CATCH1
 // RUN: %target-swift-ide-test(mock-sdk: %clang-importer-sdk) -code-completion -source-filename %s -code-completion-token=TOP_LEVEL_THROW1 | %FileCheck %s -check-prefix=THROW1
 
-// FIXME: <rdar://problem/21001526> No dot code completion results in switch case or catch stmt at top-level
+// FIXME: <rdar://problem/21001526> No dot code completion results in switch case or catch stmt at top-level id:3445 gh:3457
 // RUNdisabled: %target-swift-ide-test(mock-sdk: %clang-importer-sdk) -code-completion -source-filename %s -code-completion-token=TOP_LEVEL_CATCH2 | %FileCheck %s -check-prefix=CATCH2
 // RUNdisabled: %target-swift-ide-test(mock-sdk: %clang-importer-sdk) -code-completion -source-filename %s -code-completion-token=TOP_LEVEL_THROW2 | %FileCheck %s -check-prefix=THROW2
 
@@ -171,7 +171,7 @@ func test009() {
     #^INSIDE_CATCH4^#
   }
 
-// FIXME: we're getting parentheses around the type when it's unnamed...
+// FIXME: we're getting parentheses around the type when it's unnamed... id:3061 gh:3073
 // EXPLICIT_ERROR_PAYLOAD_I: Decl[LocalVar]/Local: i[#(Int32)#]; name=i
 }
 func test010() {

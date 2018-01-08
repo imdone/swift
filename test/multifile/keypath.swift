@@ -9,6 +9,6 @@ func f<T>(_: T) {
 
   _ = \P.b
 
-  // FIXME: crashes
+  // FIXME: crashes id:3888 gh:3898
   // _ = \P[0]
 }

@@ -28,7 +28,7 @@ class C3 {
 
 // INHERIT-DAG: Decl[Class]/CurrModule:             C1[#C1#]{{; name=.+$}}
 
-// FIXME: Exclude struct type. rdar://24110708
+// FIXME: Exclude struct type. rdar://24110708 id:2674 gh:2686
 // INHERIT-DAG: Decl[Struct]/CurrModule:            S1[#S1#]{{; name=.+$}}
 // INHERIT-DAG: Decl[Protocol]/CurrModule:          P1[#P1#]{{; name=.+$}}
 // INHERIT-NOT: ValueInt1

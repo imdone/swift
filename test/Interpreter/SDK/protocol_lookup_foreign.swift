@@ -37,7 +37,7 @@ extension NSString: Fooable {
 
 fooify(NSRect()) // CHECK: NSRect
 fooify(NSPoint()) // CHECK-NEXT: not fooable
-// FIXME: CF types get their ObjC class dynamically looked up during dynamic
+// FIXME: CF types get their ObjC class dynamically looked up during dynamic id:3841 gh:3853
 // casting.
 fooify(CFSetCreate(kCFAllocatorDefault, nil, 0, nil)!) // TODO-NEXT: CFSet CHECK-NEXT: not fooable
 fooify(CFArrayCreate(kCFAllocatorDefault, nil, 0, nil)!) // CHECK-NEXT: not fooable

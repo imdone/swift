@@ -1,9 +1,9 @@
 // RUN: %empty-directory(%t)
 
-// FIXME: BEGIN -enable-source-import hackaround
+// FIXME: BEGIN -enable-source-import hackaround id:2964 gh:2976
 // RUN: %target-swift-frontend(mock-sdk: %clang-importer-sdk-nosource) -emit-module -o %t %clang-importer-sdk-path/swift-modules/CoreGraphics.swift
 // RUN: %target-swift-frontend(mock-sdk: %clang-importer-sdk-nosource -I %t) -emit-module -o %t %clang-importer-sdk-path/swift-modules/Foundation.swift
-// FIXME: END -enable-source-import hackaround
+// FIXME: END -enable-source-import hackaround id:3709 gh:3721
 
 // RUN: %target-swift-frontend(mock-sdk: %clang-importer-sdk-nosource -I %S/Inputs/custom-modules -I %t) -emit-module -o %t %S/Inputs/ImplementProtoRenaming.swift
 

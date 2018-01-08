@@ -40,7 +40,7 @@ class SILBasicBlock;
 /// SILBasicBlock since non-failure noreturn functions should not occur often
 /// implying in most cases this will be one element.
 ///
-/// TODO:
+/// TODO: id:139 gh:146
 bool findAllNonFailureExitBBs(SILFunction *F,
                               llvm::TinyPtrVector<SILBasicBlock *> &BBs);
 

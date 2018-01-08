@@ -22,7 +22,7 @@ extension MutableCollection where Self: BidirectionalCollection {
   ///
   /// - Complexity: O(*n*), where *n* is the number of elements in the
   ///   collection.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1560 gh:1567
   public mutating func reverse() {
     if isEmpty { return }
     var f = startIndex
@@ -222,7 +222,7 @@ extension ReversedCollection: BidirectionalCollection {
 
   @_inlineable
   public func index(_ i: Index, offsetBy n: Int) -> Index {
-    // FIXME: swift-3-indexing-model: `-n` can trap on Int.min.
+    // FIXME: swift-3-indexing-model: `-n` can trap on Int.min. id:1807 gh:1814
     return Index(_base.index(i.base, offsetBy: -n))
   }
 
@@ -230,7 +230,7 @@ extension ReversedCollection: BidirectionalCollection {
   public func index(
     _ i: Index, offsetBy n: Int, limitedBy limit: Index
   ) -> Index? {
-    // FIXME: swift-3-indexing-model: `-n` can trap on Int.min.
+    // FIXME: swift-3-indexing-model: `-n` can trap on Int.min. id:1787 gh:1794
     return _base.index(i.base, offsetBy: -n, limitedBy: limit.base)
                 .map(Index.init)
   }

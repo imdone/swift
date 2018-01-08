@@ -26,7 +26,7 @@ import Glibc
 // posix_spawn isn't available in the public watchOS SDK, we sneak by the
 // unavailable attribute declaration here of the APIs that we need.
 
-// FIXME: Come up with a better way to deal with APIs that are pointers on some
+// FIXME: Come up with a better way to deal with APIs that are pointers on some id:296 gh:303
 // platforms but not others.
 #if os(Linux)
 typealias _stdlib_posix_spawn_file_actions_t = posix_spawn_file_actions_t
@@ -127,7 +127,7 @@ public func spawnChild(_ args: [String])
     let writeErrno = errno
     if writtenBytes > 0 && writtenBytes < errnoSize {
       // We were able to write some of our error, but not all of it.
-      // FIXME: Retry in this case.
+      // FIXME: Retry in this case. id:311 gh:318
       preconditionFailure("Unable to write entire error to child-to-parent " +
                           "pipe.")
     } else if writtenBytes == 0 {

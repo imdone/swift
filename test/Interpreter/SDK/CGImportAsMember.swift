@@ -18,7 +18,7 @@ class Colors {
 	}
 }
 
-// TODO: ColorSpaces with their empty-argument-label pattern, when issue is 
+// TODO: ColorSpaces with their empty-argument-label pattern, when issue is  id:3521 gh:3533
 // fixed.
 
 class Events {

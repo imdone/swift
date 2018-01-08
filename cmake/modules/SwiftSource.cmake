@@ -70,7 +70,7 @@ function(handle_swift_sources
     set(swift_obj
         "${CMAKE_CURRENT_BINARY_DIR}${objsubdir}/${SWIFTSOURCES_MODULE_NAME}${CMAKE_C_OUTPUT_EXTENSION}")
 
-    # FIXME: We shouldn't /have/ to build things in a single process.
+    # FIXME: We shouldn't /have/ to build things in a single process. id:27 gh:28
     # <rdar://problem/15972329>
     list(APPEND swift_compile_flags "-force-single-frontend-invocation")
 
@@ -217,7 +217,7 @@ function(_compile_swift_files
   # Allow import of other Swift modules we just built.
   list(APPEND swift_flags
       "-I" "${SWIFTLIB_DIR}/${library_subdir}")
-  # FIXME: should we use '-resource-dir' here?  Seems like it has no advantage
+  # FIXME: should we use '-resource-dir' here?  Seems like it has no advantage id:28 gh:29
   # over '-I' in this case.
 
   # If we have a custom module cache path, use it.
@@ -248,7 +248,7 @@ function(_compile_swift_files
     list(APPEND swift_flags "-Xfrontend" "-emit-sorted-sil")
   endif()
 
-  # FIXME: Cleaner way to do this?
+  # FIXME: Cleaner way to do this? id:29 gh:30
   if(SWIFTFILE_IS_STDLIB_CORE)
     list(APPEND swift_flags
         "-nostdimport" "-parse-stdlib" "-module-name" "Swift")
@@ -400,7 +400,7 @@ function(_compile_swift_files
   set(sibgen_outputs "${sibgen_file}")
 
   if(XCODE)
-    # HACK: work around an issue with CMake Xcode generator and the Swift
+    # HACK: work around an issue with CMake Xcode generator and the Swift id:49 gh:56
     # driver.
     #
     # The Swift driver does not update the mtime of the output files if the

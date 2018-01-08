@@ -11,7 +11,7 @@
 //===----------------------------------------------------------------------===//
 
 public enum _DebuggerSupport {
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:920 gh:927
   internal enum CollectionStatus {
     case NotACollection
     case CollectionOfElements
@@ -20,14 +20,14 @@ public enum _DebuggerSupport {
     case Pair
     case ElementOfPair
   
-    @_inlineable // FIXME(sil-serialize-all)
-    @_versioned // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:1025 gh:1032
+    @_versioned // FIXME (sil-serialize-all) id:711 gh:718
     internal var isCollection: Bool {
       return self != .NotACollection
     }
   
-    @_inlineable // FIXME(sil-serialize-all)
-    @_versioned // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:1596 gh:1603
+    @_versioned // FIXME (sil-serialize-all) id:724 gh:731
     internal func getChildStatus(child: Mirror) -> CollectionStatus {
       let disposition = child.displayStyle ?? .struct
     
@@ -43,8 +43,8 @@ public enum _DebuggerSupport {
     }
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:923 gh:929
+  @_versioned // FIXME (sil-serialize-all) id:1030 gh:1037
   internal static func isClass(_ value: Any) -> Bool {
     if let _ = type(of: value) as? AnyClass {
       return true
@@ -52,8 +52,8 @@ public enum _DebuggerSupport {
     return false
   }
   
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:715 gh:722
+  @_versioned // FIXME (sil-serialize-all) id:1600 gh:1607
   internal static func checkValue<T>(
     _ value: Any,
     ifClass: (AnyObject) -> T,
@@ -65,24 +65,24 @@ public enum _DebuggerSupport {
     return otherwise()
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:727 gh:734
+  @_versioned // FIXME (sil-serialize-all) id:926 gh:933
   internal static func asObjectIdentifier(_ value: Any) -> ObjectIdentifier? {
     return checkValue(value,
       ifClass: { return ObjectIdentifier($0) },
       otherwise: { return nil })
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1077 gh:1084
+  @_versioned // FIXME (sil-serialize-all) id:718 gh:725
   internal static func asNumericValue(_ value: Any) -> Int {
     return checkValue(value,
       ifClass: { return unsafeBitCast($0, to: Int.self) },
       otherwise: { return 0 })
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1603 gh:1610
+  @_versioned // FIXME (sil-serialize-all) id:730 gh:737
   internal static func asStringRepresentation(
     value: Any?,
     mirror: Mirror,
@@ -146,8 +146,8 @@ public enum _DebuggerSupport {
     return nil
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:929 gh:936
+  @_versioned // FIXME (sil-serialize-all) id:1080 gh:1087
   internal static func ivarCount(mirror: Mirror) -> Int {
     let count = Int(mirror.children.count)
     if let sc = mirror.superclassMirror {
@@ -158,8 +158,8 @@ public enum _DebuggerSupport {
   }
 
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:721 gh:728
+  @_versioned // FIXME (sil-serialize-all) id:1605 gh:1612
   internal static func shouldExpand(
     mirror: Mirror,
     collectionStatus: CollectionStatus,
@@ -175,8 +175,8 @@ public enum _DebuggerSupport {
     }
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:733 gh:740
+  @_versioned // FIXME (sil-serialize-all) id:931 gh:938
   internal static func printForDebuggerImpl<StreamType : TextOutputStream>(
     value: Any?,
     mirror: Mirror,

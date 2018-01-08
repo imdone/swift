@@ -349,7 +349,7 @@ extension IndexingIterator: IteratorProtocol, Sequence {
 /// the number of contained elements, accessing its `count` property is an
 /// O(*n*) operation.
 public protocol Collection: Sequence where SubSequence: Collection {
-  // FIXME(ABI): Associated type inference requires this.
+  // FIXME (ABI): Associated type inference requires this. id:980 gh:987
   associatedtype Element
 
   /// A type that represents a position in the collection.
@@ -389,7 +389,7 @@ public protocol Collection: Sequence where SubSequence: Collection {
   /// type.
   associatedtype Iterator = IndexingIterator<Self>
 
-  // FIXME(ABI)#179 (Type checker): Needed here so that the `Iterator` is properly deduced from
+  // FIXME (ABI)#179 (Type checker): Needed here so that the `Iterator` is properly deduced from id:680 gh:687
   // a custom `makeIterator()` function.  Otherwise we get an
   // `IndexingIterator`. <rdar://problem/21539115>
   /// Returns an iterator over the elements of the collection.
@@ -787,7 +787,7 @@ extension Collection {
   ///
   /// - Parameter i: A valid index of the collection. `i` must be less than
   ///   `endIndex`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1561 gh:1568
   @inline(__always)
   public func formIndex(after i: inout Index) {
     i = index(after: i)
@@ -795,7 +795,7 @@ extension Collection {
 
   @_inlineable
   public func _failEarlyRangeCheck(_ index: Index, bounds: Range<Index>) {
-    // FIXME: swift-3-indexing-model: tests.
+    // FIXME: swift-3-indexing-model: tests. id:686 gh:693
     _precondition(
       bounds.lowerBound <= index,
       "Out of bounds: index < startIndex")
@@ -806,7 +806,7 @@ extension Collection {
 
   @_inlineable
   public func _failEarlyRangeCheck(_ index: Index, bounds: ClosedRange<Index>) {
-    // FIXME: swift-3-indexing-model: tests.
+    // FIXME: swift-3-indexing-model: tests. id:881 gh:888
     _precondition(
       bounds.lowerBound <= index,
       "Out of bounds: index < startIndex")
@@ -817,7 +817,7 @@ extension Collection {
 
   @_inlineable
   public func _failEarlyRangeCheck(_ range: Range<Index>, bounds: Range<Index>) {
-    // FIXME: swift-3-indexing-model: tests.
+    // FIXME: swift-3-indexing-model: tests. id:984 gh:991
     _precondition(
       bounds.lowerBound <= range.lowerBound,
       "Out of bounds: range begins before startIndex")
@@ -1031,7 +1031,7 @@ extension Collection {
 /// `IndexingIterator<Self>`.
 extension Collection where Iterator == IndexingIterator<Self> {
   /// Returns an iterator over the elements of the collection.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:683 gh:690
   @inline(__always)
   public func makeIterator() -> IndexingIterator<Self> {
     return IndexingIterator(_elements: self)
@@ -1080,7 +1080,7 @@ extension Collection where SubSequence == Self {
   /// - Complexity: O(1)
   @_inlineable
   public mutating func popFirst() -> Element? {
-    // TODO: swift-3-indexing-model - review the following
+    // TODO: swift-3-indexing-model - review the following id:1564 gh:1571
     guard !isEmpty else { return nil }
     let element = first!
     self = self[index(after: startIndex)..<endIndex]
@@ -1134,7 +1134,7 @@ extension Collection {
     }
   }
   
-  // TODO: swift-3-indexing-model - uncomment and replace above ready (or should we still use the iterator one?)
+  // TODO: swift-3-indexing-model - uncomment and replace above ready (or should we still use the iterator one?) id:690 gh:697
   /// Returns the first element of `self`, or `nil` if `self` is empty.
   ///
   /// - Complexity: O(1)
@@ -1149,7 +1149,7 @@ extension Collection {
   ///   of the collection.
   @_inlineable
   public var underestimatedCount: Int {
-    // TODO: swift-3-indexing-model - review the following
+    // TODO: swift-3-indexing-model - review the following id:885 gh:892
     return count
   }
 
@@ -1168,7 +1168,7 @@ extension Collection {
     return distance(from: startIndex, to: endIndex)
   }
 
-  // TODO: swift-3-indexing-model - rename the following to _customIndexOfEquatable(element)?
+  // TODO: swift-3-indexing-model - rename the following to _customIndexOfEquatable(element)? id:988 gh:995
   /// Customization point for `Collection.index(of:)`.
   ///
   /// Define this method if the collection can find an element in less than
@@ -1212,7 +1212,7 @@ extension Collection {
   public func map<T>(
     _ transform: (Element) throws -> T
   ) rethrows -> [T] {
-    // TODO: swift-3-indexing-model - review the following
+    // TODO: swift-3-indexing-model - review the following id:685 gh:692
     let n = self.count
     if n == 0 {
       return []
@@ -1545,7 +1545,7 @@ extension Collection {
     omittingEmptySubsequences: Bool = true,
     whereSeparator isSeparator: (Element) throws -> Bool
   ) rethrows -> [SubSequence] {
-    // TODO: swift-3-indexing-model - review the following
+    // TODO: swift-3-indexing-model - review the following id:1567 gh:1574
     _precondition(maxSplits >= 0, "Must take zero or more splits")
 
     var result: [SubSequence] = []
@@ -1638,7 +1638,7 @@ extension Collection where Element : Equatable {
     maxSplits: Int = Int.max,
     omittingEmptySubsequences: Bool = true
   ) -> [SubSequence] {
-    // TODO: swift-3-indexing-model - review the following
+    // TODO: swift-3-indexing-model - review the following id:692 gh:699
     return split(
       maxSplits: maxSplits,
       omittingEmptySubsequences: omittingEmptySubsequences,
@@ -1657,7 +1657,7 @@ extension Collection where SubSequence == Self {
   @_inlineable
   @discardableResult
   public mutating func removeFirst() -> Element {
-    // TODO: swift-3-indexing-model - review the following
+    // TODO: swift-3-indexing-model - review the following id:891 gh:898
     _precondition(!isEmpty, "Can't remove items from an empty collection")
     let element = first!
     self = self[index(after: startIndex)..<endIndex]
@@ -1693,7 +1693,7 @@ extension Collection {
 }
 
 extension Collection {
-  // FIXME: <rdar://problem/34142121>
+  // FIXME: <rdar://problem/34142121> id:992 gh:999
   // This typealias should be removed as it predates the source compatibility
   // guarantees of Swift 3, but it cannot due to a bug.
   @available(*, unavailable, renamed: "Iterator")

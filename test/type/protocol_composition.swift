@@ -117,7 +117,7 @@ func testConversion() {
   // Subtyping
   var _ : () -> FooProtocol & SuperREPLPrintable = return_superPrintable
 
-  // FIXME: closures make ABI conversions explicit. rdar://problem/19517003
+  // FIXME: closures make ABI conversions explicit. rdar://problem/19517003 id:3975 gh:3987
   var _ : () -> protocol<FooProtocol, REPLPrintable> = { return_superPrintable() } // expected-error {{'protocol<...>' composition syntax has been removed; join the protocols using '&'}} {{17-53=FooProtocol & REPLPrintable}}
 }
 

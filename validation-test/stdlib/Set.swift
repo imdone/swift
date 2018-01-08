@@ -290,7 +290,7 @@ func getRoundtripBridgedNSSet() -> NSSet {
 
   let bridgedBack = convertSetToNSSet(s)
   expectTrue(isCocoaNSSet(bridgedBack))
-  // FIXME: this should be true.
+  // FIXME: this should be true. id:4205 gh:4217
   //expectTrue(unsafeBitCast(nsd, to: Int.self) == unsafeBitCast(bridgedBack, to: Int.self))
 
   return bridgedBack

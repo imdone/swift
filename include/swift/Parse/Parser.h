@@ -310,7 +310,7 @@ public:
     Parser &P;
 
     /// Max nesting level
-    // TODO: customizable.
+    // TODO: customizable. id:109 gh:116
     enum { MaxDepth = 256 };
 
     void diagnoseOverflow();
@@ -1262,7 +1262,7 @@ public:
 
   ParserResult<Expr> parseTrailingClosure(SourceRange calleeRange);
 
-  // NOTE: used only for legacy support for old object literal syntax.
+  // NOTE: used only for legacy support for old object literal syntax. id:329 gh:336
   // Will be removed in the future.
   bool isCollectionLiteralStartingWithLSquareLit();
 

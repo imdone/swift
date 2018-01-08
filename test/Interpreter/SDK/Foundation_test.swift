@@ -29,7 +29,7 @@ FoundationTestSuite.test("NSString") {
   assert(nsStr.compare(str) == ComparisonResult.orderedSame)
   nsStr = "World"
   str = nsStr as String
-  // FIXME: Shouldn't need coercion here to resolve ambiguity. <rdar://problem/14637688>
+  // FIXME: Shouldn't need coercion here to resolve ambiguity. <rdar://problem/14637688> id:3523 gh:3535
   assert(str == asString(nsStr))
 }
 
@@ -186,7 +186,7 @@ FoundationTestSuite.test("RangeConversion") {
   expectNil(Range(NSRange(location: 0, length: 1), in: empty))
   expectNotNil(Range(NSRange(location: 0, length: 0), in: empty))
 
-  // FIXME: enable once indices conform to RangeExpression
+  // FIXME: enable once indices conform to RangeExpression id:3412 gh:3424
   // let nsrFull = NSRange(s.indices, in: s)
   // expectEqual(nsrFull.location, 0)
   // expectEqual(nsrFull.length, 10)

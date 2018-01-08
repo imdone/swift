@@ -25,14 +25,14 @@ extension Unicode {
   /// sequence that could be recognized).
   case error(length: Int)
 
-    @_inlineable // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:3248 gh:3260
     @_versioned
     internal var _valid: T? {
       if case .valid(let result) = self { return result }
       return nil
     }
 
-    @_inlineable // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:2307 gh:2319
     @_versioned
     internal var _error: Int? {
       if case .error(let result) = self { return result }
@@ -59,7 +59,7 @@ public protocol _UnicodeParser {
 }
 
 extension _UnicodeParser {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3077 gh:3089
   @_versioned
   @inline(__always)
   @discardableResult
@@ -86,7 +86,7 @@ extension _UnicodeParser {
     }
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2523 gh:2535
   @inline(__always)
   @discardableResult
   public static func _decode<I: IteratorProtocol>(

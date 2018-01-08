@@ -26,7 +26,7 @@ enum class LibraryKind {
 };
 
 /// Represents a linker dependency for an imported module.
-// FIXME: This is basically a slightly more generic version of Clang's
+// FIXME: This is basically a slightly more generic version of Clang's id:69 gh:76
 // Module::LinkLibrary.
 class LinkLibrary {
 private:

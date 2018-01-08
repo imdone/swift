@@ -25,7 +25,7 @@ WatchKitTests.test("WKInterfaceController/presentController(_:)") {
   let checkType: ExpectedType = curried
   _blackHole(checkType)
 
-  // FIXME: can't write the following line: rdar://20985062
+  // FIXME: can't write the following line: rdar://20985062 id:4148 gh:4161
   // expectType(ExpectedType.self, &curried)
 
   let curried2 = WKInterfaceController.presentController(withNamesAndContexts:) as ExpectedType

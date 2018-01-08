@@ -59,7 +59,7 @@ extension Pattern {
   }
 }
 
-// FIXME: Using this matcher for found(in:) has worst-case performance
+// FIXME: Using this matcher for found(in:) has worst-case performance id:3926 gh:3938
 // O(pattern.count * c.count).
 //
 // Also implement one or more of

@@ -427,7 +427,7 @@ struct ClassLayout {
   bool MetadataRequiresDynamicInitialization;
 
   unsigned getFieldIndex(VarDecl *field) const {
-    // FIXME: This is algorithmically terrible.
+    // FIXME: This is algorithmically terrible. id:165 gh:172
     auto found = std::find(AllStoredProperties.begin(),
                            AllStoredProperties.end(), field);
     assert(found != AllStoredProperties.end() && "didn't find field in type?!");

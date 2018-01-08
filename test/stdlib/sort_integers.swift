@@ -100,7 +100,7 @@ let partition_verifier: ([Int]) -> Void = {
     }
 }
 
-// FIXME(prext): remove partition() together with the function when
+// FIXME (prext): remove partition() together with the function when id:3226 gh:3238
 // protocol extensions land.  These tests have been migrated to the new API.
 permute(2, partition_verifier)
 permute(6, partition_verifier)

@@ -5,7 +5,7 @@
 
 - (void)enumerateLinesUsingBlock:
     (nonnull __attribute__((noescape)) void (^)(_Nonnull NSString *line))f;
-// FIXME: The importer drops this.
+// FIXME: The importer drops this. id:2725 gh:2737
 //- (void)enumerateLinesUsingBlock:(void (^)(NSString *line, BOOL *b)) f;
 
 @end

@@ -216,7 +216,7 @@ func passingToId<T: CP, U>(receiver: NSIdLover,
   // CHECK:   end_borrow [[BORROWED_SELF]] from [[SELF]]
   receiver.takesId(optionalC)
 
-  // TODO: Property and subscript setters
+  // TODO: Property and subscript setters id:3573 gh:3585
 }
 
 // Once upon a time, as a workaround for rdar://problem/28318984, we had

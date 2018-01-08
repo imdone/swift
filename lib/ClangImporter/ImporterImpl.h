@@ -358,12 +358,12 @@ private:
 
   /// \brief The fake buffer used to import modules.
   ///
-  /// FIXME: Horrible hack for loadModule().
+  /// FIXME: Horrible hack for loadModule(). id:369 gh:376
   clang::FileID DummyImportBuffer;
 
   /// \brief A count of the number of load module operations.
   ///
-  /// FIXME: Horrible, horrible hack for \c loadModule().
+  /// FIXME: Horrible, horrible hack for \c loadModule(). id:159 gh:166
   unsigned ImportCounter = 0;
 
   /// \brief Used to avoid running the AST verifier over the same declarations.
@@ -478,7 +478,7 @@ public:
     return getNameImporter().getEnumKind(decl);
   }
 
-  // TODO: drop this accessor as soon as we further de-couple the swift name
+  // TODO: drop this accessor as soon as we further de-couple the swift name id:275 gh:282
   // lookup tables from the Impl.
   LookupTableMap &getLookupTables() { return LookupTables; }
 
@@ -1210,7 +1210,7 @@ public:
   /// Record the set of imported protocols for the given declaration,
   /// to be used by member loading.
   ///
-  /// FIXME: This is all a hack; we should have lazier deserialization
+  /// FIXME: This is all a hack; we should have lazier deserialization id:237 gh:244
   /// of protocols separate from their conformances.
   void recordImportedProtocols(const Decl *decl,
                                ArrayRef<ProtocolDecl *> protocols) {

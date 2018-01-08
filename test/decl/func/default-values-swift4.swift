@@ -38,7 +38,7 @@ func internalFunctionWithDefaultValue(
       struct Nested {}
       // expected-error@-1 {{type 'Nested' cannot be nested inside a default argument value}}
 
-      // FIXME: Some errors below are diagnosed twice
+      // FIXME: Some errors below are diagnosed twice id:3715 gh:3727
 
       publicFunction()
       // OK
@@ -61,7 +61,7 @@ public func publicFunctionWithDefaultValue(
       struct Nested {}
       // expected-error@-1 {{type 'Nested' cannot be nested inside a default argument value}}
 
-      // FIXME: Some errors below are diagnosed twice
+      // FIXME: Some errors below are diagnosed twice id:3819 gh:3831
 
       publicFunction()
       // OK

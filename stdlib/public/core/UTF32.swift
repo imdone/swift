@@ -10,7 +10,7 @@
 //
 //===----------------------------------------------------------------------===//
 extension Unicode {
-  @_fixed_layout // FIXME(sil-serialize-all)
+  @_fixed_layout // FIXME (sil-serialize-all) id:3214 gh:3226
   public enum UTF32 {
   case _swift3Codec
   }
@@ -20,24 +20,24 @@ extension Unicode.UTF32 : Unicode.Encoding {
   public typealias CodeUnit = UInt32
   public typealias EncodedScalar = CollectionOfOne<UInt32>
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2269 gh:2281
   public static var encodedReplacementCharacter : EncodedScalar {
     return EncodedScalar(0xFFFD)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3029 gh:3041
   @inline(__always)
   public static func _isScalar(_ x: CodeUnit) -> Bool  {
     return true
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2433 gh:2445
   @inline(__always)
   public static func decode(_ source: EncodedScalar) -> Unicode.Scalar {
     return Unicode.Scalar(_unchecked: source.first!)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:2610 gh:2622
   @inline(__always)
   public static func encode(
     _ source: Unicode.Scalar
@@ -45,9 +45,9 @@ extension Unicode.UTF32 : Unicode.Encoding {
     return EncodedScalar(source.value)
   }
   
-  @_fixed_layout // FIXME(sil-serialize-all)
+  @_fixed_layout // FIXME (sil-serialize-all) id:3218 gh:3230
   public struct Parser {
-    @_inlineable // FIXME(sil-serialize-all)
+    @_inlineable // FIXME (sil-serialize-all) id:2273 gh:2285
     public init() { }
   }
   
@@ -59,7 +59,7 @@ extension UTF32.Parser : Unicode.Parser {
   public typealias Encoding = Unicode.UTF32
 
   /// Parses a single Unicode scalar value from `input`.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:3032 gh:3044
   public mutating func parseScalar<I : IteratorProtocol>(
     from input: inout I
   ) -> Unicode.ParseResult<Encoding.EncodedScalar>

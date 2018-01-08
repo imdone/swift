@@ -29,7 +29,7 @@ public protocol LazyCollectionProtocol: Collection, LazySequenceProtocol {
 
 extension LazyCollectionProtocol {
   // Lazy things are already lazy
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1982 gh:1989
   public var lazy: LazyCollection<Elements> {
     return elements.lazy
   }
@@ -37,7 +37,7 @@ extension LazyCollectionProtocol {
 
 extension LazyCollectionProtocol where Elements: LazyCollectionProtocol {
   // Lazy things are already lazy
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1109 gh:1115
   public var lazy: Elements {
     return elements
   }
@@ -140,7 +140,7 @@ extension LazyCollection : Collection {
   @_inlineable
   public var indices: Indices { return _base.indices }
 
-  // TODO: swift-3-indexing-model - add docs
+  // TODO: swift-3-indexing-model - add docs id:1455 gh:1462
   @_inlineable
   public func index(after i: Index) -> Index {
     return _base.index(after: i)
@@ -195,13 +195,13 @@ extension LazyCollection : Collection {
     return _base.first
   }
 
-  // TODO: swift-3-indexing-model - add docs
+  // TODO: swift-3-indexing-model - add docs id:1376 gh:1383
   @_inlineable
   public func index(_ i: Index, offsetBy n: Int) -> Index {
     return _base.index(i, offsetBy: n)
   }
 
-  // TODO: swift-3-indexing-model - add docs
+  // TODO: swift-3-indexing-model - add docs id:1169 gh:1176
   @_inlineable
   public func index(
     _ i: Index, offsetBy n: Int, limitedBy limit: Index
@@ -209,7 +209,7 @@ extension LazyCollection : Collection {
     return _base.index(i, offsetBy: n, limitedBy: limit)
   }
 
-  // TODO: swift-3-indexing-model - add docs
+  // TODO: swift-3-indexing-model - add docs id:1984 gh:1991
   @_inlineable
   public func distance(from start: Index, to end: Index) -> Int {
     return _base.distance(from:start, to: end)

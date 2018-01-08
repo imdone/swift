@@ -12,14 +12,14 @@ func fe(_: Int, _: Int) {}
 fe(E.baz) // expected-error {{type 'E' has no member 'baz'}}
 fe(.baz) // expected-error {{reference to member 'baz' cannot be resolved without a contextual type}}
 
-// FIXME: maybe complain about .nope also?
+// FIXME: maybe complain about .nope also? id:3675 gh:3687
 fe(.nope, .nyet) // expected-error {{reference to member 'nyet' cannot be resolved without a contextual type}}
 
 func fg<T>(_ f: (T) -> T) -> Void {} // expected-note {{in call to function 'fg'}}
 fg({x in x}) // expected-error {{generic parameter 'T' could not be inferred}}
 
 
-// FIXME: Both f & g should complain about ambiguity of arg1, but in both cases the generic member
+// FIXME: Both f & g should complain about ambiguity of arg1, but in both cases the generic member id:3779 gh:3791
 // never gets into the list of candidates in the first place.
 struct S {
   func f<T>(_ i: (T) -> T, _ j: Int) -> Void {}

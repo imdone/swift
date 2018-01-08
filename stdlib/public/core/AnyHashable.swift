@@ -37,7 +37,7 @@ public protocol _HasCustomAnyHashableRepresentation {
   func _toCustomAnyHashable() -> AnyHashable?
 }
 
-@_versioned // FIXME(sil-serialize-all)
+@_versioned // FIXME (sil-serialize-all) id:797 gh:804
 internal protocol _AnyHashableBox {
   var _typeID: ObjectIdentifier { get }
   func _unbox<T : Hashable>() -> T?
@@ -53,33 +53,33 @@ internal protocol _AnyHashableBox {
   func _downCastConditional<T>(into result: UnsafeMutablePointer<T>) -> Bool
 }
 
-@_fixed_layout // FIXME(sil-serialize-all)
-@_versioned // FIXME(sil-serialize-all)
+@_fixed_layout // FIXME (sil-serialize-all) id:496 gh:503
+@_versioned // FIXME (sil-serialize-all) id:1341 gh:1348
 internal struct _ConcreteHashableBox<Base : Hashable> : _AnyHashableBox {
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:514 gh:521
   internal var _baseHashable: Base
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:629 gh:636
+  @_versioned // FIXME (sil-serialize-all) id:799 gh:806
   internal init(_ base: Base) {
     self._baseHashable = base
   }
 
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:499 gh:506
+  @_versioned // FIXME (sil-serialize-all) id:1343 gh:1350
   internal var _typeID: ObjectIdentifier {
     return ObjectIdentifier(type(of: self))
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:517 gh:524
+  @_versioned // FIXME (sil-serialize-all) id:631 gh:638
   internal func _unbox<T : Hashable>() -> T? {
     return (self as _AnyHashableBox as? _ConcreteHashableBox<T>)?._baseHashable
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:802 gh:809
+  @_versioned // FIXME (sil-serialize-all) id:501 gh:508
   internal func _isEqual(to rhs: _AnyHashableBox) -> Bool? {
     if let rhs: Base = rhs._unbox() {
       return _baseHashable == rhs
@@ -87,20 +87,20 @@ internal struct _ConcreteHashableBox<Base : Hashable> : _AnyHashableBox {
     return nil
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1348 gh:1355
+  @_versioned // FIXME (sil-serialize-all) id:519 gh:526
   internal var _hashValue: Int {
     return _baseHashable.hashValue
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:633 gh:640
+  @_versioned // FIXME (sil-serialize-all) id:804 gh:811
   internal var _base: Any {
     return _baseHashable
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:504 gh:511
+  @_versioned // FIXME (sil-serialize-all) id:1353 gh:1360
   internal
   func _downCastConditional<T>(into result: UnsafeMutablePointer<T>) -> Bool {
     guard let value = _baseHashable as? T else { return false }
@@ -114,8 +114,8 @@ internal struct _ConcreteHashableBox<Base : Hashable> : _AnyHashableBox {
 // has been bridged to Objective-C. This mapping to Objective-C and back
 // turns a non-custom representation into a custom one, which is used as
 // the lowest-common-denominator for comparisons.
-@_inlineable // FIXME(sil-serialize-all)
-@_versioned // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:521 gh:528
+@_versioned // FIXME (sil-serialize-all) id:635 gh:642
 internal func _getBridgedCustomAnyHashable<T>(_ value: T) -> AnyHashable? {
   let bridgedValue = _bridgeAnythingToObjectiveC(value)
   return (bridgedValue as?
@@ -142,11 +142,11 @@ internal func _getBridgedCustomAnyHashable<T>(_ value: T) -> AnyHashable? {
 ///     print(descriptions[AnyHashable(43)])       // prints "nil"
 ///     print(descriptions[AnyHashable(Int8(43))]!) // prints "an Int8"
 ///     print(descriptions[AnyHashable(Set(["a", "b"]))]!) // prints "a set of strings"
-@_fixed_layout // FIXME(sil-serialize-all)
+@_fixed_layout // FIXME (sil-serialize-all) id:806 gh:813
 public struct AnyHashable {
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:506 gh:513
   internal var _box: _AnyHashableBox
-  @_versioned // FIXME(sil-serialize-all)
+  @_versioned // FIXME (sil-serialize-all) id:1356 gh:1363
   internal var _usedCustomRepresentation: Bool
 
   /// Creates a type-erased hashable value that wraps the given instance.
@@ -167,7 +167,7 @@ public struct AnyHashable {
   ///     // Prints "true"
   ///
   /// - Parameter base: A hashable value to wrap.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:523 gh:530
   public init<H : Hashable>(_ base: H) {
     if let customRepresentation =
       (base as? _HasCustomAnyHashableRepresentation)?._toCustomAnyHashable() {
@@ -183,8 +183,8 @@ public struct AnyHashable {
       storingResultInto: &self)
   }
 
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:637 gh:644
+  @_versioned // FIXME (sil-serialize-all) id:808 gh:815
   internal init<H : Hashable>(_usingDefaultRepresentationOf base: H) {
     self._box = _ConcreteHashableBox(base)
     self._usedCustomRepresentation = false
@@ -200,7 +200,7 @@ public struct AnyHashable {
   ///         print(unwrappedMessage)
   ///     }
   ///     // Prints "Hello world!"
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:508 gh:515
   public var base: Any {
     return _box._base
   }
@@ -209,8 +209,8 @@ public struct AnyHashable {
   ///
   /// This avoids the intermediate re-boxing we would get if we just did
   /// a downcast on `base`.
-  @_inlineable // FIXME(sil-serialize-all)
-  @_versioned // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1360 gh:1367
+  @_versioned // FIXME (sil-serialize-all) id:525 gh:532
   internal
   func _downCastConditional<T>(into result: UnsafeMutablePointer<T>) -> Bool {
     // Attempt the downcast.
@@ -257,7 +257,7 @@ extension AnyHashable : Equatable {
   /// - Parameters:
   ///   - lhs: A type-erased hashable value.
   ///   - rhs: Another type-erased hashable value.
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:639 gh:646
   public static func == (lhs: AnyHashable, rhs: AnyHashable) -> Bool {
     // If they're equal, we're done.
     if let result = lhs._box._isEqual(to: rhs._box) { return result }
@@ -291,28 +291,28 @@ extension AnyHashable : Equatable {
 }
 
 extension AnyHashable : Hashable {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:810 gh:817
   public var hashValue: Int {
     return _box._hashValue
   }
 }
 
 extension AnyHashable : CustomStringConvertible {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:510 gh:517
   public var description: String {
     return String(describing: base)
   }
 }
 
 extension AnyHashable : CustomDebugStringConvertible {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:1365 gh:1372
   public var debugDescription: String {
     return "AnyHashable(" + String(reflecting: base) + ")"
   }
 }
 
 extension AnyHashable : CustomReflectable {
-  @_inlineable // FIXME(sil-serialize-all)
+  @_inlineable // FIXME (sil-serialize-all) id:528 gh:535
   public var customMirror: Mirror {
     return Mirror(
       self,
@@ -335,14 +335,14 @@ internal func _makeAnyHashableUsingDefaultRepresentation<H : Hashable>(
 }
 
 /// Provided by AnyHashable.cpp.
-@_versioned // FIXME(sil-serialize-all)
+@_versioned // FIXME (sil-serialize-all) id:641 gh:648
 @_silgen_name("_swift_makeAnyHashableUpcastingToHashableBaseType")
 internal func _makeAnyHashableUpcastingToHashableBaseType<H : Hashable>(
   _ value: H,
   storingResultInto result: UnsafeMutablePointer<AnyHashable>
 )
 
-@_inlineable // FIXME(sil-serialize-all)
+@_inlineable // FIXME (sil-serialize-all) id:813 gh:820
 public // COMPILER_INTRINSIC
 func _convertToAnyHashable<H : Hashable>(_ value: H) -> AnyHashable {
   return AnyHashable(value)

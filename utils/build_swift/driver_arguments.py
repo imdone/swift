@@ -223,7 +223,7 @@ def _apply_default_arguments(args):
 def create_argument_parser():
     """Return a configured argument parser."""
 
-    # NOTE: USAGE, DESCRIPTION and EPILOG are defined at the bottom of the file
+    # NOTE: USAGE, DESCRIPTION and EPILOG are defined at the bottom of the file id:4171 gh:4183
     parser = _ApplyDefaultsArgumentParser(
         apply_defaults=_apply_default_arguments,
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -590,12 +590,12 @@ def create_argument_parser():
     with mutually_exclusive_group():
         set_defaults(assertions=True)
 
-        # TODO: Convert to store_true
+        # TODO: Convert to store_true id:3245 gh:3257
         option('--assertions', store,
                const=True,
                help='enable assertions in all projects')
 
-        # TODO: Convert to store_false
+        # TODO: Convert to store_false id:3603 gh:3615
         option('--no-assertions', store('assertions'),
                const=False,
                help='disable assertions in all projects')
@@ -653,9 +653,9 @@ def create_argument_parser():
     # -------------------------------------------------------------------------
     in_group('Run tests')
 
-    # NOTE: We can't merge -t and --test, because nargs='?' makes
+    # NOTE: We can't merge -t and --test, because nargs='?' makes id:3948 gh:3960
     #       `-ti` to be treated as `-t=i`.
-    # FIXME: Convert to store_true action
+    # FIXME: Convert to store_true action id:3994 gh:4006
     option('-t', store('test', const=True),
            help='test Swift after building')
     option('--test', toggle_true,
@@ -666,13 +666,13 @@ def create_argument_parser():
     option('--validation-test', toggle_true,
            help='run the validation test suite (implies --test)')
 
-    # FIXME: Convert to store_true action
+    # FIXME: Convert to store_true action id:4172 gh:4184
     option('-o', store('test_optimized', const=True),
            help='run the test suite in optimized mode too (implies --test)')
     option('--test-optimized', toggle_true,
            help='run the test suite in optimized mode too (implies --test)')
 
-    # FIXME: Convert to store_true action
+    # FIXME: Convert to store_true action id:3247 gh:3258
     option('-s', store('test_optimize_for_size', const=True),
            help='run the test suite in optimize for size mode too '
                 '(implies --test)')

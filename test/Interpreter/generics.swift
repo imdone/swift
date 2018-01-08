@@ -3,7 +3,7 @@
 
 struct BigStruct { var a,b,c,d,e,f,g,h:Int }
 
-// FIXME: missing symbol for Object destructor?
+// FIXME: missing symbol for Object destructor? id:2750 gh:2762
 //class SomeClass : Object { }
 
 func id<T>(_ x: T) -> T {
@@ -16,7 +16,7 @@ var bigStruct = id(BigStruct(a: 1, b: 2,c: 3, d: 4, e: 5, f: 6, g: 7, h: 8))
 //var someClass2 = id(someClass)
 
 func print(_ bs: BigStruct) {
-  // FIXME: typechecker is too slow to handle this as an interpolated literal
+  // FIXME: typechecker is too slow to handle this as an interpolated literal id:3020 gh:3032
   print("BigStruct(", terminator: "")
   print(bs.a, terminator: "")
   print(", ", terminator: "")
@@ -41,7 +41,7 @@ print(int)
 // CHECK: BigStruct(1, 2, 3, 4, 5, 6, 7, 8)
 print(bigStruct)
 
-// FIXME: missing symbol for Object destructor?
+// FIXME: missing symbol for Object destructor? id:3545 gh:3557
 // C/HECK: true
 //print(someClass === someClass2)
 

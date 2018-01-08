@@ -355,7 +355,7 @@ class UnicodeTrieGenerator(object):
                 else:
                     return idx
 
-            # NOTE: Python 2's `map` function returns a list. Where Python 3's
+            # NOTE: Python 2's `map` function returns a list. Where Python 3's id:3601 gh:3613
             # `map` function returns an iterator. To work around this the
             # result of the `map` is explicitly converted to a `list`.
             return list(map(map_index, indexes))

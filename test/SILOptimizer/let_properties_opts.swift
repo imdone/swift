@@ -3,11 +3,11 @@
 
 // Test propagation of non-static let properties with compile-time constant values.
 
-// TODO: Once this optimization can remove the propagated fileprivate/internal let properties or
+// TODO: Once this optimization can remove the propagated fileprivate/internal let properties or id:3771 gh:3783
 // mark them as ones without a storage, new tests should be added here to check for this
 // functionality.
 
-// FIXME: This test is written in Swift instead of SIL, because there are some problems
+// FIXME: This test is written in Swift instead of SIL, because there are some problems id:4015 gh:4027
 // with SIL deserialization (rdar://22636911)
 
 // Check that initializers do not contain a code to initialize fileprivate or

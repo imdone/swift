@@ -115,7 +115,7 @@ public func arrayLiteralPromotion() {
   takesConstRawPointer([41,42,43,44])
   
   // Stack allocate the array.
-  // TODO: When stdlib checks are enabled, this becomes heap allocated... :-(
+  // TODO: When stdlib checks are enabled, this becomes heap allocated... :-( id:2965 gh:2977
   // CHECK: alloc_ref {{.*}}[tail_elems $Int * {{.*}} : $Builtin.Word] $_ContiguousArrayStorage<Int>
   
   // Store the elements.

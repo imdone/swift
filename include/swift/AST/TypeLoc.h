@@ -47,7 +47,7 @@ public:
   bool wasValidated() const { return TAndValidBit.getInt(); }
   bool isError() const;
 
-  // FIXME: We generally shouldn't need to build TypeLocs without a location.
+  // FIXME: We generally shouldn't need to build TypeLocs without a location. id:77 gh:85
   static TypeLoc withoutLoc(Type T) {
     return TypeLoc(T, nullptr);
   }

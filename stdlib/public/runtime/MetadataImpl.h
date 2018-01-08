@@ -406,7 +406,7 @@ struct UnknownRetainableBox : RetainableBoxBase<UnknownRetainableBox, void*> {
 /// A box implementation class for BridgeObject.
 struct BridgeObjectBox :
     RetainableBoxBase<BridgeObjectBox, void*> {
-  // TODO: Enable the nil extra inhabitant.
+  // TODO: Enable the nil extra inhabitant. id:2706 gh:2718
   static constexpr unsigned numExtraInhabitants = 1;
       
   static void *retain(void *obj) {
@@ -429,7 +429,7 @@ struct BridgeObjectBox :
 /// A box implementation class for unmanaged, pointer-aligned pointers.
 /// Metatype values have this layout.
 struct PointerPointerBox : NativeBox<void**> {
-  // TODO: we can do a lot better than this: we don't need to mask off
+  // TODO: we can do a lot better than this: we don't need to mask off id:3338 gh:3350
   // the ObjC reserved bits, and we have spare bits.
   static constexpr unsigned numExtraInhabitants =
     swift_getHeapObjectExtraInhabitantCount();

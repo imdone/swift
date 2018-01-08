@@ -26,7 +26,7 @@ final class Foo<T: NSCoding>: NSObject, NSCoding {
   }
 }
 
-// FIXME: W* macro equivalents should be in the Darwin/Glibc overlay
+// FIXME: W* macro equivalents should be in the Darwin/Glibc overlay id:3835 gh:3847
 func WIFEXITED(_ status: Int32) -> Bool {
   return (status & 0o177) == 0
 }
@@ -34,7 +34,7 @@ func WEXITSTATUS(_ status: Int32) -> Int32 {
   return (status >> 8) & 0xFF
 }
 
-// FIXME: "environ" should be in the Darwin overlay too
+// FIXME: "environ" should be in the Darwin overlay too id:2735 gh:2747
 @_silgen_name("_NSGetEnviron")
 func _NSGetEnviron() -> UnsafeMutablePointer<UnsafeMutablePointer<UnsafeMutablePointer<CChar>?>>
 
@@ -156,7 +156,7 @@ func archive() {
 }
 
 func unarchive() {
-  // FIXME: Pre-instantiate the generic classes that were archived, since
+  // FIXME: Pre-instantiate the generic classes that were archived, since id:3000 gh:3012
   // the ObjC runtime doesn't know how.
   NSStringFromClass(Foo<NSNumber>.self)
   NSStringFromClass(Foo<NSString>.self)

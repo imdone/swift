@@ -28,7 +28,7 @@ func protocolConformance(ac1: @autoclosure () -> CustomStringConvertible,
   var f2 : (_ p : CustomStringConvertible) -> FormattedPrintable = p_to_fp
   let f3 : (_ p : CustomStringConvertible) -> IsPrintable1 = p_to_ip1
 
-  // FIXME: closures make ABI conversions explicit. rdar://problem/19517003
+  // FIXME: closures make ABI conversions explicit. rdar://problem/19517003 id:3708 gh:3720
   f1 = { f2($0) } // okay
   f1 = { f3($0) } // okay
   f2 = f1 // expected-error{{cannot assign value of type '(FormattedPrintable) -> CustomStringConvertible' to type '(CustomStringConvertible) -> FormattedPrintable'}}
@@ -45,7 +45,7 @@ func p_gen_to_fp(_: () -> CustomStringConvertible) -> FormattedPrintable {}
 func fp_gen_to_p(_: () -> FormattedPrintable) -> CustomStringConvertible {}
 
 func nonTrivialNested() {
-  // FIXME: closures make ABI conversions explicit. rdar://problem/19517003
+  // FIXME: closures make ABI conversions explicit. rdar://problem/19517003 id:3813 gh:3825
   var f1 : (_ : () -> CustomStringConvertible) -> CustomStringConvertible = { p_gen_to_fp($0) }
   let f2 : (_ : () -> CustomStringConvertible) -> FormattedPrintable = p_gen_to_fp
   let f3 : (_ : () -> FormattedPrintable) -> CustomStringConvertible = fp_gen_to_p

@@ -22,7 +22,7 @@ struct PackagingOptions : OptionSet {
     Bag = PackagingOptions(rawValue: 4),
     Satchel = PackagingOptions(rawValue: 8)
 
-  // FIXME: these must be separate decls because of <rdar://20962990>
+  // FIXME: these must be separate decls because of <rdar://20962990> id:4150 gh:4162
   static let BoxOrBag: PackagingOptions = [Box, Bag]
   static let BoxOrCartonOrBag: PackagingOptions = [Box, Carton, Bag]
   static let SatchelOrBag = Satchel.union(Bag)
@@ -83,7 +83,7 @@ tests.test("basics") {
   expectEqual([.Satchel, .Box], p)
 }
 
-// FIXME: add tests for all of SetAlgebra, in particular
+// FIXME: add tests for all of SetAlgebra, in particular id:3188 gh:3200
 // insert/remove/replace.
 
 runAllTests()

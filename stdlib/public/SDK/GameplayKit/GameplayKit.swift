@@ -86,7 +86,7 @@ extension GKStateMachine {
   /// - Parameter forClass: the type of the state you want to get
   public func state<StateType : GKState>(
     forClass stateClass: StateType.Type) -> StateType? {
-    // FIXME: GameplayKit marked state(forClass:) unavailable, which means we
+    // FIXME: GameplayKit marked state(forClass:) unavailable, which means we id:735 gh:742
     // can't use it from SwiftPrivate. Bounce through perform(_:with:) instead.
     return self.perform(#selector(_SwiftGKStateMachineLike.state(forClass:)), with: stateClass)?.takeUnretainedValue() as! StateType?
   }

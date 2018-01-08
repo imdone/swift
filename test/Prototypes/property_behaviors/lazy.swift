@@ -45,7 +45,7 @@ func evaluateLazy() -> Int {
 class Foo {
   var y: Int __behavior lazy { evaluateLazy() }
 
-  // FIXME: Hack because we can't find the synthesized associated type witness
+  // FIXME: Hack because we can't find the synthesized associated type witness id:3608 gh:3620
   // during witness matching.
   typealias Value = Int
 }

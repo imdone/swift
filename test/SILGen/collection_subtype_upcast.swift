@@ -26,7 +26,7 @@ func ==(lhs: S, rhs: S) -> Bool {
   return true
 }
 
-// FIXME: This entrypoint name should not be bridging-specific
+// FIXME: This entrypoint name should not be bridging-specific id:2894 gh:2906
 // CHECK-LABEL:      sil hidden @$S25collection_subtype_upcast05dict_C00D0s10DictionaryVyAA1SVypGAEyAGSiG_tF :
 // CHECK:    bb0([[ARG:%.*]] : @owned $Dictionary<S, Int>):
 // CHECK-NEXT: debug_value [[ARG]]

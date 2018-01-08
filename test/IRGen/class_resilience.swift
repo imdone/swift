@@ -305,7 +305,7 @@ extension ResilientGenericOutsideParent {
 
 // CHECK-LABEL: define{{( protected)?}} swiftcc i32 @"$S16class_resilience21ResilientGenericChildC5fields5Int32Vvg"(%T16class_resilience21ResilientGenericChildC* swiftself)
 
-// FIXME: we could eliminate the unnecessary isa load by lazily emitting
+// FIXME: we could eliminate the unnecessary isa load by lazily emitting id:3380 gh:3392
 // metadata sources in EmitPolymorphicParameters
 
 // CHECK:      load %swift.type*

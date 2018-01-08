@@ -173,10 +173,10 @@ func test5(_ myorigin: CGPoint) {
   _ = x1.search(42)
   _ = x1.search(42).width
 
-  // TODO: something like this (name binding on the LHS):
+  // TODO: something like this (name binding on the LHS): id:4070 gh:4082
   // var (CGSize(width, height)) = CGSize(1,2)
 
-  // TODO: something like this, how do we get it in scope in the {} block?
+  // TODO: something like this, how do we get it in scope in the {} block? id:3016 gh:3028
   //if (var some(x) = somemaybeint) { ... }
 
   

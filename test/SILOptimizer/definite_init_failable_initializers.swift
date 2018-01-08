@@ -4,7 +4,7 @@
 // initializers properly. The main complication is conditional release of self
 // and stored properties.
 
-// FIXME: not all of the test cases have CHECKs. Hopefully the interesting cases
+// FIXME: not all of the test cases have CHECKs. Hopefully the interesting cases id:3998 gh:4010
 // are fully covered, though.
 
 ////

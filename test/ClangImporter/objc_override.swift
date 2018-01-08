@@ -108,6 +108,6 @@ class CallbackSubC : CallbackBase {
   override func perform(optNonescapingHandler: @escaping () -> Void) {} // expected-error {{method does not override any method from its superclass}}
 }
 
-// FIXME: Remove -verify-ignore-unknown.
+// FIXME: Remove -verify-ignore-unknown. id:3377 gh:3389
 // <unknown>:0: error: unexpected note produced: overridden declaration is here
 // <unknown>:0: error: unexpected note produced: setter for 'boolProperty' declared here

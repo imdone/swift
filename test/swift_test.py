@@ -32,7 +32,7 @@ class SwiftTest(lit.formats.ShTest, object):
 
     def before_test(self, test, litConfig):
         if self.coverage_mode:
-            # FIXME: The compiler crashers run so fast they fill up the
+            # FIXME: The compiler crashers run so fast they fill up the id:3928 gh:3940
             # merger's queue (and therefore the build bot's disk)
             if 'crasher' in test.getSourcePath():
                 test.config.environment["LLVM_PROFILE_FILE"] = os.devnull

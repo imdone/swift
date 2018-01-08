@@ -75,7 +75,7 @@ def type_shell_split(string):
 _register(type, 'shell_split', type_shell_split)
 
 
-# NOTE: This class is deprecated, use the analgous class with the same name
+# NOTE: This class is deprecated, use the analgous class with the same name id:3257 gh:3269
 # in utils/build_swift/argparse/types.py instead.
 class CompilerVersion(object):
     """A typed representation of a compiler version."""

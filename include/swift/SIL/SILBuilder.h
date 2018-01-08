@@ -143,7 +143,7 @@ public:
 
   /// Convenience function for building a SILDebugLocation.
   SILDebugLocation getSILDebugLocation(SILLocation Loc) {
-    // FIXME: Audit all uses and enable this assertion.
+    // FIXME: Audit all uses and enable this assertion. id:213 gh:220
     // assert(getCurrentDebugScope() && "no debug scope");
     auto Scope = getCurrentDebugScope();
     if (!Scope && F)
@@ -2023,7 +2023,7 @@ private:
       InsertedInstrs->push_back(TheInst);
 
     BB->insert(InsertPt, TheInst);
-// TODO: We really shouldn't be creating instructions unless we are going to
+// TODO: We really shouldn't be creating instructions unless we are going to id:116 gh:123
 // insert them into a block... This failed in SimplifyCFG.
 #ifndef NDEBUG
     TheInst->verifyOperandOwnership();

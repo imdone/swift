@@ -12,7 +12,7 @@ func takesAnyObject(_ x: AnyObject) {}
 
 func concreteTypes() {
   takesAnyObject(C.self) 
-  // TODO: Better error messages
+  // TODO: Better error messages id:2797 gh:2809
   takesAnyObject(S.self) // expected-error{{argument type 'S.Type' does not conform to expected type 'AnyObject'}}
   takesAnyObject(ClassConstrainedProto.self) // expected-error{{argument type 'ClassConstrainedProto.Protocol' does not conform to expected type 'AnyObject'}}
 }

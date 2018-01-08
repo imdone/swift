@@ -13,7 +13,7 @@
 import Cocoa
 
 protocol A: class {
-    var target: AnyObject? { set } // FIXME: Missing "get" wrt extension on NSControl leads to crash.
+    var target: AnyObject? { set } // FIXME: Missing "get" wrt extension on NSControl leads to crash. id:3999 gh:4011
 }
 
 class B: NSObject {

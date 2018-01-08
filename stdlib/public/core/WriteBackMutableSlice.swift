@@ -22,7 +22,7 @@ internal func _writeBackMutableSlice<C, Slice_>(
 
   self_._failEarlyRangeCheck(bounds, bounds: self_.startIndex..<self_.endIndex)
 
-  // FIXME(performance): can we use
+  // FIXME (performance): can we use id:2584 gh:2596
   // _withUnsafeMutableBufferPointerIfSupported?  Would that create inout
   // aliasing violations if the newValue points to the same buffer?
 

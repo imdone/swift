@@ -2,9 +2,9 @@
 
 // RUN: %empty-directory(%t)
 
-// FIXME: BEGIN -enable-source-import hackaround
+// FIXME: BEGIN -enable-source-import hackaround id:2818 gh:2830
 // RUN:  %target-swift-frontend(mock-sdk: -sdk %S/../../test/Inputs/clang-importer-sdk -I %t) -emit-module -o %t %S/../../test/Inputs/clang-importer-sdk/swift-modules/ObjectiveC.swift
-// FIXME: END -enable-source-import hackaround
+// FIXME: END -enable-source-import hackaround id:3099 gh:3111
 
 // RUN: %target-swift-frontend(mock-sdk: -sdk %S/../../test/Inputs/clang-importer-sdk -I %t) -emit-module -o %t %S/Inputs/reintroduced-new.swift -swift-version 4 -disable-objc-attr-requires-foundation-module -module-name main
 // RUN: %target-swift-frontend(mock-sdk: -sdk %S/../../test/Inputs/clang-importer-sdk -I %t) -parse-as-library %t/main.swiftmodule -typecheck -emit-objc-header-path %t/generated.h -disable-objc-attr-requires-foundation-module -swift-version 4

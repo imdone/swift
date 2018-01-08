@@ -248,6 +248,6 @@ func rdar29960565(_ o: AnyObject) {
   }
 }
 
-// FIXME: Remove -verify-ignore-unknown.
+// FIXME: Remove -verify-ignore-unknown. id:3729 gh:3741
 // <unknown>:0: error: unexpected note produced: 'privateFoo' declared here
 // <unknown>:0: error: unexpected note produced: 'internalFoo' declared here

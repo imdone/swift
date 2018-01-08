@@ -11,7 +11,7 @@ import ObjectiveC
 // CHECK-LABEL: @interface Typedefs
 @objc class Typedefs {
   
-  // FIXME: The imported typedefs should be printed directly as the param types,
+  // FIXME: The imported typedefs should be printed directly as the param types, id:3904 gh:3916
   // but one level of sugar is currently lost when applying @noescape. The importer
   // also loses __attribute__((noescape)) for params of imported function types.
   // <https://bugs.swift.org/browse/SR-2520>

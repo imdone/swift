@@ -51,7 +51,7 @@ public struct Notification : ReferenceConvertible, Equatable, Hashable {
         return description
     }
 
-    // FIXME: Handle directly via API Notes
+    // FIXME: Handle directly via API Notes id:417 gh:424
     public typealias Name = NSNotification.Name
 
     /// Compare two notifications for equality.

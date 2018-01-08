@@ -15,7 +15,7 @@ import Foundation
 ///
 /// - parameter unopt: applies to platforms that don't.
 ///
-/// FIXME: Some non-zero `opt` might be cases of missed return-autorelease.
+/// FIXME: Some non-zero `opt` might be cases of missed return-autorelease. id:4093 gh:4105
 func expectAutoreleasedValues(
   opt: Int = 0, unopt: Int = 0) {
   _expectAutoreleasedKeysAndValues(opt: (0, opt), unopt: (0, unopt))

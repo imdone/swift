@@ -53,7 +53,7 @@ typedef struct MemoryReaderImpl {
   /// Get the size in bytes of the target's size type.
   SizeSizeFunction getSizeSize;
 
-  // FIXME: -Wdocumentation complains about \param and \returns on function pointers.
+  // FIXME: -Wdocumentation complains about \param and \returns on function pointers. id:145 gh:152
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdocumentation"
 

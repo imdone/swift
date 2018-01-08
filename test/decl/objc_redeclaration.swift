@@ -60,5 +60,5 @@ extension DummyClass {
   func nsstringProperty2() -> Int { return 0 } // expected-error{{method 'nsstringProperty2()' with Objective-C selector 'nsstringProperty2' conflicts with getter for 'nsstringProperty2' with the same Objective-C selector}}
 }
 
-// FIXME: Remove -verify-ignore-unknown.
+// FIXME: Remove -verify-ignore-unknown. id:3720 gh:3732
 // <unknown>:0: error: unexpected note produced: 'nsstringProperty2' previously declared here

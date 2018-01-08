@@ -199,7 +199,7 @@ private:
 ///   @convention(thin) Foo
 /// \endcode
 class AttributedTypeRepr : public TypeRepr {
-  // FIXME: TypeAttributes isn't a great use of space.
+  // FIXME: TypeAttributes isn't a great use of space. id:120 gh:127
   TypeAttributes Attrs;
   TypeRepr *Ty;
 

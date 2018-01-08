@@ -170,7 +170,7 @@ extension GenericPoint where T == Double {
 typealias MyGenericPoint<Q> = GenericPoint<Q>
 
 extension MyGenericPoint {
-  // FIXME: Should preserve type sugar.
+  // FIXME: Should preserve type sugar. id:3759 gh:3771
   init(myX: T, myY: T) {
     self.x = myX // expected-warning {{initializer for struct 'GenericPoint<T>' must use "self.init(...)" or "self = ..." because it is not in module 'OtherModule'}}
     self.y = myY

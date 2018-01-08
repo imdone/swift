@@ -81,7 +81,7 @@ class ConformanceLookupTable {
   /// The list of parsed extension declarations that have been delayed because
   /// no resolver was available at the time.
   ///
-  /// FIXME: This is insane. The resolver should be there or we shouldn't
+  /// FIXME: This is insane. The resolver should be there or we shouldn't id:271 gh:278
   /// have parsed extensions.
   llvm::SetVector<ExtensionDecl *> DelayedExtensionDecls[NumConformanceStages];
 
@@ -470,7 +470,7 @@ public:
                           SmallVectorImpl<ProtocolConformance *> &scratch);
 
   /// Retrieve the protocols that would be implicitly synthesized.
-  /// FIXME: This is a hack, because it's the wrong question to ask. It
+  /// FIXME: This is a hack, because it's the wrong question to ask. It id:231 gh:238
   /// skips over the possibility that there is an explicit conformance
   /// somewhere.
   void getImplicitProtocols(NominalTypeDecl *nominal,

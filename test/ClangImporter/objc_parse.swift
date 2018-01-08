@@ -244,7 +244,7 @@ func almostSubscriptableValueMismatch(_ as1: AlmostSubscriptable, a: A) {
 }
 
 func almostSubscriptableKeyMismatch(_ bc: BadCollection, key: NSString) {
-  // FIXME: We end up importing this as read-only due to the mismatch between
+  // FIXME: We end up importing this as read-only due to the mismatch between id:2961 gh:2973
   // getter/setter element types.
   var _ : Any = bc[key]
 }
@@ -340,7 +340,7 @@ func testDynamicSelf(_ queen: Bee, wobbler: NSWobbling) {
 
   // Instance method on a base class with instancetype result, called on the
   // class itself.
-  // FIXME: This should be accepted.
+  // FIXME: This should be accepted. id:3707 gh:3719
   let baseClass: ObjCParseExtras.Base.Type = ObjCParseExtras.Base.returnMyself()
   // expected-error@-1 {{instance member 'returnMyself' cannot be used on type 'Base'}}
 }
@@ -375,7 +375,7 @@ class ProtocolAdopterBad3 : FooProto { // expected-error {{type 'ProtocolAdopter
 @objc protocol RefinedFooProtocol : FooProto {}
 
 func testPreferClassMethodToCurriedInstanceMethod(_ obj: NSObject) {
-  // FIXME: We shouldn't need the ": Bool" type annotation here.
+  // FIXME: We shouldn't need the ": Bool" type annotation here. id:2612 gh:2624
   // <rdar://problem/18006008>
   let _: Bool = NSObject.isEqual(obj)
   _ = NSObject.isEqual(obj) as (NSObject?) -> Bool // no-warning
@@ -468,7 +468,7 @@ func testProtocolClassShadowing(_ obj: ClassInHelper, p: ProtoInHelper) {
 
 func testDealloc(_ obj: NSObject) {
   // dealloc is subsumed by deinit.
-  // FIXME: Special-case diagnostic in the type checker?
+  // FIXME: Special-case diagnostic in the type checker? id:2733 gh:2745
   obj.dealloc() // expected-error{{value of type 'NSObject' has no member 'dealloc'}}
 }
 
@@ -542,7 +542,7 @@ func testProtocolQualified(_ obj: CopyableNSObject, cell: CopyableSomeCell,
   _ = cell as SomeCell
   
   _ = plainObj as CopyableNSObject // expected-error {{'NSObject' is not convertible to 'CopyableNSObject' (aka 'NSCopying & NSObjectProtocol'); did you mean to use 'as!' to force downcast?}} {{16-18=as!}}
-  _ = plainCell as CopyableSomeCell // FIXME: This is not really typesafe.
+  _ = plainCell as CopyableSomeCell // FIXME: This is not really typesafe. id:3381 gh:3393
 }
 
 extension Printing {

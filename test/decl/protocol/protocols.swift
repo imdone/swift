@@ -115,7 +115,7 @@ struct Circle {
 }
 
 func testCircular(_ circle: Circle) {
-  // FIXME: It would be nice if this failure were suppressed because the protocols
+  // FIXME: It would be nice if this failure were suppressed because the protocols id:3434 gh:3446
   // have circular definitions.
   _ = circle as CircleStart // expected-error{{'Circle' is not convertible to 'CircleStart'; did you mean to use 'as!' to force downcast?}} {{14-16=as!}}
 }
@@ -218,7 +218,7 @@ protocol ClassConstrainedAssocType {
 //===----------------------------------------------------------------------===//
 // Default arguments
 //===----------------------------------------------------------------------===//
-// FIXME: Actually make use of default arguments, check substitutions, etc.
+// FIXME: Actually make use of default arguments, check substitutions, etc. id:3723 gh:3735
 protocol ProtoWithDefaultArg {
   func increment(_ value: Int = 1) // expected-error{{default argument not permitted in a protocol method}}
 }
@@ -266,7 +266,7 @@ struct WrongIsEqual : IsEqualComparable { // expected-error{{type 'WrongIsEqual'
 //===----------------------------------------------------------------------===//
 
 func existentialSequence(_ e: Sequence) { // expected-error{{has Self or associated type requirements}}
-	// FIXME: Weird diagnostic
+	// FIXME: Weird diagnostic id:3830 gh:3842
   var x = e.makeIterator() // expected-error{{'Sequence' is not convertible to 'Sequence.Iterator'}}
   x.next()
   x.nonexistent()
@@ -278,7 +278,7 @@ protocol HasSequenceAndStream {
 }
 
 func existentialSequenceAndStreamType(_ h: HasSequenceAndStream) { // expected-error{{has Self or associated type requirements}}
-  // FIXME: Crummy diagnostics.
+  // FIXME: Crummy diagnostics. id:4080 gh:4092
   var x = h.getR() // expected-error{{member 'getR' cannot be used on value of protocol type 'HasSequenceAndStream'; use a generic constraint instead}}
   x.makeIterator()
   x.next()

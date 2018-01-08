@@ -32,7 +32,7 @@ class ClassWithUnavailable {
   @available(*, unavailable)
   func doNotOverride() {} // expected-note {{'doNotOverride()' has been explicitly marked unavailable here}}
 
-  // FIXME: extraneous diagnostic here
+  // FIXME: extraneous diagnostic here id:4024 gh:4035
   @available(*, unavailable)
   init(int _: Int) {} // expected-note 2 {{'init(int:)' has been explicitly marked unavailable here}}
 
@@ -58,7 +58,7 @@ func testSubscript(cwu: ClassWithUnavailable) {
   _ = cwu[5] // expected-error{{'subscript' is unavailable}}
 }
 
-/* FIXME 'nil == a' fails to type-check with a bogus error message
+/* FIXME 'nil == a' fails to type-check with a bogus error message id:2972 gh:2984
  * <rdar://problem/17540796>
 func markUsed<T>(t: T) {}
 func testString() {

@@ -78,7 +78,7 @@ macro(swift_common_standalone_build_config_llvm product is_cross_compiling)
   include(AddSwiftTableGen) # This imports TableGen from LLVM.
   include(HandleLLVMOptions)
 
-  # HACK: this ugly tweaking is to prevent the propagation of the flag from LLVM
+  # HACK: this ugly tweaking is to prevent the propagation of the flag from LLVM id:45 gh:52
   # into swift.  The use of this flag pollutes all targets, and we are not able
   # to remove it on a per-target basis which breaks cross-compilation.
   string(REGEX REPLACE "-Wl,-z,defs" "" CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}")
@@ -307,7 +307,7 @@ function(swift_common_llvm_config target)
            "${target_type}" STREQUAL "MODULE_LIBRARY")
       target_link_libraries("${target}" PRIVATE ${libnames})
     else()
-      # HACK: Otherwise (for example, for executables), use a plain signature,
+      # HACK: Otherwise (for example, for executables), use a plain signature, id:26 gh:27
       # because LLVM CMake does that already.
       target_link_libraries("${target}" ${libnames})
     endif()

@@ -140,7 +140,7 @@ struct Bad {
     // expected-note@-1 {{cycle beginning here: Holder<NoStorage> -> (x: NoStorage.Holding)}}
 }
 
-// FIXME: this diagnostic is unnecessary
+// FIXME: this diagnostic is unnecessary id:3783 gh:3795
 struct Test1 { // expected-error {{value type 'Test1' has infinite size}}
   var test1: StructCyclesWithEnum<Int>
   // expected-note@-1 {{cycle beginning here: StructCyclesWithEnum<Int> -> (sField: EnumCyclesWithStruct<Int>) -> (eCase: StructCyclesWithEnum<Int>)}}

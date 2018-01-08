@@ -509,7 +509,7 @@ void TestSwiftObjectNSObject(id c, id d)
 
   //=== Other methods from class NSObject ===//
 
-  // FIXME: mostly untested
+  // FIXME: mostly untested id:4047 gh:4059
 
   printf("NSObject.instancesRespondToSelector\n");
 

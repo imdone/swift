@@ -187,7 +187,7 @@ public struct _prext_LazyCollection<Base_ : Collection>
 
   public var _base: Base_
 
-  // FIXME: Why is this needed?
+  // FIXME: Why is this needed? id:3992 gh:4004
   // public var elements: Base { return _base }
 }
 

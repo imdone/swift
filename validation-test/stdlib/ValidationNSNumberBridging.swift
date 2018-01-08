@@ -13,7 +13,7 @@
 // REQUIRES: executable_test
 // REQUIRES: objc_interop
 
-// FIXME: rdar://35814988
+// FIXME: rdar://35814988 id:4120 gh:4132
 // UNSUPPORTED: CPU=armv7
 // UNSUPPORTED: CPU=armv7s
 // UNSUPPORTED: CPU=armv7k

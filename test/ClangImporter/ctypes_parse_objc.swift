@@ -9,7 +9,7 @@ import CoreFoundation
 
 var cgPointVar: CGPoint
 
-// FIXME: Import arrays as real array-looking things.
+// FIXME: Import arrays as real array-looking things. id:2722 gh:2734
 
 func testArrays() {
   let fes: NSFastEnumerationState
@@ -26,7 +26,7 @@ func testArrays() {
   _ = ulong; _ = pulong
 }
 
-// FIXME: Import pointers to opaque types as unique types.
+// FIXME: Import pointers to opaque types as unique types. id:3362 gh:3374
 
 func testPointers() {
   let cfstr: CFString?

@@ -731,7 +731,7 @@ template <typename Runtime> struct TargetOpaqueMetadata;
 template <typename Runtime> struct TargetValueMetadata;
 template <typename Runtime> struct TargetForeignClassMetadata;
 
-// FIXME: https://bugs.swift.org/browse/SR-1155
+// FIXME: https://bugs.swift.org/browse/SR-1155 id:112 gh:119
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 
@@ -877,7 +877,7 @@ public:
 
   /// Allocate an out-of-line buffer if values of this type don't fit in the
   /// ValueBuffer.
-  /// NOTE: This is not a box for copy-on-write existentials.
+  /// NOTE: This is not a box for copy-on-write existentials. id:334 gh:341
   OpaqueValue *allocateBufferIn(ValueBuffer *buffer) const;
 
   /// Deallocate an out-of-line buffer stored in 'buffer' if values of this type
@@ -886,7 +886,7 @@ public:
 
   // Allocate an out-of-line buffer box (reference counted) if values of this
   // type don't fit in the ValueBuffer.
-  // NOTE: This *is* a box for copy-on-write existentials.
+  // NOTE: This *is* a box for copy-on-write existentials. id:128 gh:135
   OpaqueValue *allocateBoxForExistentialIn(ValueBuffer *Buffer) const;
 
   /// Get the nominal type descriptor if this metadata describes a nominal type,
@@ -1030,7 +1030,7 @@ struct GenericContextDescriptor {
   /// and not any required witness tables.
   uint32_t NumPrimaryParams;
   
-  // TODO: add meaningful descriptions of the generic requirements.
+  // TODO: add meaningful descriptions of the generic requirements. id:240 gh:247
 };
 
 /// Header for a generic parameter descriptor.
@@ -1119,7 +1119,7 @@ struct TargetMethodDescriptor {
   /// Flags describing the method.
   MethodDescriptorFlags Flags;
 
-  // TODO: add method types or anything else needed for reflection.
+  // TODO: add method types or anything else needed for reflection. id:211 gh:218
 };
 
 /// Header for a class vtable descriptor. This is a variable-sized
@@ -2122,7 +2122,7 @@ using LiteralProtocolDescriptorList = TargetProtocolDescriptorList<InProcess>;
 template <typename Runtime>
 struct TargetProtocolRequirement {
   ProtocolRequirementFlags Flags;
-  // TODO: name, type
+  // TODO: name, type id:113 gh:120
 
   /// The optional default implementation of the protocol.
   RelativeDirectPointer<void, /*nullable*/ true> DefaultImplementation;

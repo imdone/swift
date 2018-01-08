@@ -1,5 +1,5 @@
 // REQUIRES: objc_interop
-// FIXME: actually, this test requires Mach-O.
+// FIXME: actually, this test requires Mach-O. id:2645 gh:2657
 
 // RUN: %empty-directory(%t)
 // RUN: %empty-directory(%t/tmp)

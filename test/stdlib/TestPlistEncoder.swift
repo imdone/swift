@@ -13,7 +13,7 @@
 import Swift
 import Foundation
 
-// MARK: - Test Suite
+// MARK: - Test Suite id:3907 gh:3919
 
 #if FOUNDATION_XCTEST
 import XCTest
@@ -24,7 +24,7 @@ class TestPropertyListEncoderSuper { }
 #endif
 
 class TestPropertyListEncoder : TestPropertyListEncoderSuper {
-  // MARK: - Encoding Top-Level Empty Types
+  // MARK: - Encoding Top-Level Empty Types id:3958 gh:3970
   func testEncodingTopLevelEmptyStruct() {
     let empty = EmptyStruct()
     _testRoundTrip(of: empty, in: .binary, expectedPlist: _plistEmptyDictionaryBinary)
@@ -37,7 +37,7 @@ class TestPropertyListEncoder : TestPropertyListEncoderSuper {
     _testRoundTrip(of: empty, in: .xml, expectedPlist: _plistEmptyDictionaryXML)
   }
 
-  // MARK: - Encoding Top-Level Single-Value Types
+  // MARK: - Encoding Top-Level Single-Value Types id:4160 gh:4172
   func testEncodingTopLevelSingleValueEnum() {
     let s1 = Switch.off
     _testEncodeFailure(of: s1, in: .binary)
@@ -68,7 +68,7 @@ class TestPropertyListEncoder : TestPropertyListEncoderSuper {
     _testRoundTrip(of: TopLevelWrapper(c), in: .xml)
   }
 
-  // MARK: - Encoding Top-Level Structured Types
+  // MARK: - Encoding Top-Level Structured Types id:3213 gh:3225
   func testEncodingTopLevelStructuredStruct() {
     // Address is a struct type with multiple fields.
     let address = Address.testValue
@@ -129,7 +129,7 @@ class TestPropertyListEncoder : TestPropertyListEncoderSuper {
   }
 
 
-  // MARK: - Encoder Features
+  // MARK: - Encoder Features id:3563 gh:3575
   func testNestedContainerCodingPaths() {
     let encoder = JSONEncoder()
     do {
@@ -170,7 +170,7 @@ class TestPropertyListEncoder : TestPropertyListEncoderSuper {
     _testRoundTrip(of: topLevel, in: .xml, expectedPlist: try! PropertyListSerialization.data(fromPropertyList: plist, format: .xml, options: 0))
   }
 
-  // MARK: - Type coercion
+  // MARK: - Type coercion id:3910 gh:3922
   func testTypeCoercion() {
     _testRoundTripTypeCoercionFailure(of: [false, true], as: [Int].self)
     _testRoundTripTypeCoercionFailure(of: [false, true], as: [Int8].self)
@@ -214,7 +214,7 @@ class TestPropertyListEncoder : TestPropertyListEncoderSuper {
       expectEqual(type(of: decoded), Employee.self, "Expected decoded value to be of type Employee; got \(type(of: decoded)) instead.")
   }
 
-  // MARK: - Helper Functions
+  // MARK: - Helper Functions id:3961 gh:3973
   private var _plistEmptyDictionaryBinary: Data {
     return Data(base64Encoded: "YnBsaXN0MDDQCAAAAAAAAAEBAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAJ")!
   }
@@ -265,7 +265,7 @@ class TestPropertyListEncoder : TestPropertyListEncoderSuper {
   }
 }
 
-// MARK: - Helper Global Functions
+// MARK: - Helper Global Functions id:4161 gh:4173
 func expectEqualPaths(_ lhs: [CodingKey], _ rhs: [CodingKey], _ prefix: String) {
   if lhs.count != rhs.count {
     expectUnreachable("\(prefix) [CodingKey].count mismatch: \(lhs.count) != \(rhs.count)")
@@ -294,10 +294,10 @@ func expectEqualPaths(_ lhs: [CodingKey], _ rhs: [CodingKey], _ prefix: String) 
   }
 }
 
-// MARK: - Test Types
-/* FIXME: Import from %S/Inputs/Coding/SharedTypes.swift somehow. */
+// MARK: - Test Types id:3216 gh:3228
+/* FIXME: Import from %S/Inputs/Coding/SharedTypes.swift somehow. id:3565 gh:3577*/
 
-// MARK: - Empty Types
+// MARK: - Empty Types id:3914 gh:3926
 fileprivate struct EmptyStruct : Codable, Equatable {
   static func ==(_ lhs: EmptyStruct, _ rhs: EmptyStruct) -> Bool {
     return true
@@ -310,7 +310,7 @@ fileprivate class EmptyClass : Codable, Equatable {
   }
 }
 
-// MARK: - Single-Value Types
+// MARK: - Single-Value Types id:3964 gh:3976
 /// A simple on-off switch type that encodes as a single Bool value.
 fileprivate enum Switch : Codable {
   case off
@@ -377,7 +377,7 @@ fileprivate final class Counter : Codable, Equatable {
   }
 }
 
-// MARK: - Structured Types
+// MARK: - Structured Types id:4162 gh:4174
 /// A simple address type that encodes as a dictionary of values.
 fileprivate struct Address : Codable, Equatable {
   let street: String
@@ -429,7 +429,7 @@ fileprivate class Person : Codable, Equatable {
     case website
   }
 
-  // FIXME: Remove when subclasses (Employee) are able to override synthesized conformance.
+  // FIXME: Remove when subclasses (Employee) are able to override synthesized conformance. id:3220 gh:3232
   required init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     name = try container.decode(String.self, forKey: .name)
@@ -688,7 +688,7 @@ struct NestedContainersTestType : Encodable {
   }
 }
 
-// MARK: - Helper Types
+// MARK: - Helper Types id:3569 gh:3581
 
 /// A key type which can take on any string or integer value.
 /// This needs to mirror _PlistKey.
@@ -725,7 +725,7 @@ fileprivate struct TopLevelWrapper<T> : Codable, Equatable where T : Codable, T 
   }
 }
 
-// MARK: - Run Tests
+// MARK: - Run Tests id:3918 gh:3930
 
 #if !FOUNDATION_XCTEST
 var PropertyListEncoderTests = TestSuite("TestPropertyListEncoder")

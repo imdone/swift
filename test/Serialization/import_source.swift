@@ -2,7 +2,7 @@
 // RUN: %FileCheck %s < %t.txt
 // RUN: %FileCheck %s -check-prefix=NEGATIVE < %t.txt
 
-// FIXME: We need to type-check transparent functions if they are used.
+// FIXME: We need to type-check transparent functions if they are used. id:2986 gh:2998
 // XFAIL: *
 
 // CHECK: transparent_invalid.swift:3:10: error: expression does not type-check

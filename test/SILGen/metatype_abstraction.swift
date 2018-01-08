@@ -129,7 +129,7 @@ func generic_metatype_of_metatype<T>(_ x: T) -> T.Type.Type {
   return type(of: type(of: x))
 }
 
-// FIXME rdar://problem/18419772
+// FIXME rdar://problem/18419772 id:3632 gh:3644
 /*
 func existential_metatype_of_metatype(_ x: Any) -> Any.Type.Type {
  return type(of: type(of: x))

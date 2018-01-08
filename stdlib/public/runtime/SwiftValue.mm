@@ -37,7 +37,7 @@
 using namespace swift;
 using namespace swift::hashable_support;
 
-// TODO: Making this a SwiftObject subclass would let us use Swift refcounting,
+// TODO: Making this a SwiftObject subclass would let us use Swift refcounting, id:2936 gh:2948
 // but we would need to be able to emit _SwiftValue's Objective-C class object
 // with the Swift destructor pointer prefixed before it.
 //
@@ -122,7 +122,7 @@ static constexpr const size_t SwiftValueHeaderOffset
   = sizeof(Class); // isa pointer
 static constexpr const size_t SwiftValueMinAlignMask
   = alignof(Class) - 1;
-/* TODO: If we're able to become a SwiftObject subclass in the future,
+/* TODO: If we're able to become a SwiftObject subclass in the future, id:3674 gh:3686
  * change to this:
 static constexpr const size_t SwiftValueHeaderOffset
   = sizeof(HeapObject);
@@ -185,7 +185,7 @@ _SwiftValue *swift::bridgeAnythingToSwiftValueObject(OpaqueValue *src,
   void *instanceMemory = swift_slowAlloc(totalSize, alignMask);
   _SwiftValue *instance
     = objc_constructInstance(getSwiftValueClass(), instanceMemory);
-  /* TODO: If we're able to become a SwiftObject subclass in the future,
+  /* TODO: If we're able to become a SwiftObject subclass in the future, id:2598 gh:2610
    * change to this:
   auto instance = swift_allocObject(getSwiftValueClass(), totalSize,
                                     alignMask);
@@ -259,7 +259,7 @@ swift::findSwiftValueConformances(const ExistentialTypeMetadata *existentialType
   // Instances are immutable, so we can just retain.
   return objc_retain(self);
 
-  /* TODO: If we're able to become a SwiftObject subclass in the future,
+  /* TODO: If we're able to become a SwiftObject subclass in the future, id:2714 gh:2726
    * change to this:
    swift_retain((HeapObject*)self);
    return self;
@@ -272,7 +272,7 @@ swift::findSwiftValueConformances(const ExistentialTypeMetadata *existentialType
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-missing-super-calls"
 - (void)dealloc {
-  // TODO: If we're able to become a SwiftObject subclass in the future,
+  // TODO: If we're able to become a SwiftObject subclass in the future, id:3350 gh:3362
   // this should move to the heap metadata destructor function.
 
   // Destroy the contained value.
@@ -378,6 +378,6 @@ static NSString *getValueDescription(_SwiftValue *self) {
 @end
 #endif
 
-// TODO: We could pick specialized _SwiftValue subclasses for trivial types
+// TODO: We could pick specialized _SwiftValue subclasses for trivial types id:2939 gh:2951
 // or for types with known size and alignment characteristics. Probably
 // not enough of a real perf bottleneck to be worth it...

@@ -1519,7 +1519,7 @@ public:
   /// active failure destination if the optional value addressed by optionalAddr
   /// is nil, and leaving the insertion point on the success branch.
   ///
-  /// NOTE: This operation does *not* consume the managed value.
+  /// NOTE: This operation does *not* consume the managed value. id:295 gh:302
   ///
   void emitBindOptional(SILLocation loc, ManagedValue optionalAddrOrValue,
                         unsigned depth);

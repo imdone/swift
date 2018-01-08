@@ -309,7 +309,7 @@ public:
   /// Emit code to extract the discriminator as an integer value.
   /// Returns null if this is not supported by the enum implementation.
   ///
-  /// FIXME: is this the same as emitGetEnumTag()? Seems like it could be,
+  /// FIXME: is this the same as emitGetEnumTag()? Seems like it could be, id:241 gh:248
   /// except that CCompatibleEnumImplStrategy maps cases to their raw
   /// values rather than indices.
   virtual llvm::Value *emitExtractDiscriminator(IRGenFunction &IGF,

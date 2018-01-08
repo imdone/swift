@@ -159,7 +159,7 @@ func sameTypeConcrete1<T : P9 & P10>(_: T) where T.A == X3, T.C == T.B, T.C == I
 
 // CHECK-LABEL: sameTypeConcrete2@
 // CHECK: Canonical generic signature: <τ_0_0 where τ_0_0 : P10, τ_0_0 : P9, τ_0_0.B == X3, τ_0_0.C == X3>
-// FIXME: Should have τ_0_0.A == τ_0_0.A
+// FIXME: Should have τ_0_0.A == τ_0_0.A id:2801 gh:2813
 func sameTypeConcrete2<T : P9 & P10>(_: T) where T.B : X3, T.C == T.B, T.C == X3 { }
 // expected-warning@-1{{redundant superclass constraint 'T.B' : 'X3'}}
 // expected-note@-2{{same-type constraint 'T.C' == 'X3' written here}}

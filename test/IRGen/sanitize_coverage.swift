@@ -11,7 +11,7 @@
 
 import Darwin
 
-// FIXME: We should have a reliable way of triggering an indirect call in the
+// FIXME: We should have a reliable way of triggering an indirect call in the id:3823 gh:3835
 // LLVM IR generated from this code.
 func test() {
   // Use random numbers so the compiler can't constant fold
@@ -24,7 +24,7 @@ func test() {
 
 test()
 
-// FIXME: We need a way to distinguish the different types of coverage instrumentation
+// FIXME: We need a way to distinguish the different types of coverage instrumentation id:2721 gh:2733
 // that isn't really fragile. For now just check there's at least one call to the function
 // used to increment coverage count at a particular PC.
 // SANCOV: call void @__sanitizer_cov
