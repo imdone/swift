@@ -1,4 +1,7 @@
 CHANGELOG.md
-test/**/*.swift.result
-test/**/*.sil
+**/*.swift.result
+**/*.swift.response
+**/*.sil
 **/*.swift.gyb
+**/*.rst
+**/*.cpp
