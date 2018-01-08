@@ -1,2 +1,4 @@
 CHANGELOG.md
 test/**/*.swift.result
+test/**/*.sil
+**/*.swift.gyb
